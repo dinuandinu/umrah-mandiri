@@ -433,6 +433,16 @@ const buildStyle = (isDark: boolean) => `
   .about-desc { font-size:.85rem; color:var(--muted); line-height:1.7; }
 
   @keyframes slideDown { from{opacity:0;transform:translateY(-5px)} to{opacity:1;transform:translateY(0)} }
+
+  /* ── GOOGLE MAPS BUTTON ── */
+  .gmap-btn { display:inline-flex; align-items:center; gap:7px; margin-top:10px; padding:11px 16px; background:linear-gradient(135deg,#1A73E8,#1255B0); color:white; border-radius:10px; font-family:'Tajawal',system-ui,sans-serif; font-size:.88rem; font-weight:700; text-decoration:none; -webkit-tap-highlight-color:transparent; transition:opacity .15s; min-height:44px; width:100%; justify-content:center; box-shadow:0 2px 8px rgba(26,115,232,.3); }
+  .gmap-btn:active { opacity:.82; }
+
+  /* ── OFFLINE / PWA ── */
+  .offline-banner { display:flex; align-items:center; gap:9px; background:#7A3A10; color:rgba(255,255,255,.92); padding:10px 16px; font-size:.83rem; font-weight:600; position:relative; z-index:2; }
+  .offline-banner .ob-close { margin-left:auto; border:none; background:rgba(255,255,255,.18); color:white; border-radius:50%; width:26px; height:26px; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:.95rem; -webkit-tap-highlight-color:transparent; flex-shrink:0; }
+  .pwa-badge { display:inline-flex; align-items:center; gap:5px; background:rgba(61,138,110,.12); border:1px solid rgba(61,138,110,.35); border-radius:99px; padding:4px 11px; font-size:.72rem; font-weight:700; color:var(--sunnah-check); }
+  .pwa-dot { width:7px; height:7px; border-radius:50%; background:var(--sunnah-check); flex-shrink:0; }
 `;
 
 // ─── Ka'bah SVG ───────────────────────────────────────────────────────────────
@@ -454,56 +464,56 @@ const KaabaSVG = () => (
 );
 
 // ─── Map Data ─────────────────────────────────────────────────────────────────
-const MAP_DATA: Record<string, {title:string;hint:string;pins:{id:string;x:number;y:number;emoji:string;name:string;desc:string}[]}> = {
+const MAP_DATA: Record<string, {title:string;hint:string;pins:{id:string;x:number;y:number;lat:number;lng:number;emoji:string;name:string;desc:string}[]}> = {
   haram: {
     title:"🕋 Masjidil Haram", hint:"Ketuk penanda untuk detail lokasi.",
     pins:[
-      {id:"kaabah",  x:152,y:208,emoji:"🕋",name:"Ka'bah",          desc:"Kiblat seluruh umat Islam. Titik pusat tawaf — mengelilingi Ka'bah 7× berlawanan jarum jam."},
-      {id:"hajar",   x:173,y:227,emoji:"⚫",name:"Hajar Aswad",      desc:"Batu hitam dari surga di sudut tenggara Ka'bah. Istilam setiap awal putaran tawaf."},
-      {id:"hijr",    x:131,y:186,emoji:"🌙",name:"Hijr Ismail",      desc:"Bagian Ka'bah yang tidak terdinding. Shalat 2 rakaat di sini = shalat di dalam Ka'bah."},
-      {id:"multazam",x:174,y:210,emoji:"🤲",name:"Multazam",         desc:"Dinding antara Hajar Aswad & pintu Ka'bah. Tempelkan dada & tangan, berdoa — sangat mustajab."},
-      {id:"maqam",   x:172,y:182,emoji:"🪨",name:"Maqam Ibrahim",    desc:"Bekas pijakan Nabi Ibrahim AS. Shalat 2 rakaat di belakangnya setelah selesai tawaf."},
-      {id:"zamzam",  x:188,y:206,emoji:"💧",name:"Sumur Zamzam",     desc:"Air suci yang terus mengalir. Minum berdiri menghadap kiblat dengan doa niat yang baik."},
-      {id:"shafa",   x:275,y:315,emoji:"🏁",name:"Bukit Shafa",      desc:"Titik awal sa'i. Naiki bukit, hadap Ka'bah, baca doa pembuka, lalu berjalan ke Marwah."},
-      {id:"marwah",  x:275,y:110,emoji:"🏁",name:"Bukit Marwah",     desc:"Titik akhir sa'i. Perjalanan ke-7 berakhir di sini, lalu lanjut ke tahallul."},
-      {id:"bab",     x:30, y:212,emoji:"🚪",name:"Bab As-Salam",     desc:"Pintu masuk utama. Masuk kaki kanan, baca: Allāhummaftaḥ lī abwāba raḥmatik."},
+      {id:"kaabah",  x:152,y:208,lat:21.42251,lng:39.82616,emoji:"🕋",name:"Ka'bah",          desc:"Kiblat seluruh umat Islam. Titik pusat tawaf — mengelilingi Ka'bah 7× berlawanan jarum jam."},
+      {id:"hajar",   x:173,y:227,lat:21.42253,lng:39.82637,emoji:"⚫",name:"Hajar Aswad",      desc:"Batu hitam dari surga di sudut tenggara Ka'bah. Istilam setiap awal putaran tawaf."},
+      {id:"hijr",    x:131,y:186,lat:21.42328,lng:39.82569,emoji:"🌙",name:"Hijr Ismail",      desc:"Bagian Ka'bah yang tidak terdinding. Shalat 2 rakaat di sini = shalat di dalam Ka'bah."},
+      {id:"multazam",x:174,y:210,lat:21.42241,lng:39.82637,emoji:"🤲",name:"Multazam",         desc:"Dinding antara Hajar Aswad & pintu Ka'bah. Tempelkan dada & tangan, berdoa — sangat mustajab."},
+      {id:"maqam",   x:172,y:182,lat:21.42286,lng:39.82641,emoji:"🪨",name:"Maqam Ibrahim",    desc:"Bekas pijakan Nabi Ibrahim AS. Shalat 2 rakaat di belakangnya setelah selesai tawaf."},
+      {id:"zamzam",  x:188,y:206,lat:21.42294,lng:39.82665,emoji:"💧",name:"Sumur Zamzam",     desc:"Air suci yang terus mengalir. Minum berdiri menghadap kiblat dengan doa niat yang baik."},
+      {id:"shafa",   x:275,y:315,lat:21.42193,lng:39.82785,emoji:"🏁",name:"Bukit Shafa",      desc:"Titik awal sa'i. Naiki bukit, hadap Ka'bah, baca doa pembuka, lalu berjalan ke Marwah."},
+      {id:"marwah",  x:275,y:110,lat:21.42396,lng:39.82787,emoji:"🏁",name:"Bukit Marwah",     desc:"Titik akhir sa'i. Perjalanan ke-7 berakhir di sini, lalu lanjut ke tahallul."},
+      {id:"bab",     x:30, y:212,lat:21.42319,lng:39.82491,emoji:"🚪",name:"Bab As-Salam",     desc:"Pintu masuk utama. Masuk kaki kanan, baca: Allāhummaftaḥ lī abwāba raḥmatik."},
     ]
   },
   nabawi: {
     title:"🕌 Masjid Nabawi", hint:"Ketuk penanda untuk detail lokasi.",
     pins:[
-      {id:"makam",  x:260,y:100,emoji:"🌿",name:"Makam Rasulullah ﷺ",desc:"Makam Nabi ﷺ, Abu Bakar RA & Umar RA di bawah kubah hijau. Ucapkan salam dengan adab."},
-      {id:"raudhah",x:215,y:128,emoji:"⭐",name:"Raudhah",            desc:"Taman surga (karpet hijau). Sangat mustajab berdoa. Booking slot via aplikasi Nusuk."},
-      {id:"mimbar", x:173,y:128,emoji:"📖",name:"Mimbar Nabawi",      desc:"Mimbar asli Rasulullah ﷺ. Perbanyak shalawat saat berada di dekat sini."},
-      {id:"bab2",   x:162,y:350,emoji:"🚪",name:"Bab As-Salam",       desc:"Pintu masuk utama dari selatan. Masuk kaki kanan, salam kepada Nabi ﷺ saat mendekati makam."},
-      {id:"baqi",   x:330,y:195,emoji:"🪦",name:"Makam Baqi'",        desc:"Di luar masjid (timur). Pemakaman sahabat, istri & keluarga Nabi. Buka pagi & sore."},
-      {id:"dome",   x:258,y:72, emoji:"🟢",name:"Kubah Hijau",        desc:"Kubah ikonik di atas makam Rasulullah ﷺ. Landmark utama Masjid Nabawi."},
+      {id:"makam",  x:260,y:100,lat:24.46731,lng:39.61110,emoji:"🌿",name:"Makam Rasulullah ﷺ",desc:"Makam Nabi ﷺ, Abu Bakar RA & Umar RA di bawah kubah hijau. Ucapkan salam dengan adab."},
+      {id:"raudhah",x:215,y:128,lat:24.46721,lng:39.61082,emoji:"⭐",name:"Raudhah",            desc:"Taman surga (karpet hijau). Sangat mustajab berdoa. Booking slot via aplikasi Nusuk."},
+      {id:"mimbar", x:173,y:128,lat:24.46710,lng:39.61068,emoji:"📖",name:"Mimbar Nabawi",      desc:"Mimbar asli Rasulullah ﷺ. Perbanyak shalawat saat berada di dekat sini."},
+      {id:"bab2",   x:162,y:350,lat:24.46651,lng:39.61083,emoji:"🚪",name:"Bab As-Salam",       desc:"Pintu masuk utama dari selatan. Masuk kaki kanan, salam kepada Nabi ﷺ saat mendekati makam."},
+      {id:"baqi",   x:330,y:195,lat:24.46613,lng:39.61219,emoji:"🪦",name:"Makam Baqi'",        desc:"Di luar masjid (timur). Pemakaman sahabat, istri & keluarga Nabi. Buka pagi & sore."},
+      {id:"dome",   x:258,y:72, lat:24.46738,lng:39.61113,emoji:"🟢",name:"Kubah Hijau",        desc:"Kubah ikonik di atas makam Rasulullah ﷺ. Landmark utama Masjid Nabawi."},
     ]
   },
   makkah: {
     title:"🗺️ Kota Makkah", hint:"Peta radial — angka menunjukkan jarak dari Haram.",
     pins:[
-      {id:"haram",  x:152,y:220,emoji:"🕋",name:"Masjidil Haram",     desc:"Pusat ibadah umroh. 100.000× pahala shalat. Terdapat Ka'bah, Zamzam, Shafa-Marwah."},
-      {id:"mualla", x:163,y:196,emoji:"🪦",name:"Janatul Mu'alla",    desc:"Makam Siti Khadijah RA & leluhur Nabi. ±500m utara Haram. Buka pagi & sore."},
-      {id:"jabnur", x:210,y:148,emoji:"⛰️",name:"Jabal Nur (Gua Hira)",desc:"Wahyu pertama Al-Qur'an turun di sini. ±4.5km NNE. Pendakian 45 menit, ±1.700 anak tangga."},
-      {id:"jabtsur",x:172,y:295,emoji:"⛰️",name:"Jabal Tsur",         desc:"Nabi bersembunyi saat hijrah. ±4km selatan. Pendakian lebih terjal dari Jabal Nur."},
-      {id:"jiranah",x:283,y:150,emoji:"🕌",name:"Masjid Ji'ranah",    desc:"Titik miqat umroh sunnah. ±24km NE. Rasulullah ﷺ berihram dari sini setelah Perang Hunain."},
-      {id:"mina",   x:255,y:220,emoji:"🏕️",name:"Mina",               desc:"Area lempar jumrah saat haji. ±7km timur Haram."},
-      {id:"muzdal", x:295,y:245,emoji:"🌙",name:"Muzdalifah",         desc:"Mabit & kumpul batu jumrah saat haji. ±12km timur Haram."},
-      {id:"arafah", x:325,y:285,emoji:"🌅",name:"Padang Arafah",      desc:"Puncak ibadah haji — wukuf 9 Dzulhijjah. ±22km dari Haram."},
-      {id:"hhr-makkah", x:310,y:318,emoji:"🚄",name:"Stasiun HHR Makkah", desc:"Haramain High Speed Railway — ±4km tenggara Haram. Kereta ke Madinah ±2 jam, SAR 65–150. Beli tiket via Haramain Train app."},
+      {id:"haram",  x:152,y:220,lat:21.42251,lng:39.82616,emoji:"🕋",name:"Masjidil Haram",     desc:"Pusat ibadah umroh. 100.000× pahala shalat. Terdapat Ka'bah, Zamzam, Shafa-Marwah."},
+      {id:"mualla", x:163,y:196,lat:21.42534,lng:39.82832,emoji:"🪦",name:"Janatul Mu'alla",    desc:"Makam Siti Khadijah RA & leluhur Nabi. ±500m utara Haram. Buka pagi & sore."},
+      {id:"jabnur", x:210,y:148,lat:21.45841,lng:39.86363,emoji:"⛰️",name:"Jabal Nur (Gua Hira)",desc:"Wahyu pertama Al-Qur'an turun di sini. ±4.5km NNE. Pendakian 45 menit, ±1.700 anak tangga."},
+      {id:"jabtsur",x:172,y:295,lat:21.37564,lng:39.83582,emoji:"⛰️",name:"Jabal Tsur",         desc:"Nabi bersembunyi saat hijrah. ±4km selatan. Pendakian lebih terjal dari Jabal Nur."},
+      {id:"jiranah",x:283,y:150,lat:21.51012,lng:39.92814,emoji:"🕌",name:"Masjid Ji'ranah",    desc:"Titik miqat umroh sunnah. ±24km NE. Rasulullah ﷺ berihram dari sini setelah Perang Hunain."},
+      {id:"mina",   x:255,y:220,lat:21.41330,lng:39.89334,emoji:"🏕️",name:"Mina",               desc:"Area lempar jumrah saat haji. ±7km timur Haram."},
+      {id:"muzdal", x:295,y:245,lat:21.39193,lng:39.93674,emoji:"🌙",name:"Muzdalifah",         desc:"Mabit & kumpul batu jumrah saat haji. ±12km timur Haram."},
+      {id:"arafah", x:325,y:285,lat:21.35492,lng:39.98422,emoji:"🌅",name:"Padang Arafah",      desc:"Puncak ibadah haji — wukuf 9 Dzulhijjah. ±22km dari Haram."},
+      {id:"hhr-makkah", x:310,y:318,lat:21.38131,lng:39.88357,emoji:"🚄",name:"Stasiun HHR Makkah", desc:"Haramain High Speed Railway — ±4km tenggara Haram. Kereta ke Madinah ±2 jam, SAR 65–150. Beli tiket via Haramain Train app."},
     ]
   },
   madinah: {
     title:"🗺️ Kota Madinah", hint:"Peta radial — angka menunjukkan jarak dari Nabawi.",
     pins:[
-      {id:"nabawi",   x:152,y:212,emoji:"🕌",name:"Masjid Nabawi",   desc:"Pusat ziarah. 1.000× pahala shalat. Terdapat Raudhah & makam Rasulullah ﷺ."},
-      {id:"baqimd",   x:202,y:207,emoji:"🪦",name:"Makam Baqi'",     desc:"Tepat di timur Nabawi. Makam sahabat & keluarga Nabi. ±200m. Pria boleh masuk."},
-      {id:"quba",     x:100,y:298,emoji:"🕌",name:"Masjid Quba",     desc:"Masjid pertama Islam. 2 rakaat = 1 umroh (HR. Tirmidzi). ±3.5km barat daya."},
-      {id:"qiblatayn",x:62, y:197,emoji:"🕌",name:"Masjid Qiblatayn",desc:"Tempat kiblat berpindah saat Shalat Dzuhur. ±5km barat."},
-      {id:"uhud",     x:168,y:95, emoji:"⛰️",name:"Jabal Uhud",      desc:"Perang Uhud & makam 70 syuhada termasuk Hamzah RA. ±5km utara."},
-      {id:"ghamamah", x:147,y:232,emoji:"🕌",name:"Masjid Ghamamah", desc:"Tempat Rasulullah ﷺ shalat Ied. ±300m selatan Nabawi."},
-      {id:"hhr-madinah", x:32,y:312,emoji:"🚄",name:"Stasiun HHR Madinah", desc:"Haramain High Speed Railway — ±14km barat daya Nabawi. Gunakan taksi/Uber ±20 menit. Kereta ke Makkah ±2 jam (SAR 65–150)."},
+      {id:"nabawi",   x:152,y:212,lat:24.46728,lng:39.61109,emoji:"🕌",name:"Masjid Nabawi",   desc:"Pusat ziarah. 1.000× pahala shalat. Terdapat Raudhah & makam Rasulullah ﷺ."},
+      {id:"baqimd",   x:202,y:207,lat:24.46613,lng:39.61219,emoji:"🪦",name:"Makam Baqi'",     desc:"Tepat di timur Nabawi. Makam sahabat & keluarga Nabi. ±200m. Pria boleh masuk."},
+      {id:"quba",     x:100,y:298,lat:24.44028,lng:39.61720,emoji:"🕌",name:"Masjid Quba",     desc:"Masjid pertama Islam. 2 rakaat = 1 umroh (HR. Tirmidzi). ±3.5km barat daya."},
+      {id:"qiblatayn",x:62, y:197,lat:24.47440,lng:39.59510,emoji:"🕌",name:"Masjid Qiblatayn",desc:"Tempat kiblat berpindah saat Shalat Dzuhur. ±5km barat."},
+      {id:"uhud",     x:168,y:95, lat:24.50682,lng:39.61942,emoji:"⛰️",name:"Jabal Uhud",      desc:"Perang Uhud & makam 70 syuhada termasuk Hamzah RA. ±5km utara."},
+      {id:"ghamamah", x:147,y:232,lat:24.46551,lng:39.60978,emoji:"🕌",name:"Masjid Ghamamah", desc:"Tempat Rasulullah ﷺ shalat Ied. ±300m selatan Nabawi."},
+      {id:"hhr-madinah", x:32,y:312,lat:24.46165,lng:39.49568,emoji:"🚄",name:"Stasiun HHR Madinah", desc:"Haramain High Speed Railway — ±14km barat daya Nabawi. Gunakan taksi/Uber ±20 menit. Kereta ke Makkah ±2 jam (SAR 65–150)."},
     ]
   },
 };
@@ -612,6 +622,14 @@ const MiniMap = ({maps}:{maps:{id:string;label:string}[]}) => {
         <div className="map-pin-card" style={{marginTop:8}}>
           <div className="map-pin-card-title"><span style={{fontSize:"1.1rem"}}>{activePin.emoji}</span>{activePin.name}</div>
           <div className="map-pin-card-desc">{activePin.desc}</div>
+          <a
+            className="gmap-btn"
+            href={`https://www.google.com/maps/dir/?api=1&destination=${activePin.lat},${activePin.lng}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            📍 Buka di Google Maps
+          </a>
         </div>
       )}
       <div className="map-legend" style={{marginTop:8}}>
@@ -886,6 +904,13 @@ const Drawer = ({open,onClose,theme,setTheme,fontSize,setFontSize,onResetProgres
             </div>
             <span className="drawer-item-chev">›</span>
           </button>
+
+          <div style={{padding:"10px 20px 4px"}}>
+            <span className="pwa-badge">
+              <span className="pwa-dot"/>
+              Tersedia Offline
+            </span>
+          </div>
         </div>
       </div>
     </>
@@ -1407,6 +1432,8 @@ export default function UmrohApp() {
   const [showOnboarding, setShowOnboarding] = useState(()=>{
     try { return !localStorage.getItem("umrah-onboarded"); } catch { return false; }
   });
+  const [isOffline, setIsOffline] = useState(() => typeof navigator !== "undefined" && !navigator.onLine);
+  const [offlineDismissed, setOfflineDismissed] = useState(false);
 
   const prefersDark = typeof window !== "undefined" && window.matchMedia("(prefers-color-scheme:dark)").matches;
   const isDark = theme==="dark" || (theme==="auto" && prefersDark);
@@ -1420,6 +1447,13 @@ export default function UmrohApp() {
     const onScroll = () => setShowTop(window.scrollY > 320);
     window.addEventListener("scroll", onScroll, {passive:true});
     return () => window.removeEventListener("scroll", onScroll);
+  },[]);
+  useEffect(()=>{
+    const goOffline = () => { setIsOffline(true); setOfflineDismissed(false); };
+    const goOnline  = () => setIsOffline(false);
+    window.addEventListener("offline", goOffline);
+    window.addEventListener("online",  goOnline);
+    return () => { window.removeEventListener("offline",goOffline); window.removeEventListener("online",goOnline); };
   },[]);
 
   const handleOnboardingDone = () => {
@@ -1470,6 +1504,15 @@ export default function UmrohApp() {
         {showAbout && <AboutPage onClose={()=>setShowAbout(false)}/>}
 
         <div className="content">
+          {/* ── OFFLINE BANNER ── */}
+          {isOffline && !offlineDismissed && (
+            <div className="offline-banner">
+              <span style={{fontSize:"1.05rem"}}>📵</span>
+              <span>Anda sedang offline — konten panduan tetap tersedia</span>
+              <button className="ob-close" onClick={()=>setOfflineDismissed(true)} aria-label="Tutup">✕</button>
+            </div>
+          )}
+
           {/* ── HEADER ── */}
           <div className="header">
             <div className="header-geo"/>
