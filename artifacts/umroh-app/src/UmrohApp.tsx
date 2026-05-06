@@ -964,9 +964,7 @@ const prepData: PrepSection[] = [
   {
     section:"Perlengkapan Ibadah & Bawaan",
     items:[
-      {id:18,title:"Kain Ihram 2 lembar (pria)",badge:"penting",tips:["Pilih bahan terry cotton atau turkish cotton — kuat, tidak mudah melar","Ukuran ideal: 90×150 cm (bawah) dan 90×200 cm (atas)","Wanita: gamis + khimar putih menutup seluruh tubuh kecuali wajah & telapak tangan","Latihan pakai ihram sebelum berangkat agar tidak kerepotan di miqat"]},
-      {id:19,title:"Sandal ihram",badge:"penting",tips:["Sandal Hawalaki atau sandal kulit: nyaman, awet, tidak licin di marmer basah","Pria saat ihram: tidak boleh menutup mata kaki dan jari-jari kaki","Bawa spidol kecil untuk menandai sandal agar tidak tertukar di masjid"]},
-      {id:20,title:"Panduan doa & dzikir (offline)",badge:"rekomendasi",tips:["Install sebelum berangkat: Nusuk, Muslim Pro, atau Al-Quran Indonesia (mode offline)","Hafal minimal: niat ihram, talbiyah, dan doa antara Rukun Yamani–Hajar Aswad"]},
+      {id:18,title:"Pakaian Ihram & Sandal",badge:"penting",tips:["Pilih bahan terry cotton atau turkish cotton — kuat, tidak mudah melar","Ukuran ideal: 90×150 cm (bawah) dan 90×200 cm (atas)","Wanita: gamis + khimar putih menutup seluruh tubuh kecuali wajah & telapak tangan","Latihan pakai ihram sebelum berangkat agar tidak kerepotan di miqat","Sandal Hawalaki atau sandal kulit: nyaman, awet, tidak licin di marmer basah","Pria saat ihram: tidak boleh menutup mata kaki dan jari-jari kaki","Bawa spidol kecil untuk menandai sandal agar tidak tertukar di masjid"]},
       {id:21,title:"Pakaian sopan & nyaman (min. 5 set)",badge:"penting",tips:["Bahan terbaik: linen, katun, atau dry-fit. Cuaca Mekkah 35–45°C","Pria: kurta/gamis adalah pilihan terbaik. Wanita: gamis longgar + bergo nyaman"]},
       {id:22,title:"Power bank & adaptor tipe G",badge:"penting",tips:["Arab Saudi pakai colokan Tipe G (3 pin kotak). Beli adaptor universal sebelum berangkat","Power bank min. 20.000 mAh sangat berguna saat seharian di masjid"]},
       {id:23,title:"Fotokopi & scan dokumen penting",badge:"penting",tips:["Fotokopi: paspor, visa, tiket, voucher hotel, kartu vaksin, KTP","Simpan satu set di tas kabin dan satu set di koper — pisah dari dokumen asli","Upload ke Google Drive atau email sendiri agar bisa diakses kapanpun"]},
@@ -982,12 +980,13 @@ const prepData: PrepSection[] = [
         "③ SIM Card Lokal (paling hemat): beli STC/Zain/Mobily di bandara. Harga SAR 30–60, data 10–20 GB",
         "Rekomendasi: STC memiliki sinyal terkuat di area Masjidil Haram dan Masjid Nabawi",
       ]},
-      {id:30,title:"Install aplikasi penting sebelum berangkat",badge:"penting",tips:[
+      {id:30,title:"Install aplikasi penting & panduan doa offline",badge:"penting",tips:[
         "① Nusuk (nusuk.sa) — WAJIB: booking slot Raudhah. Buat akun minimal 2 hari sebelum berangkat",
         "② Google Maps — download peta offline Makkah & Madinah sebelum berangkat",
         "③ Uber / Careem — daftarkan akun + kartu kredit internasional sebelum berangkat",
         "④ HHR Haramain Train — tiket kereta cepat Makkah–Madinah (±2 jam, SAR 65–150)",
-        "⑤ Al-Qur'an Indonesia / Muslim Pro — aktifkan mode offline",
+        "⑤ Al-Qur'an Indonesia / Muslim Pro — aktifkan mode offline untuk doa & dzikir lengkap",
+        "📖 Hafal minimal sebelum berangkat: niat ihram, talbiyah, dan doa antara Rukun Yamani–Hajar Aswad",
         "Semua aplikasi ini GRATIS — install dan coba sebelum berangkat agar familiar",
       ]},
     ]
@@ -1104,28 +1103,26 @@ const tutorialData: TutItem[] = [
       </div>
     )
   },
-  {emoji:"🕋",title:"Memasuki Masjidil Haram",subtitle:"Adab dan panduan masuk masjid",gold:false,defaultSubTab:null,
-    content:()=>(
-      <div>
-        <p>Masuk melalui pintu <strong>Bab As-Salam</strong> dengan kaki kanan terlebih dahulu.</p>
-        <div className="doa-box">
-          <div className="doa-label">Doa Masuk Masjid</div>
-          <div className="doa-arabic">اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ</div>
-          <div className="doa-latin">Allāhummaftaḥ lī abwāba raḥmatik</div>
-          <div className="doa-arti">"Ya Allah, bukakanlah untukku pintu-pintu rahmat-Mu."</div>
-        </div>
-        <ul className="tip-list">
-          <li>Saat pertama kali melihat Ka'bah, berdiri sejenak dan panjatkan doa — waktu mustajab</li>
-          <li>Simpan sandal di dalam tas, bukan di rak masjid agar tidak tertukar</li>
-          <li>Baca talbiyah terus hingga siap memulai tawaf</li>
-        </ul>
-      </div>
-    )
-  },
-  {emoji:"🙏",title:"Sholat di Masjidil Haram",subtitle:"Panduan, adab & keutamaan sholat berjamaah",gold:true,defaultSubTab:"sh-panduan",
+  {emoji:"🕋",title:"Masuk & Sholat di Masjidil Haram",subtitle:"Adab masuk, keutamaan & panduan sholat berjamaah",gold:true,defaultSubTab:"sh-masuk",
     content:({D,T,subTab,setSubTab})=>(
       <div>
-        <SubTabs tabs={[{id:"sh-panduan",label:"📋 Panduan"},{id:"sh-waktu",label:"🕐 Waktu"},{id:"sh-adab",label:"🤲 Adab"}]} active={subTab} onChange={setSubTab}/>
+        <SubTabs tabs={[{id:"sh-masuk",label:"🚪 Masuk"},{id:"sh-panduan",label:"📋 Sholat"},{id:"sh-waktu",label:"🕐 Waktu"},{id:"sh-adab",label:"🤲 Adab"}]} active={subTab} onChange={setSubTab}/>
+        {subTab==="sh-masuk"&&<div>
+          <DS id="sh-masuk1" title="🚪 Tata Cara Memasuki Masjidil Haram" open={D["sh-masuk1"]} onToggle={T}>
+            <p>Masuk melalui pintu <strong>Bab As-Salam</strong> dengan kaki kanan terlebih dahulu.</p>
+            <div className="doa-box">
+              <div className="doa-label">Doa Masuk Masjid</div>
+              <div className="doa-arabic">اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ</div>
+              <div className="doa-latin">Allāhummaftaḥ lī abwāba raḥmatik</div>
+              <div className="doa-arti">"Ya Allah, bukakanlah untukku pintu-pintu rahmat-Mu."</div>
+            </div>
+            <ul className="tip-list">
+              <li>Saat pertama kali melihat Ka'bah, berdiri sejenak dan panjatkan doa — waktu mustajab</li>
+              <li>Simpan sandal di dalam tas, bukan di rak masjid agar tidak tertukar</li>
+              <li>Baca talbiyah terus hingga siap memulai tawaf</li>
+            </ul>
+          </DS>
+        </div>}
         {subTab==="sh-panduan"&&<div>
           <DS id="sh1" title="🕋 Keutamaan Sholat di Masjidil Haram" open={D["sh1"]} onToggle={T}>
             <div className="info-box"><p>💎 Satu rakaat sholat di Masjidil Haram setara dengan <strong>100.000 rakaat</strong> di masjid lain (HR. Ibnu Majah). Jangan lewatkan satu pun sholat fardhu berjamaah selama di Makkah.</p></div>
