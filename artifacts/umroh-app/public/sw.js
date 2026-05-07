@@ -1,4 +1,4 @@
-const CACHE_NAME = "umroh-mandiri-v1";
+const CACHE_NAME = "umroh-mandiri-v2";
 const BASE = "/umroh-app";
 
 const PRECACHE = [
