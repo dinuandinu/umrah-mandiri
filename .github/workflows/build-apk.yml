@@ -39,14 +39,13 @@ jobs:
 
       - name: Debug node_modules
         run: |
-          echo "=== ROOT node_modules/@capacitor ==="
+          echo "=== ROOT ==="
           ls node_modules/@capacitor/ 2>/dev/null || echo "TIDAK ADA"
-          echo "=== UMROH-APP node_modules/@capacitor ==="
+          echo "=== UMROH-APP ==="
           ls artifacts/umroh-app/node_modules/@capacitor/ 2>/dev/null || echo "TIDAK ADA"
-          echo "=== FIND @capacitor/android ==="
+          echo "=== FIND ==="
           find . -name "package.json" -path "*/@capacitor/android/*" | head -5
 
       - name: Build web app
         working-directory: artifacts/umroh-app
         run: pnpm build
-
