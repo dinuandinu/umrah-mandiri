@@ -36,6 +36,10 @@ jobs:
         working-directory: artifacts/umroh-app
         run: pnpm build
 
+      - name: Install Capacitor packages flat
+        working-directory: artifacts/umroh-app
+        run: pnpm add --shamefully-hoist @capacitor/android@8 @capacitor/core@8
+
       - name: Sync Capacitor
         working-directory: artifacts/umroh-app
         run: npx @capacitor/cli sync android
