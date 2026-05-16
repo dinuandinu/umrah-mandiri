@@ -36,15 +36,13 @@ jobs:
         working-directory: artifacts/umroh-app
         run: pnpm build
 
-      - name: 📱 Add Android platform
+      -  name: 📱 Add Android platform
         working-directory: artifacts/umroh-app
-        run: |
-          pnpm install --no-frozen-lockfile
-          ./node_modules/.bin/cap add android
+        run: ../../node_modules/.bin/cap add android
 
       - name: 🔄 Sync Capacitor
         working-directory: artifacts/umroh-app
-        run: ./node_modules/.bin/cap sync android
+        run: ../../node_modules/.bin/cap sync android
 
       - name: 🔨 Build APK
         working-directory: artifacts/umroh-app/android
