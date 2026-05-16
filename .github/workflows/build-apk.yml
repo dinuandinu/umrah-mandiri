@@ -38,6 +38,9 @@ jobs:
           cp -r $GITHUB_WORKSPACE/artifacts/umroh-app/android .
           ./node_modules/.bin/cap sync android
           cp -r android/. $GITHUB_WORKSPACE/artifacts/umroh-app/android/
+          mkdir -p $GITHUB_WORKSPACE/artifacts/umroh-app/node_modules/@capacitor
+          cp -r node_modules/@capacitor/android $GITHUB_WORKSPACE/artifacts/umroh-app/node_modules/@capacitor/
+          cp -r node_modules/@capacitor/core $GITHUB_WORKSPACE/artifacts/umroh-app/node_modules/@capacitor/
       - name: Build APK
         working-directory: artifacts/umroh-app/android
         run: ./gradlew assembleDebug
