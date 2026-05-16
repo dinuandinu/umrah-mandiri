@@ -38,7 +38,9 @@ jobs:
 
       - name: 📱 Add Android platform
         working-directory: artifacts/umroh-app
-        run: ./node_modules/.bin/cap add android
+        run: |
+          pnpm install --no-frozen-lockfile
+          ./node_modules/.bin/cap add android
 
       - name: 🔄 Sync Capacitor
         working-directory: artifacts/umroh-app
