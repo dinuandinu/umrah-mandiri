@@ -29,16 +29,15 @@ jobs:
         with:
           version: 9
 
+      - name: Enable hoisting
+        run: echo "shamefully-hoist=true" >> .npmrc
+
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
       - name: Build web app
         working-directory: artifacts/umroh-app
         run: pnpm build
-
-      - name: Install Capacitor packages flat
-        working-directory: artifacts/umroh-app
-        run: pnpm add --shamefully-hoist @capacitor/android@8 @capacitor/core@8
 
       - name: Sync Capacitor
         working-directory: artifacts/umroh-app
