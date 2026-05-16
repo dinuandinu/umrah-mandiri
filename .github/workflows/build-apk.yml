@@ -29,11 +29,6 @@ jobs:
         with:
           version: 9
 
-      - name: Enable hoisting
-        run: |
-          echo "shamefully-hoist=true" >> .npmrc
-          echo "node-linker=node-modules" >> .npmrc
-
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
@@ -41,14 +36,10 @@ jobs:
         working-directory: artifacts/umroh-app
         run: pnpm build
 
-      - name: Link node_modules untuk Capacitor
+      - name: Copy web assets ke Android
         run: |
-          rm -rf artifacts/umroh-app/node_modules
-          ln -sf $(pwd)/node_modules artifacts/umroh-app/node_modules
-
-      - name: Sync Capacitor
-        working-directory: artifacts/umroh-app
-        run: npx @capacitor/cli sync android
+          mkdir -p artifacts/umroh-app/android/app/src/main/assets/public
+          cp -r artifacts/umroh-app/dist/public/. artifacts/umroh-app/android/app/src/main/assets/public/
 
       - name: Build APK
         working-directory: artifacts/umroh-app/android
