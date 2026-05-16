@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import qrisImg from "./assets/qris.jpg";
 
-const buildStyle = (isDark: boolean) => `
+const buildStyle = (theme: string, prefersDark: boolean) => {
+  const isDark = theme === "dark" || (theme === "auto" && prefersDark);
+  return `
   @import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700&display=swap');
   * { box-sizing:border-box; margin:0; padding:0; }
 
@@ -39,7 +41,7 @@ const buildStyle = (isDark: boolean) => `
     --seg-bg:#F0E8D0; --seg-active-bg:#1A4A3A; --seg-active-color:#FFFFFF; --seg-inactive-color:#3A2E18;
   }
 
-  ${isDark ? `
+  ${theme === "dark" ? `
   :root {
     --bg:#17140D; --surface:#222018; --surface-raised:#2A2619;
     --surface-done-from:#1C2820; --surface-done-to:#182418;
@@ -70,7 +72,7 @@ const buildStyle = (isDark: boolean) => `
     --drawer-bg:#1E1B12; --drawer-border:rgba(201,168,76,0.18);
     --drawer-item-hover:rgba(201,168,76,0.06); --drawer-section-label:#B09A6E;
     --seg-bg:#2A2418; --seg-active-bg:#3D8A6E; --seg-active-color:#FFFFFF; --seg-inactive-color:#B09A6E;
-  }` : `
+  }` : theme === "auto" ? `
   @media (prefers-color-scheme:dark) {
     :root {
       --bg:#17140D; --surface:#222018; --surface-raised:#2A2619;
@@ -103,7 +105,7 @@ const buildStyle = (isDark: boolean) => `
       --drawer-item-hover:rgba(201,168,76,0.06); --drawer-section-label:#B09A6E;
       --seg-bg:#2A2418; --seg-active-bg:#3D8A6E; --seg-active-color:#FFFFFF; --seg-inactive-color:#B09A6E;
     }
-  }`}
+  }` : ""}
 
   body { font-family:'Tajawal',system-ui,-apple-system,'Segoe UI',Arial,sans-serif; background:var(--bg); color:var(--ink); }
   .app { min-height:100vh; background:var(--bg); position:relative; overflow-x:hidden; color:var(--ink); }
@@ -1745,7 +1747,7 @@ export default function UmrohApp() {
 
   return (
     <>
-      <style>{buildStyle(isDark)}</style>
+      <style>{buildStyle(theme, prefersDark)}</style>
       <div className={appClasses}>
 
         {/* ── ONBOARDING ── */}
