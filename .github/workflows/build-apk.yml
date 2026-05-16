@@ -29,9 +29,6 @@ jobs:
         with:
           version: 9
 
-      - name: Install Capacitor CLI global
-        run: npm install -g @capacitor/cli@8
-
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
@@ -39,15 +36,9 @@ jobs:
         working-directory: artifacts/umroh-app
         run: pnpm build
 
-      - name: Add Android platform
-        working-directory: artifacts/umroh-app
-        run: |
-          npm install @capacitor/android @capacitor/core
-          cap add android
-
       - name: Sync Capacitor
         working-directory: artifacts/umroh-app
-        run: cap sync android
+        run: npx @capacitor/cli sync android
 
       - name: Build APK
         working-directory: artifacts/umroh-app/android
