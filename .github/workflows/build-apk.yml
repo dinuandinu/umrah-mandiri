@@ -32,18 +32,27 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
-      - name: Install @capacitor/android untuk Gradle
+      - name: Install @capacitor/android globally
         run: |
           npm install -g @capacitor/android@8.3.4
           mkdir -p artifacts/umroh-app/node_modules/@capacitor
           cp -r $(npm root -g)/@capacitor/android artifacts/umroh-app/node_modules/@capacitor/android
 
-      - name: Generate capacitor.settings.gradle
+      - name: Generate Capacitor Gradle files
         run: |
-          cat > artifacts/umroh-app/android/capacitor.settings.gradle << 'GRADLE'
+          cat > artifacts/umroh-app/android/capacitor.settings.gradle << 'EOF'
           include ':capacitor-android'
           project(':capacitor-android').projectDir = new File('../node_modules/@capacitor/android/android')
-          GRADLE
+          EOF
+
+          cat > artifacts/umroh-app/android/app/capacitor.build.gradle << 'EOF'
+          android {
+            compileOptions {
+              sourceCompatibility JavaVersion.VERSION_17
+              targetCompatibility JavaVersion.VERSION_17
+            }
+          }
+          EOF
 
       - name: Build web app
         working-directory: artifacts/umroh-app
