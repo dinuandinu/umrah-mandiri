@@ -32,17 +32,27 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
-      - name: Install @capacitor/android globally
+      - name: Build web app
+        working-directory: artifacts/umroh-app
+        run: pnpm build
+
+      - name: Install @capacitor/android di folder terpisah
         run: |
-          npm install -g @capacitor/android@8.3.4
-          mkdir -p artifacts/umroh-app/node_modules/@capacitor
-          cp -r $(npm root -g)/@capacitor/android artifacts/umroh-app/node_modules/@capacitor/android
+          mkdir -p /tmp/cap-deps
+          cd /tmp/cap-deps
+          npm init -y
+          npm install @capacitor/android@8.3.4 @capacitor/core@8.3.4 --ignore-scripts
+          mkdir -p $GITHUB_WORKSPACE/artifacts/umroh-app/node_modules/@capacitor
+          cp -r /tmp/cap-deps/node_modules/@capacitor/android $GITHUB_WORKSPACE/artifacts/umroh-app/node_modules/@capacitor/
+          cp -r /tmp/cap-deps/node_modules/@capacitor/core $GITHUB_WORKSPACE/artifacts/umroh-app/node_modules/@capacitor/
 
       - name: Generate Capacitor Gradle files
         run: |
           cat > artifacts/umroh-app/android/capacitor.settings.gradle << 'EOF'
           include ':capacitor-android'
           project(':capacitor-android').projectDir = new File('../node_modules/@capacitor/android/android')
+          include ':capacitor-cordova-android-plugins'
+          project(':capacitor-cordova-android-plugins').projectDir = new File('./capacitor-cordova-android-plugins')
           EOF
 
           cat > artifacts/umroh-app/android/app/capacitor.build.gradle << 'EOF'
@@ -54,9 +64,26 @@ jobs:
           }
           EOF
 
-      - name: Build web app
-        working-directory: artifacts/umroh-app
-        run: pnpm build
+          mkdir -p artifacts/umroh-app/android/capacitor-cordova-android-plugins/src/main
+          cat > artifacts/umroh-app/android/capacitor-cordova-android-plugins/build.gradle << 'EOF'
+          apply plugin: 'com.android.library'
+          android {
+            compileSdkVersion 35
+            defaultConfig {
+              minSdkVersion 23
+              targetSdkVersion 35
+            }
+            compileOptions {
+              sourceCompatibility JavaVersion.VERSION_17
+              targetCompatibility JavaVersion.VERSION_17
+            }
+          }
+          EOF
+
+          cat > artifacts/umroh-app/android/capacitor-cordova-android-plugins/src/main/AndroidManifest.xml << 'EOF'
+          <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+          </manifest>
+          EOF
 
       - name: Copy web assets ke Android
         run: |
@@ -73,3 +100,4 @@ jobs:
           name: umroh-mandiri-apk
           path: artifacts/umroh-app/android/app/build/outputs/apk/debug/app-debug.apk
           retention-days: 7
+
