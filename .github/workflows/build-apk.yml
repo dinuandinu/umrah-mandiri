@@ -30,7 +30,9 @@ jobs:
           version: 9
 
       - name: Enable hoisting
-        run: echo "shamefully-hoist=true" >> .npmrc
+        run: |
+          echo "shamefully-hoist=true" >> .npmrc
+          echo "node-linker=node-modules" >> .npmrc
 
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
@@ -39,8 +41,10 @@ jobs:
         working-directory: artifacts/umroh-app
         run: pnpm build
 
-      - name: Symlink node_modules untuk Capacitor
-        run: ln -s $(pwd)/node_modules artifacts/umroh-app/node_modules
+      - name: Link node_modules ke umroh-app
+        run: |
+          rm -rf artifacts/umroh-app/node_modules
+          ln -sf $(pwd)/node_modules artifacts/umroh-app/node_modules
 
       - name: Sync Capacitor
         working-directory: artifacts/umroh-app
