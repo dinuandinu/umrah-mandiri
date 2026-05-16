@@ -483,6 +483,8 @@ const buildStyle = (theme: string, prefersDark: boolean) => {
   .faq-a strong { color:var(--emerald-text); }
   .faq-a .faq-note { display:flex; gap:7px; align-items:flex-start; margin-top:8px; padding:8px 10px; background:var(--surface-info); border-radius:8px; border-left:3px solid var(--info-box-border); font-size:.85rem; color:var(--info-box-text); line-height:1.6; }
 `;
+};
+
 
 // ─── Ka'bah SVG ───────────────────────────────────────────────────────────────
 const KaabaSVG = () => (
