@@ -28,7 +28,7 @@ jobs:
           mkdir -p /tmp/capenv
           cd /tmp/capenv
           npm init -y
-          npm install --ignore-scripts @capacitor/android@8.3.4 @capacitor/core@8.3.4 @capacitor/cli@8.3.4
+          npm install --ignore-scripts @capacitor/android@8.3.4 @capacitor/core@8.3.4 @capacitor/cli@8.3.4 typescript
       - name: Sync Capacitor
         working-directory: /tmp/capenv
         run: |
