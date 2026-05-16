@@ -41,7 +41,9 @@ jobs:
 
       - name: Add Android platform
         working-directory: artifacts/umroh-app
-        run: cap add android
+        run: |
+          npm install @capacitor/android @capacitor/core
+          cap add android
 
       - name: Sync Capacitor
         working-directory: artifacts/umroh-app
