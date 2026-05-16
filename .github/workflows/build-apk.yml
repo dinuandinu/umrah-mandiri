@@ -38,11 +38,11 @@ jobs:
 
       - name: 📱 Add Android platform
         working-directory: artifacts/umroh-app
-        run: npx cap add android
+        run: pnpm exec cap add android
 
       - name: 🔄 Sync Capacitor
         working-directory: artifacts/umroh-app
-        run: npx cap sync android
+        run: pnpm exec cap sync android
 
       - name: 🔨 Build APK
         working-directory: artifacts/umroh-app/android
