@@ -37,26 +37,16 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
+      - name: Debug node_modules
+        run: |
+          echo "=== ROOT node_modules/@capacitor ==="
+          ls node_modules/@capacitor/ 2>/dev/null || echo "TIDAK ADA"
+          echo "=== UMROH-APP node_modules/@capacitor ==="
+          ls artifacts/umroh-app/node_modules/@capacitor/ 2>/dev/null || echo "TIDAK ADA"
+          echo "=== FIND @capacitor/android ==="
+          find . -name "package.json" -path "*/@capacitor/android/*" | head -5
+
       - name: Build web app
         working-directory: artifacts/umroh-app
         run: pnpm build
 
-      - name: Link node_modules ke umroh-app
-        run: |
-          rm -rf artifacts/umroh-app/node_modules
-          ln -sf $(pwd)/node_modules artifacts/umroh-app/node_modules
-
-      - name: Sync Capacitor
-        working-directory: artifacts/umroh-app
-        run: npx @capacitor/cli sync android
-
-      - name: Build APK
-        working-directory: artifacts/umroh-app/android
-        run: ./gradlew assembleDebug
-
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: umroh-mandiri-apk
-          path: artifacts/umroh-app/android/app/build/outputs/apk/debug/app-debug.apk
-          retention-days: 7
