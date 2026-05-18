@@ -1,10 +1,6 @@
 {
   "installCommand": "pnpm install",
-  "buildCommand": "pnpm --filter @workspace/umroh-app run build",
-  "outputDirectory": "artifacts/umroh-app/dist/public",
-  "framework": null,
-  "env": {
-    "BASE_PATH": "/",
-    "PORT": "3000"
-  }
+  "buildCommand": "BASE_PATH=/ PORT=3000 pnpm --filter @workspace/umroh-app run build && cp -r artifacts/umroh-app/dist/public public",
+  "outputDirectory": "public",
+  "framework": null
 }
