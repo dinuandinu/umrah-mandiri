@@ -391,6 +391,8 @@ const buildStyle = (theme: string, prefersDark: boolean) => {
   .qris-label { font-size:.78rem; font-weight:700; color:var(--muted); text-align:center; text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; }
   .qris-box { background:white; border-radius:14px; padding:16px; border:2px solid var(--border-expanded); display:flex; flex-direction:column; align-items:center; gap:8px; box-shadow:0 2px 12px rgba(26,74,58,.1); }
   .qris-note { font-size:.7rem; color:#999; text-align:center; font-style:italic; }
+  .qris-download-btn { margin-top:4px; padding:8px 18px; background:var(--primary); color:#fff; border:none; border-radius:8px; font-size:.82rem; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:6px; transition:opacity .18s; }
+  .qris-download-btn:active { opacity:.75; }
 
   /* ── ONBOARDING ── */
   .ob-overlay { position:fixed; inset:0; z-index:600; background:var(--bg); display:flex; flex-direction:column; }
@@ -802,7 +804,7 @@ const AboutPage = ({onClose}:{onClose:()=>void}) => (
       <div className="about-card">
         <div className="about-card-label">👤 Tentang Pembuat</div>
         <div className="author-avatar">🕌</div>
-        <div className="author-name">Hamba Allah</div>
+        <div className="author-name">Andinu</div>
         <div className="author-bio">
           Aplikasi ini dibuat sebagai amal jariyah — semoga bermanfaat bagi saudara-saudara Muslim yang hendak melaksanakan ibadah umroh mandiri.
         </div>
@@ -842,6 +844,27 @@ const AboutPage = ({onClose}:{onClose:()=>void}) => (
               style={{width:"100%",maxWidth:220,borderRadius:10,display:"block",margin:"0 auto"}}
             />
             <div className="qris-note">QRIS berlaku untuk semua dompet digital & m-banking Indonesia</div>
+            <button
+              className="qris-download-btn"
+              onClick={async () => {
+                try {
+                  const res = await fetch(qrisImg);
+                  const blob = await res.blob();
+                  const url = URL.createObjectURL(blob);
+                  const a = document.createElement("a");
+                  a.href = url;
+                  a.download = "QRIS-Umroh-Mandiri.jpg";
+                  document.body.appendChild(a);
+                  a.click();
+                  document.body.removeChild(a);
+                  URL.revokeObjectURL(url);
+                } catch {
+                  window.open(qrisImg, "_blank");
+                }
+              }}
+            >
+              ⬇️ Unduh Gambar QRIS
+            </button>
           </div>
         </div>
       </div>
