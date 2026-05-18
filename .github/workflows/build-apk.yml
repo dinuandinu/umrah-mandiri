@@ -1,0 +1,86 @@
+name: Build Android APK
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Build web app
+        working-directory: artifacts/umroh-app
+        run: pnpm build
+        env:
+          BASE_PATH: /
+          PORT: '3000'
+
+      - name: Setup Capacitor di folder bersih
+        run: |
+          mkdir -p /tmp/capenv
+          cd /tmp/capenv
+          npm init -y
+          npm install --ignore-scripts @capacitor/android@8.3.4 @capacitor/core@8.3.4 @capacitor/cli@8.3.4 typescript
+
+      - name: Sync Capacitor
+        working-directory: /tmp/capenv
+        run: |
+          cp $GITHUB_WORKSPACE/artifacts/umroh-app/capacitor.config.ts .
+          mkdir -p dist/public
+          cp -r $GITHUB_WORKSPACE/artifacts/umroh-app/dist/public/. dist/public/
+          cp -r $GITHUB_WORKSPACE/artifacts/umroh-app/android .
+          ./node_modules/.bin/cap sync android
+          cp -r android/. $GITHUB_WORKSPACE/artifacts/umroh-app/android/
+          mkdir -p $GITHUB_WORKSPACE/artifacts/umroh-app/node_modules/@capacitor
+          cp -r node_modules/@capacitor/android $GITHUB_WORKSPACE/artifacts/umroh-app/node_modules/@capacitor/
+          cp -r node_modules/@capacitor/core $GITHUB_WORKSPACE/artifacts/umroh-app/node_modules/@capacitor/
+
+      - name: Decode Keystore
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > $GITHUB_WORKSPACE/umroh-mandiri.jks
+
+      - name: Build Release APK
+        working-directory: artifacts/umroh-app/android
+        run: |
+          ./gradlew assembleRelease \
+            -Pandroid.injected.signing.store.file=$GITHUB_WORKSPACE/umroh-mandiri.jks \
+            -Pandroid.injected.signing.store.password=${{ secrets.KEYSTORE_PASSWORD }} \
+            -Pandroid.injected.signing.key.alias=${{ secrets.KEY_ALIAS }} \
+            -Pandroid.injected.signing.key.password=${{ secrets.KEY_PASSWORD }}
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: umroh-mandiri-release
+          path: artifacts/umroh-app/android/app/build/outputs/apk/release/app-release.apk
+          retention-days: 30
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        if: github.ref == 'refs/heads/main'
+        with:
+          tag_name: v${{ github.run_number }}
+          name: Umroh Mandiri v${{ github.run_number }}
+          files: artifacts/umroh-app/android/app/build/outputs/apk/release/app-release.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
