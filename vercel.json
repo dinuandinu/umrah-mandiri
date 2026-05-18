@@ -1,6 +1,6 @@
 {
   "installCommand": "pnpm install",
-  "buildCommand": "BASE_PATH=/ PORT=3000 pnpm --filter @workspace/umroh-app run build && cp -r artifacts/umroh-app/dist/public public",
+  "buildCommand": "node scripts/build-vercel.cjs",
   "outputDirectory": "public",
   "framework": null
 }
