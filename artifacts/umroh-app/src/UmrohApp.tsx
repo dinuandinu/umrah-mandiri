@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import qrisImg from "./assets/qris.jpg";
 
-const buildStyle = (isDark: boolean) => `
+const buildStyle = (theme: string, prefersDark: boolean) => {
+  const isDark = theme === "dark" || (theme === "auto" && prefersDark);
+  return `
   @import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700&display=swap');
   * { box-sizing:border-box; margin:0; padding:0; }
 
@@ -39,7 +41,7 @@ const buildStyle = (isDark: boolean) => `
     --seg-bg:#F0E8D0; --seg-active-bg:#1A4A3A; --seg-active-color:#FFFFFF; --seg-inactive-color:#3A2E18;
   }
 
-  ${isDark ? `
+  ${theme === "dark" ? `
   :root {
     --bg:#17140D; --surface:#222018; --surface-raised:#2A2619;
     --surface-done-from:#1C2820; --surface-done-to:#182418;
@@ -70,7 +72,7 @@ const buildStyle = (isDark: boolean) => `
     --drawer-bg:#1E1B12; --drawer-border:rgba(201,168,76,0.18);
     --drawer-item-hover:rgba(201,168,76,0.06); --drawer-section-label:#B09A6E;
     --seg-bg:#2A2418; --seg-active-bg:#3D8A6E; --seg-active-color:#FFFFFF; --seg-inactive-color:#B09A6E;
-  }` : `
+  }` : theme === "auto" ? `
   @media (prefers-color-scheme:dark) {
     :root {
       --bg:#17140D; --surface:#222018; --surface-raised:#2A2619;
@@ -103,7 +105,7 @@ const buildStyle = (isDark: boolean) => `
       --drawer-item-hover:rgba(201,168,76,0.06); --drawer-section-label:#B09A6E;
       --seg-bg:#2A2418; --seg-active-bg:#3D8A6E; --seg-active-color:#FFFFFF; --seg-inactive-color:#B09A6E;
     }
-  }`}
+  }` : ""}
 
   body { font-family:'Tajawal',system-ui,-apple-system,'Segoe UI',Arial,sans-serif; background:var(--bg); color:var(--ink); }
   .app { min-height:100vh; background:var(--bg); position:relative; overflow-x:hidden; color:var(--ink); }
@@ -443,7 +445,46 @@ const buildStyle = (isDark: boolean) => `
   .offline-banner .ob-close { margin-left:auto; border:none; background:rgba(255,255,255,.18); color:white; border-radius:50%; width:26px; height:26px; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:.95rem; -webkit-tap-highlight-color:transparent; flex-shrink:0; }
   .pwa-badge { display:inline-flex; align-items:center; gap:5px; background:rgba(61,138,110,.12); border:1px solid rgba(61,138,110,.35); border-radius:99px; padding:4px 11px; font-size:.72rem; font-weight:700; color:var(--sunnah-check); }
   .pwa-dot { width:7px; height:7px; border-radius:50%; background:var(--sunnah-check); flex-shrink:0; }
+
+  /* ── FAQ BUTTON ── */
+  .faq-btn {
+    position:absolute; top:18px; right:16px; z-index:10;
+    width:44px; height:44px; border-radius:50%;
+    background:rgba(255,255,255,0.12); border:1.5px solid rgba(201,168,76,0.55);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; padding:0; -webkit-tap-highlight-color:transparent;
+    transition:background .2s, transform .15s;
+    font-size:1.15rem; font-weight:800; color:var(--gold);
+    font-family:'Tajawal',sans-serif; line-height:1;
+    box-shadow:0 2px 10px rgba(0,0,0,.18);
+  }
+  .faq-btn:active { background:rgba(255,255,255,.22); transform:scale(.93); }
+
+  /* ── FAQ PAGE ── */
+  .faq-overlay { position:fixed; inset:0; z-index:400; background:var(--bg); overflow-y:auto; display:flex; flex-direction:column; animation:slideInRight .28s cubic-bezier(.4,0,.2,1); }
+  .faq-header { background:linear-gradient(160deg,var(--emerald),var(--emerald-mid)); padding:40px 24px 52px; text-align:center; position:relative; overflow:hidden; flex-shrink:0; }
+  .faq-header::after { content:''; position:absolute; bottom:-1px; left:0; right:0; height:40px; background:var(--bg); clip-path:ellipse(55% 100% at 50% 100%); }
+  .faq-back-btn { position:absolute; top:18px; left:16px; width:44px; height:44px; border-radius:11px; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.22); display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:1.15rem; color:white; -webkit-tap-highlight-color:transparent; }
+  .faq-back-btn:active { background:rgba(255,255,255,.24); }
+  .faq-header-badge { display:inline-flex; align-items:center; justify-content:center; width:56px; height:56px; border-radius:50%; background:rgba(201,168,76,.18); border:2px solid rgba(201,168,76,.45); font-size:1.7rem; margin:8px auto 12px; }
+  .faq-header-title { font-family:'Amiri',Georgia,'Times New Roman',serif; font-size:1.45rem; font-weight:700; color:var(--gold-light); }
+  .faq-header-sub { font-size:.72rem; color:rgba(255,255,255,.55); margin-top:5px; letter-spacing:1.5px; text-transform:uppercase; }
+  .faq-body { padding:16px 16px 48px; max-width:480px; margin:0 auto; width:100%; flex:1; }
+  .faq-cat-label { font-size:.65rem; font-weight:700; text-transform:uppercase; letter-spacing:1.8px; color:var(--muted); margin:18px 0 8px; display:flex; align-items:center; gap:8px; }
+  .faq-cat-label::after { content:''; flex:1; height:1px; background:var(--border-card); }
+  .faq-item { background:var(--surface); border-radius:13px; margin-bottom:7px; border:1px solid var(--border-card); box-shadow:var(--shadow-card); overflow:hidden; }
+  .faq-q { display:flex; align-items:flex-start; gap:10px; padding:13px 14px; cursor:pointer; min-height:52px; -webkit-tap-highlight-color:transparent; transition:background .15s; }
+  .faq-q:active { background:var(--parchment); }
+  .faq-q-num { min-width:22px; height:22px; border-radius:50%; background:linear-gradient(135deg,var(--emerald),var(--emerald-light)); color:white; font-size:.65rem; font-weight:700; display:flex; align-items:center; justify-content:center; margin-top:1px; flex-shrink:0; }
+  .faq-q-text { flex:1; font-size:.97rem; font-weight:700; color:var(--ink); line-height:1.4; }
+  .faq-arrow { color:var(--gold); font-size:.85rem; flex-shrink:0; transition:transform .2s; margin-top:3px; }
+  .faq-arrow.open { transform:rotate(180deg); }
+  .faq-a { padding:0 14px 13px 46px; font-size:.92rem; color:var(--ink-soft); line-height:1.75; border-top:1px dashed var(--border-dashed); padding-top:11px; background:linear-gradient(135deg,var(--surface-tips-from),var(--surface-tips-to)); animation:slideDown .18s ease; }
+  .faq-a strong { color:var(--emerald-text); }
+  .faq-a .faq-note { display:flex; gap:7px; align-items:flex-start; margin-top:8px; padding:8px 10px; background:var(--surface-info); border-radius:8px; border-left:3px solid var(--info-box-border); font-size:.85rem; color:var(--info-box-text); line-height:1.6; }
 `;
+};
+
 
 // ─── Ka'bah SVG ───────────────────────────────────────────────────────────────
 const KaabaSVG = () => (
@@ -829,6 +870,222 @@ const AboutPage = ({onClose}:{onClose:()=>void}) => (
     </div>
   </div>
 );
+
+// ─── FAQ Data ─────────────────────────────────────────────────────────────────
+const FAQ_DATA: {cat:string; items:{q:string;a:string;note?:string}[]}[] = [
+  {
+    cat:"🕌 Dasar Ibadah Umroh",
+    items:[
+      {
+        q:"Apa saja rukun umroh yang wajib dipenuhi?",
+        a:"Rukun umroh ada 5: <strong>niat ihram, tawaf, sa'i, tahallul (cukur rambut)</strong>, dan <strong>tertib</strong> (dilakukan berurutan). Jika salah satu rukun ditinggalkan, umroh tidak sah dan tidak bisa digantikan dengan dam.",
+        note:"Berbeda dengan wajib umroh — jika wajib dilanggar, bisa ditebus dengan dam."
+      },
+      {
+        q:"Apa perbedaan rukun, wajib, dan sunnah umroh?",
+        a:"<strong>Rukun</strong>: wajib dikerjakan, tidak bisa diganti dam. <strong>Wajib</strong>: harus dikerjakan, jika ditinggalkan wajib membayar dam (denda). <strong>Sunnah</strong>: dianjurkan untuk menambah pahala, tidak mempengaruhi keabsahan ibadah.",
+      },
+      {
+        q:"Berapa lama waktu ideal perjalanan umroh mandiri?",
+        a:"Minimal <strong>10–14 hari</strong>: sekitar 5–7 hari di Mekkah dan 4–8 hari di Madinah. Waktu ideal ini memberi kesempatan untuk Arbain (40 shalat berturut-turut) di Nabawi dan eksplorasi situs-situs penting.",
+        note:"Durasi bisa disesuaikan — sebagian jamaah mandiri memilih 21 hari agar lebih tenang beribadah."
+      },
+      {
+        q:"Apakah umroh bisa dilakukan lebih dari sekali dalam satu perjalanan?",
+        a:"Ya, boleh. Caranya: setelah umroh pertama selesai (tahallul), pergi ke salah satu titik miqat seperti <strong>Masjid Ji'ranah (±24km NE Mekkah)</strong> untuk berihram kembali, lalu lakukan tawaf, sa'i, dan tahallul lagi. Ini disebut <strong>umroh sunnah</strong>.",
+      },
+    ]
+  },
+  {
+    cat:"🧳 Persiapan & Keberangkatan",
+    items:[
+      {
+        q:"Dokumen apa saja yang wajib disiapkan untuk umroh?",
+        a:"<strong>Wajib</strong>: Paspor (minimal 6 bulan aktif), visa umroh, tiket pesawat, bukti akomodasi hotel, sertifikat vaksin meningitis, dan kartu BPJS Kesehatan aktif (atau asuransi perjalanan).",
+        note:"Visa umroh kini bisa diurus mandiri melalui platform Nusuk (nusuk.sa) atau melalui penyedia visa terpercaya."
+      },
+      {
+        q:"Apakah vaksin meningitis wajib?",
+        a:"<strong>Ya, wajib</strong>. Pemerintah Arab Saudi mewajibkan vaksin meningitis untuk semua jamaah. Suntikan harus dilakukan minimal <strong>10 hari sebelum keberangkatan</strong>. Tersedia di klinik kesehatan haji/umroh atau puskesmas tertentu.",
+      },
+      {
+        q:"Berapa biaya minimal umroh mandiri dari Indonesia?",
+        a:"Estimasi minimal (ekonomis): tiket PP sekitar Rp 5–8 juta, akomodasi 10 malam Rp 3–5 juta, visa Rp 1,5–2 juta, transportasi & makan Rp 2–4 juta. <strong>Total sekitar Rp 12–20 juta</strong>, jauh lebih hemat dibanding paket travel yang berkisar Rp 25–40 juta.",
+        note:"Harga tiket sangat berfluktuasi. Pesan tiket 3–6 bulan lebih awal untuk mendapatkan harga terbaik."
+      },
+      {
+        q:"Aplikasi apa saja yang wajib dipasang sebelum berangkat?",
+        a:"<strong>Wajib</strong>: Nusuk (booking Raudhah & izin masuk haram), Google Maps (unduh offline Mekkah & Madinah), Uber/Careem (transportasi), Haramain Train (kereta HHR). <strong>Sangat disarankan</strong>: WhatsApp, Al-Qur'an Indonesia, dan aplikasi kurs mata uang.",
+      },
+      {
+        q:"Pakaian apa yang boleh dipakai wanita saat ihram?",
+        a:"Wanita mengenakan <strong>pakaian longgar menutup aurat</strong> — tidak ada ketentuan warna khusus. Boleh menggunakan gamis, abaya, atau baju biasa yang syar'i. <strong>Wajah dan telapak tangan harus terbuka</strong>, tidak boleh memakai cadar atau sarung tangan saat berihram.",
+      },
+    ]
+  },
+  {
+    cat:"🤍 Ihram & Miqat",
+    items:[
+      {
+        q:"Di mana miqat bagi jamaah Indonesia yang terbang via Jeddah?",
+        a:"Jamaah yang mendarat di Bandara Internasional King Abdulaziz (Jeddah) menggunakan miqat <strong>Yalamlam</strong> (disebut juga As-Sa'diyah). Karena pesawat melewati kawasan miqat di udara, jamaah harus berihram <strong>sebelum boarding atau saat di pesawat</strong> sebelum melintas garis miqat.",
+        note:"Diumumkan pilot di pesawat saat mendekati kawasan miqat. Jangan tunggu sampai mendarat!"
+      },
+      {
+        q:"Bolehkah berpakaian ihram sejak dari bandara Indonesia?",
+        a:"<strong>Boleh dan dianjurkan</strong> untuk memakai pakaian ihram sejak di bandara Indonesia, karena lebih praktis dan menghindari risiko kelewat miqat. Namun niat ihram (niat + talbiyah) baru dilakukan saat mendekati miqat di atas pesawat.",
+      },
+      {
+        q:"Apa saja larangan saat berihram?",
+        a:"<strong>Larangan ihram</strong> meliputi: memotong rambut/kuku, memakai wewangian, berburu binatang darat, berhubungan suami-istri, melamar/menikah, bertengkar/berbicara kotor. Pria dilarang menutup kepala dan memakai pakaian berjahit. Wanita dilarang memakai sarung tangan dan cadar.",
+      },
+      {
+        q:"Apa hukum dan konsekuensi melanggar larangan ihram?",
+        a:"Tergantung jenis pelanggarannya: <strong>Fidyah</strong> (memilih: puasa 3 hari, atau memberi makan 6 orang miskin, atau menyembelih 1 ekor kambing) untuk pelanggaran seperti memotong rambut/kuku atau memakai wewangian. Pelanggaran hubungan suami-istri sebelum tahallul pertama <strong>merusak keabsahan umroh</strong>.",
+      },
+      {
+        q:"Apakah wanita yang sedang haid tetap bisa berihram?",
+        a:"<strong>Ya, boleh dan tetap harus berihram</strong> dari miqat. Wanita haid bisa melakukan semua rangkaian perjalanan dan ibadah kecuali <strong>tawaf dan shalat</strong>. Sa'i boleh dilakukan. Tawaf ditunda hingga suci.",
+        note:"Jika khawatir waktu tidak cukup, konsultasikan dengan dokter mengenai obat penunda haid, minimal 2 minggu sebelum berangkat."
+      },
+    ]
+  },
+  {
+    cat:"🕋 Tawaf",
+    items:[
+      {
+        q:"Apakah tawaf harus dalam kondisi suci (berwudhu)?",
+        a:"<strong>Ya, wajib berwudhu</strong> untuk tawaf. Jika batal wudhu di tengah tawaf, keluar dari area mataf, wudhu kembali, lalu sambung putaran yang tertinggal dari titik yang sama (tidak perlu mulai dari awal).",
+        note:"Wanita haid tidak boleh tawaf. Sa'i boleh dilakukan tanpa syarat suci."
+      },
+      {
+        q:"Apa yang harus dilakukan jika tawaf terganggu oleh waktu shalat?",
+        a:"Jika iqamah shalat dikumandangkan saat tawaf berlangsung, <strong>berhenti dan ikut shalat berjemaah</strong>. Setelah salam, lanjutkan putaran dari titik terakhir berhenti. Putaran yang sudah selesai tidak perlu diulang.",
+      },
+      {
+        q:"Berapa minimal putaran tawaf yang sah?",
+        a:"<strong>Tepat 7 putaran penuh</strong>, dimulai dan diakhiri di Hajar Aswad. Putaran yang tidak sampai garis Hajar Aswad tidak dihitung. Tawaf yang kurang dari 7 putaran tidak sah.",
+      },
+      {
+        q:"Bolehkah berdoa dengan bahasa Indonesia saat tawaf?",
+        a:"<strong>Boleh</strong>. Tidak ada doa tawaf yang sifatnya wajib dengan teks tertentu. Anda bebas berdoa dengan bahasa apa pun. Namun membaca doa yang diajarkan Rasulullah ﷺ tentu lebih afdhal, terutama doa sapu jagad antara Rukun Yamani dan Hajar Aswad.",
+      },
+    ]
+  },
+  {
+    cat:"🏃 Sa'i & Tahallul",
+    items:[
+      {
+        q:"Apakah sa'i harus langsung dilakukan setelah tawaf?",
+        a:"Tidak harus langsung, tetapi <strong>sa'i harus dilakukan pada hari yang sama</strong> setelah tawaf. Jamaah boleh istirahat sebentar, minum zamzam, dan shalat 2 rakaat di Maqam Ibrahim sebelum memulai sa'i.",
+      },
+      {
+        q:"Apakah wanita juga harus lari-lari kecil (harwalah) di antara dua tanda hijau saat sa'i?",
+        a:"<strong>Tidak</strong>. Harwalah (lari-lari kecil) di antara dua tanda lampu hijau hanya disunnahkan bagi <strong>pria</strong>. Wanita cukup berjalan biasa sepanjang sa'i.",
+      },
+      {
+        q:"Apakah sa'i sah jika dilakukan oleh wanita yang sedang haid?",
+        a:"<strong>Ya, sa'i tetap sah</strong> bagi wanita haid karena sa'i tidak mensyaratkan kesucian/wudhu. Wanita haid boleh sa'i, namun tetap tidak boleh melakukan tawaf.",
+      },
+      {
+        q:"Apa perbedaan tahallul asghar dan tahallur akbar?",
+        a:"Untuk umroh, hanya ada <strong>satu tahallul</strong> — yaitu menggunting rambut setelah sa'i. Setelah itu semua larangan ihram gugur. Konsep tahallul asghar dan akbar (dua tahap) berlaku untuk <strong>ibadah haji</strong>, bukan umroh.",
+      },
+    ]
+  },
+  {
+    cat:"🗺️ Praktis & Teknis",
+    items:[
+      {
+        q:"Bagaimana cara booking slot Raudhah di Masjid Nabawi?",
+        a:"Wajib melalui aplikasi <strong>Nusuk</strong> (nusuk.sa). Buat akun, masukkan data paspor, pilih lokasi 'Raudhah', lalu pilih jadwal yang tersedia. Slot sangat terbatas — booking <strong>segera setelah tiba di Madinah</strong> atau bahkan sebelum berangkat dari Indonesia.",
+        note:"Jamaah pria dan wanita memiliki slot waktu yang berbeda. Wanita mendapat akses tertentu."
+      },
+      {
+        q:"Bagaimana cara terbaik perjalanan Mekkah–Madinah?",
+        a:"Ada dua pilihan utama: <strong>Kereta HHR (Haramain High Speed Railway)</strong> — durasi ±2 jam, harga SAR 65–150, nyaman dan cepat. Stasiun Makkah ±4km dari Haram. <strong>Bus Saptco</strong> — durasi ±5 jam, lebih murah sekitar SAR 30, tersedia dari Terminal Bus Mekkah.",
+      },
+      {
+        q:"Di mana sebaiknya menginap agar dekat Masjidil Haram?",
+        a:"Pilih hotel di <strong>ring 1 atau ring 2 Haram</strong> — dalam radius 500m–1km. Area Ajyad, Masa, dan Abraj Al-Bait (Clock Tower) adalah lokasi terpopuler. Semakin dekat, semakin mahal. Manfaatkan aplikasi Booking.com atau Agoda, filter dengan jarak ke Haram.",
+      },
+      {
+        q:"Kartu SIM mana yang terbaik untuk dipakai di Arab Saudi?",
+        a:"Tiga operator utama: <strong>STC, Zain, dan Mobily</strong>. Beli di bandara atau minimarket setibanya di Jeddah. Harga SIM perdana dengan data ±SAR 50–100 untuk 30 hari. Alternatif: gunakan <strong>eSIM</strong> (Airalo, Nomad) yang bisa diaktifkan sebelum boarding dari Indonesia.",
+      },
+      {
+        q:"Apakah wanita boleh umroh mandiri tanpa mahram?",
+        a:"Per kebijakan Arab Saudi terbaru (2021), <strong>wanita di atas 18 tahun boleh umroh tanpa mahram</strong> jika tergabung dalam rombongan resmi atau bersama kelompok wanita yang terorganisir. Namun kebijakan ini dapat berubah — selalu cek informasi terkini dari Kemenag atau KJRI Jeddah sebelum berangkat.",
+        note:"Meski secara regulasi diperbolehkan, dari sisi fiqih sebagian ulama tetap menganjurkan mahram untuk keselamatan."
+      },
+      {
+        q:"Apa yang harus dilakukan jika paspor hilang di Arab Saudi?",
+        a:"Segera laporkan ke <strong>kantor polisi setempat</strong> untuk mendapatkan surat laporan kehilangan. Kemudian hubungi <strong>KJRI Jeddah</strong> (untuk jamaah dari Indonesia) atau Kedubes Indonesia di Riyadh untuk pengurusan Surat Perjalanan Laksana Paspor (SPLP). Selalu simpan fotokopi paspor dan data diri di email atau cloud.",
+      },
+      {
+        q:"Bagaimana cara mendapatkan air zamzam untuk dibawa pulang ke Indonesia?",
+        a:"Di Bandara King Abdulaziz Jeddah (terminal haji/umroh), tersedia <strong>paket air zamzam resmi 5 liter</strong> yang dijual seharga sekitar SAR 20–30. Ini adalah cara resmi dan legal. Batas bawaan: satu botol per penumpang. Memindahkan zamzam ke botol pribadi dan membawanya dalam bagasi kabin tidak diperbolehkan.",
+      },
+    ]
+  },
+];
+
+// ─── FAQ Page ─────────────────────────────────────────────────────────────────
+const FAQPage = ({onClose}:{onClose:()=>void}) => {
+  const [openIdx, setOpenIdx] = useState<string|null>(null);
+
+  const toggleItem = (key: string) => setOpenIdx(p => p===key ? null : key);
+
+  let globalNum = 0;
+
+  return (
+    <div className="faq-overlay">
+      <div className="faq-header">
+        <button className="faq-back-btn" onClick={onClose} aria-label="Kembali">‹</button>
+        <div className="faq-header-badge">❓</div>
+        <div className="faq-header-title">Pertanyaan Umum</div>
+        <div className="faq-header-sub">FAQ Ibadah Umroh Mandiri</div>
+      </div>
+
+      <div className="faq-body">
+        {FAQ_DATA.map((cat, ci) => (
+          <div key={ci}>
+            <div className="faq-cat-label">{cat.cat}</div>
+            {cat.items.map((item, ii) => {
+              globalNum++;
+              const key = `${ci}-${ii}`;
+              const isOpen = openIdx === key;
+              return (
+                <div className="faq-item" key={key}>
+                  <div className="faq-q" onClick={() => toggleItem(key)}>
+                    <div className="faq-q-num">{globalNum}</div>
+                    <div className="faq-q-text">{item.q}</div>
+                    <span className={`faq-arrow${isOpen?" open":""}`}>▾</span>
+                  </div>
+                  {isOpen && (
+                    <div className="faq-a">
+                      <span dangerouslySetInnerHTML={{__html: item.a}}/>
+                      {item.note && (
+                        <div className="faq-note">
+                          <span>📌</span>
+                          <span>{item.note}</span>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        ))}
+        <div style={{marginTop:20,textAlign:"center",padding:"16px",background:"var(--surface)",borderRadius:14,border:"1px solid var(--closing-border)"}}>
+          <div style={{fontFamily:"Amiri,serif",fontSize:"1.2rem",color:"var(--gold)",marginBottom:5}}>وَاللَّهُ أَعْلَمُ</div>
+          <div style={{fontSize:".8rem",color:"var(--muted)",lineHeight:1.65}}>Wallahu a'lam bishawab — Hanya Allah yang Maha Mengetahui.<br/>Bila ragu, konsultasikan dengan ustadz atau pembimbing ibadah. 🤲</div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 // ─── Drawer Component ─────────────────────────────────────────────────────────
 const Drawer = ({open,onClose,theme,setTheme,fontSize,setFontSize,onResetProgress,onOpenAbout}:{
@@ -1426,6 +1683,7 @@ export default function UmrohApp() {
   const [showTop, setShowTop]       = useState(false);
   const [query, setQuery]           = useState("");
   const [showAbout, setShowAbout]   = useState(false);
+  const [showFAQ, setShowFAQ]       = useState(false);
   const [showOnboarding, setShowOnboarding] = useState(()=>{
     try { return !localStorage.getItem("umrah-onboarded"); } catch { return false; }
   });
@@ -1491,7 +1749,7 @@ export default function UmrohApp() {
 
   return (
     <>
-      <style>{buildStyle(isDark)}</style>
+      <style>{buildStyle(theme, prefersDark)}</style>
       <div className={appClasses}>
 
         {/* ── ONBOARDING ── */}
@@ -1499,6 +1757,9 @@ export default function UmrohApp() {
 
         {/* ── ABOUT PAGE ── */}
         {showAbout && <AboutPage onClose={()=>setShowAbout(false)}/>}
+
+        {/* ── FAQ PAGE ── */}
+        {showFAQ && <FAQPage onClose={()=>setShowFAQ(false)}/>}
 
         <div className="content">
           {/* ── OFFLINE BANNER ── */}
@@ -1518,6 +1779,7 @@ export default function UmrohApp() {
               <span className="ham-line"/>
               <span className="ham-line"/>
             </button>
+            <button className="faq-btn" onClick={()=>setShowFAQ(true)} aria-label="Pertanyaan Umum (FAQ)">?</button>
             <div className="header-inner">
               <div className="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
               <KaabaSVG/>
