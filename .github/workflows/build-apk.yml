@@ -28,6 +28,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
+      - name: Get version
+        id: pkg
+        run: echo "version=$(node -p "require('./artifacts/umroh-app/package.json').version")" >> $GITHUB_OUTPUT
+
       - name: Build web app
         working-directory: artifacts/umroh-app
         run: pnpm build
@@ -69,10 +73,10 @@ jobs:
             -Pandroid.injected.signing.key.alias=${{ secrets.KEY_ALIAS }} \
             -Pandroid.injected.signing.key.password=${{ secrets.KEY_PASSWORD }}
 
-      - name: Upload APK
+      - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: umroh-mandiri-release
+          name: umroh-mandiri-v${{ steps.pkg.outputs.version }}
           path: artifacts/umroh-app/android/app/build/outputs/apk/release/app-release.apk
           retention-days: 30
 
@@ -80,8 +84,12 @@ jobs:
         uses: softprops/action-gh-release@v2
         if: github.ref == 'refs/heads/main'
         with:
-          tag_name: v${{ github.run_number }}
-          name: Umroh Mandiri v${{ github.run_number }}
+          tag_name: v${{ steps.pkg.outputs.version }}
+          name: Umroh Mandiri v${{ steps.pkg.outputs.version }}
+          body: |
+            ## Umroh Mandiri v${{ steps.pkg.outputs.version }}
+            
+            Download APK di bawah untuk instalasi Android.
           files: artifacts/umroh-app/android/app/build/outputs/apk/release/app-release.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
