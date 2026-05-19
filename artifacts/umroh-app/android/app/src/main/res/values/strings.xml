@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Umroh Mandiri</string>
+    <string name="title_activity_main">Umroh Mandiri</string>
+    <string name="package_name">com.dinuandinu.umrahmandiri</string>
+    <string name="custom_url_scheme">com.dinuandinu.umrahmandiri</string>
+</resources>
