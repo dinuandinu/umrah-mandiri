@@ -472,6 +472,17 @@ const buildStyle = (theme: string, prefersDark: boolean) => {
   .faq-header-title { font-family:'Amiri',Georgia,'Times New Roman',serif; font-size:1.45rem; font-weight:700; color:var(--gold-light); }
   .faq-header-sub { font-size:.72rem; color:rgba(255,255,255,.55); margin-top:5px; letter-spacing:1.5px; text-transform:uppercase; }
   .faq-body { padding:16px 16px 48px; max-width:480px; margin:0 auto; width:100%; flex:1; }
+  .faq-search-wrap { padding:0 16px 4px; max-width:480px; margin:0 auto; width:100%; box-sizing:border-box; margin-top:-18px; position:relative; z-index:2; }
+  .faq-search-box { display:flex; align-items:center; gap:10px; background:var(--surface); border:1.5px solid var(--border-card); border-radius:14px; padding:10px 14px; box-shadow:0 4px 18px rgba(0,0,0,.09); }
+  .faq-search-icon { font-size:1rem; color:var(--muted); flex-shrink:0; }
+  .faq-search-input { flex:1; border:none; outline:none; background:transparent; font-size:.95rem; color:var(--ink); font-family:inherit; }
+  .faq-search-input::placeholder { color:var(--muted); }
+  .faq-search-clear { background:none; border:none; cursor:pointer; color:var(--muted); font-size:1rem; padding:0; line-height:1; display:flex; align-items:center; }
+  .faq-search-count { font-size:.72rem; color:var(--muted); text-align:center; margin:8px 0 2px; letter-spacing:.5px; }
+  .faq-search-empty { text-align:center; padding:48px 24px; color:var(--muted); }
+  .faq-search-empty-icon { font-size:2.5rem; margin-bottom:12px; }
+  .faq-search-empty-text { font-size:.92rem; line-height:1.6; }
+  .faq-q-text mark { background:rgba(201,168,76,.28); color:var(--ink); border-radius:3px; padding:0 2px; font-style:normal; }
   .faq-cat-label { font-size:.65rem; font-weight:700; text-transform:uppercase; letter-spacing:1.8px; color:var(--muted); margin:18px 0 8px; display:flex; align-items:center; gap:8px; }
   .faq-cat-label::after { content:''; flex:1; height:1px; background:var(--border-card); }
   .faq-item { background:var(--surface); border-radius:13px; margin-bottom:7px; border:1px solid var(--border-card); box-shadow:var(--shadow-card); overflow:hidden; }
@@ -796,7 +807,7 @@ const AboutPage = ({onClose}:{onClose:()=>void}) => (
       <button className="about-back-btn" onClick={onClose} aria-label="Kembali">‹</button>
       <div className="about-header-arabic">جَزَاكَ اللَّهُ خَيْرًا</div>
       <div className="about-header-title">Tentang & Donasi</div>
-      <div className="about-header-sub">Umroh Mandiri v1.0.0</div>
+      <div className="about-header-sub">Umroh Mandiri v1.0.1</div>
     </div>
 
     <div className="about-body">
@@ -873,7 +884,7 @@ const AboutPage = ({onClose}:{onClose:()=>void}) => (
       <div className="about-card">
         <div className="about-card-label">ℹ️ Tentang Aplikasi</div>
         <div style={{textAlign:"center",marginBottom:10}}>
-          <div className="about-version-badge">🕋 Umroh Mandiri <span style={{opacity:.75}}>v1.0.0</span></div>
+          <div className="about-version-badge">🕋 Umroh Mandiri <span style={{opacity:.75}}>v1.0.1</span></div>
         </div>
         <div className="about-desc">
           Panduan ibadah umroh mandiri untuk jamaah Indonesia. Mencakup:
@@ -1203,10 +1214,32 @@ const FAQ_DATA: {cat:string; items:{q:string;a:string;note?:string}[]}[] = [
 ];
 
 // ─── FAQ Page ─────────────────────────────────────────────────────────────────
+function highlight(text: string, query: string) {
+  if (!query) return <>{text}</>;
+  const idx = text.toLowerCase().indexOf(query.toLowerCase());
+  if (idx < 0) return <>{text}</>;
+  return <>{text.slice(0, idx)}<mark>{text.slice(idx, idx + query.length)}</mark>{text.slice(idx + query.length)}</>;
+}
+
 const FAQPage = ({onClose}:{onClose:()=>void}) => {
   const [openIdx, setOpenIdx] = useState<string|null>(null);
+  const [searchQ, setSearchQ] = useState('');
 
   const toggleItem = (key: string) => setOpenIdx(p => p===key ? null : key);
+
+  const trimmed = searchQ.trim();
+  const filtered = trimmed
+    ? FAQ_DATA.map(cat => ({
+        ...cat,
+        items: cat.items.filter(item =>
+          item.q.toLowerCase().includes(trimmed.toLowerCase()) ||
+          item.a.toLowerCase().includes(trimmed.toLowerCase())
+        )
+      })).filter(cat => cat.items.length > 0)
+    : FAQ_DATA;
+
+  const totalFiltered = filtered.reduce((s, c) => s + c.items.length, 0);
+  const totalAll = FAQ_DATA.reduce((s, c) => s + c.items.length, 0);
 
   let globalNum = 0;
 
@@ -1219,41 +1252,78 @@ const FAQPage = ({onClose}:{onClose:()=>void}) => {
         <div className="faq-header-sub">FAQ Ibadah Umroh Mandiri</div>
       </div>
 
-      <div className="faq-body">
-        {FAQ_DATA.map((cat, ci) => (
-          <div key={ci}>
-            <div className="faq-cat-label">{cat.cat}</div>
-            {cat.items.map((item, ii) => {
-              globalNum++;
-              const key = `${ci}-${ii}`;
-              const isOpen = openIdx === key;
-              return (
-                <div className="faq-item" key={key}>
-                  <div className="faq-q" onClick={() => toggleItem(key)}>
-                    <div className="faq-q-num">{globalNum}</div>
-                    <div className="faq-q-text">{item.q}</div>
-                    <span className={`faq-arrow${isOpen?" open":""}`}>▾</span>
-                  </div>
-                  {isOpen && (
-                    <div className="faq-a">
-                      <span dangerouslySetInnerHTML={{__html: item.a}}/>
-                      {item.note && (
-                        <div className="faq-note">
-                          <span>📌</span>
-                          <span>{item.note}</span>
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        ))}
-        <div style={{marginTop:20,textAlign:"center",padding:"16px",background:"var(--surface)",borderRadius:14,border:"1px solid var(--closing-border)"}}>
-          <div style={{fontFamily:"Amiri,serif",fontSize:"1.2rem",color:"var(--gold)",marginBottom:5}}>وَاللَّهُ أَعْلَمُ</div>
-          <div style={{fontSize:".8rem",color:"var(--muted)",lineHeight:1.65}}>Wallahu a'lam bishawab — Hanya Allah yang Maha Mengetahui.<br/>Bila ragu, konsultasikan dengan ustadz atau pembimbing ibadah. 🤲</div>
+      <div className="faq-search-wrap">
+        <div className="faq-search-box">
+          <span className="faq-search-icon">🔍</span>
+          <input
+            className="faq-search-input"
+            type="search"
+            placeholder="Cari pertanyaan atau kata kunci…"
+            value={searchQ}
+            onChange={e => { setSearchQ(e.target.value); setOpenIdx(null); }}
+            autoCorrect="off"
+            autoCapitalize="none"
+          />
+          {searchQ && (
+            <button className="faq-search-clear" onClick={() => { setSearchQ(''); setOpenIdx(null); }} aria-label="Hapus pencarian">✕</button>
+          )}
         </div>
+      </div>
+
+      <div className="faq-body">
+        {trimmed && (
+          <div className="faq-search-count">
+            {totalFiltered === 0 ? 'Tidak ada hasil' : `${totalFiltered} dari ${totalAll} pertanyaan`}
+          </div>
+        )}
+
+        {filtered.length === 0 ? (
+          <div className="faq-search-empty">
+            <div className="faq-search-empty-icon">🔎</div>
+            <div className="faq-search-empty-text">
+              Tidak ditemukan hasil untuk <strong>"{trimmed}"</strong>.<br/>
+              Coba kata kunci lain seperti "tawaf", "ihram", atau "paspor".
+            </div>
+          </div>
+        ) : (
+          filtered.map((cat, ci) => (
+            <div key={ci}>
+              <div className="faq-cat-label">{cat.cat}</div>
+              {cat.items.map((item, ii) => {
+                globalNum++;
+                const key = `${ci}-${ii}-${trimmed}`;
+                const isOpen = openIdx === key;
+                return (
+                  <div className="faq-item" key={key}>
+                    <div className="faq-q" onClick={() => toggleItem(key)}>
+                      <div className="faq-q-num">{globalNum}</div>
+                      <div className="faq-q-text">{highlight(item.q, trimmed)}</div>
+                      <span className={`faq-arrow${isOpen?" open":""}`}>▾</span>
+                    </div>
+                    {isOpen && (
+                      <div className="faq-a">
+                        <span dangerouslySetInnerHTML={{__html: item.a}}/>
+                        {item.note && (
+                          <div className="faq-note">
+                            <span>📌</span>
+                            <span>{item.note}</span>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          ))
+        )}
+
+        {!trimmed && (
+          <div style={{marginTop:20,textAlign:"center",padding:"16px",background:"var(--surface)",borderRadius:14,border:"1px solid var(--closing-border)"}}>
+            <div style={{fontFamily:"Amiri,serif",fontSize:"1.2rem",color:"var(--gold)",marginBottom:5}}>وَاللَّهُ أَعْلَمُ</div>
+            <div style={{fontSize:".8rem",color:"var(--muted)",lineHeight:1.65}}>Wallahu a'lam bishawab — Hanya Allah yang Maha Mengetahui.<br/>Bila ragu, konsultasikan dengan ustadz atau pembimbing ibadah. 🤲</div>
+          </div>
+        )}
       </div>
     </div>
   );
