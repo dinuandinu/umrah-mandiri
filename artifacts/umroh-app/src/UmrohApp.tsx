@@ -1014,6 +1014,14 @@ const FAQ_DATA: {cat:string; items:{q:string;a:string;note?:string}[]}[] = [
         q:"Apa perbedaan tahallul asghar dan tahallur akbar?",
         a:"Untuk umroh, hanya ada <strong>satu tahallul</strong> — yaitu menggunting rambut setelah sa'i. Setelah itu semua larangan ihram gugur. Konsep tahallul asghar dan akbar (dua tahap) berlaku untuk <strong>ibadah haji</strong>, bukan umroh.",
       },
+      {
+        q:"Bagaimana cara tahallul untuk umroh kedua atau ketiga jika rambut sudah dicukur gundul saat umroh pertama?",
+        a:"Jika kepala sudah <strong>gundul total</strong> pada umroh pertama, maka untuk umroh berikutnya dalam perjalanan yang sama, tahallul tetap <strong>wajib dilakukan</strong> meskipun tidak ada rambut yang tersisa. Caranya:<br/><br/>"
+         +"<strong>① Untuk pria:</strong> Lewatkan pisau cukur atau alat cukur di atas kepala meskipun tidak ada rambut — cukup menggerakkan alat cukur di kulit kepala sebagai simbol pemenuhan rukun tahallul. Ini adalah pendapat mayoritas ulama (Mazhab Syafi'i, Hambali) bahwa <em>niat dan gerakan mencukur</em> sudah memenuhi kewajiban rukun.<br/><br/>"
+         +"<strong>② Untuk wanita:</strong> Gunting ujung rambut minimal sepanjang <em>satu ruas jari</em> (±1–2 cm) dari beberapa helai rambut. Wanita tidak dianjurkan mencukur gundul.<br/><br/>"
+         +"<strong>③ Jika benar-benar tidak memungkinkan:</strong> Sebagian ulama membolehkan hanya meniatkan tahallul dalam hati sambil menggerakkan tangan di kepala — namun pendapat yang lebih kuat tetap menganjurkan menggunakan alat cukur secara fisik.",
+        note:"Catatan: Kondisi ini umum terjadi pada jamaah yang melakukan 2–3 umroh dalam satu perjalanan. Sah hukumnya dan umroh tetap sempurna selama rukun dilakukan.",
+      },
     ]
   },
   {
@@ -1349,8 +1357,14 @@ const prepData: PrepSection[] = [
       {id:1,title:"Paspor aktif (min. 6 bulan sejak keberangkatan)",badge:"penting",tips:["Buat atau perpanjang di kantor Imigrasi terdekat atau via aplikasi M-Paspor","Biaya: Rp350.000 (biasa 48 hal) atau Rp650.000 (elektronik). Proses ±4 hari kerja","Paspor wajib masih berlaku minimal 6 bulan terhitung dari tanggal keberangkatan — bukan tanggal pengajuan visa","Pastikan foto paspor tidak lebih dari 5 tahun dan masih mirip wajah saat ini","Cek masa berlaku sekarang — jangan menunggu H-14 keberangkatan"]},
       {id:2,title:"Visa Umroh",badge:"penting",tips:["Ajukan via platform resmi nusuk.sa atau agen PPIU terdaftar Kemenag","⚠️ Biaya visa terkini berkisar Rp2.000.000 – Rp4.000.000 (bervariasi tergantung agen & musim)","Dokumen wajib: paspor asli, tiket PP confirmed, voucher hotel, foto background putih 3x4, KTP, kartu vaksin meningitis","Proses 3–7 hari kerja. Ajukan minimal 3 minggu sebelum keberangkatan","Simpan visa digital di HP dan cetak salinan fisik sebagai cadangan"],links:[{url:"https://nusuk.sa",icon:"🔗",label:"Buka Nusuk.sa"}]},
       {id:25,title:"Registrasi Siskopatuh (Kemenag)",badge:"penting",tips:["Siskopatuh adalah sistem wajib Kemenag RI untuk verifikasi jamaah umroh mandiri","✅ Umroh mandiri adalah hak sah setiap warga negara — legal secara hukum. Namun tetap WAJIB melakukan registrasi melalui PPIU yang terdaftar di Kemenag","Registrasi di: siskopatuh.kemenag.go.id — gunakan NIK dan data paspor Anda","Dokumen yang diunggah: scan paspor, foto 3x4, bukti visa, tiket PP, dan voucher hotel","⚠️ Tanpa Siskopatuh, jamaah bisa ditolak boarding di bandara Indonesia","Lakukan registrasi setelah visa terbit dan minimal 7 hari sebelum keberangkatan"],links:[{url:"https://siskopatuh.kemenag.go.id",icon:"🔗",label:"Buka Siskopatuh"},{url:"https://haji.kemenag.go.id/umrah/",icon:"📋",label:"Info PPIU Resmi",outline:true}]},
-      {id:3,title:"Kartu Keluarga & KTP",badge:"penting",tips:["Bawa fotokopi KK dan KTP minimal 5 lembar untuk berbagai keperluan","Scan dan simpan di Google Drive agar bisa diakses kapanpun meski HP hilang"]},
-      {id:4,title:"Buku Nikah (jika sudah menikah)",badge:"opsional",tips:["Wanita di bawah 45 tahun wajib disertai mahram (suami/ayah/saudara laki-laki)","Wanita 45 tahun ke atas bisa berangkat tanpa mahram jika bersama rombongan resmi"]},
+      {id:3,title:"KTP, Kartu Keluarga, Buku Nikah & Fotokopi Dokumen",badge:"penting",tips:[
+        "Bawa fotokopi KTP dan KK minimal 5 lembar — sering diminta untuk keperluan administrasi di Saudi",
+        "Wanita di bawah 45 tahun wajib disertai mahram (suami/ayah/saudara laki-laki) — sertakan buku nikah atau akta keluarga sebagai bukti",
+        "Wanita 45 tahun ke atas bisa berangkat tanpa mahram jika bersama rombongan resmi yang terdaftar di PPIU",
+        "Fotokopi semua dokumen penting: paspor, visa, tiket PP, voucher hotel, kartu vaksin meningitis, KTP — minimal 3 set",
+        "Simpan 1 set di tas kabin, 1 set di koper, dan 1 set dititipkan ke teman/keluarga serombongan — pisah dari dokumen asli",
+        "Scan seluruh dokumen dan upload ke Google Drive atau email sendiri agar bisa diakses kapanpun meski HP/dompet hilang",
+      ]},
       {id:5,title:"Asuransi Saudi (otomatis via visa)",badge:"penting",tips:["Asuransi ini OTOMATIS aktif saat visa terbit — tidak perlu aksi terpisah","Mencakup: darurat kesehatan, kecelakaan, kematian selama di Arab Saudi","⚠️ Tidak mencakup: transit di negara lain, pembatalan penerbangan, bagasi hilang"]},
       {id:6,title:"Asuransi perjalanan tambahan",badge:"rekomendasi",tips:["Pilih yang mencakup: pembatalan penerbangan, bagasi hilang, medis di negara transit","Rekomendasi: Traveloka Insurance, Tokio Marine, atau Allianz Travel Care","Harga mulai Rp150.000–400.000 untuk 10–14 hari perjalanan"]},
     ]
@@ -1388,7 +1402,6 @@ const prepData: PrepSection[] = [
       {id:18,title:"Pakaian Ihram & Sandal",badge:"penting",tips:["Pilih bahan terry cotton atau turkish cotton — kuat, tidak mudah melar","Ukuran ideal: 90×150 cm (bawah) dan 90×200 cm (atas)","Wanita: gamis + khimar putih menutup seluruh tubuh kecuali wajah & telapak tangan","Latihan pakai ihram sebelum berangkat agar tidak kerepotan di miqat","Sandal Hawalaki atau sandal kulit: nyaman, awet, tidak licin di marmer basah","Pria saat ihram: tidak boleh menutup mata kaki dan jari-jari kaki","Bawa spidol kecil untuk menandai sandal agar tidak tertukar di masjid"]},
       {id:21,title:"Pakaian sopan & nyaman (min. 5 set)",badge:"penting",tips:["Bahan terbaik: linen, katun, atau dry-fit. Cuaca Mekkah 35–45°C","Pria: kurta/gamis adalah pilihan terbaik. Wanita: gamis longgar + bergo nyaman"]},
       {id:22,title:"Power bank & adaptor tipe G",badge:"penting",tips:["Arab Saudi pakai colokan Tipe G (3 pin kotak). Beli adaptor universal sebelum berangkat","Power bank min. 20.000 mAh sangat berguna saat seharian di masjid"]},
-      {id:23,title:"Fotokopi & scan dokumen penting",badge:"penting",tips:["Fotokopi: paspor, visa, tiket, voucher hotel, kartu vaksin, KTP","Simpan satu set di tas kabin dan satu set di koper — pisah dari dokumen asli","Upload ke Google Drive atau email sendiri agar bisa diakses kapanpun"]},
     ]
   },
   {
@@ -1460,6 +1473,24 @@ const tutorialData: TutItem[] = [
               <div className="doa-latin">Labbaik Allāhumma labbaik, labbaik lā syarīka laka labbaik, innal-ḥamda wan-ni'mata laka wal-mulk, lā syarīka lak</div>
               <div className="doa-arti">"Aku penuhi panggilan-Mu ya Allah, aku penuhi panggilan-Mu. Tiada sekutu bagi-Mu."</div>
             </div>
+          </DS>
+          <DS id="mq4" title="4. Umroh Kedua & Seterusnya — Miqat & Cara Ihram" open={D["mq4"]} onToggle={T}>
+            <p>Bagi yang ingin melakukan <strong>umroh lebih dari sekali dalam satu perjalanan</strong> (umroh sunnah), setelah umroh pertama selesai (tahallul), ihram tidak lagi aktif dan harus dimulai ulang dari miqat.</p>
+            <ul className="tip-list">
+              <li><span className="step-badge">1</span><strong>Miqat yang digunakan:</strong> Karena Anda sudah berada di Mekkah, miqat makani (batas wilayah) tidak bisa dilalui lagi. Gantinya, gunakan salah satu <strong>miqat di dalam atau dekat Mekkah</strong> yang diizinkan syariat:</li>
+            </ul>
+            <div className="info-box">
+              <p>🕌 <strong>Masjid Ji'ranah (Al-Ji'ranah)</strong> — ±24 km dari Masjidil Haram, arah timur laut. <em>Paling utama</em> — Rasulullah ﷺ berihram dari sini setelah Perang Hunain.<br/>
+              🕌 <strong>Masjid Tan'im (Al-Miqat)</strong> — ±6 km dari Masjidil Haram, arah utara. Paling dekat dan paling sering digunakan jamaah karena mudah dijangkau dengan taksi. Juga disebut "Masjid Aisyah" karena Aisyah r.a. pernah berihram di sini.<br/>
+              🕌 <strong>Masjid Hudaibiyah (Asy-Syumaisi)</strong> — ±22 km dari Masjidil Haram, arah barat.</p>
+            </div>
+            <ul className="tip-list">
+              <li><span className="step-badge">2</span><strong>Cara pergi ke miqat:</strong> Naik taksi atau ojek online (Uber/Careem) dari area hotel ke Masjid Tan'im atau Ji'ranah. Beritahu sopir: <em>"Masjid Tan'im"</em> atau <em>"Miqat Ji'ranah"</em>. Ongkos taksi sekitar SAR 20–50 pulang-pergi.</li>
+              <li><span className="step-badge">3</span><strong>Di miqat:</strong> Mandi sunnah ihram (jika memungkinkan), kenakan pakaian ihram, shalat sunnah 2 rakaat (jika bukan waktu terlarang), lalu ucapkan niat ihram umroh dan mulailah bertalbiyah.</li>
+              <li><span className="step-badge">4</span><strong>Kembali ke Masjidil Haram:</strong> Dalam kondisi ihram, jaga semua larangan ihram selama perjalanan kembali ke Haram untuk memulai tawaf.</li>
+            </ul>
+            <div className="warn-box"><p>⚠️ <strong>Tidak boleh berihram dari dalam Masjidil Haram atau dari kamar hotel di Mekkah</strong> — ini melewati batas miqat tanpa ihram dan wajib dam. Wajib keluar dulu ke salah satu miqat di atas sebelum berniat.</p></div>
+            <div className="info-box"><p>💡 <strong>Tips:</strong> Sebagian jamaah memilih pergi ke Masjid Tan'im setelah shalat Isya atau sebelum Subuh agar Masjidil Haram tidak terlalu padat saat memulai umroh berikutnya.</p></div>
           </DS>
         </div>}
         {subTab==="ihram"&&<div>
