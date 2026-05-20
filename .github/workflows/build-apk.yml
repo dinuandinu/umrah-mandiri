@@ -32,6 +32,12 @@ jobs:
         id: pkg
         run: echo "version=$(node -p "require('./artifacts/umroh-app/package.json').version")" >> $GITHUB_OUTPUT
 
+      - name: Set versionCode (auto-increment dari run number)
+        run: |
+          VERSION_CODE=${{ github.run_number }}
+          sed -i "s/versionCode [0-9]*/versionCode $VERSION_CODE/" artifacts/umroh-app/android/app/build.gradle
+          echo "✅ versionCode diset ke $VERSION_CODE"
+
       - name: Build web app
         working-directory: artifacts/umroh-app
         run: pnpm build
