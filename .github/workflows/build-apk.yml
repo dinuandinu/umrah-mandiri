@@ -73,11 +73,12 @@ jobs:
         run: |
           echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > $GITHUB_WORKSPACE/umroh-mandiri.jks
 
-      - name: Build Release APK
+      # ✏️ PERUBAHAN 1: tambah bundleRelease
+      - name: Build Release APK & AAB
         working-directory: artifacts/umroh-app/android
         run: |
           chmod +x gradlew
-          ./gradlew assembleRelease \
+          ./gradlew assembleRelease bundleRelease \
             -Pandroid.injected.signing.store.file=$GITHUB_WORKSPACE/umroh-mandiri.jks \
             -Pandroid.injected.signing.store.password=${{ secrets.KEYSTORE_PASSWORD }} \
             -Pandroid.injected.signing.key.alias=${{ secrets.KEY_ALIAS }} \
@@ -90,6 +91,7 @@ jobs:
           path: artifacts/umroh-app/android/app/build/outputs/apk/release/app-release.apk
           retention-days: 30
 
+      # ✏️ PERUBAHAN 2: files sekarang 2 baris (APK + AAB)
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         if: github.ref == 'refs/heads/main'
@@ -98,8 +100,10 @@ jobs:
           name: Umroh Mandiri v${{ steps.pkg.outputs.version }}
           body: |
             ## Umroh Mandiri v${{ steps.pkg.outputs.version }}
-            
+
             Download APK di bawah untuk instalasi Android.
-          files: artifacts/umroh-app/android/app/build/outputs/apk/release/app-release.apk
+          files: |
+            artifacts/umroh-app/android/app/build/outputs/apk/release/app-release.apk
+            artifacts/umroh-app/android/app/build/outputs/bundle/release/app-release.aab
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
