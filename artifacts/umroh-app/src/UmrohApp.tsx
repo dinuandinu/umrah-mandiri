@@ -807,7 +807,7 @@ const AboutPage = ({onClose}:{onClose:()=>void}) => (
       <button className="about-back-btn" onClick={onClose} aria-label="Kembali">‹</button>
       <div className="about-header-arabic">جَزَاكَ اللَّهُ خَيْرًا</div>
       <div className="about-header-title">Tentang & Donasi</div>
-      <div className="about-header-sub">Umroh Mandiri v1.0.1</div>
+      <div className="about-header-sub">Umroh Mandiri v{import.meta.env.VITE_APP_VERSION}</div>
     </div>
 
     <div className="about-body">
@@ -884,7 +884,7 @@ const AboutPage = ({onClose}:{onClose:()=>void}) => (
       <div className="about-card">
         <div className="about-card-label">ℹ️ Tentang Aplikasi</div>
         <div style={{textAlign:"center",marginBottom:10}}>
-          <div className="about-version-badge">🕋 Umroh Mandiri <span style={{opacity:.75}}>v1.0.1</span></div>
+          <div className="about-version-badge">🕋 Umroh Mandiri <span style={{opacity:.75}}>v{import.meta.env.VITE_APP_VERSION}</span></div>
         </div>
         <div className="about-desc">
           Panduan ibadah umroh mandiri untuk jamaah Indonesia. Mencakup:
