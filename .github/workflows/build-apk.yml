@@ -36,11 +36,13 @@ jobs:
         id: pkg
         run: echo "version=$(node -p "require('./artifacts/umroh-app/package.json').version")" >> $GITHUB_OUTPUT
 
-      - name: Set versionCode (auto-increment dari run number)
+      - name: Set versionCode & versionName di build.gradle
         run: |
           VERSION_CODE=${{ github.run_number }}
+          VERSION_NAME="${{ steps.pkg.outputs.version }}"
           sed -i "s/versionCode [0-9]*/versionCode $VERSION_CODE/" artifacts/umroh-app/android/app/build.gradle
-          echo "✅ versionCode diset ke $VERSION_CODE"
+          sed -i "s/versionName \"[^\"]*\"/versionName \"$VERSION_NAME\"/" artifacts/umroh-app/android/app/build.gradle
+          echo "✅ versionCode=$VERSION_CODE, versionName=$VERSION_NAME"
 
       - name: Build web app
         working-directory: artifacts/umroh-app
@@ -73,12 +75,11 @@ jobs:
         run: |
           echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > $GITHUB_WORKSPACE/umroh-mandiri.jks
 
-      # ✏️ PERUBAHAN 1: tambah bundleRelease
-      - name: Build Release APK & AAB
+      - name: Build Release APK
         working-directory: artifacts/umroh-app/android
         run: |
           chmod +x gradlew
-          ./gradlew assembleRelease bundleRelease \
+          ./gradlew assembleRelease \
             -Pandroid.injected.signing.store.file=$GITHUB_WORKSPACE/umroh-mandiri.jks \
             -Pandroid.injected.signing.store.password=${{ secrets.KEYSTORE_PASSWORD }} \
             -Pandroid.injected.signing.key.alias=${{ secrets.KEY_ALIAS }} \
@@ -91,7 +92,6 @@ jobs:
           path: artifacts/umroh-app/android/app/build/outputs/apk/release/app-release.apk
           retention-days: 30
 
-      # ✏️ PERUBAHAN 2: files sekarang 2 baris (APK + AAB)
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         if: github.ref == 'refs/heads/main'
@@ -100,10 +100,8 @@ jobs:
           name: Umroh Mandiri v${{ steps.pkg.outputs.version }}
           body: |
             ## Umroh Mandiri v${{ steps.pkg.outputs.version }}
-
+            
             Download APK di bawah untuk instalasi Android.
-          files: |
-            artifacts/umroh-app/android/app/build/outputs/apk/release/app-release.apk
-            artifacts/umroh-app/android/app/build/outputs/bundle/release/app-release.aab
+          files: artifacts/umroh-app/android/app/build/outputs/apk/release/app-release.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
