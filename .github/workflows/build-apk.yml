@@ -102,6 +102,8 @@ jobs:
             ## Umroh Mandiri v${{ steps.pkg.outputs.version }}
             
             Download APK di bawah untuk instalasi Android.
-          files: artifacts/umroh-app/android/app/build/outputs/apk/release/app-release.apk
+          files: |
+  artifacts/umroh-app/android/app/build/outputs/apk/release/app-release.apk
+  artifacts/umroh-app/android/app/build/outputs/bundle/release/app-release.aab
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
