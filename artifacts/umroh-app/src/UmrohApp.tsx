@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import qrisImg from "./assets/qris.jpg";
+
 
 const buildStyle = (theme: string, prefersDark: boolean) => {
   const isDark = theme === "dark" || (theme === "auto" && prefersDark);
@@ -387,12 +387,7 @@ const buildStyle = (theme: string, prefersDark: boolean) => {
   .author-links { display:flex; gap:8px; margin-bottom:12px; }
   .author-link-btn { flex:1; display:flex; align-items:center; justify-content:center; gap:5px; padding:12px; border-radius:10px; background:var(--surface-sub); border:1px solid var(--border-card); font-family:'Tajawal',sans-serif; font-size:.82rem; font-weight:600; color:var(--emerald-text); text-decoration:none; -webkit-tap-highlight-color:transparent; min-height:48px; }
   .author-doa { background:var(--surface-doa-from); border-radius:10px; padding:12px; text-align:center; }
-  .qris-wrap { padding:4px 0 8px; }
-  .qris-label { font-size:.78rem; font-weight:700; color:var(--muted); text-align:center; text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; }
-  .qris-box { background:white; border-radius:14px; padding:16px; border:2px solid var(--border-expanded); display:flex; flex-direction:column; align-items:center; gap:8px; box-shadow:0 2px 12px rgba(26,74,58,.1); }
-  .qris-note { font-size:.7rem; color:#999; text-align:center; font-style:italic; }
-  .qris-download-btn { margin-top:4px; padding:8px 18px; background:var(--primary); color:#fff; border:none; border-radius:8px; font-size:.82rem; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:6px; transition:opacity .18s; }
-  .qris-download-btn:active { opacity:.75; }
+
 
   /* ── ONBOARDING ── */
   .ob-overlay { position:fixed; inset:0; z-index:600; background:var(--bg); display:flex; flex-direction:column; }
@@ -806,7 +801,7 @@ const AboutPage = ({onClose}:{onClose:()=>void}) => (
     <div className="about-header">
       <button className="about-back-btn" onClick={onClose} aria-label="Kembali">‹</button>
       <div className="about-header-arabic">جَزَاكَ اللَّهُ خَيْرًا</div>
-      <div className="about-header-title">Tentang & Donasi</div>
+      <div className="about-header-title">Tentang Aplikasi</div>
       <div className="about-header-sub">Umroh Mandiri v{import.meta.env.VITE_APP_VERSION}</div>
     </div>
 
@@ -834,49 +829,6 @@ const AboutPage = ({onClose}:{onClose:()=>void}) => (
         <div className="author-doa">
           <span style={{fontFamily:"Amiri,serif",fontSize:"1.1rem",color:"var(--gold)"}}>جَزَاكَ اللَّهُ خَيْرًا</span><br/>
           <span style={{fontSize:".78rem",color:"var(--muted)"}}>Jazakallahu khairan — Semoga Allah membalas dengan kebaikan</span>
-        </div>
-      </div>
-
-      {/* Donasi */}
-      <div className="about-card">
-        <div className="about-card-label">💝 Dukung Pengembangan</div>
-        <div style={{textAlign:"center",marginBottom:12}}>
-          <div style={{fontFamily:"Amiri,serif",fontSize:"1.2rem",color:"var(--gold)",marginBottom:6}}>بَارَكَ اللَّهُ فِيكُمْ</div>
-          <div style={{fontSize:".84rem",color:"var(--muted)",lineHeight:1.65}}>
-            Setiap donasi Anda membantu menjaga dan mengembangkan aplikasi ini agar terus gratis dan bermanfaat.
-          </div>
-        </div>
-        <div className="qris-wrap">
-          <div className="qris-label">Scan QRIS untuk Berdonasi</div>
-          <div className="qris-box">
-            <img
-              src={qrisImg}
-              alt="QRIS Donasi"
-              style={{width:"100%",maxWidth:220,borderRadius:10,display:"block",margin:"0 auto"}}
-            />
-            <div className="qris-note">QRIS berlaku untuk semua dompet digital & m-banking Indonesia</div>
-            <button
-              className="qris-download-btn"
-              onClick={async () => {
-                try {
-                  const res = await fetch(qrisImg);
-                  const blob = await res.blob();
-                  const url = URL.createObjectURL(blob);
-                  const a = document.createElement("a");
-                  a.href = url;
-                  a.download = "QRIS-Umroh-Mandiri.jpg";
-                  document.body.appendChild(a);
-                  a.click();
-                  document.body.removeChild(a);
-                  URL.revokeObjectURL(url);
-                } catch {
-                  window.open(qrisImg, "_blank");
-                }
-              }}
-            >
-              ⬇️ Unduh Gambar QRIS
-            </button>
-          </div>
         </div>
       </div>
 
@@ -1398,8 +1350,8 @@ const Drawer = ({open,onClose,theme,setTheme,fontSize,setFontSize,onResetProgres
           <button className="drawer-item" onClick={()=>{onClose();setTimeout(onOpenAbout,200);}}>
             <div className="drawer-item-icon purple">🕌</div>
             <div className="drawer-item-text">
-              <div className="drawer-item-label">Tentang & Donasi</div>
-              <div className="drawer-item-desc">Profil author, QRIS donasi, info aplikasi</div>
+              <div className="drawer-item-label">Tentang Aplikasi</div>
+              <div className="drawer-item-desc">Profil author & info aplikasi</div>
             </div>
             <span className="drawer-item-chev">›</span>
           </button>
