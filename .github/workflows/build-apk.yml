@@ -79,7 +79,7 @@ jobs:
         working-directory: artifacts/umroh-app/android
         run: |
           chmod +x gradlew
-          ./gradlew assembleRelease \
+          ./gradlew assembleRelease bundleRelease \
             -Pandroid.injected.signing.store.file=$GITHUB_WORKSPACE/umroh-mandiri.jks \
             -Pandroid.injected.signing.store.password=${{ secrets.KEYSTORE_PASSWORD }} \
             -Pandroid.injected.signing.key.alias=${{ secrets.KEY_ALIAS }} \
