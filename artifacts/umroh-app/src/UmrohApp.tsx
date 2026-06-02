@@ -2075,6 +2075,13 @@ export default function UmrohApp() {
             {/* ── PERSIAPAN ── */}
             {!q && tab==="persiapan"&&(
               <>
+                <div className="info-banner" style={{marginBottom:16}}>
+                  <span className="icon">📝</span>
+                  <div className="text">
+                    <strong>Daftar Persiapan Umroh</strong>
+                    <span>Lengkapi dokumen dan persiapan fisik Anda sebelum keberangkatan. Ketuk item untuk melihat tips dan panduan detail.</span>
+                  </div>
+                </div>
                 <div className="progress-card">
                   <div className="progress-header">
                     <span className="progress-title">Progress Persiapan</span>
