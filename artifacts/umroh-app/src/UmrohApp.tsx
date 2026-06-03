@@ -132,7 +132,7 @@ const buildStyle = (theme: string, prefersDark: boolean) => {
   .content { position:relative; z-index:1; }
 
   /* ── HEADER ── */
-  .header { background:linear-gradient(160deg,var(--emerald) 0%,var(--emerald-mid) 60%,#1E5A45 100%); position:relative; overflow:hidden; }
+  .header { background:linear-gradient(160deg,var(--emerald) 0%,var(--emerald-mid) 60%,#1E5A45 100%); position:relative; overflow:hidden; min-height:38vh; }
   .header::after { content:''; position:absolute; bottom:-1px; left:0; right:0; height:40px; background:var(--bg); clip-path:ellipse(55% 100% at 50% 100%); }
   .header-geo { position:absolute; inset:0; pointer-events:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cpolygon points='40,5 75,25 75,55 40,75 5,55 5,25' fill='none' stroke='rgba(201,168,76,0.12)' stroke-width='1.5'/%3E%3Ccircle cx='40' cy='40' r='15' fill='none' stroke='rgba(201,168,76,0.08)' stroke-width='1'/%3E%3C/svg%3E"); }
   .header-inner { position:relative; z-index:1; padding:32px 24px 52px; text-align:center; }
@@ -217,15 +217,49 @@ const buildStyle = (theme: string, prefersDark: boolean) => {
   .reset-btn-yes { flex:1; padding:12px; border:none; border-radius:8px; background:linear-gradient(135deg,#8B3A0A,#C15A20); color:white; font-family:'Tajawal',sans-serif; font-size:.82rem; font-weight:700; cursor:pointer; min-height:44px; }
   .reset-btn-no  { flex:1; padding:12px; border:1px solid var(--border-dashed); border-radius:8px; background:transparent; color:var(--muted); font-family:'Tajawal',sans-serif; font-size:.82rem; cursor:pointer; min-height:44px; }
 
-  /* ── TABS ── */
-  .tab-bar { display:flex; max-width:480px; margin:-4px auto 0; padding:0 12px; gap:6px; position:relative; z-index:2; }
-  .tab-btn { flex:1; padding:11px 6px; border:none; border-radius:12px 12px 0 0; font-family:'Tajawal',sans-serif; font-size:.78rem; font-weight:500; cursor:pointer; transition:all .25s; display:flex; align-items:center; justify-content:center; gap:5px; min-height:44px; }
-  .tab-btn.active { background:var(--bg); color:var(--emerald-mid); box-shadow:0 -3px 12px rgba(26,74,58,.1); font-weight:700; }
-  .tab-btn.inactive { background:var(--tab-inactive-bg); color:var(--tab-inactive-color); }
-  .tab-btn.inactive:hover { background:var(--tab-inactive-hover); color:var(--emerald-mid); }
-  .main { max-width:480px; margin:0 auto; padding:16px 16px 80px; }
+  /* ── BODY WRAP ── */
+  .body-wrap {
+    position:relative; z-index:2;
+    max-width:480px; margin:-24px auto 0;
+    padding:16px 16px 80px;
+  }
 
-  /* ── PROGRESS ── */
+  /* ── STATS CARD ── */
+  .stats-card {
+    background:var(--surface); border-radius:18px; padding:14px 16px;
+    margin-bottom:16px;
+    box-shadow:0 2px 16px rgba(26,74,58,.08);
+    display:flex; align-items:center; gap:12px;
+  }
+  .stats-icon {
+    width:46px; height:46px; min-width:46px; border-radius:50%;
+    background:linear-gradient(135deg,var(--emerald),var(--emerald-light));
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.2rem; color:white;
+  }
+  .stats-info { flex:1; min-width:0; }
+  .stats-label { font-size:.7rem; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
+  .stats-track { height:6px; background:var(--parchment); border-radius:99px; overflow:hidden; margin-top:4px; }
+  .stats-fill { height:100%; background:linear-gradient(90deg,var(--emerald-light),var(--gold)); border-radius:99px; transition:width .5s ease; }
+  .stats-count { font-size:.68rem; color:var(--muted); margin-top:2px; }
+  .stats-pct { font-family:'Amiri',serif; font-size:1.5rem; font-weight:700; color:var(--gold); line-height:1; margin-left:4px; }
+
+  /* ── TAB CTRL ── */
+  .tab-ctrl {
+    display:flex; background:var(--seg-bg); border-radius:11px; padding:3px; gap:2px;
+    margin-bottom:14px;
+  }
+  .tab-ctrl-btn {
+    flex:1; min-height:44px; padding:8px 6px; border:none; border-radius:8px;
+    font-family:'Tajawal',sans-serif; font-size:.84rem; font-weight:600;
+    cursor:pointer; transition:all .2s;
+    -webkit-tap-highlight-color:transparent;
+    display:flex; align-items:center; justify-content:center; gap:5px;
+  }
+  .tab-ctrl-btn.active { background:var(--seg-active-bg); color:var(--seg-active-color); box-shadow:0 1px 6px rgba(0,0,0,.18); }
+  .tab-ctrl-btn:not(.active) { background:transparent; color:var(--seg-inactive-color); }
+
+  /* ── SEARCH ── */
   .search-bar-wrap { position:relative; margin:0 0 10px; }
   .search-bar { width:100%; padding:11px 40px 11px 38px; border:1.5px solid var(--border-card); border-radius:12px;
     background:var(--surface); color:var(--ink); font-family:'Tajawal',system-ui,sans-serif; font-size:.95rem;
@@ -240,12 +274,6 @@ const buildStyle = (theme: string, prefersDark: boolean) => {
   .search-results-count { font-size:.74rem; color:var(--muted); margin:-4px 0 10px; padding:0 2px; }
   .search-highlight { background:rgba(201,168,76,0.28); border-radius:3px; padding:0 1px; font-weight:700; color:var(--ink); }
   .no-results { text-align:center; padding:32px 16px; color:var(--muted); font-size:.9rem; }
-  .progress-card { background:var(--surface); border-radius:16px; padding:16px 20px; margin-bottom:16px; box-shadow:var(--shadow-step); border:1px solid var(--border-progress); }
-  .progress-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
-  .progress-title { font-size:.78rem; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
-  .progress-pct { font-family:'Amiri',serif; font-size:1.4rem; font-weight:700; color:var(--gold); }
-  .progress-track { height:8px; background:var(--parchment); border-radius:99px; overflow:hidden; }
-  .progress-fill { height:100%; background:linear-gradient(90deg,var(--emerald-light),var(--gold)); border-radius:99px; transition:width .5s ease; }
 
   /* ── CHECKLIST ── */
   .section { margin-bottom:20px; }
@@ -379,6 +407,19 @@ const buildStyle = (theme: string, prefersDark: boolean) => {
   .map-legend { background:var(--surface); border-radius:12px; padding:12px 14px; margin-top:10px; border:1px solid var(--border-card); }
   .map-legend-title { font-size:.74rem; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:8px; }
   .map-legend-grid { display:grid; grid-template-columns:1fr 1fr; gap:5px 8px; }
+
+  /* ── PILL BUTTON ── */
+  .pill-btn {
+    display:block; width:100%; padding:16px 24px; margin-top:20px;
+    border:none; border-radius:99px;
+    background:linear-gradient(135deg,var(--emerald),var(--emerald-light));
+    color:white; font-family:'Tajawal',sans-serif; font-size:1rem; font-weight:700;
+    text-align:center; cursor:pointer;
+    box-shadow:0 4px 16px rgba(26,74,58,.3);
+    -webkit-tap-highlight-color:transparent;
+    transition:transform .15s, opacity .15s;
+  }
+  .pill-btn:active { transform:scale(.98); opacity:.9; }
 
   /* Author */
   .author-avatar { width:56px; height:56px; border-radius:50%; background:linear-gradient(135deg,var(--emerald),var(--emerald-light)); display:flex; align-items:center; justify-content:center; font-size:1.5rem; margin:12px auto 8px; box-shadow:0 2px 10px rgba(26,74,58,.3); }
@@ -2005,13 +2046,28 @@ export default function UmrohApp() {
             </div>
           </div>
 
-          {/* ── TABS ── */}
-          <div className="tab-bar">
-            <button className={`tab-btn ${tab==="persiapan"?"active":"inactive"}`} onClick={()=>{setTab("persiapan");setQuery("");}}>📋 Persiapan</button>
-            <button className={`tab-btn ${tab==="tutorial"?"active":"inactive"}`}  onClick={()=>{setTab("tutorial");setQuery("");}}>🕋 Tutorial</button>
-          </div>
+          {/* ── BODY WRAP ── */}
+          <div className="body-wrap">
 
-          <div className="main">
+            {/* ── STATS CARD ── */}
+            <div className="stats-card">
+              <div className="stats-icon">📋</div>
+              <div className="stats-info">
+                <div className="stats-label">Progress Persiapan</div>
+                <div className="stats-track">
+                  <div className="stats-fill" style={{width:`${pct}%`}}/>
+                </div>
+                <div className="stats-count">{doneCount} dari {allItems.length} selesai{pct===100&&" · Masya Allah! 🌙"}</div>
+              </div>
+              <div className="stats-pct">{pct}%</div>
+            </div>
+
+            {/* ── TAB CTRL ── */}
+            <div className="tab-ctrl">
+              <button className={`tab-ctrl-btn ${tab==="persiapan"?"active":""}`} onClick={()=>{setTab("persiapan");setQuery("");}}>📋 Persiapan</button>
+              <button className={`tab-ctrl-btn ${tab==="tutorial"?"active":""}`} onClick={()=>{setTab("tutorial");setQuery("");}}>🕋 Tutorial</button>
+            </div>
+
             {/* ── SEARCH BAR ── */}
             <div className="search-bar-wrap">
               <span className="search-icon">🔍</span>
@@ -2082,19 +2138,6 @@ export default function UmrohApp() {
                     <span>Lengkapi dokumen dan persiapan fisik Anda sebelum keberangkatan. Ketuk item untuk melihat tips dan panduan detail.</span>
                   </div>
                 </div>
-                <div className="progress-card">
-                  <div className="progress-header">
-                    <span className="progress-title">Progress Persiapan</span>
-                    <span className="progress-pct">{pct}%</span>
-                  </div>
-                  <div className="progress-track">
-                    <div className="progress-fill" style={{width:`${pct}%`}}/>
-                  </div>
-                  <div style={{marginTop:8,fontSize:".75rem",color:"var(--muted)",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:4}}>
-                    <span>{doneCount} dari {allItems.length} item selesai{pct===100&&" · Masya Allah, siap berangkat! 🌙"}</span>
-                    <span style={{fontSize:".7rem",color:"var(--sunnah-check)",opacity:.8}}>✓ Tersimpan otomatis</span>
-                  </div>
-                </div>
                 {prepData.map((sec,si)=>(
                   <div className="section" key={si}>
                     <div className="section-label">{sec.section}</div>
@@ -2103,12 +2146,6 @@ export default function UmrohApp() {
                       return (
                         <div key={item.id} className={`check-card ${isDone?"done":""} ${isOpen?"expanded":""}`}>
                           <div className="check-item">
-                            {/* Checkbox with 44×44 touch target */}
-                            <div className="checkbox-wrap" onClick={e=>toggleCheck(e,item.id)}>
-                              <div className="checkbox">
-                                {isDone&&<svg width="13" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>}
-                              </div>
-                            </div>
                             <div className="check-main" onClick={()=>togglePrep(item.id)}>
                               <div className="check-title">{item.title}</div>
                             </div>
@@ -2116,10 +2153,14 @@ export default function UmrohApp() {
                               <span className={`check-badge badge-${item.badge}`}>
                                 {item.badge==="penting"?"Wajib":item.badge==="opsional"?"Opsional":"Dianjurkan"}
                               </span>
-                              {/* Expand button with 44×44 touch target */}
                               <button className="expand-btn" onClick={()=>togglePrep(item.id)} aria-label={isOpen?"Tutup detail":"Buka detail"}>
                                 <span className={`expand-arrow ${isOpen?"open":""}`}>▾</span>
                               </button>
+                            </div>
+                            <div className="checkbox-wrap" onClick={e=>toggleCheck(e,item.id)}>
+                              <div className="checkbox">
+                                {isDone&&<svg width="13" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+                              </div>
                             </div>
                           </div>
                           {isOpen&&(
@@ -2177,6 +2218,10 @@ export default function UmrohApp() {
                 </div>
               </>
             )}
+
+            {/* ── PILL BUTTON ── */}
+            <button className="pill-btn">📖 Buka Panduan Lengkap</button>
+
           </div>
         </div>
 
