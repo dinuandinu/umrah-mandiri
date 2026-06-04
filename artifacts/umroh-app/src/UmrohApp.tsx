@@ -118,7 +118,7 @@ const buildStyle = (_theme: string, _prefersDark: boolean) => {
   /* Logo box */
   .kaaba-logo-wrap { position:relative; margin-bottom:12px; }
   .kaaba-logo-glow { position:absolute; inset:0; background:var(--gold); blur:20px; opacity:.35; border-radius:20px; filter:blur(16px); }
-  .kaaba-logo-box { position:relative; width:80px; height:80px; background:rgba(255,255,255,.95); border-radius:16px; border:1px solid rgba(255,255,255,.4); display:flex; align-items:center; justify-content:center; box-shadow:0 8px 32px rgba(0,0,0,.25); }
+  .kaaba-logo-box { position:relative; width:80px; height:80px; background:rgba(255,255,255,.95); border-radius:16px; border:1px solid rgba(255,255,255,.4); display:flex; align-items:center; justify-content:center; box-shadow:0 8px 32px rgba(0,0,0,.25); overflow:visible; }
   .kaaba-icon { width:56px; height:56px; }
   h1.app-title { font-size:1.4rem; font-weight:700; color:#fff; font-family:'Amiri',Georgia,serif; letter-spacing:.04em; margin-bottom:4px; }
   .subtitle { font-size:.65rem; color:#A7F3D0; letter-spacing:.18em; font-weight:500; text-transform:uppercase; display:flex; align-items:center; gap:6px; flex-wrap:wrap; justify-content:center; text-align:center; }
@@ -431,22 +431,101 @@ const buildStyle = (_theme: string, _prefersDark: boolean) => {
   `;
 };
 
-// ─── Ka'bah SVG ───────────────────────────────────────────────────────────────
-const KaabaSVG = () => (
-  <svg className="kaaba-icon" viewBox="0 0 64 64" fill="none">
-    <circle cx="32" cy="34" r="26" fill="rgba(201,168,76,0.09)"/>
-    <rect x="8" y="16" width="46" height="40" rx="2" fill="#111111"/>
-    <rect x="6" y="13" width="50" height="5" rx="2" fill="#C9A84C"/>
-    <rect x="8" y="22" width="46" height="9" fill="#8B6914"/>
-    <rect x="8" y="22" width="46" height="9" fill="#C9A84C" opacity="0.5"/>
-    <line x1="11" y1="25.5" x2="51" y2="25.5" stroke="#FFE08A" strokeWidth="0.7" opacity="0.6"/>
-    <rect x="22" y="36" width="14" height="20" rx="1.5" fill="#8B6914"/>
-    <path d="M22 40 Q29 33 36 40" fill="#8B6914"/>
-    <rect x="23" y="37" width="12" height="19" rx="1" fill="#C9A84C" opacity="0.55"/>
-    <ellipse cx="54" cy="42" rx="6" ry="5" fill="#C9A84C"/>
-    <ellipse cx="54" cy="42" rx="4.3" ry="3.6" fill="#110500"/>
-    <path d="M8 58 Q32 63 56 58" stroke="#C9A84C" strokeWidth="1.2" fill="none" opacity="0.3" strokeDasharray="3 2" strokeLinecap="round"/>
-  </svg>
+// ─── Ka'bah 3D CSS Icon ───────────────────────────────────────────────────────
+const KaabaCube = () => (
+  <>
+    <style>{`
+      .kaaba-scene {
+        width: 54px; height: 54px;
+        perspective: 300px;
+        position: relative;
+        margin-top: -6px;
+      }
+      .kaaba-cube {
+        width: 100%; height: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+        transform: translateZ(-27px) rotateX(-25deg) rotateY(-45deg);
+      }
+      .kaaba-shadow {
+        position: absolute;
+        width: 54px; height: 54px;
+        background: rgba(0,0,0,0.18);
+        transform: rotateX(90deg) translateZ(-34px) rotateZ(45deg);
+        filter: blur(5px);
+        z-index: -1;
+      }
+      .kaaba-face {
+        position: absolute;
+        width: 54px; height: 54px;
+        border-radius: 3px;
+        display: flex; flex-direction: column;
+        overflow: hidden;
+        box-shadow: inset 0 0 8px rgba(0,0,0,0.35);
+      }
+      .kaaba-face.top    { background-color:#1a5c38; transform:rotateX(90deg) translateZ(27px); }
+      .kaaba-face.bottom { background-color:#0b2615; transform:rotateX(-90deg) translateZ(27px); }
+      .kaaba-face.front  { background-color:#124727; transform:rotateY(0deg) translateZ(27px); }
+      .kaaba-face.back   { background-color:#103c22; transform:rotateY(180deg) translateZ(27px); }
+      .kaaba-face.right  { background-color:#0d381f; transform:rotateY(90deg) translateZ(27px); }
+      .kaaba-face.left   { background-color:#154e2d; transform:rotateY(-90deg) translateZ(27px); }
+      .kaaba-band-wrap { width:100%; margin-top:10px; display:flex; flex-direction:column; gap:3px; }
+      .kaaba-main-band {
+        width:100%; height:8px;
+        background: linear-gradient(to bottom,#d4af37,#b89020,#e6c55c,#d4af37);
+        border-top:1px solid #6b500c; border-bottom:1px solid #6b500c;
+        background-image: repeating-linear-gradient(45deg,transparent,transparent 1px,rgba(107,80,12,0.4) 1px,rgba(107,80,12,0.4) 2px);
+      }
+      .kaaba-sub { width:100%; display:flex; justify-content:space-around; align-items:center; padding:0 3px; box-sizing:border-box; }
+      .kaaba-gbox { height:3px; background:linear-gradient(135deg,#e6c55c,#9c7816); border:1px solid #6b500c; border-radius:1px; }
+      .kaaba-gbox.long { width:11px; }
+      .kaaba-gbox.short { width:5px; }
+      .kaaba-gcircle { width:3px; height:3px; background:linear-gradient(135deg,#e6c55c,#9c7816); border-radius:50%; border:1px solid #6b500c; }
+    `}</style>
+    <div className="kaaba-scene">
+      <div className="kaaba-shadow"/>
+      <div className="kaaba-cube">
+        <div className="kaaba-face top"/>
+        <div className="kaaba-face bottom"/>
+        <div className="kaaba-face front">
+          <div className="kaaba-band-wrap">
+            <div className="kaaba-main-band"/>
+            <div className="kaaba-sub">
+              <div className="kaaba-gbox short"/>
+              <div className="kaaba-gcircle"/>
+              <div className="kaaba-gbox long"/>
+              <div className="kaaba-gcircle"/>
+              <div className="kaaba-gbox short"/>
+            </div>
+          </div>
+        </div>
+        <div className="kaaba-face right">
+          <div className="kaaba-band-wrap">
+            <div className="kaaba-main-band"/>
+            <div className="kaaba-sub">
+              <div className="kaaba-gbox long"/>
+              <div className="kaaba-gcircle"/>
+              <div className="kaaba-gbox short"/>
+              <div className="kaaba-gcircle"/>
+              <div className="kaaba-gbox long"/>
+            </div>
+          </div>
+        </div>
+        <div className="kaaba-face back"/>
+        <div className="kaaba-face left">
+          <div className="kaaba-band-wrap">
+            <div className="kaaba-main-band"/>
+            <div className="kaaba-sub">
+              <div className="kaaba-gbox long"/>
+              <div className="kaaba-gcircle"/>
+              <div className="kaaba-gbox long"/>
+              <div className="kaaba-gcircle"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </>
 );
 
 // ─── Map Data ─────────────────────────────────────────────────────────────────
@@ -1939,7 +2018,7 @@ export default function UmrohApp() {
               <div className="kaaba-logo-wrap">
                 <div className="kaaba-logo-glow"/>
                 <div className="kaaba-logo-box">
-                  <KaabaSVG/>
+                  <KaabaCube/>
                 </div>
               </div>
               <h1 className="app-title">Umroh Mandiri</h1>
