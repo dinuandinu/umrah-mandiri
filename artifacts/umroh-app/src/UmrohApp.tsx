@@ -2304,24 +2304,24 @@ export default function UmrohApp() {
             )}
           </div>
         </div>
-
-        {/* ── BACK TO TOP ── */}
-        <button
-          className={`back-to-top${showTop?" visible":""}`}
-          onClick={()=>window.scrollTo({top:0,behavior:"smooth"})}
-          aria-label="Kembali ke atas"
-        >↑</button>
-
-        {/* ── DRAWER ── */}
-        <Drawer
-          open={drawerOpen}
-          onClose={()=>setDrawerOpen(false)}
-          theme={theme} setTheme={setTheme}
-          fontSize={fontSize} setFontSize={setFontSize}
-          onResetProgress={resetProgress}
-          onOpenAbout={()=>setShowAbout(true)}
-        />
       </div>
+
+      {/* ── BACK TO TOP ── */}
+      <button
+        className={`back-to-top${showTop?" visible":""}`}
+        onClick={()=>window.scrollTo({top:0,behavior:"smooth"})}
+        aria-label="Kembali ke atas"
+      >↑</button>
+
+      {/* ── DRAWER ── */}
+      <Drawer
+        open={drawerOpen}
+        onClose={()=>setDrawerOpen(false)}
+        theme={theme} setTheme={setTheme}
+        fontSize={fontSize} setFontSize={setFontSize}
+        onResetProgress={resetProgress}
+        onOpenAbout={()=>setShowAbout(true)}
+      />
     </>
   );
 }
