@@ -39,6 +39,7 @@ const buildStyle = (theme: string, prefersDark: boolean) => {
     --drawer-bg:#FFFFFF; --drawer-border:rgba(201,168,76,0.15);
     --drawer-item-hover:rgba(26,74,58,0.04); --drawer-section-label:#7A6A4A;
     --seg-bg:#F0E8D0; --seg-active-bg:#1A4A3A; --seg-active-color:#FFFFFF; --seg-inactive-color:#3A2E18;
+    --header-from:#10443A; --header-to:#15574A; --gold-accent:#D4AF37; --slate-50:#F8FAFC; --slate-100:#F1F5F9; --slate-200:#E2E8F0; --slate-400:#94A3B8; --slate-500:#64748B;
   }
 
   ${theme === "dark" ? `
@@ -104,7 +105,15 @@ const buildStyle = (theme: string, prefersDark: boolean) => {
       --drawer-bg:#1E1B12; --drawer-border:rgba(201,168,76,0.18);
       --drawer-item-hover:rgba(201,168,76,0.06); --drawer-section-label:#B09A6E;
       --seg-bg:#2A2418; --seg-active-bg:#3D8A6E; --seg-active-color:#FFFFFF; --seg-inactive-color:#B09A6E;
+      --slate-50: #1a1a1a; --slate-100: #262626; --slate-200: #404040; --slate-400: #a3a3a3; --slate-500: #d4d4d4;
     }
+    .check-card-modern, .progress-card-modern, .step-card-modern, .tab-btn-modern.active, .search-bar-modern { background: var(--surface) !important; border-color: var(--border-card) !important; }
+    .tab-bar-modern { background: var(--surface-sub) !important; }
+    .tab-btn-modern.active { color: var(--gold-light) !important; }
+    .tab-btn-modern.active .tab-icon-wrap { color: var(--gold-light) !important; border-color: var(--gold-light) !important; }
+    .check-title-modern, .step-title-modern { color: var(--ink) !important; }
+    .kaaba-container { background: #1a1a1a !important; border-color: #333 !important; }
+    .body-pattern { filter: invert(1) opacity(0.05); }
   }` : ""}
 
   body { font-family:'Tajawal',system-ui,-apple-system,'Segoe UI',Arial,sans-serif; background:var(--bg); color:var(--ink); }
@@ -132,14 +141,48 @@ const buildStyle = (theme: string, prefersDark: boolean) => {
   .content { position:relative; z-index:1; }
 
   /* ── HEADER ── */
-  .header { background:linear-gradient(160deg,var(--emerald) 0%,var(--emerald-mid) 60%,#1E5A45 100%); position:relative; overflow:hidden; }
-  .header::after { content:''; position:absolute; bottom:-1px; left:0; right:0; height:40px; background:var(--bg); clip-path:ellipse(55% 100% at 50% 100%); }
-  .header-geo { position:absolute; inset:0; pointer-events:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cpolygon points='40,5 75,25 75,55 40,75 5,55 5,25' fill='none' stroke='rgba(201,168,76,0.12)' stroke-width='1.5'/%3E%3Ccircle cx='40' cy='40' r='15' fill='none' stroke='rgba(201,168,76,0.08)' stroke-width='1'/%3E%3C/svg%3E"); }
-  .header-inner { position:relative; z-index:1; padding:32px 24px 52px; text-align:center; }
-  .kaaba-icon { width:62px; height:62px; margin:0 auto 10px; filter:drop-shadow(0 3px 10px rgba(201,168,76,.45)); }
-  .header h1 { font-family:'Amiri',Georgia,'Times New Roman',serif; font-size:2rem; font-weight:700; color:var(--gold-light); line-height:1.2; }
-  .header .subtitle { font-size:.82rem; color:rgba(255,255,255,.6); font-weight:300; margin-top:4px; letter-spacing:2px; text-transform:uppercase; }
-  .bismillah { font-family:'Amiri',Georgia,'Times New Roman',serif; font-size:1.4rem; color:var(--gold); margin-bottom:8px; font-style:italic; }
+  .header { background:linear-gradient(to bottom, var(--header-from), var(--header-to)); position:relative; overflow:hidden; height: 320px; }
+  .header::after { content:none; }
+  .header-geo { 
+    position:absolute; inset:0; pointer-events:none; opacity: 0.07;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' stroke='%23ffffff' stroke-width='1.5' fill='none' fill-rule='evenodd'/%3E%3C/svg%3E");
+    background-size: 60px 60px;
+  }
+  .header-inner { position:relative; z-index:1; padding:20px 20px 0; text-align:center; display: flex; flex-direction: column; align-items: center; }
+  .kaaba-container {
+    position: relative; width: 90px; height: 90px; background: white; border-radius: 1.25rem;
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+    border: 1px solid rgba(255,255,255,0.4); display: flex; align-items: center; justify-content: center;
+    overflow: hidden; padding: 4px; margin-bottom: 12px; margin-top: 10px;
+  }
+  .kaaba-glow { position: absolute; inset: 0; background: var(--gold-accent); filter: blur(20px); opacity: 0.4; border-radius: 1.5rem; }
+  .kaaba-icon { width: 100%; height: 100%; transform: scale(1.15); margin-top: 8px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); }
+  .header h1 { font-family:'Amiri',serif; font-size:22px; font-weight:700; color:white; line-height:1.2; letter-spacing: 0.025em; margin-bottom: 4px; }
+  .header .subtitle { 
+    font-size: 10px; color: #A7F3D0; font-weight: 500; margin-top: 0; letter-spacing: 0.2em; 
+    text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .subtitle-arabic { font-family: 'Amiri', serif; text-transform: none; letter-spacing: normal; font-size: 12px; }
+  .bismillah { font-family:'Amiri',serif; font-size:18px; color:#FCE7BE; margin-bottom: 0; font-style: normal; letter-spacing: 0.05em; }
+  
+  .nav-top { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .faq-btn {
+    background: rgba(255,255,255,0.1); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.2);
+    padding: 0 12px; height: 40px; border-radius: 12px; color: #FCE7BE; font-weight: 700; font-size: 13px;
+    letter-spacing: 0.1em; display: flex; align-items: center; justify-content: center; cursor: pointer;
+  }
+  .ham-btn { position: static; margin: 0; }
+  
+  .body-container {
+    position: absolute; top: 300px; left: 0; right: 0; bottom: 0; background: var(--bg);
+    border-top-left-radius: 32px; border-top-right-radius: 32px; z-index: 5; overflow: hidden;
+  }
+  .body-inner { height: 100%; overflow-y: auto; padding: 24px 20px 100px; position: relative; }
+  .body-pattern {
+    position: absolute; inset: 0; opacity: 0.03; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0L40 20L20 40L0 20L20 0Z' fill='%23000000' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E");
+    background-size: 40px 40px;
+  }
 
   /* ── HAMBURGER ── */
   .ham-btn {
@@ -217,12 +260,37 @@ const buildStyle = (theme: string, prefersDark: boolean) => {
   .reset-btn-yes { flex:1; padding:12px; border:none; border-radius:8px; background:linear-gradient(135deg,#8B3A0A,#C15A20); color:white; font-family:'Tajawal',sans-serif; font-size:.82rem; font-weight:700; cursor:pointer; min-height:44px; }
   .reset-btn-no  { flex:1; padding:12px; border:1px solid var(--border-dashed); border-radius:8px; background:transparent; color:var(--muted); font-family:'Tajawal',sans-serif; font-size:.82rem; cursor:pointer; min-height:44px; }
 
-  /* ── TABS ── */
-  .tab-bar { display:flex; max-width:480px; margin:-4px auto 0; padding:0 12px; gap:6px; position:relative; z-index:2; }
-  .tab-btn { flex:1; padding:11px 6px; border:none; border-radius:12px 12px 0 0; font-family:'Tajawal',sans-serif; font-size:.78rem; font-weight:500; cursor:pointer; transition:all .25s; display:flex; align-items:center; justify-content:center; gap:5px; min-height:44px; }
-  .tab-btn.active { background:var(--bg); color:var(--emerald-mid); box-shadow:0 -3px 12px rgba(26,74,58,.1); font-weight:700; }
-  .tab-btn.inactive { background:var(--tab-inactive-bg); color:var(--tab-inactive-color); }
-  .tab-btn.inactive:hover { background:var(--tab-inactive-hover); color:var(--emerald-mid); }
+  /* ── TABS MODERN ── */
+  .tab-bar-modern { display:flex; background:rgba(226,232,240,0.6); padding:6px; border-radius: 1rem; margin-bottom: 24px; box-shadow: inset 0 2px 4px 0 rgba(0,0,0,0.06); }
+  .tab-btn-modern {
+    flex:1; display: flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 14px 0; border: none; border-radius: 12px; font-family: 'Tajawal', sans-serif;
+    font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+    color: var(--slate-500); background: transparent;
+  }
+  .tab-btn-modern.active {
+    background: white; color: #124C41; font-weight: 700;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px 0 rgba(0,0,0,0.06);
+  }
+  .tab-icon-wrap { font-size: 14px; }
+  .tab-btn-modern.active .tab-icon-wrap {
+    color: #124C41; border: 2px solid #124C41; border-radius: 4px;
+    width: 16px; height: 20px; display: flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: 800;
+  }
+  
+  /* ── SEARCH BAR MODERN ── */
+  .search-bar-modern {
+    background: white; border-radius: 1rem; display: flex; align-items: center;
+    padding: 14px 16px; margin-bottom: 24px;
+    border: 1px solid var(--slate-100); box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+  }
+  .search-icon-modern { color: var(--slate-400); margin-right: 12px; }
+  .search-input-modern {
+    background: transparent; border: none; outline: none; width: 100%;
+    color: var(--ink); font-size: 14px; font-weight: 500;
+  }
+  .search-input-modern::placeholder { color: var(--slate-400); }
   .main { max-width:480px; margin:0 auto; padding:16px 16px 80px; }
 
   /* ── PROGRESS ── */
@@ -240,39 +308,53 @@ const buildStyle = (theme: string, prefersDark: boolean) => {
   .search-results-count { font-size:.74rem; color:var(--muted); margin:-4px 0 10px; padding:0 2px; }
   .search-highlight { background:rgba(201,168,76,0.28); border-radius:3px; padding:0 1px; font-weight:700; color:var(--ink); }
   .no-results { text-align:center; padding:32px 16px; color:var(--muted); font-size:.9rem; }
-  .progress-card { background:var(--surface); border-radius:16px; padding:16px 20px; margin-bottom:16px; box-shadow:var(--shadow-step); border:1px solid var(--border-progress); }
-  .progress-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
-  .progress-title { font-size:.78rem; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
-  .progress-pct { font-family:'Amiri',serif; font-size:1.4rem; font-weight:700; color:var(--gold); }
-  .progress-track { height:8px; background:var(--parchment); border-radius:99px; overflow:hidden; }
-  .progress-fill { height:100%; background:linear-gradient(90deg,var(--emerald-light),var(--gold)); border-radius:99px; transition:width .5s ease; }
+  .progress-card-modern {
+    background: white; border-radius: 1.5rem; padding: 24px; margin-bottom: 28px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+    border: 1px solid var(--slate-100);
+  }
+  .progress-header-modern { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+  .progress-title-modern { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--slate-400); }
+  .progress-pct-modern { font-size: 32px; font-weight: 800; color: var(--gold-accent); }
+  .progress-track-modern { height: 12px; background: var(--slate-100); border-radius: 99px; overflow: hidden; box-shadow: inset 0 2px 4px 0 rgba(0,0,0,0.06); margin-bottom: 20px; }
+  .progress-fill-modern { height: 100%; background: linear-gradient(to right, var(--gold-accent), #FCE7BE); border-radius: 99px; transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+  .progress-info-modern { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--slate-500); font-weight: 500; }
+  .progress-status-modern { display: flex; align-items: center; color: #124C41; }
 
-  /* ── CHECKLIST ── */
-  .section { margin-bottom:20px; }
-  .section-label { display:flex; align-items:center; gap:8px; font-size:.78rem; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:8px; padding:0 4px; }
-  .section-label::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,var(--border-expanded),transparent); }
-  .check-card { background:var(--surface); border-radius:14px; margin-bottom:8px; box-shadow:var(--shadow-card); border:1px solid var(--border-card); overflow:hidden; transition:border-color .2s,box-shadow .2s; }
-  .check-card.done { border-color:var(--border-done); background:linear-gradient(135deg,var(--surface-done-from),var(--surface-done-to)); }
-  .check-card.expanded { border-color:var(--border-expanded); box-shadow:var(--shadow-step); }
-  .check-item { padding:10px 6px 10px 10px; display:flex; align-items:center; gap:6px; }
-  /* Checkbox wrapper: 44×44 touch target */
-  .checkbox-wrap { width:44px; height:44px; min-width:44px; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; -webkit-tap-highlight-color:transparent; border-radius:8px; }
-  .checkbox-wrap:active { background:rgba(201,168,76,.08); }
-  .checkbox { width:24px; height:24px; min-width:24px; border-radius:6px; border:2px solid var(--border-dashed); background:var(--parchment); display:flex; align-items:center; justify-content:center; transition:all .25s; pointer-events:none; flex-shrink:0; }
-  .check-card.done .checkbox { background:var(--emerald-mid); border-color:var(--emerald-mid); }
-  .check-main { flex:1; cursor:pointer; min-width:0; padding:8px 0; }
-  .check-title { font-size:1.01rem; font-weight:600; color:var(--ink); line-height:1.3; }
-  .check-card.done .check-title { text-decoration:line-through; text-decoration-color:rgba(61,138,110,.55); }
-  .check-right { display:flex; flex-direction:column; align-items:flex-end; gap:3px; flex-shrink:0; }
-  .check-badge { font-size:.65rem; padding:2px 7px; border-radius:99px; font-weight:700; letter-spacing:.3px; text-transform:uppercase; white-space:nowrap; }
-  .badge-penting { background:var(--badge-penting-bg); color:var(--badge-penting-color); }
-  .badge-opsional { background:var(--badge-opsional-bg); color:var(--badge-opsional-color); }
-  .badge-rekomendasi { background:var(--badge-rekomendasi-bg); color:var(--badge-rekomendasi-color); }
-  /* Expand button: 44×44 touch target */
-  .expand-btn { background:none; border:none; cursor:pointer; min-width:44px; min-height:44px; padding:0 8px; color:var(--gold); font-size:.9rem; display:flex; align-items:center; justify-content:center; font-family:'Tajawal',sans-serif; font-weight:700; -webkit-tap-highlight-color:transparent; border-radius:8px; }
-  .expand-btn:active { background:rgba(201,168,76,.08); }
-  .expand-arrow { transition:transform .25s; display:inline-block; }
-  .expand-arrow.open { transform:rotate(180deg); }
+  /* ── CHECKLIST MODERN ── */
+  .section-label-modern { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--slate-400); margin: 24px 0 16px; display: flex; align-items: center; gap: 16px; }
+  .section-label-modern::after { content: ''; flex: 1; height: 1px; background: var(--slate-200); }
+  
+  .check-card-modern {
+    background: white; border-radius: 1rem; margin-bottom: 14px;
+    border: 1px solid var(--slate-100); box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+    transition: all 0.2s; overflow: hidden;
+  }
+  .check-card-modern:hover { box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); }
+  .check-card-modern.done { background: var(--slate-50); opacity: 0.8; }
+  .check-card-modern.expanded { border-color: var(--gold-accent); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+  
+  .check-item-modern { display: flex; align-items: flex-start; padding: 20px; gap: 16px; cursor: pointer; }
+  .checkbox-modern {
+    width: 24px; height: 24px; border-radius: 9999px; border: 2px solid var(--slate-200);
+    background: var(--slate-50); flex-shrink: 0; margin-top: 2px;
+    display: flex; align-items: center; justify-content: center; transition: all 0.2s;
+  }
+  .checkbox-modern:hover { border-color: var(--gold-accent); }
+  .check-card-modern.done .checkbox-modern { background: #124C41; border-color: #124C41; }
+  
+  .check-main-modern { flex: 1; }
+  .check-title-modern { font-size: 14px; font-weight: 700; color: #1E293B; line-height: 1.5; }
+  .check-card-modern.done .check-title-modern { color: var(--slate-500); text-decoration: line-through; }
+  
+  .check-right-modern { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; flex-shrink: 0; }
+  .badge-modern { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; padding: 4px 10px; border-radius: 4px; }
+  .badge-modern.penting { background: #FFF1F2; color: #E11D48; }
+  .badge-modern.opsional { background: #F0F9FF; color: #0284C7; }
+  .badge-modern.rekomendasi { background: #F0FDF4; color: #16A34A; }
+  
+  .expand-arrow-modern { color: var(--gold-accent); transition: transform 0.3s; font-size: 1.2rem; }
+  .expand-arrow-modern.open { transform: rotate(180deg); }
   .tips-panel { border-top:1px dashed var(--border-dashed); background:linear-gradient(135deg,var(--surface-tips-from),var(--surface-tips-to)); padding:11px 13px 13px; animation:slideDown .2s ease; }
   .tips-link-btn { display:inline-flex; align-items:center; gap:6px; margin-top:10px; padding:11px 16px;
     background:var(--emerald); color:#fff; border-radius:10px; font-family:'Tajawal',system-ui,sans-serif;
@@ -298,17 +380,29 @@ const buildStyle = (theme: string, prefersDark: boolean) => {
   .fs-large .sub-tab-btn { font-size:.9rem; }
   .fs-large .detail-body p { font-size:.93rem; }
 
-  /* ── TUTORIAL ── */
-  .step-card { background:var(--surface); border-radius:16px; margin-bottom:10px; overflow:hidden; box-shadow:var(--shadow-step); border:1px solid var(--border-card); }
-  .step-header { display:flex; align-items:center; gap:14px; padding:15px 16px; cursor:pointer; -webkit-tap-highlight-color:transparent; transition:background .2s; min-height:60px; }
-  .step-header:active { background:var(--parchment); }
-  .step-num { width:40px; height:40px; min-width:40px; border-radius:10px; background:linear-gradient(135deg,var(--emerald),var(--emerald-light)); display:flex; align-items:center; justify-content:center; font-size:1.15rem; box-shadow:0 2px 8px rgba(26,74,58,.3); }
-  .step-num.gold { background:linear-gradient(135deg,var(--gold-dark),var(--gold)); }
-  .step-info { flex:1; }
-  .step-title { font-size:1.06rem; font-weight:700; color:var(--ink); line-height:1.3; }
-  .step-subtitle { font-size:.94rem; color:var(--muted); margin-top:3px; font-weight:500; line-height:1.4; }
-  .chevron { color:var(--gold); font-size:1.1rem; transition:transform .25s; }
-  .chevron.open { transform:rotate(180deg); }
+  /* ── TUTORIAL MODERN ── */
+  .step-card-modern {
+    background: white; border-radius: 1.25rem; margin-bottom: 16px;
+    overflow: hidden; box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px 0 rgba(0,0,0,0.06);
+    border: 1px solid var(--slate-100); transition: all 0.2s;
+  }
+  .step-card-modern:hover { box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+  .step-header-modern {
+    display: flex; align-items: center; gap: 16px; padding: 20px;
+    cursor: pointer; transition: background 0.2s;
+  }
+  .step-header-modern:active { background: var(--slate-50); }
+  .step-icon-modern {
+    width: 48px; height: 48px; min-width: 48px; border-radius: 12px;
+    background: #F1F5F9; display: flex; align-items: center; justify-content: center;
+    font-size: 24px; color: #124C41;
+  }
+  .step-icon-modern.gold { background: #FFF7ED; }
+  .step-info-modern { flex: 1; }
+  .step-title-modern { font-size: 16px; font-weight: 700; color: #1E293B; line-height: 1.4; }
+  .step-subtitle-modern { font-size: 13px; color: var(--slate-500); margin-top: 4px; font-weight: 500; }
+  .chevron-modern { color: var(--gold-accent); font-size: 1.2rem; transition: transform 0.25s; }
+  .chevron-modern.open { transform: rotate(180deg); }
   .step-body { padding:0 14px 16px; border-top:1px solid var(--border-card); animation:slideDown .2s ease; }
   .step-body p { font-size:.96rem; color:var(--ink); line-height:1.7; margin:10px 0; }
   .step-body .tip-list li { font-size:.94rem; }
@@ -350,11 +444,22 @@ const buildStyle = (theme: string, prefersDark: boolean) => {
 
   .tag-wajib { display:inline-block; background:var(--tag-wajib-bg); color:var(--tag-wajib-color); font-size:.62rem; font-weight:700; padding:1px 7px; border-radius:99px; margin-right:6px; text-transform:uppercase; }
   .tag-sah { display:inline-block; background:var(--tag-sah-bg); color:var(--tag-sah-color); font-size:.62rem; font-weight:700; padding:1px 7px; border-radius:99px; margin-right:6px; text-transform:uppercase; }
-  .info-banner { background:linear-gradient(135deg,var(--emerald),var(--emerald-mid)); border-radius:14px; padding:13px 15px; margin-bottom:16px; color:white; display:flex; gap:10px; align-items:flex-start; }
-  .info-banner .icon { font-size:1.3rem; margin-top:1px; }
-  .info-banner .text { flex:1; }
-  .info-banner .text strong { font-size:.86rem; display:block; margin-bottom:2px; }
-  .info-banner .text span { font-size:.79rem; opacity:.85; line-height:1.45; }
+  /* ── BANNER MODERN ── */
+  .info-banner-modern {
+    background: linear-gradient(to right, var(--header-from), var(--header-to));
+    border-radius: 1.25rem; padding: 20px; margin-bottom: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+    position: relative; overflow: hidden; display: flex; align-items: flex-start; gap: 14px;
+  }
+  .info-banner-modern::before {
+    content:''; position:absolute; inset:0; opacity: 0.05; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' stroke='%23ffffff' stroke-width='1.5' fill='none' fill-rule='evenodd'/%3E%3C/svg%3E");
+    background-size: 60px 60px;
+  }
+  .info-banner-modern .icon { font-size: 24px; margin-top: 2px; position: relative; z-index: 1; }
+  .info-banner-modern .text { flex: 1; position: relative; z-index: 1; }
+  .info-banner-modern strong { display: block; font-weight: 700; color: white; font-size: 16px; margin-bottom: 8px; letter-spacing: 0.025em; }
+  .info-banner-modern span { display: block; color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.5; font-weight: 300; }
   .step-badge { display:inline-flex; align-items:center; justify-content:center; width:20px; height:20px; background:var(--step-badge-bg); color:white; border-radius:50%; font-size:.7rem; font-weight:700; margin-right:6px; flex-shrink:0; }
   .transit-heading { font-size:.86rem; font-weight:700; color:var(--emerald-text); margin:10px 0 5px; }
 
@@ -1991,39 +2096,58 @@ export default function UmrohApp() {
           {/* ── HEADER ── */}
           <div className="header">
             <div className="header-geo"/>
-            <button className={`ham-btn ${drawerOpen?"open":""}`} onClick={()=>setDrawerOpen(p=>!p)} aria-label="Menu">
-              <span className="ham-line"/>
-              <span className="ham-line"/>
-              <span className="ham-line"/>
-            </button>
-            <button className="faq-btn" onClick={()=>setShowFAQ(true)} aria-label="Pertanyaan Umum (FAQ)">?</button>
             <div className="header-inner">
-              <div className="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
-              <KaabaSVG/>
+              <div className="nav-top">
+                <button className={`ham-btn ${drawerOpen?"open":""}`} onClick={()=>setDrawerOpen(p=>!p)} aria-label="Menu">
+                  <span className="ham-line"/>
+                  <span className="ham-line"/>
+                  <span className="ham-line"/>
+                </button>
+                <div className="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+                <button className="faq-btn" onClick={()=>setShowFAQ(true)}>FAQ</button>
+              </div>
+              
+              <div className="kaaba-container">
+                <div className="kaaba-glow"></div>
+                <div className="kaaba-icon">
+                  <KaabaSVG />
+                </div>
+              </div>
+              
               <h1>Umroh Mandiri</h1>
-              <div className="subtitle">Panduan Lengkap • دليل العمرة المستقلة</div>
+              <div className="subtitle">
+                Panduan Lengkap <span style={{opacity: 0.5}}>•</span> <span className="subtitle-arabic">دليل العمرة المستقلة</span>
+              </div>
             </div>
           </div>
 
-          {/* ── TABS ── */}
-          <div className="tab-bar">
-            <button className={`tab-btn ${tab==="persiapan"?"active":"inactive"}`} onClick={()=>{setTab("persiapan");setQuery("");}}>📋 Persiapan</button>
-            <button className={`tab-btn ${tab==="tutorial"?"active":"inactive"}`}  onClick={()=>{setTab("tutorial");setQuery("");}}>🕋 Tutorial</button>
-          </div>
+          <div className="body-container">
+            <div className="body-pattern"></div>
+            <div className="body-inner">
+              {/* ── TABS ── */}
+              <div className="tab-bar-modern">
+                <button className={`tab-btn-modern ${tab==="persiapan"?"active":""}`} onClick={()=>{setTab("persiapan");setQuery("");}}>
+                  <span className="tab-icon-wrap">📋</span> Persiapan
+                </button>
+                <button className={`tab-btn-modern ${tab==="tutorial"?"active":""}`}  onClick={()=>{setTab("tutorial");setQuery("");}}>
+                  <span className="tab-icon-wrap">🕋</span> Tutorial
+                </button>
+              </div>
 
-          <div className="main">
+              <div className="main">
             {/* ── SEARCH BAR ── */}
-            <div className="search-bar-wrap">
-              <span className="search-icon">🔍</span>
+            <div className="search-bar-modern">
+              <span className="search-icon-modern">🔍</span>
               <input
-                className="search-bar"
+                className="search-input-modern"
                 type="search"
                 placeholder="Cari topik, doa, dokumen..."
                 value={query}
                 onChange={e=>setQuery(e.target.value)}
-                aria-label="Cari konten"
+                autoCorrect="off"
+                autoCapitalize="none"
               />
-              {query && <button className="search-clear" onClick={()=>setQuery("")} aria-label="Hapus pencarian">×</button>}
+              {query && <button className="search-clear" onClick={()=>setQuery("")} aria-label="Hapus pencarian">✕</button>}
             </div>
             {q && <div className="search-results-count">{totalResults > 0 ? `${totalResults} hasil ditemukan` : "Tidak ada hasil"}</div>}
 
@@ -2075,51 +2199,51 @@ export default function UmrohApp() {
             {/* ── PERSIAPAN ── */}
             {!q && tab==="persiapan"&&(
               <>
-                <div className="info-banner" style={{marginBottom:16}}>
+                <div className="info-banner-modern">
                   <span className="icon">📝</span>
                   <div className="text">
                     <strong>Daftar Persiapan Umroh</strong>
-                    <span>Lengkapi dokumen dan persiapan fisik Anda sebelum keberangkatan. Ketuk item untuk melihat tips dan panduan detail.</span>
+                    <span>Lengkapi dokumen dan persiapan fisik Anda sebelum keberangkatan.</span>
+                    <span>Ketuk item untuk melihat tips dan panduan detail.</span>
                   </div>
                 </div>
-                <div className="progress-card">
-                  <div className="progress-header">
-                    <span className="progress-title">Progress Persiapan</span>
-                    <span className="progress-pct">{pct}%</span>
+                
+                <div className="progress-card-modern">
+                  <div className="progress-header-modern">
+                    <span className="progress-title-modern">PROGRESS PERSIAPAN</span>
+                    <span className="progress-pct-modern">{pct}%</span>
                   </div>
-                  <div className="progress-track">
-                    <div className="progress-fill" style={{width:`${pct}%`}}/>
+                  <div className="progress-track-modern">
+                    <div className="progress-fill-modern" style={{width:`${pct}%`}}/>
                   </div>
-                  <div style={{marginTop:8,fontSize:".75rem",color:"var(--muted)",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:4}}>
-                    <span>{doneCount} dari {allItems.length} item selesai{pct===100&&" · Masya Allah, siap berangkat! 🌙"}</span>
-                    <span style={{fontSize:".7rem",color:"var(--sunnah-check)",opacity:.8}}>✓ Tersimpan otomatis</span>
+                  <div className="progress-info-modern">
+                    <span>{doneCount} dari {allItems.length} item selesai</span>
+                    <span className="progress-status-modern">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" style={{marginRight:6}}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      Tersimpan otomatis
+                    </span>
                   </div>
                 </div>
+
                 {prepData.map((sec,si)=>(
                   <div className="section" key={si}>
-                    <div className="section-label">{sec.section}</div>
+                    <div className="section-label-modern">{sec.section}</div>
                     {sec.items.map(item=>{
                       const isOpen=openPrep===item.id, isDone=!!checked[item.id];
                       return (
-                        <div key={item.id} className={`check-card ${isDone?"done":""} ${isOpen?"expanded":""}`}>
-                          <div className="check-item">
-                            {/* Checkbox with 44×44 touch target */}
-                            <div className="checkbox-wrap" onClick={e=>toggleCheck(e,item.id)}>
-                              <div className="checkbox">
-                                {isDone&&<svg width="13" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>}
-                              </div>
+                        <div key={item.id} className={`check-card-modern ${isDone?"done":""} ${isOpen?"expanded":""}`}>
+                          <div className="check-item-modern" onClick={()=>togglePrep(item.id)}>
+                            <div className="checkbox-modern" onClick={e=>toggleCheck(e,item.id)}>
+                              {isDone&&<svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1.5" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>}
                             </div>
-                            <div className="check-main" onClick={()=>togglePrep(item.id)}>
-                              <div className="check-title">{item.title}</div>
+                            <div className="check-main-modern">
+                              <div className="check-title-modern">{item.title}</div>
                             </div>
-                            <div className="check-right">
-                              <span className={`check-badge badge-${item.badge}`}>
+                            <div className="check-right-modern">
+                              <span className={`badge-modern ${item.badge}`}>
                                 {item.badge==="penting"?"Wajib":item.badge==="opsional"?"Opsional":"Dianjurkan"}
                               </span>
-                              {/* Expand button with 44×44 touch target */}
-                              <button className="expand-btn" onClick={()=>togglePrep(item.id)} aria-label={isOpen?"Tutup detail":"Buka detail"}>
-                                <span className={`expand-arrow ${isOpen?"open":""}`}>▾</span>
-                              </button>
+                              <span className={`expand-arrow-modern ${isOpen?"open":""}`}>▾</span>
                             </div>
                           </div>
                           {isOpen&&(
@@ -2147,22 +2271,23 @@ export default function UmrohApp() {
             {/* ── TUTORIAL ── */}
             {!q && tab==="tutorial"&&(
               <>
-                <div className="info-banner">
+                <div className="info-banner-modern">
                   <span className="icon">🕌</span>
                   <div className="text">
                     <strong>Urutan Ibadah Umroh</strong>
-                    <span>Ikuti langkah-langkah berikut secara berurutan. Ketuk kartu untuk detail, doa, dan panduan lengkap.</span>
+                    <span>Ikuti langkah-langkah berikut secara berurutan.</span>
+                    <span>Ketuk kartu untuk detail, doa, dan panduan lengkap.</span>
                   </div>
                 </div>
                 {tutorialData.map((item,idx)=>(
-                  <div className="step-card" key={idx}>
-                    <div className="step-header" onClick={()=>toggleStep(idx)}>
-                      <div className={`step-num ${item.gold?"gold":""}`}>{item.emoji}</div>
-                      <div className="step-info">
-                        <div className="step-title">{item.title}</div>
-                        <div className="step-subtitle">{item.subtitle}</div>
+                  <div className="step-card-modern" key={idx}>
+                    <div className="step-header-modern" onClick={()=>toggleStep(idx)}>
+                      <div className={`step-icon-modern ${item.gold?"gold":""}`}>{item.emoji}</div>
+                      <div className="step-info-modern">
+                        <div className="step-title-modern">{item.title}</div>
+                        <div className="step-subtitle-modern">{item.subtitle}</div>
                       </div>
-                      <span className={`chevron ${openStep===idx?"open":""}`}>▾</span>
+                      <span className={`chevron-modern ${openStep===idx?"open":""}`}>▾</span>
                     </div>
                     {openStep===idx&&(
                       <div className="step-body">
