@@ -446,20 +446,24 @@ const buildStyle = (theme: string, prefersDark: boolean) => {
   .tag-sah { display:inline-block; background:var(--tag-sah-bg); color:var(--tag-sah-color); font-size:.62rem; font-weight:700; padding:1px 7px; border-radius:99px; margin-right:6px; text-transform:uppercase; }
   /* ── BANNER MODERN ── */
   .info-banner-modern {
-    background: linear-gradient(to right, var(--header-from), var(--header-to));
-    border-radius: 1.25rem; padding: 20px; margin-bottom: 24px;
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-    position: relative; overflow: hidden; display: flex; align-items: flex-start; gap: 14px;
+    background: #124C41; border-radius: 1.5rem; padding: 24px; margin-bottom: 24px;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+    position: relative; overflow: hidden; display: flex; align-items: center; gap: 20px;
+    border: 1px solid rgba(255,255,255,0.1);
   }
   .info-banner-modern::before {
-    content:''; position:absolute; inset:0; opacity: 0.05; pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' stroke='%23ffffff' stroke-width='1.5' fill='none' fill-rule='evenodd'/%3E%3C/svg%3E");
-    background-size: 60px 60px;
+    content:''; position:absolute; inset:0; opacity: 0.03; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0L40 20L20 40L0 20L20 0Z' fill='%23ffffff'/%3E%3C/svg%3E");
+    background-size: 40px 40px;
   }
-  .info-banner-modern .icon { font-size: 24px; margin-top: 2px; position: relative; z-index: 1; }
+  .info-banner-modern .icon { 
+    font-size: 32px; width: 64px; height: 64px; background: rgba(255,255,255,0.1);
+    border-radius: 1rem; display: flex; align-items: center; justify-content: center;
+    position: relative; z-index: 1; flex-shrink: 0;
+  }
   .info-banner-modern .text { flex: 1; position: relative; z-index: 1; }
-  .info-banner-modern strong { display: block; font-weight: 700; color: white; font-size: 16px; margin-bottom: 8px; letter-spacing: 0.025em; }
-  .info-banner-modern span { display: block; color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.5; font-weight: 300; }
+  .info-banner-modern strong { display: block; font-weight: 700; color: white; font-size: 18px; margin-bottom: 6px; }
+  .info-banner-modern span { display: block; color: rgba(255,255,255,0.8); font-size: 14px; line-height: 1.5; font-weight: 400; }
   .step-badge { display:inline-flex; align-items:center; justify-content:center; width:20px; height:20px; background:var(--step-badge-bg); color:white; border-radius:50%; font-size:.7rem; font-weight:700; margin-right:6px; flex-shrink:0; }
   .transit-heading { font-size:.86rem; font-weight:700; color:var(--emerald-text); margin:10px 0 5px; }
 
@@ -2302,11 +2306,11 @@ export default function UmrohApp() {
                 </div>
               </>
             )}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+              </div> {/* End of main */}
+            </div> {/* End of body-inner */}
+          </div> {/* End of body-container */}
+        </div> {/* End of content */}
+      </div> {/* End of appClasses */}
 
       {/* ── BACK TO TOP ── */}
       <button
