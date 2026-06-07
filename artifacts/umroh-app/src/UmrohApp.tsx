@@ -148,36 +148,36 @@ const buildStyle = (theme: string, prefersDark: boolean) => {
     background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' stroke='%23ffffff' stroke-width='1.5' fill='none' fill-rule='evenodd'/%3E%3C/svg%3E");
     background-size: 60px 60px;
   }
-  .header-inner { position:relative; z-index:1; padding:20px 20px 0; text-align:center; display: flex; flex-direction: column; align-items: center; }
+  .header-inner { position:relative; z-index:1; padding:20px 20px 0; text-align:center; display: flex; flex-direction: column; align-items: center; width: 100%; }
   .kaaba-container {
-    position: relative; width: 90px; height: 90px; background: white; border-radius: 1.25rem;
-    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
-    border: 1px solid rgba(255,255,255,0.4); display: flex; align-items: center; justify-content: center;
-    overflow: hidden; padding: 4px; margin-bottom: 12px; margin-top: 10px;
+    position: relative; width: 84px; height: 84px; background: white; border-radius: 1.25rem;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center;
+    overflow: hidden; padding: 0; margin-bottom: 12px; margin-top: 10px;
   }
-  .kaaba-glow { position: absolute; inset: 0; background: var(--gold-accent); filter: blur(20px); opacity: 0.4; border-radius: 1.5rem; }
-  .kaaba-icon { width: 100%; height: 100%; transform: scale(1.15); margin-top: 8px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); }
+  .kaaba-glow { position: absolute; inset: 0; background: var(--gold-accent); filter: blur(15px); opacity: 0.3; border-radius: 1.5rem; }
+  .kaaba-icon { width: 100%; height: 100%; transform: scale(1.1); filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); }
   .header h1 { font-family:'Amiri',serif; font-size:22px; font-weight:700; color:white; line-height:1.2; letter-spacing: 0.025em; margin-bottom: 4px; }
   .header .subtitle { 
     font-size: 10px; color: #A7F3D0; font-weight: 500; margin-top: 0; letter-spacing: 0.2em; 
     text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 8px;
   }
   .subtitle-arabic { font-family: 'Amiri', serif; text-transform: none; letter-spacing: normal; font-size: 12px; }
-  .bismillah { font-family:'Amiri',serif; font-size:18px; color:#FCE7BE; margin-bottom: 0; font-style: normal; letter-spacing: 0.05em; }
+  .bismillah { font-family:'Amiri',serif; font-size:14px; color:#FCE7BE; margin: 0 auto; font-style: normal; letter-spacing: 0.05em; text-align: center; width: 100%; }
   
-  .nav-top { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .nav-top { width: 100%; display: grid; grid-template-columns: 44px 1fr 44px; align-items: center; margin-bottom: 10px; }
   .faq-btn {
     background: rgba(255,255,255,0.1); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.2);
-    padding: 0 12px; height: 40px; border-radius: 12px; color: #FCE7BE; font-weight: 700; font-size: 13px;
-    letter-spacing: 0.1em; display: flex; align-items: center; justify-content: center; cursor: pointer;
+    width: 36px; height: 36px; border-radius: 10px; color: #FCE7BE; font-weight: 700; font-size: 10px;
+    letter-spacing: 0.05em; display: flex; align-items: center; justify-content: center; cursor: pointer; justify-self: end;
   }
   .ham-btn { position: static; margin: 0; }
   
   .body-container {
-    position: absolute; top: 300px; left: 0; right: 0; bottom: 0; background: var(--bg);
-    border-top-left-radius: 32px; border-top-right-radius: 32px; z-index: 5; overflow: hidden;
+    position: relative; top: -32px; background: var(--bg);
+    border-top-left-radius: 32px; border-top-right-radius: 32px; z-index: 10;
   }
-  .body-inner { height: 100%; overflow-y: auto; padding: 24px 20px 100px; position: relative; }
+  .body-inner { padding: 24px 20px 100px; position: relative; }
   .body-pattern {
     position: absolute; inset: 0; opacity: 0.03; pointer-events: none;
     background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0L40 20L20 40L0 20L20 0Z' fill='%23000000' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E");
@@ -2138,7 +2138,7 @@ export default function UmrohApp() {
                 </button>
               </div>
 
-              <div className="main">
+              <div className="main" style={{position:"relative", zIndex:20}}>
             {/* ── SEARCH BAR ── */}
             <div className="search-bar-modern">
               <span className="search-icon-modern">🔍</span>
