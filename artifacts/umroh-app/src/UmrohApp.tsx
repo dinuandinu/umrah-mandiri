@@ -150,34 +150,34 @@ const buildStyle = (theme: string, prefersDark: boolean) => {
   }
   .header-inner { position:relative; z-index:1; padding:20px 20px 0; text-align:center; display: flex; flex-direction: column; align-items: center; width: 100%; }
   .kaaba-container {
-    position: relative; width: 84px; height: 84px; background: white; border-radius: 1.25rem;
+    position: relative; width: 100px; height: 100px; background: white; border-radius: 1.5rem;
     box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
     border: 1px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center;
     overflow: hidden; padding: 0; margin-bottom: 12px; margin-top: 10px;
   }
-  .kaaba-glow { position: absolute; inset: 0; background: var(--gold-accent); filter: blur(15px); opacity: 0.3; border-radius: 1.5rem; }
-  .kaaba-icon { width: 100%; height: 100%; transform: scale(1.1); filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); }
-  .header h1 { font-family:'Amiri',serif; font-size:22px; font-weight:700; color:white; line-height:1.2; letter-spacing: 0.025em; margin-bottom: 4px; }
+  .kaaba-glow { position: absolute; inset: 0; background: var(--gold-accent); filter: blur(20px); opacity: 0.3; border-radius: 1.5rem; }
+  .kaaba-icon { width: 100%; height: 100%; transform: scale(1); filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); }
+  .header h1 { font-family:'Amiri',serif; font-size:24px; font-weight:700; color:white; line-height:1.2; letter-spacing: 0.025em; margin-bottom: 4px; }
   .header .subtitle { 
-    font-size: 10px; color: #A7F3D0; font-weight: 500; margin-top: 0; letter-spacing: 0.2em; 
+    font-size: 11px; color: #A7F3D0; font-weight: 500; margin-top: 0; letter-spacing: 0.2em; 
     text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 8px;
   }
-  .subtitle-arabic { font-family: 'Amiri', serif; text-transform: none; letter-spacing: normal; font-size: 12px; }
-  .bismillah { font-family:'Amiri',serif; font-size:14px; color:#FCE7BE; margin: 0 auto; font-style: normal; letter-spacing: 0.05em; text-align: center; width: 100%; }
+  .subtitle-arabic { font-family: 'Amiri', serif; text-transform: none; letter-spacing: normal; font-size: 13px; }
+  .bismillah { font-family:'Amiri',serif; font-size:16px; color:#FCE7BE; margin: 0 auto; font-style: normal; letter-spacing: 0.05em; text-align: center; grid-column: 2; }
   
-  .nav-top { width: 100%; display: grid; grid-template-columns: 44px 1fr 44px; align-items: center; margin-bottom: 10px; }
+  .nav-top { width: 100%; display: grid; grid-template-columns: 44px 1fr 44px; align-items: center; margin-bottom: 10px; padding: 0 4px; }
   .faq-btn {
-    background: rgba(255,255,255,0.1); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.2);
-    width: 36px; height: 36px; border-radius: 10px; color: #FCE7BE; font-weight: 700; font-size: 10px;
-    letter-spacing: 0.05em; display: flex; align-items: center; justify-content: center; cursor: pointer; justify-self: end;
+    background: rgba(255,255,255,0.1); backdrop-filter: blur(12px); border: 1.5px solid rgba(201,168,76,0.4);
+    width: 36px; height: 36px; border-radius: 50%; color: #FCE7BE; font-weight: 800; font-size: 10px;
+    letter-spacing: 0.02em; display: flex; align-items: center; justify-content: center; cursor: pointer; justify-self: end;
   }
-  .ham-btn { position: static; margin: 0; }
+  .ham-btn { position: static; margin: 0; width: 40px; height: 40px; }
   
   .body-container {
-    position: relative; top: -32px; background: var(--bg);
-    border-top-left-radius: 32px; border-top-right-radius: 32px; z-index: 10;
+    position: relative; top: -40px; background: var(--bg);
+    border-top-left-radius: 32px; border-top-right-radius: 32px; z-index: 10; min-height: 100vh;
   }
-  .body-inner { padding: 24px 20px 100px; position: relative; }
+  .body-inner { padding: 24px 20px 120px; position: relative; z-index: 11; }
   .body-pattern {
     position: absolute; inset: 0; opacity: 0.03; pointer-events: none;
     background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0L40 20L20 40L0 20L20 0Z' fill='%23000000' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E");
@@ -605,19 +605,31 @@ const buildStyle = (theme: string, prefersDark: boolean) => {
 
 // ─── Ka'bah SVG ───────────────────────────────────────────────────────────────
 const KaabaSVG = () => (
-  <svg className="kaaba-icon" viewBox="0 0 64 64" fill="none">
-    <circle cx="32" cy="34" r="26" fill="rgba(201,168,76,0.09)"/>
-    <rect x="8" y="16" width="46" height="40" rx="2" fill="#111111"/>
-    <rect x="6" y="13" width="50" height="5" rx="2" fill="#C9A84C"/>
-    <rect x="8" y="22" width="46" height="9" fill="#8B6914"/>
-    <rect x="8" y="22" width="46" height="9" fill="#C9A84C" opacity="0.5"/>
-    <line x1="11" y1="25.5" x2="51" y2="25.5" stroke="#FFE08A" strokeWidth="0.7" opacity="0.6"/>
-    <rect x="22" y="36" width="14" height="20" rx="1.5" fill="#8B6914"/>
-    <path d="M22 40 Q29 33 36 40" fill="#8B6914"/>
-    <rect x="23" y="37" width="12" height="19" rx="1" fill="#C9A84C" opacity="0.55"/>
-    <ellipse cx="54" cy="42" rx="6" ry="5" fill="#C9A84C"/>
-    <ellipse cx="54" cy="42" rx="4.3" ry="3.6" fill="#110500"/>
-    <path d="M8 58 Q32 63 56 58" stroke="#C9A84C" strokeWidth="1.2" fill="none" opacity="0.3" strokeDasharray="3 2" strokeLinecap="round"/>
+  <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="kaabaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#222" />
+        <stop offset="100%" stopColor="#000" />
+      </linearGradient>
+      <linearGradient id="goldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#FCE7BE" />
+        <stop offset="50%" stopColor="#D4AF37" />
+        <stop offset="100%" stopColor="#8B6914" />
+      </linearGradient>
+    </defs>
+    {/* Main Body */}
+    <rect x="15" y="20" width="70" height="70" rx="4" fill="url(#kaabaGrad)" />
+    {/* Kiswah Gold Band */}
+    <rect x="15" y="35" width="70" height="12" fill="url(#goldGrad)" />
+    <rect x="15" y="38" width="70" height="1" fill="rgba(0,0,0,0.2)" />
+    <rect x="15" y="44" width="70" height="1" fill="rgba(0,0,0,0.2)" />
+    {/* Door */}
+    <rect x="55" y="55" width="18" height="28" rx="2" fill="url(#goldGrad)" />
+    <rect x="58" y="58" width="12" height="22" rx="1" fill="rgba(0,0,0,0.1)" />
+    {/* Details */}
+    <circle cx="25" cy="41" r="1.5" fill="#FCE7BE" opacity="0.8" />
+    <circle cx="35" cy="41" r="1.5" fill="#FCE7BE" opacity="0.8" />
+    <circle cx="45" cy="41" r="1.5" fill="#FCE7BE" opacity="0.8" />
   </svg>
 );
 
