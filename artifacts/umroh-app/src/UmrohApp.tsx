@@ -2125,8 +2125,8 @@ export default function UmrohApp() {
               
               <div className="kaaba-container">
                 <div className="kaaba-glow"></div>
-                <div className="kaaba-icon">
-                  <KaabaSVG />
+                <div className="kaaba-icon" style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
+                  <img src="assets/kaaba-logo.png" alt="Kaaba Logo" style={{width:'100%', height:'100%', objectFit:'contain'}} />
                 </div>
               </div>
               
