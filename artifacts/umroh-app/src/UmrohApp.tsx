@@ -167,9 +167,14 @@ const buildStyle = (theme: string, prefersDark: boolean) => {
   
   .nav-top { width: 100%; display: grid; grid-template-columns: 44px 1fr 44px; align-items: center; margin-bottom: 10px; padding: 0 4px; }
   .faq-btn {
-    background: rgba(255,255,255,0.1); backdrop-filter: blur(12px); border: 1.5px solid rgba(201,168,76,0.4);
-    width: 36px; height: 36px; border-radius: 50%; color: #FCE7BE; font-weight: 800; font-size: 10px;
-    letter-spacing: 0.02em; display: flex; align-items: center; justify-content: center; cursor: pointer; justify-self: end;
+    background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.18);
+    width:40px; height:40px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; padding:0; -webkit-tap-highlight-color:transparent;
+    transition:background .2s, transform .15s;
+    font-size:10px; font-weight:700; color:rgba(255,255,255,0.9);
+    font-family:'Tajawal',sans-serif; line-height:1;
+    letter-spacing: 0.05em; justify-self: end;
   }
   .ham-btn { position: static; margin: 0; width: 40px; height: 40px; }
   
@@ -554,15 +559,14 @@ const buildStyle = (theme: string, prefersDark: boolean) => {
 
   /* ── FAQ BUTTON ── */
   .faq-btn {
-    position:absolute; top:18px; right:16px; z-index:10;
-    width:44px; height:44px; border-radius:50%;
-    background:rgba(255,255,255,0.12); border:1.5px solid rgba(201,168,76,0.55);
+    background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.18);
+    width:40px; height:40px; border-radius:50%;
     display:flex; align-items:center; justify-content:center;
     cursor:pointer; padding:0; -webkit-tap-highlight-color:transparent;
     transition:background .2s, transform .15s;
-    font-size:1.15rem; font-weight:800; color:var(--gold);
+    font-size:10px; font-weight:700; color:rgba(255,255,255,0.9);
     font-family:'Tajawal',sans-serif; line-height:1;
-    box-shadow:0 2px 10px rgba(0,0,0,.18);
+    letter-spacing: 0.05em;
   }
   .faq-btn:active { background:rgba(255,255,255,.22); transform:scale(.93); }
 
@@ -2016,7 +2020,7 @@ export default function UmrohApp() {
   const [subTabs, setSubTabs]       = useState<Record<number,string>>(()=>{try{return JSON.parse(localStorage.getItem("umrah-subtabs")||"{}");}catch{return {};}});
   const [detailOpen, setDetailOpen] = useState<Record<string,boolean>>({});
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [theme, setTheme]           = useState(()=>{ try{return localStorage.getItem("umrah-theme")||"auto";}catch{return "auto";} });
+  const [theme, setTheme]           = useState(()=>{ try{return localStorage.getItem("umrah-theme")||"light";}catch{return "light";} });
   const [fontSize, setFontSize]     = useState(()=>{ try{return localStorage.getItem("umrah-fontsize")||"normal";}catch{return "normal";} });
   const [showTop, setShowTop]       = useState(false);
   const [query, setQuery]           = useState("");
