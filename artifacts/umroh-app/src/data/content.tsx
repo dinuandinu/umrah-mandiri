@@ -289,7 +289,7 @@ export const FAQ_DATA: {cat:string; items:{q:string;a:string;note?:string}[]}[] 
       },
       {
         q:"Apakah tawaf qudum dan tawaf ifadhah berbeda?",
-        a:"<strong>Ya, keduanya berbeda</strong> dan berlaku untuk <strong>ibadah haji</strong>, bukan umroh. Tawaf qudum adalah tawaf selamat datang saat pertama masuk Mekkah (sunnah). Tawaf ifadhah adalah tawaf rukun haji yang dilakukan setelah wukuf di Arafah. Untuk <strong>umroh</strong>, hanya ada satu tawaf, yaitu <strong>tawaf umroh</strong> yang merupakan rukun.",
+        a:"<strong>Ya, keduanya berbeda</strong> and berlaku untuk <strong>ibadah haji</strong>, bukan umroh. Tawaf qudum adalah tawaf selamat datang saat pertama masuk Mekkah (sunnah). Tawaf ifadhah adalah tawaf rukun haji yang dilakukan setelah wukuf di Arafah. Untuk <strong>umroh</strong>, hanya ada satu tawaf, yaitu <strong>tawaf umroh</strong> yang merupakan rukun.",
       },
       {
         q:"Bagaimana cara menghitung putaran tawaf jika terasa pusing?",
@@ -343,7 +343,7 @@ export const prepData: PrepSection[] = [
     items:[
       {id:31,title:"H-60 s/d H-30: Administrasi Awal",badge:"penting",tips:["Mulai mengurus Paspor Elektronik (proses ±4 hari kerja)","Lakukan Vaksin Meningitis (minimal 10-14 hari sebelum berangkat agar antibodi terbentuk)","Mulai riset harga tiket pesawat dan pantau promo maskapai"]},
       {id:32,title:"H-30 s/d H-14: Booking Utama",badge:"penting",tips:["Pesan tiket pesawat (pilih direct flight jika budget mencukupi)","Booking hotel di Makkah (radius <500m sangat disarankan)","Ajukan Visa Umroh via Nusuk atau provider terpercaya","Lengkapi asuransi perjalanan tambahan"]},
-      {id:33,title:"H-14 s/d H-7: Finalisasi & Stamina",badge:"rekomendasi",tips:["Latihan fisik: jalan kaki 3-5 km setiap hari untuk membiasakan kaki","Daftarkan data diri di Siskopatuh (Kemenag RI)","Cek ketersediaan slot Raudhah di aplikasi Nusuk setiap jam"]},
+      {id:33,title:"H-14 s/d H-7: Finalisasi & Stamina",badge:"rekomendasi",tips:["Latihan fisik: jalan kaki 3-5 km setiap hari untuk membiasakan kaki","Daftarkan data diri di Siskopatuh (Kemenag RI)","Wajib booking slot Raudhah di aplikasi Nusuk segera setelah visa terbit"]},
     ]
   },
   {
@@ -451,7 +451,7 @@ export const tutorialData: TutItem[] = [
             </div>
             <div className="doa-box">
               <div className="doa-label">Talbiyah</div>
-              <div className="doa-arabic">لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لاَ شَرِيكَ لَكَ لَبَّيْكَ، إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَALْمُلْكَ، لاَ شَرِيكَ لَكَ</div>
+              <div className="doa-arabic">لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لاَ شَرِICَ لَكَ لَبَّIْكَ، إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَالْمُلْكَ، لاَ شَرِيكَ لَكَ</div>
               <div className="doa-latin">Labbaik Allāhumma labbaik, labbaik lā syarīka laka labbaik, innal-ḥamda wan-ni'mata laka wal-mulk, lā syarīka lak</div>
               <div className="doa-arti">Artinya: "Aku penuhi panggilan-Mu ya Allah, aku penuhi panggilan-Mu. Aku penuhi panggilan-Mu, tiada sekutu bagi-Mu, aku penuhi panggilan-Mu. Sesungguhnya segala puji, nikmat, dan seluruh kekuasaan hanya milik-Mu, tiada sekutu bagi-Mu."</div>
               <div style={{fontSize:".8rem",color:"var(--muted)",marginTop:6,lineHeight:1.6}}>💡 Baca talbiyah terus-menerus sejak niat ihram hingga memulai tawaf — dengan suara keras bagi pria, pelan untuk wanita. Talbiyah adalah tanda jamaah benar-benar "hadir" memenuhi panggilan Allah.</div>
@@ -657,7 +657,7 @@ export const tutorialData: TutItem[] = [
           <DS id="sh7" title="🤲 Doa Setelah Sholat di Masjidil Haram" open={D["sh7"]} onToggle={T}>
             <div className="doa-box">
               <div className="doa-label">Doa Memasuki Masjid</div>
-              <div className="doa-arabic">اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمETِكَ</div>
+              <div className="doa-arabic">اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ</div>
               <div className="doa-latin">Allāhummaftaḥ lī abwāba raḥmatik</div>
               <div className="doa-arti">Artinya: "Ya Allah, bukakanlah untukku pintu-pintu rahmat-Mu."</div>
             </div>
@@ -701,7 +701,7 @@ export const tutorialData: TutItem[] = [
           </ul>
           <div className="doa-box">
             <div className="doa-label">Doa antara Rukun Yamani & Hajar Aswad</div>
-            <div className="doa-arabic">رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ</div>
+            <div className="doa-arabic">رَبَّنَا آتِنَا فِي الدُّنْIَا حَسَنَةً وَفِي الآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ</div>
             <div className="doa-latin">Rabbanā ātinā fid-dunyā ḥasanah, wa fil-ākhirati ḥasanah, wa qinā 'adzāban-nār</div>
             <div className="doa-arti">"Ya Tuhan kami, berikanlah kepada kami kebaikan di dunia dan di akhirat, dan peliharalah kami dari azab neraka."</div>
           </div>
@@ -775,7 +775,7 @@ export const tutorialData: TutItem[] = [
           <DS id="mk2" title="💧 Keutamaan Air Zamzam" open={D["mk2"]} onToggle={T}>
             <div className="doa-box">
               <div className="doa-label">Doa Minum Air Zamzam</div>
-              <div className="doa-arabic">اللَّهُمَّ إِنِّI أَسْأَلُكَ عِلْمًا نَAFِعًا وَرِزْقًا وَاسِعًا وَشِفَاءً مِنْ كُلِّ دَاءٍ</div>
+              <div className="doa-arabic">اللَّهُمَّ إِنِّI أَسْأَلُكَ عِلْمًا نَAFِعًا وَرِZْقًا وَاسِعًا وَشِفَاءً مِنْ كُلِّ دَاءٍ</div>
               <div className="doa-latin">Allāhumma innī as'aluka 'ilman nāfi'an wa rizqan wāsi'an wa syifā'an min kulli dā'</div>
               <div className="doa-arti">"Ya Allah, aku memohon ilmu yang bermanfaat, rezeki yang luas, dan kesembuhan dari segala penyakit."</div>
             </div>
@@ -835,7 +835,6 @@ export const tutorialData: TutItem[] = [
           <DS id="md3" title="🤍 Keutamaan Raudhah" open={D["md3"]} onToggle={T}>
             <ul className="tip-list">
               <li>Doa di Raudhah sangat mustajab — panjatkan doa terbaik Anda</li>
-              <li>Booking slot Raudhah wajib via aplikasi <strong>Nusuk</strong> sebelum berangkat</li>
             </ul>
             <div className="doa-box">
               <div className="doa-label">Salam kepada Rasulullah ﷺ</div>
@@ -902,7 +901,7 @@ export const tutorialData: TutItem[] = [
             <li>Wanita yang haid sebelum atau saat tawaf: <strong>tunda tawaf hingga suci</strong> — tawaf dalam keadaan haid tidak sah</li>
             <li>Boleh melakukan semua ibadah lain saat haid: sa'i, dzikir, berdoa, mendengar Al-Qur'an, dan ziarah</li>
             <li>Jika masa haid diperkirakan panjang dan mengancam jadwal kepulangan, boleh menggunakan <strong>obat penunda haid</strong> (norethisterone/primolut) — wajib konsultasi dokter minimal 2 minggu sebelum berangkat</li>
-            <li>Saat suci, segera mandi wajib dan lanjutkan tawaf — tidak perlu mengulang sa'i jika sudah dilakukan sebelumnya</li>
+            <li>Saat suci, segera mandi wajib and lanjutkan tawaf — tidak perlu mengulang sa'i jika sudah dilakukan sebelumnya</li>
             <li>Wanita nifas (setelah melahirkan) hukumnya sama dengan haid — tunda tawaf hingga suci sempurna</li>
           </ul>
         </div>
