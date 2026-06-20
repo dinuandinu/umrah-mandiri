@@ -40,7 +40,7 @@ export const FAQ_DATA: {cat:string; items:{q:string;a:string;note?:string}[]}[] 
         note:"Berbeda dengan wajib umroh — jika wajib dilanggar, bisa ditebus dengan dam."
       },
       {
-        q:"Apa perbedaan rukun, wajib, dan sunnah umroh?",
+        q:"Apa perbedaan rukun, wajib, and sunnah umroh?",
         a:"<strong>Rukun</strong>: wajib dikerjakan, tidak bisa diganti dam. <strong>Wajib</strong>: harus dikerjakan, jika ditinggalkan wajib membayar dam (denda). <strong>Sunnah</strong>: dianjurkan untuk menambah pahala, tidak mempengaruhi keabsahan ibadah.",
       },
       {
@@ -135,7 +135,7 @@ export const FAQ_DATA: {cat:string; items:{q:string;a:string;note?:string}[]}[] 
     items:[
       {
         q:"Apakah sa'i harus langsung dilakukan setelah tawaf?",
-        a:"Tidak harus langsung, tetapi <strong>sa'i harus dilakukan pada hari yang sama</strong> setelah tawaf. Jamaah boleh istirahat sebentar, minum zamzam, dan shalat 2 rakaat di Maqam Ibrahim sebelum memulai sa'i.",
+        a:"Tidak harus langsung, tetapi <strong>sa'i harus dilakukan pada hari yang sama</strong> setelah tawaf. Jamaah boleh istirahat sebentar, minum zamzam, and shalat 2 rakaat di Maqam Ibrahim sebelum memulai sa'i.",
       },
       {
         q:"Apakah wanita juga harus lari-lari kecil (harwalah) di antara dua tanda hijau saat sa'i?",
@@ -325,12 +325,12 @@ export const FAQ_DATA: {cat:string; items:{q:string;a:string;note?:string}[]}[] 
       },
       {
         q:"Bagaimana cara mengakses WiFi gratis di Masjidil Haram?",
-        a:"<strong>WiFi gratis 'Haram-Guest'</strong> tersedia di seluruh area Masjidil Haram dan Masjid Nabawi. Sambungkan ke jaringan tersebut, akan muncul halaman login — masukkan nomor HP Arab Saudi Anda untuk verifikasi OTP. Kecepatan bervariasi, cukup untuk WhatsApp dan navigasi Google Maps.",
+        a:"<strong>WiFi gratis 'Haram-Guest'</strong> tersedia di seluruh area Masjidil Haram and Masjid Nabawi. Sambungkan ke jaringan tersebut, akan muncul halaman login — masukkan nomor HP Arab Saudi Anda untuk verifikasi OTP. Kecepatan bervariasi, cukup untuk WhatsApp dan navigasi Google Maps.",
         note:"Tetap aktifkan paket data sebagai backup karena WiFi Haram bisa tidak stabil saat sangat ramai."
       },
       {
         q:"Apakah perlu membawa sandal cadangan untuk ihram?",
-        a:"<strong>Ya, sangat disarankan</strong>. Sandal sering hilang atau tertukar di area Masjidil Haram dan Nabawi karena jutaan jamaah melepas alas kaki sebelum masuk. Bawa <strong>2 pasang sandal</strong>: satu untuk tawaf dan sa'i (pilih yang kokoh dan anti-slip), satu cadangan di tas. Gunakan sandal dengan tali yang bisa dikunci agar tidak mudah tertukar. Bisa juga menggunakan kantong kain khusus untuk menyimpan sandal.",
+        a:"<strong>Ya, sangat disarankan</strong>. Sandal sering hilang atau tertukar di area Masjidil Haram and Nabawi karena jutaan jamaah melepas alas kaki sebelum masuk. Bawa <strong>2 pasang sandal</strong>: satu untuk tawaf and sa'i (pilih yang kokoh and anti-slip), satu cadangan di tas. Gunakan sandal dengan tali yang bisa dikunci agar tidak mudah tertukar. Bisa juga menggunakan kantong kain khusus untuk menyimpan sandal.",
         note:"Sandal karet tipis flip-flop tidak disarankan — jarak tempuh saat umroh bisa mencapai 5–10 km per hari."
       },
     ]
@@ -339,9 +339,17 @@ export const FAQ_DATA: {cat:string; items:{q:string;a:string;note?:string}[]}[] 
 
 export const prepData: PrepSection[] = [
   {
+    section:"📅 Timeline & Strategi",
+    items:[
+      {id:31,title:"H-60 s/d H-30: Administrasi Awal",badge:"penting",tips:["Mulai mengurus Paspor Elektronik (proses ±4 hari kerja)","Lakukan Vaksin Meningitis (minimal 10-14 hari sebelum berangkat agar antibodi terbentuk)","Mulai riset harga tiket pesawat dan pantau promo maskapai"]},
+      {id:32,title:"H-30 s/d H-14: Booking Utama",badge:"penting",tips:["Pesan tiket pesawat (pilih direct flight jika budget mencukupi)","Booking hotel di Makkah (radius <500m sangat disarankan)","Ajukan Visa Umroh via Nusuk atau provider terpercaya","Lengkapi asuransi perjalanan tambahan"]},
+      {id:33,title:"H-14 s/d H-7: Finalisasi & Stamina",badge:"rekomendasi",tips:["Latihan fisik: jalan kaki 3-5 km setiap hari untuk membiasakan kaki","Daftarkan data diri di Siskopatuh (Kemenag RI)","Cek ketersediaan slot Raudhah di aplikasi Nusuk setiap jam"]},
+    ]
+  },
+  {
     section:"Dokumen & Administrasi",
     items:[
-      {id:1,title:"Paspor Elektronik Aktif (min. 6 bulan sejak keberangkatan)",badge:"penting",tips:["Buat atau perpanjang di kantor Imigrasi terdekat atau via aplikasi M-Paspor","Biaya: Rp650.000 (Paspor Elektronik). Proses ±4 hari kerja","⚠️ Berdasarkan aturan terbaru Dirjen Imigrasi, hanya paspor elektronik yang disediakan untuk perjalanan umroh","Paspor wajib masih berlaku minimal 6 bulan terhitung dari tanggal keberangkatan — bukan tanggal pengajuan visa","Cek masa berlaku sekarang — jangan menunggu H-14 keberangkatan"]},
+      {id:1,title:"Paspor Elektronik Aktif (min. 6 bulan sejak keberangkatan)",badge:"penting",tips:["Buat atau perpanjang di kantor Imigrasi terdekat atau via aplikasi M-Paspor","Biaya: Rp650.000 (Paspor Elektronik). Proses ±4 hari kerja","⚠️ Berdasarkan aturan terbaru Dirjen Imigrasi, hanya paspor elektronik yang disediakan untuk perjalanan umroh","Pastikan nama di paspor terdiri dari minimal 2 suku kata (syarat pengajuan Visa)","Scan paspor dan simpan di Google Drive sebagai backup digital"]},
       {id:2,title:"Visa Umroh",badge:"penting",tips:["Ajukan via platform resmi nusuk.sa atau agen PPIU terdaftar Kemenag","⚠️ Biaya visa terkini berkisar Rp2.000.000 – Rp4.000.000 (bervariasi tergantung agen & musim)","Dokumen wajib: paspor asli, tiket PP confirmed, voucher hotel, foto background putih 3x4, KTP, kartu vaksin meningitis","Proses 3–7 hari kerja. Ajukan minimal 3 minggu sebelum keberangkatan","Simpan visa digital di HP dan cetak salinan fisik sebagai cadangan"],links:[{url:"https://nusuk.sa",icon:"🔗",label:"Buka Nusuk.sa"}]},
       {id:25,title:"Registrasi Siskopatuh (Kemenag)",badge:"penting",tips:["Siskopatuh adalah sistem wajib Kemenag RI untuk verifikasi jamaah umroh mandiri","✅ UU No.14/2025: Umroh mandiri adalah hak sah setiap warga negara — legal secara hukum. Namun tetap WAJIB melakukan registrasi melalui PPIU (Penyelenggara Perjalanan Ibadah Umrah) yang terdaftar di Kemenag","Registrasi di: siskopatuh.kemenag.go.id — gunakan NIK dan data paspor Anda","Dokumen yang diunggah: scan paspor, foto 3x4, bukti visa, tiket PP, dan voucher hotel","⚠️ Tanpa Siskopatuh, jamaah bisa ditolak boarding di bandara Indonesia","Lakukan registrasi setelah visa terbit dan minimal 7 hari sebelum keberangkatan"],links:[{url:"https://siskopatuh.kemenag.go.id",icon:"🔗",label:"Buka Siskopatuh"},{url:"https://haji.kemenag.go.id/umrah/",icon:"📋",label:"Info PPIU Resmi",outline:true}]},
       {id:3,title:"Kartu Keluarga & KTP",badge:"penting",tips:["Bawa fotokopi KK dan KTP minimal 5 lembar untuk berbagai keperluan","Scan dan simpan di Google Drive agar bisa diakses kapanpun meski HP hilang"]},
@@ -373,39 +381,35 @@ export const prepData: PrepSection[] = [
     section:"Persiapan Keuangan",
     items:[
       {id:15,title:"Riyal Arab Saudi (SAR)",badge:"penting",tips:["Tukar rupiah ke SAR di money changer Indonesia — kurs lebih baik dari di Saudi","1 SAR ≈ Rp4.200–4.400. Rata-rata SAR 3.000–5.000 cukup untuk 10 hari (belum termasuk oleh-oleh)"]},
-      {id:16,title:"Kartu Debit/Kredit Internasional",badge:"rekomendasi",tips:["Aktifkan fitur transaksi internasional di mobile banking sebelum berangkat","Kartu GPN (logo lokal) tidak bisa dipakai di Saudi — pastikan Visa/Mastercard"]},
+      {id:16,title:"Kartu Debit/Kredit Internasional",badge:"penting",tips:["Wajib Visa/Mastercard. Kartu GPN tidak bisa dipakai di ATM/Mesin EDC Arab Saudi","Aktifkan fitur transaksi luar negeri di aplikasi m-banking sebelum berangkat","Tarik tunai di ATM Al-Rajhi atau SNB (Al-Ahli) di Saudi biasanya memiliki kurs lebih kompetitif","Bawa minimal 2 kartu berbeda sebagai cadangan jika salah satu tertelan mesin atau terblokir"]},
       {id:17,title:"Simpan nomor penting (darurat, KJRI & bank)",badge:"penting",tips:["🏛️ KJRI Jeddah: +966-12-671-1271 (24 jam) — untuk darurat kehilangan paspor, kecelakaan, atau masalah hukum di Arab Saudi","🏛️ KJRI Jeddah WhatsApp Darurat: +966-53-831-0077","📞 Call Center Kemenag Umroh: 021-3811-546 / 1500025","🚑 Darurat Umum Arab Saudi: 911 (polisi/ambulans) | 997 (kebakaran)","🏦 Bank Indonesia — Call Center: BCA 1500888, Mandiri 14000, BNI 1500046, BSI 14040","💡 Simpan semua nomor ini di: kontak HP, catatan kertas di dompet, dan Google Keep agar bisa diakses bahkan saat HP hilang","Foto kartu ATM/kredit (depan-belakang) dan upload ke Google Drive sebelum berangkat"]},
     ]
   },
   {
     section:"Perlengkapan Ibadah & Bawaan",
     items:[
-      {id:18,title:"Kain Ihram 2 lembar (pria)",badge:"penting",tips:["Pilih bahan terry cotton atau turkish cotton — kuat, tidak mudah melar","Ukuran ideal: 90×150 cm (bawah) dan 90×200 cm (atas)","Wanita: gamis + khimar putih menutup seluruh tubuh kecuali wajah & telapak tangan","Latihan pakai ihram sebelum berangkat agar tidak kerepotan di miqat"]},
-      {id:19,title:"Sandal ihram",badge:"penting",tips:["Sandal Hawalaki atau sandal kulit: nyaman, awet, tidak licin di marmer basah","Pria saat ihram: tidak boleh menutup mata kaki dan jari-jari kaki","Bawa spidol kecil untuk menandai sandal agar tidak tertukar di masjid"]},
+      {id:18,title:"Kain Ihram & Sabuk (pria)",badge:"penting",tips:["Pria: Bawa sabuk ihram agar kain bawah tidak mudah melorot saat tawaf","Pilih bahan terry cotton atau turkish cotton — kuat, tidak mudah melar","Wanita: Bawa celana panjang kain/legging sebagai dalaman gamis agar nyaman saat berjalan jauh","Latihan pakai ihram di rumah agar tidak kerepotan saat di miqat"]},
+      {id:19,title:"Alas Kaki & Kaus Kaki",badge:"penting",tips:["Sandal jepit/gunung yang kokoh untuk ziarah","Kaus kaki tawaf (anti-slip dengan bintik karet) untuk melindungi kaki dari panas/dingin lantai marmer","Bawa tas kain/spidol untuk menandai sandal agar tidak tertukar di rak masjid"]},
       {id:20,title:"Panduan doa & dzikir (offline)",badge:"rekomendasi",tips:["Install sebelum berangkat: Nusuk, Muslim Pro, atau Al-Quran Indonesia (mode offline)","Hafal minimal: niat ihram, talbiyah, dan doa antara Rukun Yamani–Hajar Aswad"]},
       {id:21,title:"Pakaian sopan & nyaman (min. 5 set)",badge:"penting",tips:["Bahan terbaik: linen, katun, atau dry-fit. Cuaca Mekkah 35–45°C","Pria: kurta/gamis adalah pilihan terbaik. Wanita: gamis longgar + bergo nyaman"]},
       {id:22,title:"Power bank & adaptor tipe G",badge:"penting",tips:["Arab Saudi pakai colokan Tipe G (3 pin kotak). Beli adaptor universal sebelum berangkat","Power bank min. 20.000 mAh sangat berguna saat seharian di masjid"]},
-      {id:23,title:"Fotokopi & scan dokumen penting",badge:"penting",tips:["Fotokopi: paspor, visa, tiket, voucher hotel, kartu vaksin, KTP","Simpan satu set di tas kabin dan satu set di koper — pisah dari dokumen asli","Upload ke Google Drive atau email sendiri agar bisa diakses kapanpun"]},
+      {id:23,title:"Backup Digital Dokumen",badge:"penting",tips:["Upload scan Paspor, Visa, Tiket, Voucher Hotel, dan Kartu Vaksin ke Google Drive","Bagikan akses folder tersebut ke keluarga di Indonesia sebagai tindakan pengamanan"]},
     ]
   },
   {
     section:"Komunikasi, Internet & Aplikasi",
     items:[
-      {id:27,title:"Siapkan koneksi internet di Arab Saudi",badge:"penting",tips:[
-        "Ada 3 pilihan — pilih salah satu atau kombinasi:",
-        "① E-SIM (paling praktis): beli via Airalo/Holafly/Nomad sebelum berangkat. Paket Saudi 10–15 hari ±Rp150.000–350.000. Syarat: HP mendukung E-SIM (iPhone XS ke atas, sebagian Android)",
-        "② Paket Roaming: aktifkan via MyTelkomsel / myXL / myIM3 sebelum berangkat. Biaya Rp100.000–300.000/hari. Kelebihan: nomor Indonesia tetap aktif",
-        "③ SIM Card Lokal (paling hemat): beli STC/Zain/Mobily di konter bandara KAIA Jeddah atau PMIA Madinah. Harga SAR 30–60, sudah termasuk data 10–20 GB. Bawa paspor asli untuk registrasi",
-        "Rekomendasi: STC memiliki sinyal terkuat di area Masjidil Haram dan Masjid Nabawi",
-        "Aktifkan koneksi sesegera mungkin setelah mendarat — peta dan aplikasi ibadah sangat dibutuhkan",
+      {id:27,title:"Koneksi Internet di Arab Saudi",badge:"penting",tips:[
+        "① SIM Card Lokal (Paling Hemat): Beli di counter resmi Bandara (STC/Zain/Mobily). Butuh scan sidik jari & paspor asli.",
+        "② E-SIM (Paling Praktis): Beli via Airalo/Holafly sebelum berangkat jika HP mendukung.",
+        "③ Paket Roaming: Aktifkan via aplikasi provider Indonesia (Telkomsel/XL/Indosat). Lebih mahal tapi nomor lokal tetap aktif.",
+        "Rekomendasi: STC memiliki sinyal paling stabil di dalam Masjidil Haram dan Nabawi.",
       ]},
-      {id:30,title:"Install aplikasi penting sebelum berangkat",badge:"penting",tips:[
-        "① Nusuk (nusuk.sa) — WAJIB: aplikasi resmi Saudi untuk booking slot Raudhah dan izin masuk area khusus. Buat akun dan verifikasi minimal 2 hari sebelum berangkat",
-        "② Google Maps — download peta offline Makkah & Madinah: buka Google Maps → cari kota → ketuk nama → Download. Berguna saat sinyal lemah di lorong masjid",
-        "③ Uber / Careem — daftarkan akun + kartu kredit internasional sebelum berangkat. Berguna untuk transport bandara, ziarah, dan transfer antar kota",
-        "④ HHR Haramain Train — untuk beli tiket kereta cepat Makkah–Madinah (±2 jam, SAR 65–150). Cari 'Haramain Train' di App Store / Play Store",
-        "⑤ Al-Qur'an Indonesia / Muslim Pro — aktifkan mode offline agar bisa diakses tanpa internet",
-        "Semua aplikasi ini GRATIS — install dan coba sebelum berangkat agar familiar",
+      {id:30,title:"Strategi Aplikasi Nusuk & Raudhah",badge:"penting",tips:[
+        "Wajib booking slot Raudhah segera setelah Visa terbit (biasanya slot dibuka setiap hari Jumat/Sabtu).",
+        "Cek aplikasi secara berkala setiap jam, terutama di jam-jam ganjil (waktu Saudi).",
+        "Screenshot QR Code jadwal Raudhah Anda untuk berjaga-jaga jika sinyal internet di dalam masjid hilang.",
+        "Satu akun Nusuk hanya bisa booking 1 kali dalam periode 30 hari.",
       ]},
     ]
   },
@@ -447,7 +451,7 @@ export const tutorialData: TutItem[] = [
             </div>
             <div className="doa-box">
               <div className="doa-label">Talbiyah</div>
-              <div className="doa-arabic">لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لاَ شَرِيكَ لَكَ لَبَّيْكَ، إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَالْمُلْكَ، لاَ شَرِيكَ لَكَ</div>
+              <div className="doa-arabic">لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لاَ شَرِيكَ لَكَ لَبَّيْكَ، إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَALْمُلْكَ، لاَ شَرِيكَ لَكَ</div>
               <div className="doa-latin">Labbaik Allāhumma labbaik, labbaik lā syarīka laka labbaik, innal-ḥamda wan-ni'mata laka wal-mulk, lā syarīka lak</div>
               <div className="doa-arti">Artinya: "Aku penuhi panggilan-Mu ya Allah, aku penuhi panggilan-Mu. Aku penuhi panggilan-Mu, tiada sekutu bagi-Mu, aku penuhi panggilan-Mu. Sesungguhnya segala puji, nikmat, dan seluruh kekuasaan hanya milik-Mu, tiada sekutu bagi-Mu."</div>
               <div style={{fontSize:".8rem",color:"var(--muted)",marginTop:6,lineHeight:1.6}}>💡 Baca talbiyah terus-menerus sejak niat ihram hingga memulai tawaf — dengan suara keras bagi pria, pelan untuk wanita. Talbiyah adalah tanda jamaah benar-benar "hadir" memenuhi panggilan Allah.</div>
@@ -653,7 +657,7 @@ export const tutorialData: TutItem[] = [
           <DS id="sh7" title="🤲 Doa Setelah Sholat di Masjidil Haram" open={D["sh7"]} onToggle={T}>
             <div className="doa-box">
               <div className="doa-label">Doa Memasuki Masjid</div>
-              <div className="doa-arabic">اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ</div>
+              <div className="doa-arabic">اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمETِكَ</div>
               <div className="doa-latin">Allāhummaftaḥ lī abwāba raḥmatik</div>
               <div className="doa-arti">Artinya: "Ya Allah, bukakanlah untukku pintu-pintu rahmat-Mu."</div>
             </div>
@@ -729,7 +733,7 @@ export const tutorialData: TutItem[] = [
           </ul>
           <div className="doa-box">
             <div className="doa-label">Doa di Shafa & Marwah</div>
-            <div className="doa-arabic">إِنَّ الصَّفَا وَالْمَرْوَةَ مِنْ شَعَائِرِ اللَّهِ</div>
+            <div className="doa-arabic">إِنَّ الصَّفَا وَALْمَرْوَةَ مِنْ شَعَائِرِ اللَّهِ</div>
             <div className="doa-latin">Innaṣ-ṣafā wal-marwata min sya'ā'irillāh</div>
             <div className="doa-arti">"Sesungguhnya Shafa dan Marwah adalah sebagian dari syi'ar Allah." (QS. 2:158)</div>
           </div>
@@ -771,14 +775,14 @@ export const tutorialData: TutItem[] = [
           <DS id="mk2" title="💧 Keutamaan Air Zamzam" open={D["mk2"]} onToggle={T}>
             <div className="doa-box">
               <div className="doa-label">Doa Minum Air Zamzam</div>
-              <div className="doa-arabic">اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَAFِعًا وَرِزْقًا وَاسِعًا وَشِفَاءً مِنْ كُلِّ دَاءٍ</div>
+              <div className="doa-arabic">اللَّهُمَّ إِنِّI أَسْأَلُكَ عِلْمًا نَAFِعًا وَرِزْقًا وَاسِعًا وَشِفَاءً مِنْ كُلِّ دَاءٍ</div>
               <div className="doa-latin">Allāhumma innī as'aluka 'ilman nāfi'an wa rizqan wāsi'an wa syifā'an min kulli dā'</div>
               <div className="doa-arti">"Ya Allah, aku memohon ilmu yang bermanfaat, rezeki yang luas, dan kesembuhan dari segala penyakit."</div>
             </div>
           </DS>
         </div>}
         {subTab==="mk-sunnah"&&<div>
-          <DS id="mk4" title="🕌 Sunnah di Masjidil Haram" open={D["mk4"]} onToggle={T}>
+          <DS id="mk4" title="Masjidil Haram" open={D["mk4"]} onToggle={T}>
             <ul className="larangan-list sunnah-list">
               <li>Memperbanyak tawaf sunnah — waktu terbaik dini hari 02.00–05.00</li>
               <li>Berdoa di Multazam (tempelkan dada dan tangan ke dinding)</li>
@@ -842,7 +846,7 @@ export const tutorialData: TutItem[] = [
           </DS>
         </div>}
         {subTab==="md-sunnah"&&<div>
-          <DS id="md4" title="🕌 Sunnah di Masjid Nabawi" open={D["md4"]} onToggle={T}>
+          <DS id="md4" title="Masjid Nabawi" open={D["md4"]} onToggle={T}>
             <ul className="larangan-list sunnah-list">
               <li>Melaksanakan <strong>Arbain</strong> — 40 shalat fardhu berturut-turut (min. 8 hari)</li>
               <li>Shalat di Raudhah dan memperbanyak doa</li>
