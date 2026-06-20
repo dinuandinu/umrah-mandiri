@@ -147,7 +147,10 @@ export default function UmrohApp() {
                              <div className="checkbox-modern" onClick={(e) => toggleCheck(e, item.id)}>
                                {checked[item.id] && "✓"}
                              </div>
-                             <div className="check-title-modern">{highlight(item.title)}</div>
+                             <div className="check-main-modern">
+                               <div className="check-title-modern">{highlight(item.title)}</div>
+                               {item.badge && <span className={`badge-modern ${item.badge}`}>{item.badge}</span>}
+                             </div>
                              <span className={`expand-arrow-modern ${openPrep === item.id ? "open" : ""}`}>▾</span>
                            </div>
                            {openPrep === item.id && (
