@@ -17,26 +17,18 @@ export const SubTabs = ({tabs,active,onChange}:{tabs:{id:string;label:string}[];
 );
 
 export const KaabaSVG = () => (
-  <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="kaabaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#222" />
-        <stop offset="100%" stopColor="#000" />
-      </linearGradient>
-      <linearGradient id="goldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stopColor="#FCE7BE" />
-        <stop offset="50%" stopColor="#D4AF37" />
-        <stop offset="100%" stopColor="#8B6914" />
-      </linearGradient>
-    </defs>
-    <rect x="15" y="20" width="70" height="70" rx="4" fill="url(#kaabaGrad)" />
-    <rect x="15" y="35" width="70" height="12" fill="url(#goldGrad)" />
-    <rect x="15" y="38" width="70" height="1" fill="rgba(0,0,0,0.2)" />
-    <rect x="15" y="44" width="70" height="1" fill="rgba(0,0,0,0.2)" />
-    <rect x="55" y="55" width="18" height="28" rx="2" fill="url(#goldGrad)" />
-    <rect x="58" y="58" width="12" height="22" rx="1" fill="rgba(0,0,0,0.1)" />
-    <circle cx="25" cy="41" r="1.5" fill="#FCE7BE" opacity="0.8" />
-    <circle cx="35" cy="41" r="1.5" fill="#FCE7BE" opacity="0.8" />
-    <circle cx="45" cy="41" r="1.5" fill="#FCE7BE" opacity="0.8" />
+  <svg className="kaaba-icon" viewBox="0 0 64 64" fill="none">
+    <circle cx="32" cy="34" r="26" fill="rgba(26, 74, 58, 0.1)"/>
+    <rect x="8" y="16" width="46" height="40" rx="2" fill="#1A4A3A"/>
+    <rect x="6" y="13" width="50" height="5" rx="2" fill="#C9A84C"/>
+    <rect x="8" y="22" width="46" height="9" fill="#8B6914"/>
+    <rect x="8" y="22" width="46" height="9" fill="#C9A84C" opacity="0.5"/>
+    <line x1="11" y1="25.5" x2="51" y2="25.5" stroke="#FFE08A" strokeWidth="0.7" opacity="0.6"/>
+    <rect x="22" y="36" width="14" height="20" rx="1.5" fill="#8B6914"/>
+    <path d="M22 40 Q29 33 36 40" fill="#8B6914"/>
+    <rect x="23" y="37" width="12" height="19" rx="1" fill="#C9A84C" opacity="0.55"/>
+    <ellipse cx="54" cy="42" rx="6" ry="5" fill="#C9A84C"/>
+    <ellipse cx="54" cy="42" rx="4.3" ry="3.6" fill="#110500"/>
+    <path d="M8 58 Q32 63 56 58" stroke="#C9A84C" strokeWidth="1.2" fill="none" opacity="0.3" strokeDasharray="3 2" strokeLinecap="round"/>
   </svg>
 );

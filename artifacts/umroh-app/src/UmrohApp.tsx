@@ -108,7 +108,10 @@ export default function UmrohApp() {
               <div className="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
               <button className="faq-btn" onClick={() => setShowFAQ(true)}>FAQ</button>
             </div>
-            <div className="kaaba-container"><KaabaSVG /></div>
+            <div className="kaaba-container">
+              <div className="kaaba-glow" />
+              <KaabaSVG />
+            </div>
             <h1>Umroh Mandiri</h1>
           </div>
         </div>
