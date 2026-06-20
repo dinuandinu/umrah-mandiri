@@ -53,6 +53,10 @@ export const FAQ_DATA: {cat:string; items:{q:string;a:string;note?:string}[]}[] 
         a:"<strong>Wajib</strong>: Paspor (minimal 6 bulan aktif), visa umroh, tiket pesawat, bukti akomodasi hotel, sertifikat vaksin meningitis, dan kartu BPJS Kesehatan aktif.",
         note:"Visa umroh kini bisa diurus mandiri melalui platform Nusuk (nusuk.sa) atau melalui penyedia visa terpercaya."
       },
+      {
+        q:"Berapa biaya pembuatan paspor terbaru?",
+        a:"Paspor biasa 48 halaman ±Rp350.000, Paspor Elektronik (E-Paspor) ±Rp650.000. Pengurusan via aplikasi M-Paspor.",
+      },
     ]
   },
   {
@@ -62,6 +66,10 @@ export const FAQ_DATA: {cat:string; items:{q:string;a:string;note?:string}[]}[] 
         q:"Bolehkah berpakaian ihram sejak dari bandara Indonesia?",
         a:"<strong>Boleh dan dianjurkan</strong> untuk memakai pakaian ihram sejak di bandara Indonesia, karena lebih praktis dan menghindari risiko kelewat miqat.",
       },
+      {
+        q:"Bagaimana jika saya haid saat tiba di Mekkah?",
+        a:"Anda tetap boleh berihram dan berniat umroh dari miqat. Namun, Anda <strong>dilarang tawaf</strong> sampai suci. Sa'i boleh dilakukan saat haid menurut sebagian ulama, tapi afdhalnya menunggu suci agar bisa sepaket dengan tawaf.",
+      },
     ]
   },
 ];
@@ -70,64 +78,24 @@ export const prepData: PrepSection[] = [
   {
     section:"Dokumen & Administrasi",
     items:[
-      {id:1,title:"Paspor aktif (min. 6 bulan sejak keberangkatan)",badge:"penting",tips:["Pastikan nama di paspor minimal 2 kata (rekomendasi 3 kata untuk kemudahan visa)","Scan halaman depan & simpan di Google Drive/Email sebagai backup"]},
-      {id:2,title:"Visa Umroh",badge:"penting",tips:["Ajukan via agen travel terpercaya atau gunakan aplikasi Nusuk (jika mandiri)","Proses biasanya 1-3 hari kerja. Simpan print-out visa bersama paspor"]},
-      {id:3,title:"Sertifikat Vaksin Meningitis",badge:"penting",tips:["Sangat dianjurkan meskipun terkadang tidak dicek ketat di imigrasi","Lakukan vaksinasi minimal 2 minggu sebelum keberangkatan"]},
-      {id:4,title:"Vaksin COVID-19 (Lengkap/Booster)",badge:"rekomendasi",tips:["Siapkan sertifikat internasional via aplikasi SatuSehat"]},
-      {id:5,title:"Pas Foto (latar putih, wajah 80%)",badge:"opsional",tips:["Siapkan 5-10 lembar ukuran 4x6 untuk cadangan dokumen lokal"]},
-    ]
-  },
-  {
-    section:"Persiapan Kesehatan",
-    items:[
-      {id:9,title:"Medical Check-Up",badge:"rekomendasi",tips:["Periksa tekanan darah, gula darah, fungsi jantung, dan kondisi fisik umum","Jamaah kondisi khusus (jantung, diabetes) wajib bawa catatan medis lengkap"]},
-      {id:10,title:"Obat-obatan pribadi",badge:"penting",tips:["Bawa obat rutin untuk 2x durasi perjalanan — apotek di Saudi mahal","Wajib bawa: paracetamol, antidiare, oralit, obat maag, vitamin C, plester","Masker N95 sangat penting saat area tawaf padat — bawa minimal 10 lembar"]},
+      {id:1,title:"Paspor aktif (min. 6 bulan sejak keberangkatan)",badge:"penting",tips:["Buat/perpanjang via aplikasi M-Paspor. Biaya: Rp350rb (biasa) / Rp650rb (elektronik)","Pastikan nama minimal 2 kata. Scan & simpan backup di Google Drive/Email"]},
+      {id:2,title:"Visa Umroh",badge:"penting",tips:["Ajukan via nusuk.sa atau agen terdaftar. Biaya ±Rp2jt-4jt","Dokumen: paspor, tiket PP, voucher hotel, foto latar putih 3x4"]},
+      {id:25,title:"Registrasi Siskopatuh (Kemenag)",badge:"penting",tips:["Wajib verifikasi via siskopatuh.kemenag.go.id agar bisa boarding","Lakukan setelah visa terbit & min. 7 hari sebelum berangkat"]},
+      {id:3,title:"Vaksin Meningitis ACYW135",badge:"penting",tips:["Wajib kartu kuning ICV. Lakukan min. 10 hari sebelum berangkat","Tersedia di RS Pemerintah/KKP Pelabuhan. Biaya ±Rp350rb-600rb"]},
     ]
   },
   {
     section:"Tiket & Penginapan",
     items:[
-      {id:11,title:"Tiket Pesawat PP (confirmed)",badge:"penting",tips:["Maskapai langsung dari Indonesia: Garuda, Saudi Airlines, Lion Air, Batik Air","Tiket harus confirmed (bukan open ticket) untuk keperluan pengajuan visa","Tiba di Jeddah (JED) lebih dekat ke Mekkah. Madinah (MED) untuk mulai ziarah dulu"]},
-      {id:12,title:"Booking Hotel Mekkah (dengan voucher)",badge:"penting",tips:["Gunakan Booking.com, Agoda, atau nusuk.sa — filter 'near Masjid al-Haram'","Radius 200–500m dari Masjidil Haram sangat ideal — hemat tenaga dan waktu","Simpan voucher digital + cetak fisik — wajib ditunjukkan saat imigrasi Saudi"]},
-      {id:13,title:"Bukti Transport Bandara ↔ Hotel",badge:"penting",tips:["Bukti pemesanan transportasi bandara–hotel–bandara wajib untuk pengajuan visa","Bisa berupa: konfirmasi shuttle hotel, booking Uber/Careem, atau surat agen transport"]},
-      {id:14,title:"Hotel di Madinah",badge:"opsional",tips:["Pilih hotel di area Anbariyyah atau Central Area — dekat Masjid Nabawi","Booking slot Raudhah via aplikasi Nusuk sebelum berangkat dari Indonesia"]},
+      {id:11,title:"Tiket Pesawat PP (confirmed)",badge:"penting",tips:["Maskapai langsung: Garuda, Saudi, Lion, Batik. Tiket wajib confirmed","Tiba di Jeddah (JED) lebih dekat Mekkah, Madinah (MED) untuk ziarah awal"]},
+      {id:12,title:"Booking Hotel Mekkah (dengan voucher)",badge:"penting",tips:["Filter 'near Masjid al-Haram'. Jarak 200-500m sangat ideal","Simpan voucher digital & cetak fisik — wajib saat imigrasi"]},
     ]
   },
   {
-    section:"Persiapan Keuangan",
+    section:"Perlengkapan Ibadah",
     items:[
-      {id:15,title:"Riyal Arab Saudi (SAR)",badge:"penting",tips:["Tukar rupiah ke SAR di money changer Indonesia — kurs lebih baik dari di Saudi","1 SAR ≈ Rp4.200–4.400. Rata-rata SAR 3.000–5.000 cukup untuk 10 hari (belum termasuk oleh-oleh)"]},
-      {id:16,title:"Kartu Debit/Kredit Internasional",badge:"rekomendasi",tips:["Aktifkan fitur transaksi internasional di mobile banking sebelum berangkat","Kartu GPN (logo lokal) tidak bisa dipakai di Saudi — pastikan Visa/Mastercard"]},
-      {id:17,title:"Simpan nomor penting (darurat, KJRI & bank)",badge:"penting",tips:["🏛️ KJRI Jeddah: +966-12-671-1271 (24 jam)","🏛️ KJRI Jeddah WhatsApp Darurat: +966-53-831-0077","📞 Call Center Kemenag Umroh: 021-3811-546 / 1500025","🚑 Darurat Umum Arab Saudi: 911 | 997 (kebakaran)","💡 Simpan semua nomor ini di kontak HP dan catatan kertas di dompet"]},
-    ]
-  },
-  {
-    section:"Perlengkapan Ibadah & Bawaan",
-    items:[
-      {id:18,title:"Pakaian Ihram & Sandal",badge:"penting",tips:["Pilih bahan terry cotton atau turkish cotton — kuat, tidak mudah melar","Ukuran ideal: 90×150 cm (bawah) dan 90×200 cm (atas)","Wanita: gamis + khimar putih menutup seluruh tubuh kecuali wajah & telapak tangan","Latihan pakai ihram sebelum berangkat agar tidak kerepotan di miqat","Sandal Hawalaki atau sandal kulit: nyaman, awet, tidak licin di marmer basah","Pria saat ihram: tidak boleh menutup mata kaki dan jari-jari kaki","Bawa spidol kecil untuk menandai sandal agar tidak tertukar di masjid"]},
-      {id:21,title:"Pakaian sopan & nyaman (min. 5 set)",badge:"penting",tips:["Bahan terbaik: linen, katun, atau dry-fit. Cuaca Mekkah 35–45°C","Pria: kurta/gamis adalah pilihan terbaik. Wanita: gamis longgar + bergo nyaman"]},
-      {id:22,title:"Power bank & adaptor tipe G",badge:"penting",tips:["Arab Saudi pakai colokan Tipe G (3 pin kotak). Beli adaptor universal sebelum berangkat","Power bank min. 20.000 mAh sangat berguna saat seharian di masjid"]},
-    ]
-  },
-  {
-    section:"Komunikasi, Internet & Aplikasi",
-    items:[
-      {id:27,title:"Siapkan koneksi internet di Arab Saudi",badge:"penting",tips:[
-        "Ada 3 pilihan — pilih salah satu atau kombinasi:",
-        "① E-SIM (paling praktis): beli via Airalo/Holafly/Nomad sebelum berangkat. Paket Saudi 10–15 hari ±Rp150.000–350.000. Syarat: HP mendukung E-SIM",
-        "② Paket Roaming: aktifkan via MyTelkomsel / myXL / myIM3. Biaya Rp100.000–300.000/hari",
-        "③ SIM Card Lokal (paling hemat): beli STC/Zain/Mobily di bandara. Harga SAR 30–60, data 10–20 GB",
-        "Rekomendasi: STC memiliki sinyal terkuat di area Masjidil Haram dan Masjid Nabawi",
-      ]},
-      {id:30,title:"Install aplikasi penting & panduan doa offline",badge:"penting",tips:[
-        "① Nusuk (nusuk.sa) — WAJIB: booking slot Raudhah. Buat akun minimal 2 hari sebelum berangkat",
-        "② Google Maps — download peta offline Makkah & Madinah sebelum berangkat",
-        "③ Uber / Careem — daftarkan akun + kartu kredit internasional sebelum berangkat",
-        "④ HHR Haramain Train — tiket kereta cepat Makkah–Madinah (±2 jam, SAR 65–150)",
-        "⑤ Al-Qur'an Indonesia / Muslim Pro — aktifkan mode offline untuk doa & dzikir lengkap",
-        "📖 Hafal minimal sebelum berangkat: niat ihram, talbiyah, dan doa antara Rukun Yamani–Hajar Aswad",
-        "Semua aplikasi ini GRATIS — install dan coba sebelum berangkat agar familiar",
-      ]},
+      {id:18,title:"Kain Ihram 2 lembar (pria)",badge:"penting",tips:["Bahan terry cotton/turkish. Ukuran 90x150cm (bawah) & 90x200cm (atas)","Latihan pakai di rumah agar tidak lepas saat tawaf"]},
+      {id:19,title:"Sandal & Tas Sandal",badge:"penting",tips:["Sandal nyaman & tidak licin. Bawa tas kecil untuk simpan sandal dalam masjid"]},
     ]
   },
 ];
@@ -141,28 +109,69 @@ export const tutorialData: TutItem[] = [
           <DS id="mq1" title="1. Mengenal Miqat Makani" open={D["mq1"]} onToggle={T}>
             <p><strong>Miqat Makani</strong> adalah batas geografis tempat jamaah wajib memulai ihram:</p>
             <ul className="tip-list">
-              <li><strong>Qarnul Manazil</strong> — jamaah dari Indonesia (via Jeddah) & negara Teluk</li>
-              <li><strong>Bir Ali (Dzulhulaifah)</strong> — jamaah dari arah Madinah. ±450 km dari Mekkah</li>
+              <li><strong>Qarnul Manazil</strong> — jamaah dari Indonesia (via Jeddah)</li>
+              <li><strong>Bir Ali (Dzulhulaifah)</strong> — jamaah dari arah Madinah</li>
+            </ul>
+            <div className="warn-box"><p>✈️ <strong>Transit Miqat:</strong><br/>
+              • <strong>Transit Doha/Qatar</strong> → Berihram di bandara Doha atau di pesawat sebelum mendarat.<br/>
+              • <strong>Transit Dubai/Abu Dhabi</strong> → Berihram di bandara sebelum naik pesawat ke Jeddah.</p></div>
+          </DS>
+          <DS id="mq3" title="2. Niat Ihram & Talbiyah" open={D["mq3"]} onToggle={T}>
+            <div className="doa-box">
+              <div className="doa-label">Niat Ihram Umroh</div>
+              <div className="doa-arabic">لَبَّيْكَ اللَّهُمَّ عُمْرَةً</div>
+              <div className="doa-latin">Labbaik Allāhumma 'umratan</div>
+            </div>
+            <div className="doa-box">
+              <div className="doa-label">Talbiyah</div>
+              <div className="doa-arabic">لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ...</div>
+              <div className="doa-latin">Labbaik Allāhumma labbaik...</div>
+            </div>
+          </DS>
+        </div>}
+        {subTab==="ihram"&&<div>
+          <DS id="ih2" title="🚫 Larangan Ihram" open={D["ih2"]} onToggle={T}>
+            <ul className="larangan-list">
+              <li>Memakai wewangian, memotong rambut/kuku</li>
+              <li>Pria: pakaian berjahit, tutup kepala, sepatu tutup mata kaki</li>
+              <li>Wanita: tutup wajah (cadar), sarung tangan</li>
+            </ul>
+          </DS>
+        </div>}
+        {subTab==="dam-sebab"&&<div>
+          <DS id="dam2" title="Penyebab Wajib Dam" open={D["dam2"]} onToggle={T}>
+            <ul className="tip-list">
+              <li>Melanggar larangan ihram (dam 1 kambing)</li>
+              <li>Melewati miqat tanpa ihram (dam 1 kambing)</li>
+              <li>Rafast (hubungan suami istri) — dam berat unta/sapi</li>
+            </ul>
+          </DS>
+        </div>}
+        {subTab==="dam-cara"&&<div>
+          <DS id="dam4" title="Cara Membayar Dam" open={D["dam4"]} onToggle={T}>
+            <ul className="tip-list">
+              <li>Lembaga resmi: <strong>adahi.com.sa</strong> atau Bank Al-Rajhi</li>
+              <li>Sembelih di Mekkah, daging untuk fakir miskin setempat</li>
             </ul>
           </DS>
         </div>}
       </div>
     )
   },
-  {emoji:"🔄",title:"Tawaf — Mengelilingi Ka'bah",subtitle:"7 putaran berlawanan arah jarum jam",gold:true,defaultSubTab:null,
+  {emoji:"🔄",title:"Tawaf",subtitle:"7 putaran mengelilingi Ka'bah",gold:true,defaultSubTab:null,
     content:({D,T})=>(
       <div>
-        <p>Tawaf adalah mengelilingi Ka'bah sebanyak <strong>7 putaran berlawanan arah jarum jam</strong>. Ka'bah selalu di sebelah kiri.</p>
-        <DS id="tw3" title="✅ Syarat Sahnya Tawaf" open={D["tw3"]} onToggle={T}>
+        <DS id="tw5" title="📖 Cara Pelaksanaan" open={D["tw5"]} onToggle={T}>
           <ul className="tip-list">
-            <li>Suci dari hadas kecil (wudhu) dan hadas besar</li>
-            <li>Ka'bah berada di sebelah kiri selama tawaf</li>
+            <li>Mulai dari Hajar Aswad (garis hijau), Ka'bah di kiri</li>
+            <li>Istilam: "Bismillahi Allahu Akbar" setiap awal putaran</li>
+            <li>Selesai 7 putaran → shalat 2 rakaat di Maqam Ibrahim</li>
           </ul>
         </DS>
       </div>
     )
   },
-  {emoji:"🕋",title:"Mekah — Kota Suci Pertama",subtitle:"Keutamaan, sunnah & aktivitas selama di Mekah",gold:true,defaultSubTab:"mk-peta",
+  {emoji:"🕋",title:"Mekah",subtitle:"Kota Suci Pertama",gold:true,defaultSubTab:"mk-peta",
     content:()=>(
       <div>
         <MiniMap maps={[{id:"haram",label:"🕋 Masjidil Haram"},{id:"makkah",label:"🗺️ Kota Makkah"}]}/>
