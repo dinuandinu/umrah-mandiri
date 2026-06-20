@@ -52,27 +52,29 @@ export const Drawer = ({ open, onClose, theme, setTheme, fontSize, setFontSize, 
                 <div className="drawer-item-label">Tentang Pembuat</div>
                 <div className="drawer-item-desc">Profil & kontak author</div>
               </div>
-              <span className="drawer-item-chev" style={{ transform: showAuthor ? "rotate(90deg)" : "none" }}>›</span>
+              <span className="drawer-item-chev" style={{ transform: showAuthor ? "rotate(90deg)" : "none", transition: "transform .2s" }}>›</span>
             </div>
             {showAuthor && (
               <div className="drawer-expand-body">
                 <div className="author-avatar">🕌</div>
-                <div className="author-name">Andinu</div>
-                <div className="author-bio">Dibuat sebagai amal jariyah — semoga bermanfaat bagi jamaah.</div>
+                <div className="author-name">Hamba Allah</div>
+                <div className="author-bio">
+                  Aplikasi ini dibuat sebagai amal jariyah — semoga bermanfaat bagi saudara-saudara Muslim yang hendak melaksanakan ibadah umroh mandiri.
+                </div>
                 <div className="author-links">
                   <a className="author-link-btn" href="mailto:andinu@duck.com?subject=Umroh%20Mandiri%20App" onClick={e=>e.stopPropagation()}>
-                    <span>✉️ Email: andinu@duck.com</span>
+                    <span style={{fontWeight:700}}>✉️ Email</span>
                   </a>
+                </div>
+                <div className="author-doa" style={{marginTop:8}}>
+                  <span style={{fontFamily:"Amiri,serif",fontSize:"1rem",color:"var(--gold)"}}>جَزَاكَ اللَّهُ خَيْرًا</span><br/>
+                  <span style={{fontSize:".75rem",color:"var(--muted)"}}>Semoga Allah membalas dengan kebaikan</span>
                 </div>
               </div>
             )}
           </div>
 
           <div className="drawer-section-label">⚙️ Alat & Info</div>
-
-          <div style={{ padding: "0 20px 10px", fontSize: ".74rem", color: "var(--muted)" }}>
-             <span style={{ fontWeight: 600, color: "var(--gold)" }}>Versi {import.meta.env.VITE_APP_VERSION}</span>
-          </div>
 
           <button className="drawer-item" onClick={handleReset}>
             <div className="drawer-item-icon warn">🔄</div>
@@ -90,6 +92,15 @@ export const Drawer = ({ open, onClose, theme, setTheme, fontSize, setFontSize, 
               </div>
             </div>
           )}
+
+          <button className="drawer-item" onClick={() => { onClose(); setTimeout(onOpenAbout, 200); }}>
+            <div className="drawer-item-icon em">ℹ️</div>
+            <div className="drawer-item-text">
+              <div className="drawer-item-label">Tentang Aplikasi</div>
+              <div className="drawer-item-desc">Versi & informasi aplikasi</div>
+            </div>
+            <span className="drawer-item-chev">›</span>
+          </button>
 
           <div style={{ padding: "10px 20px 4px" }}>
             <span className="pwa-badge">
@@ -153,16 +164,16 @@ export const AboutPage = ({ onClose }: { onClose: () => void }) => (
   <div className="about-overlay">
     <div className="about-header">
       <button className="about-back-btn" onClick={onClose} aria-label="Kembali">‹</button>
-      <div className="about-header-arabic">جَزَاكَ اللَّهُ خَيْرًا</div>
+      <div className="about-header-arabic">تَقَبَّلَ اللَّهُ مِنَّا وَمِنْكُمْ</div>
       <div className="about-header-title">Tentang Aplikasi</div>
     </div>
     <div className="about-body">
       <div className="about-card">
-        <div className="about-card-label">👤 Tentang Pembuat</div>
         <div className="author-avatar">🕌</div>
-        <div className="author-name">Andinu</div>
+        <div className="author-name">Umroh Mandiri</div>
         <div className="author-bio">
-          Aplikasi ini dibuat sebagai amal jariyah — semoga bermanfaat bagi saudara-saudara Muslim yang hendak melaksanakan ibadah umroh mandiri.
+          Aplikasi panduan umroh mandiri untuk jamaah Indonesia.
+          Mencakup checklist persiapan, tutorial ibadah lengkap, doa-doa, dan peta interaktif.
         </div>
         <div style={{ textAlign: 'center', marginBottom: 12 }}>
           <span style={{ fontSize: '.72rem', fontWeight: 700, color: 'var(--gold)', background: 'var(--surface-sub)', padding: '4px 10px', borderRadius: '12px' }}>
@@ -171,7 +182,7 @@ export const AboutPage = ({ onClose }: { onClose: () => void }) => (
         </div>
         <div className="author-doa">
           <span style={{ fontFamily: "Amiri,serif", fontSize: "1.1rem", color: "var(--gold)" }}>جَزَاكَ اللَّهُ خَيْرًا</span><br />
-          <span style={{ fontSize: ".78rem", color: "var(--muted)" }}>Jazakallahu khairan — Semoga Allah membalas dengan kebaikan</span>
+          <span style={{ fontSize: ".78rem", color: "var(--muted)" }}>Semoga Allah membalas dengan kebaikan</span>
         </div>
       </div>
     </div>
