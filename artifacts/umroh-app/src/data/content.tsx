@@ -346,14 +346,14 @@ export const FAQ_DATA: {cat:string; items:{q:string;a:string;note?:string}[]}[] 
 
 export const prepData: PrepSection[] = [
   {
-    section: "Tahap 1: Dokumen Utama",
+    section: "Langkah 1: Dokumen & Paspor (H-90 s/d H-60)",
     items: [
       { id: 1, title: "Identitas dan Back Up Digital", badge: "Penting", tips: ["Scan KTP, KK, Paspor, dan dokumen lainnya.", "Simpan di Google Drive atau email agar mudah diakses."] },
       { id: 2, title: "Paspor Elektronik (E-Passport)", badge: "Penting", tips: ["Wajib E-Paspor sesuai regulasi Imigrasi terbaru.", "Masa berlaku minimal 6 bulan saat berangkat.", "Biaya: Rp650rb (5 thn) / Rp950rb (10 thn) per PP 45/2024."] },
     ]
   },
   {
-    section: "Tahap 2: Persyaratan Kesehatan",
+    section: "Langkah 2: Persyaratan Kesehatan (H-60 s/d H-45)",
     items: [
       { id: 3, title: "Vaksin Meningitis (Vaksin A)", badge: "Penting", tips: ["Wajib bagi seluruh jamaah.", "Lakukan di Kantor Kesehatan Pelabuhan (KKP) atau RS resmi."] },
       { id: 4, title: "Vaksin Polio IPV (Vaksin B)", badge: "Penting", tips: ["Wajib Baru 2025: Sertakan bukti vaksin Polio IPV (minimal 1 dosis).", "Aturan Kemenkes terbaru mewajibkan IPV bagi WNI ke Saudi."] },
@@ -361,38 +361,38 @@ export const prepData: PrepSection[] = [
     ]
   },
   {
-    section: "Tahap 3: Logistik & Syarat Visa",
+    section: "Langkah 3: Tiket & Paket Logistik (BRN) (H-45 s/d H-30)",
     items: [
       { id: 6, title: "Tiket Pesawat PP (Confirmed)", badge: "Penting", tips: ["Pesan tiket pulang-pergi yang sudah terkonfirmasi.", "E-ticket wajib untuk proses visa oleh Provider."] },
-      { id: 7, title: "Booking Hotel Madinah & Makkah", badge: "Penting", tips: ["Wajib mendapatkan nomor BRN (Booking Reference Number).", "Pastikan hotel berlisensi untuk validasi sistem Saudi."] },
-      { id: 8, title: "Transportasi Lengkap", badge: "Penting", tips: ["Pesan paket transportasi darat Airport-Hotel-Intercity.", "Dapatkan BRN transportasi sebagai syarat mutlak visa."] },
+      { id: 7, title: "Booking Hotel Madinah & Makkah", badge: "Penting", tips: ["Wajib mendapatkan nomor BRN (Booking Reference Number).", "Gunakan platform yang terintegrasi atau biro PPIU untuk validasi BRN."] },
+      { id: 8, title: "Transportasi Lengkap", badge: "Penting", tips: ["Pesan paket transportasi darat Airport-Hotel-Intercity.", "Pastikan mendapatkan BRN transportasi sebagai syarat visa."] },
     ]
   },
   {
-    section: "Tahap 4: Eksekusi Visa & Legalitas",
+    section: "Langkah 4: Visa & Legalitas (H-30 s/d H-14)",
     items: [
-      { id: 9, title: "Pengajuan Visa Umrah (via Provider)", badge: "Penting", tips: ["Di Indonesia wajib melalui PPIU (Provider Visa) resmi.", "Serahkan data Paspor, Foto, Tiket, dan BRN kepada Provider."] },
+      { id: 9, title: "Pengajuan Visa Umrah", badge: "Penting", tips: ["Di Indonesia wajib melalui PPIU (Provider Visa) resmi.", "Serahkan data Paspor, Foto, Tiket, dan BRN kepada Provider."] },
       { id: 10, title: "Registrasi Siskopatuh", badge: "Penting", tips: ["Pendaftaran dilakukan oleh Provider Visa ke sistem Kemenag RI.", "Wajib memiliki ID Card Siskopatuh untuk lolos imigrasi bandara."] },
       { id: 11, title: "Booking Slot Raudhah (Nusuk)", badge: "Penting", tips: ["Dilakukan via aplikasi Nusuk segera setelah visa terbit.", "Simpan screenshot jadwal untuk akses offline di masjid."] },
     ]
   },
   {
-    section: "Tahap 5: Keuangan & Koneksi",
+    section: "Langkah 5: Keuangan & Koneksi (H-14 s/d H-7)",
     items: [
       { id: 12, title: "Persiapan Keuangan & Kartu ATM/Kredit", badge: "Penting", tips: ["Bawa kartu Visa/Mastercard (GPN tidak bisa digunakan di Saudi).", "Aktifkan fitur transaksi luar negeri di m-banking."] },
       { id: 13, title: "Koneksi Internet di Saudi", badge: "Penting", tips: ["Pilih paket Roaming provider Indonesia, E-SIM, atau SIM Card STC/Zain lokal."] },
     ]
   },
   {
-    section: "Tahap 6: Perlengkapan Pribadi",
+    section: "Langkah 6: Perlengkapan Pribadi (H-7 s/d H-3)",
     items: [
-      { id: 14, title: "Perlengkapan Pakaian Pribadi", badge: "Penting", tips: ["Pakaian muslimah syar'i / kurta nyaman bahan katun.", "Sandal kokoh dan anti-slip."] },
+      { id: 14, title: "Perlengkapan Pakaian Pribadi", badge: "Penting", tips: ["Pakaian muslimah syar\u0027i / kurta nyaman bahan katun.", "Sandal kokoh dan anti-slip."] },
       { id: 15, title: "Perlengkapan Khusus Ibadah Umroh", badge: "Penting", tips: ["Pria: Kain Ihram & Sabuk Ihram. Kaus kaki tawaf bintik karet."] },
       { id: 16, title: "Barang Bawaan Pribadi", badge: "Penting", tips: ["Obat rutin, multivitamin, oralit, sunscreen, lip balm, kamera, dll."] },
     ]
   },
   {
-    section: "Tahap 7: Final Check",
+    section: "Langkah 7: Final Check (H-3 s/d Keberangkatan)",
     items: [
       { id: 17, title: "Final Check Dokumen", badge: "Penting", tips: ["Pastikan Paspor, Visa, Tiket, Voucher BRN, and ID Siskopatuh tercetak.", "Hadir di bandara 4 jam sebelum jadwal terbang."] },
     ]
