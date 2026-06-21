@@ -104,10 +104,10 @@ body { font-family:'Tajawal',system-ui,-apple-system,'Segoe UI',Arial,sans-serif
 }
 .content { position:relative; z-index:1; }
 
-.header { background:linear-gradient(to bottom, var(--header-from), var(--header-to)); position:relative; overflow:hidden; height: 320px; }
+.header { background: var(--emerald); position:relative; overflow:hidden; height: 360px; display: flex; align-items: center; justify-content: center; }
 .header-geo {
   position:absolute; inset:0; pointer-events:none; opacity: 0.07;
-  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' stroke='%23ffffff' stroke-width='1.5' fill='none' fill-rule='evenodd'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0L40 20L20 40L0 20L20 0Z' stroke='rgba(255,255,255,0.1)' stroke-width='1' fill='none'/%3E%3C/svg%3E"); opacity: 1;
   background-size: 60px 60px;
 }
 .header-inner { position:relative; z-index:1; padding:20px 20px 0; text-align:center; display: flex; flex-direction: column; align-items: center; width: 100%; }
@@ -224,7 +224,7 @@ body { font-family:'Tajawal',system-ui,-apple-system,'Segoe UI',Arial,sans-serif
 .reset-btn-yes { flex:1; padding:12px; border:none; border-radius:8px; background:linear-gradient(135deg,#8B3A0A,#C15A20); color:white; font-family:'Tajawal',sans-serif; font-size:.82rem; font-weight:700; cursor:pointer; min-height:44px; }
 .reset-btn-no  { flex:1; padding:12px; border:1px solid var(--border-dashed); border-radius:8px; background:transparent; color:var(--muted); font-family:'Tajawal',sans-serif; font-size:.82rem; cursor:pointer; min-height:44px; }
 
-.tab-bar-modern { display:flex; background:var(--slate-100); padding:6px; border-radius: 1rem; margin-bottom: 24px; box-shadow: inset 0 2px 4px 0 rgba(0,0,0,0.06); }
+.tab-bar-modern { display:flex; background: #f0f2f5; padding:6px; border-radius: 1.25rem; margin-bottom: 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
 .tab-btn-modern {
   flex:1; display: flex; align-items: center; justify-content: center; gap: 8px;
   padding: 14px 0; border: none; border-radius: 12px; font-family: 'Tajawal', sans-serif;
@@ -314,7 +314,7 @@ body { font-family:'Tajawal',system-ui,-apple-system,'Segoe UI',Arial,sans-serif
 
 .expand-arrow-modern { color: var(--gold-accent); transition: transform 0.3s; font-size: 1.2rem; }
 .expand-arrow-modern.open { transform: rotate(180deg); }
-.tips-panel { border-top:1px dashed var(--border-dashed); background:linear-gradient(135deg,var(--surface-tips-from),var(--surface-tips-to)); padding:11px 13px 13px; animation:slideDown .2s ease; }
+.tips-panel { border-top:1px dashed var(--border-dashed); background: #FFFCEB; padding:11px 13px 13px; animation:slideDown .2s ease; }
 .tips-link-btn { display:inline-flex; align-items:center; gap:6px; margin-top:10px; padding:11px 16px;
   background:var(--emerald); color:#fff; border-radius:10px; font-family:'Tajawal',system-ui,sans-serif;
   font-size:.88rem; font-weight:700; text-decoration:none; border:none; cursor:pointer;
@@ -528,6 +528,17 @@ body { font-family:'Tajawal',system-ui,-apple-system,'Segoe UI',Arial,sans-serif
 .faq-q-text { flex:1; font-size:.97rem; font-weight:700; color:var(--ink); line-height:1.4; }
 .faq-arrow { color:var(--gold); font-size:.85rem; flex-shrink:0; transition:transform .2s; margin-top:3px; }
 .faq-arrow.open { transform:rotate(180deg); }
-.faq-a { padding:0 14px 13px 46px; font-size:.92rem; color:var(--ink-soft); line-height:1.75; border-top:1px dashed var(--border-dashed); padding-top:11px; background:linear-gradient(135deg,var(--surface-tips-from),var(--surface-tips-to)); animation:slideDown .18s ease; }
+.faq-a { padding:0 14px 13px 46px; font-size:.92rem; color:var(--ink-soft); line-height:1.75; border-top:1px dashed var(--border-dashed); padding-top:11px; background: #FFFCEB; animation:slideDown .18s ease; }
 .faq-a strong { color:var(--emerald-text); }
 .faq-a .faq-note { display:flex; gap:7px; align-items:flex-start; margin-top:8px; padding:8px 10px; background:var(--surface-info); border-radius:8px; border-left:3px solid var(--info-box-border); font-size:.85rem; color:var(--info-box-text); line-height:1.6; }
+.tips-panel-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

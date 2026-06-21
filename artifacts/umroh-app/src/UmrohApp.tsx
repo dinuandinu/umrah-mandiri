@@ -113,6 +113,10 @@ export default function UmrohApp() {
               <KaabaSVG />
             </div>
             <h1>Umroh Mandiri</h1>
+            <div className="subtitle">
+              <span>PANDUAN LENGKAP</span>
+              <span className="subtitle-arabic">دليل العمرة المستقلة</span>
+            </div>
           </div>
         </div>
 
@@ -126,16 +130,32 @@ export default function UmrohApp() {
 
             <div className="main">
               <div className="search-bar-modern">
-                <input type="search" placeholder="Cari..." value={query} onChange={e => setQuery(e.target.value)} />
+                <div className="search-icon-modern">🔍</div><input type="search" className="search-input-modern" placeholder="Cari topik, doa, dokumen..." value={query} onChange={e => setQuery(e.target.value)} />
               </div>
 
               {tab === "persiapan" ? (
                 <div className="view-persiapan">
+                   <div className="info-banner-modern">
+                     <div className="icon">📝</div>
+                     <div className="text">
+                       <strong>Daftar Persiapan Umroh</strong>
+                       <span>Lengkapi dokumen dan persiapan fisik Anda sebelum keberangkatan. Ketuk item untuk melihat tips dan panduan detail.</span>
+                     </div>
+                   </div>
                    <div className="progress-card-modern">
-                     <span className="progress-title-modern">PROGRESS PERSIAPAN</span>
-                     <span className="progress-pct-modern">{pct}%</span>
+                     <div className="progress-header-modern">
+                       <span className="progress-title-modern">PROGRESS PERSIAPAN</span>
+                       <span className="progress-pct-modern">{pct}%</span>
+                     </div>
                      <div className="progress-track-modern">
                         <div className="progress-fill-modern" style={{ width: `${pct}%` }} />
+                     </div>
+                     <div className="progress-info-modern">
+                       <span>{doneCount} dari {allItems.length} item selesai</span>
+                       <span className="progress-status-modern">
+                         <span style={{ marginRight: 6 }}>✓</span>
+                         Tersimpan otomatis
+                       </span>
                      </div>
                    </div>
                    {prepData.map((sec, si) => (
@@ -155,6 +175,10 @@ export default function UmrohApp() {
                            </div>
                            {openPrep === item.id && (
                              <div className="tips-panel">
+                               <div className="tips-panel-title">
+                                 <span>💡</span>
+                                 <span>TIPS & CARA MENDAPATKAN</span>
+                               </div>
                                <ul className="tip-list">{item.tips.map((t, i) => <li key={i}>{highlight(t)}</li>)}</ul>
                              </div>
                            )}
@@ -165,6 +189,13 @@ export default function UmrohApp() {
                 </div>
               ) : (
                 <div className="view-tutorial">
+                   <div className="info-banner-modern">
+                     <div className="icon">🕌</div>
+                     <div className="text">
+                       <strong>Urutan Ibadah Umroh</strong>
+                       <span>Ikuti langkah-langkah berikut secara berurutan. Ketuk kartu untuk detail, doa, dan panduan lengkap.</span>
+                     </div>
+                   </div>
                    {tutorialData.map((item, idx) => (
                      <div key={idx} className="step-card-modern">
                        <div className="step-header-modern" onClick={() => toggleStep(idx)}>
