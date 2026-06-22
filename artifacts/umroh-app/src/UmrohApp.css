@@ -310,8 +310,8 @@ body { font-family:'Tajawal',system-ui,-apple-system,'Segoe UI',Arial,sans-serif
 .check-right-modern { display: flex; align-items: center; gap: 14px; flex-shrink: 0; margin-left: 12px; }
 .badge-modern { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 12px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; min-width: 70px; height: 24px; border: none; }
 .badge-modern.Wajib { background: #FFE4E6; color: #BE123C; box-shadow: 0 0 10px rgba(190, 18, 60, 0.05); }
-.badge-modern.opsional { background: #F0F9FF; color: #0284C7; }
-.badge-modern.rekomendasi { background: #DCFCE7; color: #15803D; box-shadow: 0 0 10px rgba(21, 128, 61, 0.05); }
+.badge-modern.Opsional { background: #F0F9FF; color: #0284C7; }
+.badge-modern.Rekomendasi { background: #DCFCE7; color: #15803D; box-shadow: 0 0 10px rgba(21, 128, 61, 0.05); }
 
 .expand-arrow-modern { color: var(--gold-accent); transition: transform 0.3s; font-size: 1.2rem; }
 .expand-arrow-modern.open { transform: rotate(180deg); }
@@ -548,8 +548,8 @@ body { font-family:'Tajawal',system-ui,-apple-system,'Segoe UI',Arial,sans-serif
 body.dark .checkbox-modern { background: #1a1a1a; border-color: #404040; }
 body.dark .check-card-modern.done .checkbox-modern { background: #34D399; border-color: #34D399; box-shadow: 0 0 12px rgba(52, 211, 153, 0.25); }
 body.dark .badge-modern.Wajib { background: #881337; color: #ffe4e6; border: none; }
-body.dark .badge-modern.rekomendasi { background: #065f46; color: #dcfce7; border: none; }
-body.dark .badge-modern.opsional { background: #1e3a8a; color: #93c5fd; border-color: #1e40af; }
+body.dark .badge-modern.Rekomendasi { background: #065f46; color: #dcfce7; border: none; }
+body.dark .badge-modern.Opsional { background: #1e3a8a; color: #93c5fd; border-color: #1e40af; }
 
 body.dark .tips-panel { background: #1a1a15 !important; border-top-color: rgba(201,168,76,0.1); }
 body.dark .tips-panel-title { color: var(--gold-light); }
