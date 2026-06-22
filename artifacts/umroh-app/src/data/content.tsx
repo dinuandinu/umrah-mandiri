@@ -478,9 +478,10 @@ export const prepData: PrepSection[] = [
   {
     section: "Langkah 7: Final Check (H-3 s/d Keberangkatan)",
     items: [
-      { id: 17, title: "Final Check Dokumen", badge: "Wajib", tips: [
-        "Cetak fisik: Paspor, Visa, Tiket, Voucher BRN, dan ID Siskopatuh.",
-        "Hadir di bandara 4 jam lebih awal dari jadwal keberangkatan."
+      { id: 17, title: "Pemeriksaan Akhir & Keberangkatan", badge: "Wajib", tips: [
+        "Cetak Fisik: Bawa hardcopy Paspor Asli, Visa Umrah (2 lembar), Tiket Pesawat, Voucher Hotel, dan Buku Kuning (ICV).",
+        "Kesiapan Digital: Pastikan aplikasi Nusuk (Izin Raudhah) dan SatuSehat (Vaksin & Health Pass) sudah aktif.",
+        "Bandara: Hadir 4-5 jam sebelum terbang. Cek Terminal 2F Soetta. Kalungkan ID Card Siskopatuh agar mudah dikenali."
       ] },
     ]
   }
