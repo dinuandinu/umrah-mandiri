@@ -169,9 +169,11 @@ export default function UmrohApp() {
                              </div>
                              <div className="check-main-modern">
                                <div className="check-title-modern">{highlight(item.title)}</div>
-                               {item.badge && <span className={`badge-modern ${item.badge}`}>{item.badge}</span>}
                              </div>
-                             <span className={`expand-arrow-modern ${openPrep === item.id ? "open" : ""}`}>▾</span>
+                             <div className="check-right-modern">
+                               {item.badge && <span className={`badge-modern ${item.badge}`}>{item.badge}</span>}
+                               <span className={`expand-arrow-modern ${openPrep === item.id ? "open" : ""}`}>▾</span>
+                             </div>
                            </div>
                            {openPrep === item.id && (
                              <div className="tips-panel">
