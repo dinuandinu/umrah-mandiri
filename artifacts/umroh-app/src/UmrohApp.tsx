@@ -181,7 +181,10 @@ export default function UmrohApp() {
                                  <span>💡</span>
                                  <span>TIPS & CARA MENDAPATKAN</span>
                                </div>
-                               <ul className="tip-list">{item.tips.map((t, i) => <li key={i}>{highlight(t)}</li>)}</ul>
+                               <ul className="tip-list">{item.tips.map((t, i) => {
+                                 const isManual = /^[0-9]|^[\u2460-\u2473]|^\(|^\[|^📌|^⚠️|^🆕|^✅|^🔴|^🟢|^════/.test(t.trim());
+                                 return <li key={i} className={isManual ? "no-bullet" : ""}>{highlight(t)}</li>;
+                               })}</ul>
                              </div>
                            )}
                          </div>
