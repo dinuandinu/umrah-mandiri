@@ -436,20 +436,24 @@ export const prepData: PrepSection[] = [
     section: "Langkah 3: Logistik Mandiri (H-45 s/d H-30)",
     items: [
       { id: 6, title: "Tiket Pesawat PP (Confirmed)", badge: "Wajib", tips: [
-        "Cari dan pesan tiket pesawat secara mandiri (via Web Maskapai/OTA).",
-        "Wajib berstatus Confirmed (Pulang-Pergi). Simpan E-ticket dalam format PDF.",
-        "Pastikan nama di tiket sesuai dengan Paspor (minimal 2 kata)."
+        "1. Cari dan pesan tiket pesawat secara mandiri (via Web Maskapai/OTA seperti Traveloka, Trip.com, atau bandingkan harga di Skyscanner/Google Flights).",
+        "2. ⏰ Timing: idealnya beli 3-6 bulan sebelum keberangkatan untuk harga terbaik. TAPI jangan terlalu terburu-buru — pastikan rencana visa & tanggal perjalanan sudah cukup jelas dulu.",
+        "3. Wajib berstatus Confirmed (Pulang-Pergi). Simpan E-ticket dalam format PDF.",
+        "4. Pastikan nama di tiket sesuai dengan Paspor (minimal 2 kata).",
+        "5. Tentukan bandara kedatangan/kepulangan: Jeddah (King Abdul Aziz) atau Madinah (Mohammad Bin Abdulaziz). Bisa multi-city untuk efisiensi rute.",
+        "6. Cek kebijakan bagasi, terutama untuk maskapai LCC — pastikan sudah termasuk bagasi, karena jamaah umroh biasanya bawa banyak barang saat pulang.",
+        "7. Jika mendarat di Jeddah & berencana naik Kereta Cepat Haramain, pastikan turun di Terminal 1 (ada 3 terminal aktif yang berjauhan).",
+        "✈️ STRATEGI HEMAT: PENERBANGAN TRANSIT",
+        "8. Kenapa transit lebih murah? Direct Jakarta-Jeddah: Rp 15-17jt (normal). Transit: Rp 11-14jt (normal), bisa Rp 7-9jt (promo). Rute via KL/Singapura sering JAUH lebih murah.",
+        "9. Rute transit populer: Via Kuala Lumpur (KUL) — hub AirAsia, Via Doha (Qatar Airways), Via Dubai (Emirates), Via Istanbul (Turkish Airlines).",
+        "10. ⚠️ HAL KRUSIAL — Connecting Flight vs Beli Tiket Terpisah:",
+        "[CONNECTING FLIGHT — 1 booking, RECOMMENDED]: Beli dalam 1 tiket, tidak perlu keluar imigrasi/ambil bagasi saat transit. Jika delay, maskapai wajib tanggung jawab.",
+        "[BELI TIKET TERPISAH — 2 booking beda, BERISIKO]: HARUS keluar imigrasi & ambil bagasi di transit. Jika delay, TIDAK ADA proteksi maskapai.",
+        "11. 📌 Tips memilih transit yang aman: Cari MCT min. 2 jam, cek bagasi through-checked, pantau promo rute Indonesia-Malaysia.",
+        "12. 💡 Pertimbangan waktu tempuh: transit bisa 12-18 jam vs direct 9-10 jam — pikirkan kondisi fisik jika bawa lansia/anak."
       ] },
-      { id: 7, title: "Booking Hotel Madinah & Makkah", badge: "Wajib", tips: [
-        "Pesan hotel pilihan Anda melalui platform seperti Agoda atau Booking.com.",
-        "Simpan bukti reservasi (Voucher Hotel) yang mencantumkan detail jemaah.",
-        "Pilih hotel yang memiliki lisensi Umrah agar data bisa di-inject ke sistem Saudi."
-      ] },
-      { id: 8, title: "Transportasi Lengkap (Closed Loop)", badge: "Wajib", tips: [
-        "Siapkan rencana transportasi darat lengkap: Bandara -> Madinah -> Mekkah -> Bandara.",
-        "Cari penyedia jasa transportasi (mobil privat/bus) yang bisa memberikan bukti booking resmi.",
-        "Bukti ini akan digunakan Provider Visa untuk memproses nomor BRN Transport Anda."
-      ] },
+      { id: 7, title: "Booking Hotel Madinah & Makkah", badge: "Wajib", tips: ["1. Pesan hotel via OTA (Agoda/Trip.com/Booking.com).","2. ⏰ Timing: booking minimal 1 bulan (4 minggu) sebelum keberangkatan — proses approval adalah bottleneck terlama.","3. Pilih tipe kamar prepaid/non-refundable, BUKAN pay at hotel — approval lebih cepat untuk kamar lunas.","4. Pastikan tanggal check-in/check-out SINKRON dengan tiket pesawat.","═══════════════════════════════════════════════","OPSI A — HOTEL SUDAH TERDAFTAR NUSUK MASAR (Lebih aman & simpel)","✅ Kelebihan: Hotel sudah biasa proses approval, lebih cepat & responsif. Cocok untuk pemula.","📋 Cara cek status terdaftar: Cek di mt.gov.sa -> Special Accommodation Facilities -> gunakan License Number.","⚠️ Trade-off: Pilihan hotel lebih terbatas, kadang harga lebih tinggi.","═══════════════════════════════════════════════","OPSI B — HOTEL BELUM TERDAFTAR NUSUK MASAR (Effort ekstra)","✅ Kelebihan: Pilihan hotel jauh lebih banyak & variatif. Bisa lebih murah.","⚠️ PROSES TAMBAHAN yang HARUS dilakukan sendiri:","1. Pastikan hotel berlisensi GANDA (Civil Defense + Saudi Tourism Authority).","2. Setelah booking, HARUS menghubungi hotel sendiri (WA/Email) untuk minta approval Agreement.","3. Hubungi jam kerja Saudi: 13:00-21:00 WIB. Gunakan bahasa formal.","🔴 Risiko terbesar: Jika hotel TIDAK MERESPONS, visa TIDAK BISA terbit meski sudah bayar lunas.","═══════════════════════════════════════════════","5. Simpan bukti reservasi (HCN/Voucher Hotel) — ingat: harus lanjut sampai hotel approve Agreement di Nusuk Masar."] },
+      { id: 8, title: "Transportasi Lengkap (Closed Loop)", badge: "Wajib", tips: ["1. Siapkan bukti booking untuk 3 RUTE WAJIB: Rute 1 (Bandara -> Hotel), Rute 2 (Makkah <-> Madinah), Rute 3 (Hotel -> Bandara).","2. Pilihan moda: Kereta Cepat HHR, Taxi Service, atau Bus (khusus rute 2 & 3, TIDAK untuk rute 1/kedatangan).","3. ⚠️ WAJIB: provider transport HARUS terdaftar di Nusuk Masar. Uber/Grab/Careem TIDAK DITERIMA sebagai bukti visa.","4. Setiap bukti booking harus mencantumkan NAMA penumpang yang sesuai dokumen visa.","5. 📋 BRN Transport (Booking Reference Number) — solusi darurat:","Apa itu: kode booking TANPA melalui approval lengkap — dipakai HANYA untuk kasus khusus.","Kapan BRN dipakai: Approval macet, Itinerary multi-kota tidak match, Pengajuan grup beda flight, Hotel menolak approval, Ketidaksesuaian jumlah tamu.","Biaya tambahan: SAR 9-18/hari ATAU fixed SAR 60-80/orang.","⚠️ Tidak semua provider visa menyediakan ini — tanya langsung ke provider Anda.","6. Pastikan Tafweej/penjemputan bandara sudah disiapkan minimal 1 hari sebelum kedatangan."] },
     ]
   },
   {
