@@ -387,37 +387,41 @@ export const prepData: PrepSection[] = [
     ]
   },
   {
-    section: "Langkah 3: Tiket & Paket Logistik (BRN) (H-45 s/d H-30)",
+    section: "Langkah 3: Logistik Mandiri (H-45 s/d H-30)",
     items: [
       { id: 6, title: "Tiket Pesawat PP (Confirmed)", badge: "Wajib", tips: [
-        "Pesan tiket pulang-pergi yang sudah terkonfirmasi.",
-        "E-ticket wajib diserahkan ke Provider Visa (PPIU).",
-        "Pastikan nama di tiket sesuai dengan paspor (min. 2 kata)."
+        "Cari dan pesan tiket pesawat secara mandiri (via Web Maskapai/OTA).",
+        "Wajib berstatus Confirmed (Pulang-Pergi). Simpan E-ticket dalam format PDF.",
+        "Pastikan nama di tiket sesuai dengan Paspor (minimal 2 kata)."
       ] },
       { id: 7, title: "Booking Hotel Madinah & Makkah", badge: "Wajib", tips: [
-        "Wajib mendapatkan nomor BRN (Booking Reference Number) dari hotel berlisensi.",
-        "Gunakan platform yang terintegrasi atau biro PPIU untuk validasi BRN."
+        "Pesan hotel pilihan Anda melalui platform seperti Agoda atau Booking.com.",
+        "Simpan bukti reservasi (Voucher Hotel) yang mencantumkan detail jemaah.",
+        "Pilih hotel yang memiliki lisensi Umrah agar data bisa di-inject ke sistem Saudi."
       ] },
-      { id: 8, title: "Transportasi Lengkap", badge: "Wajib", tips: [
-        "Pesan paket transportasi darat Airport-Hotel-Intercity.",
-        "Pastikan mendapatkan BRN transportasi sebagai syarat visa."
+      { id: 8, title: "Transportasi Lengkap (Closed Loop)", badge: "Wajib", tips: [
+        "Siapkan rencana transportasi darat lengkap: Bandara -> Madinah -> Mekkah -> Bandara.",
+        "Cari penyedia jasa transportasi (mobil privat/bus) yang bisa memberikan bukti booking resmi.",
+        "Bukti ini akan digunakan Provider Visa untuk memproses nomor BRN Transport Anda."
       ] },
     ]
   },
   {
-    section: "Langkah 4: Visa & Legalitas (H-30 s/d H-14)",
+    section: "Langkah 4: Eksekusi Visa & Legalitas (H-30 s/d H-14)",
     items: [
-      { id: 9, title: "Pengajuan Visa Umrah", badge: "Wajib", tips: [
-        "Hubungi PPIU resmi. Serahkan Paspor, Foto, Tiket PP, dan nomor BRN.",
-        "Proses biasanya memakan waktu 3–7 hari kerja."
+      { id: 9, title: "Pengajuan Visa Umrah (via Provider)", badge: "Wajib", tips: [
+        "Kirimkan E-ticket, Voucher Hotel, dan Rencana Transportasi (Langkah 3) ke Provider Visa.",
+        "Provider akan melakukan proses Inject data ke sistem Nusuk Masar untuk menerbitkan nomor BRN dan MOFA.",
+        "Biaya pengajuan sudah mencakup asuransi kesehatan darurat Saudi dengan limit SAR 100.000."
       ] },
-      { id: 10, title: "Registrasi Siskopatuh", badge: "Wajib", tips: [
-        "Provider akan mendaftarkan Anda ke sistem SISKOPATUH Kemenag RI.",
-        "Pastikan Anda menerima ID Card Siskopatuh resmi untuk melewati Imigrasi."
+      { id: 10, title: "Registrasi Siskopatuh & ID Card", badge: "Wajib", tips: [
+        "Provider akan mendaftarkan data keberangkatan Anda ke sistem Siskopatuh Kemenag RI.",
+        "Wajib meminta ID Card Siskopatuh (fisik/digital) untuk ditunjukkan ke petugas di bandara."
       ] },
-      { id: 11, title: "Booking Slot Raudhah (Nusuk)", badge: "Wajib", tips: [
-        "Login aplikasi Nusuk segera setelah visa terbit untuk pilih jadwal.",
-        "Simpan screenshot barcode permit; sinyal di dalam masjid sering tidak stabil."
+      { id: 11, title: "Booking Slot Raudhah (Aplikasi Nusuk)", badge: "Wajib", tips: [
+        "Registrasi akun di aplikasi Nusuk menggunakan nomor Paspor dan nomor Visa yang sudah terbit.",
+        "Pilih jadwal Rawdah Permit dan simpan bukti QR Code di galeri HP (penting untuk akses offline).",
+        "Aturan Saudi: Booking Raudhah hanya diperbolehkan satu kali dalam setiap 30 hari."
       ] },
     ]
   },
@@ -439,7 +443,7 @@ export const prepData: PrepSection[] = [
     section: "Langkah 6: Perlengkapan Pribadi (H-7 s/d H-3)",
     items: [
       { id: 14, title: "Perlengkapan Pakaian Pribadi", badge: "Wajib", tips: [
-        "Gamis longgar, celana dalaman gamis, dan pakaian nyaman bahan katun.",
+        "Gamis longgar, celana dalaman gamis, and pakaian nyaman bahan katun.",
         "Sandal kokoh dan anti-slip untuk berjalan jauh."
       ] },
       { id: 15, title: "Perlengkapan Khusus Ibadah Umroh", badge: "Wajib", tips: [
