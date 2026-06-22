@@ -429,13 +429,22 @@ export const prepData: PrepSection[] = [
     section: "Langkah 5: Keuangan & Koneksi (H-14 s/d H-7)",
     items: [
       { id: 12, title: "Persiapan Keuangan & Kartu ATM/Kredit", badge: "Wajib", tips: [
-        "Wajib membawa kartu Visa/Mastercard (GPN tidak bisa digunakan di Saudi).",
-        "Aktifkan fitur transaksi luar negeri di m-banking sebelum berangkat.",
-        "Tukar Riyal (SAR) secukupnya untuk tips atau belanja di warung kecil."
+        "Wajib membawa kartu ATM/Debit berlogo Visa atau Mastercard. Kartu GPN tidak bisa digunakan di Saudi.",
+        "Aktifkan fitur Transaksi Luar Negeri dan Debit Online di aplikasi m-banking Anda sebelum berangkat.",
+        "Tukar Rupiah ke Riyal (SAR) secukupnya (SAR 200-500) di Indonesia untuk kebutuhan darurat saat mendarat.",
+        "Gunakan bank digital (seperti Jago atau Jenius) untuk mendapatkan kurs kompetitif dan biaya tarik tunai rendah."
       ] },
       { id: 13, title: "Koneksi Internet di Saudi", badge: "Wajib", tips: [
-        "Beli paket roaming provider lokal atau E-SIM (Airalo/Holafly).",
-        "Alternatif: beli kartu SIM lokal (STC/Zain) setibanya di bandara Jeddah."
+        "E-SIM: Paling praktis, beli via Airalo atau Holafly dari Indonesia dan aktifkan otomatis saat mendarat.",
+        "Kartu SIM Lokal: Beli kartu STC, Zain, atau Mobily di bandara Saudi (SAR 80-120) untuk harga termurah.",
+        "Roaming: Aktifkan paket Umrah dari provider Indonesia jika ingin tetap menggunakan nomor lama.",
+        "WiFi Masjid: Tersedia WiFi Haram-Guest di Masjidil Haram/Nabawi sebagai cadangan (butuh nomor Saudi)."
+      ] },
+      { id: 29, title: "Asuransi Perjalanan Tambahan", badge: "Opsional", tips: [
+        "Perlindungan Transit: Menanggung risiko saat berada di negara transit (Dubai, Doha, KL, dll).",
+        "Pembatalan Perjalanan: Ganti rugi tiket/hotel jika batal berangkat karena sakit serius (tidak dicover asuransi visa).",
+        "Kehilangan Bagasi \u0026 Paspor: Memberikan penggantian jika koper hilang di hotel atau biaya urus paspor baru.",
+        "Sangat direkomendasikan bagi jemaah mandiri untuk menutup celah proteksi asuransi standar."
       ] },
     ]
   },
@@ -443,16 +452,26 @@ export const prepData: PrepSection[] = [
     section: "Langkah 6: Perlengkapan Pribadi (H-7 s/d H-3)",
     items: [
       { id: 14, title: "Perlengkapan Pakaian Pribadi", badge: "Wajib", tips: [
-        "Gamis longgar, celana dalaman gamis, and pakaian nyaman bahan katun.",
-        "Sandal kokoh dan anti-slip untuk berjalan jauh."
+        "Wanita: 4-5 set gamis bahan ringan (katun/rayon) yang menyerap keringat.",
+        "Pria: 3-4 set baju koko/kurta dan celana kain yang nyaman untuk aktivitas non-ihram.",
+        "Bawa celana dalaman tipis (legging) untuk kenyamanan berjalan jauh."
       ] },
       { id: 15, title: "Perlengkapan Khusus Ibadah Umroh", badge: "Wajib", tips: [
-        "Pria: Kain Ihram & Sabuk Ihram. Kaus kaki tawaf bintik karet.",
-        "Wanita: Mukena atasan/gober dan sarung tangan ihram."
+        "Pria: Minimal 2 set kain ihram (antisipasi najis) dan sabuk ihram tanpa jahitan.",
+        "Wanita: Mukena atasan/gober yang praktis dan kaos kaki tawaf anti-slip.",
+        "Footwear: Sandal jepit atau sepatu sandal empuk (Pria: tidak boleh menutup mata kaki saat ihram).",
+        "Sediakan Tas Serut Kecil untuk membawa sandal masuk ke dalam masjid."
       ] },
-      { id: 16, title: "Barang Bawaan Pribadi", badge: "Wajib", tips: [
-        "Obat rutin, multivitamin, oralit, masker N95, sunscreen, dan lip balm.",
-        "Kamera, powerbank, dan colokan kaki tiga (tipe G)."
+      { id: 30, title: "Perlengkapan Selama di Arab Saudi", badge: "Opsional", tips: [
+        "Logistik Makan: Lauk kering (rendang/abon) dan Magic Com Mini (max 200W) untuk hemat biaya.",
+        "Kebersihan: Deterjen sachet dan gantungan baju (hanger) kawat untuk mencuci manual di hotel.",
+        "Sesuaikan dengan Budget: Memasak sendiri bisa menghemat budget makan hingga 70%.",
+        "Sesuaikan dengan Hotel: Pastikan daya listrik hotel mencukupi jika membawa alat elektronik tambahan."
+      ] },
+      { id: 16, title: "Gadget & Kebutuhan Medis", badge: "Wajib", tips: [
+        "Teknis: Colokan Kaki Tiga (Tipe G), Powerbank (max 20.000mAh), dan Botol Spray untuk wudhu darurat.",
+        "Kesehatan: Obat rutin/maag/diare, plester luka, dan masker N95.",
+        "Skincare: Sunscreen SPF 50+, lip balm (mencegah bibir pecah), dan pelembap kulit."
       ] },
     ]
   },
