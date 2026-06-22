@@ -355,34 +355,80 @@ export const prepData: PrepSection[] = [
         "Siapkan foto digital 4x6 latar belakang putih (fokus wajah 80%) untuk pengajuan Visa."
       ] },
       { id: 2, title: "Paspor Elektronik (E-Passport)", badge: "Wajib", tips: [
-        "Daftar via aplikasi M-Paspor. Pilih jenis Paspor Biasa Elektronik.",
-        "Biaya (PP 45/2024): Rp650.000 (5 thn) atau Rp950.000 (10 thn).",
-        "Chip E-Paspor mempercepat proses sinkronisasi data di sistem Nusuk Masar Saudi.",
-        "Gunakan fasilitas Autogate di bandara untuk menghindari antrean panjang imigrasi manual.",
-        "Pastikan masa berlaku minimal 6 bulan saat tanggal keberangkatan."
+        "📌 Sebelum mulai: riset dulu syarat & ketersediaan kuota kantor imigrasi tujuan (beda kantor bisa beda kuota/jadwal)",
+        "[SUDAH PUNYA PASPOR — PERPANJANGAN]",
+        "1. Cek kondisi fisik paspor lama: tidak ada coretan, sobek, atau halaman rusak/tidak terbaca. Paspor dengan kondisi ini bisa dianggap rusak dan permohonan perpanjangan DITOLAK.",
+        "2. Cek sisa masa berlaku min. 8 bulan dari tanggal keberangkatan, nama min. 2 kata -> kalau kurang, lanjut proses perpanjangan",
+        "[BELUM PUNYA / BUAT BARU]",
+        "3. Siapkan dokumen pendukung: e-KTP + KK (versi terbaru, ber-barcode), Salah satu: Akta Kelahiran / Buku Nikah / Ijazah. Pastikan nama, tempat & tanggal lahir identik di semua dokumen.",
+        "4. Daftar via aplikasi M-Paspor -> pilih Paspor Biasa Elektronik -> Pilih kantor imigrasi (bebas) -> Pilih jadwal kedatangan sesuai kuota tersedia.",
+        "5. ⏰ KODE BILLING KEDALUWARSA: Bayar via kode billing (Bank/ATM/Marketplace/Pos) maks. 2 jam setelah pendaftaran. Lewat 2 jam -> kode kedaluwarsa, harus daftar ulang dari awal.",
+        "6. Datang ke kantor imigrasi sesuai jadwal: foto, sidik jari, wawancara -> Jawab jujur & konsisten dengan dokumen yang diupload.",
+        "7. 💸 BIAYA PNBP TIDAK DAPAT DIKEMBALIKAN jika DITOLAK saat verifikasi/wawancara (soal hasil, beda dari poin 5), karena: a) Paspor lama rusak/coretan, b) Info tidak jujur, c) Indikasi pemalsuan.",
+        "🟢 Catatan: kalau ditolak karena dokumen KURANG LENGKAP saja, masih bisa dilengkapi/reschedule, biaya TETAP BERLAKU untuk proses ulang (tidak perlu bayar lagi).",
+        "8. Biaya (PP 45/2024): Rp650.000 (5 thn) atau Rp950.000 (10 thn) + Rp1.000.000 jika pilih layanan percepatan (selesai hari yang sama).",
+        "9. Estimasi proses: 3-5 hari kerja setelah foto & wawancara.",
+        "10. Setelah jadi: gunakan Autogate di bandara untuk imigrasi lebih cepat (cek syarat usia minimal)."
       ] },
     ]
   },
   {
     section: "Langkah 2: Persyaratan Kesehatan (H-60 s/d H-45)",
     items: [
-      { id: 3, title: "Vaksin Meningitis (Vaksin A)", badge: "Wajib", tips: [
-        "Daftar via aplikasi SatuSehat (menu Vaksin Luar Negeri) atau langsung ke KKP terdekat.",
-        "Lakukan vaksinasi minimal 14 hari sebelum terbang agar antibodi terbentuk sempurna.",
-        "Pastikan mendapat Buku Kuning (ICV) fisik atau digital yang terverifikasi di SatuSehat."
+      { id: 3, title: "Vaksin Meningitis", badge: "Wajib", tips: [
+        "1. Cek riwayat vaksin meningitis sebelumnya (kalau pernah vaksin): Jenis Konjugat (berlaku 5 tahun) atau Jenis Polisakarida (berlaku 2-3 tahun). Jika sudah lewat, wajib vaksin ulang.",
+        "2. Daftar via aplikasi SatuSehat (menu Vaksin Luar Negeri) atau langsung ke KKP terdekat. Alternatif: SINKARKES (sinkarkes.kemkes.go.id) jika SatuSehat penuh/bermasalah.",
+        "3. Lakukan vaksinasi minimal 14 hari sebelum terbang agar antibodi terbentuk sempurna.",
+        "4. Estimasi biaya: KKP/Puskesmas Rp 200rb-350rb, RS swasta Rp 400rb-700rb (umumnya sudah termasuk biaya ICV).",
+        "5. Pastikan mendapat Buku Kuning (ICV) fisik atau digital yang terverifikasi di SatuSehat.",
+        "[KONDISIONAL — Jika membawa anak]",
+        "6. Anak usia 2 tahun ke atas wajib vaksin meningitis sama seperti dewasa. Untuk bayi di bawah 2 tahun, ada ketentuan khusus — konsultasikan langsung ke dokter anak atau KKP.",
+        "7. ICV anak diterbitkan terpisah (atas nama masing-masing anak, bukan digabung dengan ICV orang tua)."
       ] },
-      { id: 4, title: "Vaksin Polio IPV (Vaksin B)", badge: "Wajib", tips: [
-        "Wajib bagi WNI mulai 2025. Mintalah dosis IPV di Puskesmas atau RS Pemerintah.",
-        "Sertakan bukti vaksinasi dalam catatan kesehatan internasional Anda."
+      { id: 4, title: "VAKSIN POLIO (IPV)", badge: "Wajib", tips: [
+        "1. Wajib bagi WNI mulai 2025. Mintalah dosis IPV di Puskesmas, KKP, atau RS Pemerintah.",
+        "2. Lakukan vaksinasi 2-4 minggu sebelum keberangkatan (lebih panjang dari Meningitis yang cukup 14 hari — jangan disuntik di hari yang sama/terlalu mepet).",
+        "3. Sertakan bukti vaksinasi dalam catatan kesehatan internasional Anda (ICV/e-ICV — bisa digabung dalam 1 sertifikat dengan Meningitis kalau disuntik di fasilitas yang sama).",
+        "[KONDISIONAL — Jika membawa anak]",
+        "4. Cek dulu riwayat imunisasi polio rutin anak (biasanya sudah dapat sejak bayi: usia 2, 3, 4 bulan + booster 18 bulan via Posyandu/Puskesmas):",
+        "- Jika imunisasi rutin SUDAH LENGKAP -> konsultasi ke dokter/KKP, kemungkinan tidak perlu dosis tambahan khusus umroh",
+        "- Jika BELUM lengkap atau belum pernah -> wajib lengkapi dulu sesuai jadwal IDAI sebelum bisa dapat sertifikat untuk umroh",
+        "⚠️ Catatan: tidak ada angka usia minimal spesifik yang seragam dari sumber resmi untuk vaksin polio khusus umroh anak — selalu konsultasi langsung ke KKP/dokter anak."
       ] },
-      { id: 5, title: "Vaksin Influenza/Pneumonia (Vaksin C)", badge: "Rekomendasi", tips: [
+      { id: 5, title: "Vaksin Influenza & Pneumonia", badge: "Rekomendasi", tips: [
         "Sangat disarankan untuk mencegah Batuk Makkah akibat perubahan cuaca ekstrem dan debu.",
-        "Sangat membantu menjaga kondisi tubuh agar tetap fit selama rangkaian ibadah."
+        "Sangat membantu menjaga kondisi tubuh agar tetap fit selama rangkaian ibadah.",
+        "[INFLUENZA — untuk semua usia]",
+        "- Berikan minimal 2 minggu sebelum keberangkatan",
+        "- Perlu diulang tiap tahun (virus bermutasi setiap musim)",
+        "- Estimasi biaya: Rp 280rb - 600rb",
+        "[PNEUMONIA (PNEUMOKOKUS) — kondisional]",
+        "⚠️ Hanya direkomendasikan untuk: Usia 50 tahun ke atas, ATAU Punya komorbid (diabetes, jantung, paru-paru kronis)",
+        "- Berikan minimal 2 minggu sebelum keberangkatan",
+        "- Tidak perlu diulang tiap tahun (masa lindung lebih panjang)",
+        "- Estimasi biaya: Rp 800rb - 1,5jt (lebih mahal dari Influenza)"
       ] },
       { id: 28, title: "Jaga Kesehatan Pribadi", badge: "Rekomendasi", tips: [
-        "Lakukan Medical Check-Up dasar (tensi, gula darah, jantung) terutama bagi penderita penyakit rutin.",
-        "Mulai rutin jalan kaki 30-45 menit setiap pagi karena Tawaf+Sa\u0027i menempuh jarak 5-7 KM.",
-        "Konsumsi Vitamin C/D dan cukupi hidrasi (minum 2L air/hari) untuk imunitas pra-keberangkatan."
+        "1. Lakukan Medical Check-Up dasar (tensi, gula darah, jantung) terutama bagi penderita penyakit rutin.",
+        "2. Mulai rutin jalan kaki 30-45 menit setiap pagi. Catatan: Tawaf+Sa\u0027i saja menempuh 5-7 KM, tapi total jalan kaki harian (hotel <-> masjid) bisa mencapai 10-15 KM/hari.",
+        "3. Konsumsi Vitamin C/D dan cukupi hidrasi (minum 2-3L air/hari) untuk imunitas pra-keberangkatan.",
+        "[KONDISIONAL — Jika membawa anak]",
+        "4. Medical check-up khusus anak ke dokter anak, pastikan imunisasi dasar (termasuk meningitis & polio) lengkap.",
+        "5. Usia ideal untuk anak: 5-7 tahun lebih mudah diajak. Bayi/balita <2 tahun lebih rentan terhadap perubahan cuaca & perjalanan panjang.",
+        "6. Latih anak jalan kaki lebih sering dari rumah untuk membangun daya tahan tubuh menghadapi rute Tawaf+Sa\u0027i.",
+        "7. Siapkan stroller ringan/baby carrier untuk balita — sangat membantu mobilitas di area Masjidil Haram & Masjid Nabawi yang luas.",
+        "8. 🆕 Manfaatkan gelang pelacak anak GRATIS yang disediakan Otoritas Masjidil Haram.",
+        "9. Pertimbangkan waktu keberangkatan: hindari musim panas ekstrem (Juni-Agustus) jika membawa anak — pilih Oktober-Desember atau Februari-Maret."
+      ] },
+      { id: 33, title: "Kesehatan Wanita", badge: "Rekomendasi", tips: [
+        "Khusus jamaah wanita yang belum menopause",
+        "1. Hitung perkiraan tanggal haid berikutnya berdasarkan siklus bulanan Anda. Jika berpotensi bertepatan with tanggal umroh, konsultasikan ke dokter (idealnya dokter kandungan) MINIMAL 1 BULAN sebelum keberangkatan.",
+        "2. Obat penunda haid yang umum digunakan: Primolut N (norethisterone) atau lanjut pil KB kombinasi aktif (tanpa pil plasebo) bagi yang sudah rutin pakai. Keduanya obat RESEP — wajib konsultasi dokter, bukan beli & minum sendiri.",
+        "3. ⚠️ Catat dari sekarang: obat harus mulai diminum 3-7 hari SEBELUM tanggal haid biasanya datang (bukan setelah haid keluar). Minta dokter bantu hitung jadwalnya sesuai tanggal keberangkatan Anda.",
+        "4. Maksimal pemakaian: tidak lebih dari 14 hari berturut-turut tanpa pengawasan dokter.",
+        "5. 📦 Action di hari packing (Langkah 7): bawa obat dalam jumlah cukup untuk SELURUH durasi umroh + buffer — tidak semua obat ini mudah ditemukan di apotek Saudi.",
+        "6. Kenali efek samping yang mungkin muncul (mual, sakit kepala, nyeri payudara, perubahan mood) — jika mengkhawatirkan, segera konsultasi dokter.",
+        "📌 Catatan: menunda haid adalah pilihan personal, bukan kewajiban. Bagi yang tidak menunda, tetap bisa berangkat — hanya beberapa ritual tertentu (tawaf, sa\u0027i) perlu disesuaikan jadwalnya."
       ] },
     ]
   },
