@@ -349,14 +349,17 @@ export const prepData: PrepSection[] = [
     section: "Langkah 1: Dokumen & Paspor (H-90 s/d H-60)",
     items: [
       { id: 1, title: "Identitas dan Back Up Digital", badge: "Wajib", tips: [
-        "Scan KTP dan Kartu Keluarga (KK) dalam format PDF/JPG.",
-        "Siapkan foto 4x6 latar belakang putih (fokus wajah 80%).",
-        "Upload semua file ke Google Drive atau simpan di email yang aman."
+        "Scan KTP, KK, Akta Lahir/Buku Nikah menggunakan fitur Scan di Google Drive agar menjadi PDF rapi.",
+        "Buat satu folder khusus bernama DOKUMEN UMROH - [NAMA ANDA].",
+        "Setel folder ke mode Available Offline agar dokumen tetap bisa diakses di Saudi meski tanpa sinyal.",
+        "Siapkan foto digital 4x6 latar belakang putih (fokus wajah 80%) untuk pengajuan Visa."
       ] },
       { id: 2, title: "Paspor Elektronik (E-Passport)", badge: "Wajib", tips: [
-        "Wajib menggunakan Paspor Elektronik (chip) sesuai regulasi Imigrasi terbaru.",
-        "Biaya terbaru (PP 45/2024): Rp650.000 (5 thn) atau Rp950.000 (10 thn).",
-        "Daftar via aplikasi M-Paspor."
+        "Daftar via aplikasi M-Paspor. Pilih jenis Paspor Biasa Elektronik.",
+        "Biaya (PP 45/2024): Rp650.000 (5 thn) atau Rp950.000 (10 thn).",
+        "Chip E-Paspor mempercepat proses sinkronisasi data di sistem Nusuk Masar Saudi.",
+        "Gunakan fasilitas Autogate di bandara untuk menghindari antrean panjang imigrasi manual.",
+        "Pastikan masa berlaku minimal 6 bulan saat tanggal keberangkatan."
       ] },
     ]
   },
@@ -364,16 +367,22 @@ export const prepData: PrepSection[] = [
     section: "Langkah 2: Persyaratan Kesehatan (H-60 s/d H-45)",
     items: [
       { id: 3, title: "Vaksin Meningitis (Vaksin A)", badge: "Wajib", tips: [
-        "Wajib bagi seluruh jamaah. Dapatkan di Kantor Kesehatan Pelabuhan (KKP) atau RS resmi.",
-        "Lakukan minimal 14 hari sebelum keberangkatan agar antibodi terbentuk sempurna."
+        "Daftar via aplikasi SatuSehat (menu Vaksin Luar Negeri) atau langsung ke KKP terdekat.",
+        "Lakukan vaksinasi minimal 14 hari sebelum terbang agar antibodi terbentuk sempurna.",
+        "Pastikan mendapat Buku Kuning (ICV) fisik atau digital yang terverifikasi di SatuSehat."
       ] },
       { id: 4, title: "Vaksin Polio IPV (Vaksin B)", badge: "Wajib", tips: [
-        "Wajib Baru 2025: Minimal 1 dosis IPV bagi WNI.",
-        "Sertakan bukti di aplikasi SatuSehat atau bawa kartu kuning (ICV)."
+        "Wajib bagi WNI mulai 2025. Mintalah dosis IPV di Puskesmas atau RS Pemerintah.",
+        "Sertakan bukti vaksinasi dalam catatan kesehatan internasional Anda."
       ] },
       { id: 5, title: "Vaksin Influenza/Pneumonia (Vaksin C)", badge: "Rekomendasi", tips: [
-        "Sangat disarankan untuk mencegah batuk/flu di Saudi.",
-        "Membantu stamina saat perubahan cuaca ekstrem."
+        "Sangat disarankan untuk mencegah Batuk Makkah akibat perubahan cuaca ekstrem dan debu.",
+        "Sangat membantu menjaga kondisi tubuh agar tetap fit selama rangkaian ibadah."
+      ] },
+      { id: 28, title: "Jaga Kesehatan Pribadi", badge: "Rekomendasi", tips: [
+        "Lakukan Medical Check-Up dasar (tensi, gula darah, jantung) terutama bagi penderita penyakit rutin.",
+        "Mulai rutin jalan kaki 30-45 menit setiap pagi karena Tawaf+Sa\u0027i menempuh jarak 5-7 KM.",
+        "Konsumsi Vitamin C/D dan cukupi hidrasi (minum 2L air/hari) untuk imunitas pra-keberangkatan."
       ] },
     ]
   },
@@ -387,11 +396,11 @@ export const prepData: PrepSection[] = [
       ] },
       { id: 7, title: "Booking Hotel Madinah & Makkah", badge: "Wajib", tips: [
         "Wajib mendapatkan nomor BRN (Booking Reference Number) dari hotel berlisensi.",
-        "Tanpa BRN hotel yang valid, visa umrah tidak dapat diterbitkan."
+        "Gunakan platform yang terintegrasi atau biro PPIU untuk validasi BRN."
       ] },
       { id: 8, title: "Transportasi Lengkap", badge: "Wajib", tips: [
-        "Wajib memesan paket bus/transportasi resmi untuk mendapatkan BRN transport.",
-        "Termasuk transportasi bandara-hotel dan antar kota (Jeddah-Mekkah-Madinah)."
+        "Pesan paket transportasi darat Airport-Hotel-Intercity.",
+        "Pastikan mendapatkan BRN transportasi sebagai syarat visa."
       ] },
     ]
   },
