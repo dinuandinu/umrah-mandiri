@@ -182,8 +182,17 @@ export default function UmrohApp() {
                                  <span>TIPS & CARA MENDAPATKAN</span>
                                </div>
                                <ul className="tip-list">{item.tips.map((t, i) => {
-                                 const isManual = /^[0-9]|^[\u2460-\u2473]|^\(|^\[|^📌|^⚠️|^🆕|^✅|^🔴|^🟢|^════/.test(t.trim());
-                                 return <li key={i} className={isManual ? "no-bullet" : ""}>{highlight(t)}</li>;
+                                 const trimmed = t.trim();
+                                 const isSub = t.startsWith("  -") || t.startsWith("- ");
+                                 const isHeader = trimmed.startsWith("[") || trimmed.startsWith("📌") || trimmed.startsWith("⏰") || trimmed.startsWith("💸") || trimmed.startsWith("🟢") || trimmed.startsWith("🔴") || trimmed.startsWith("════");
+                                 
+                                 let className = "";
+                                 if (isSub) className = "sub-item";
+                                 else if (isHeader) className = "no-bullet header-item";
+                                 
+                                 // Remove the dash prefix for sub-items display
+                                 const content = isSub ? t.replace(/^\s*-\s*/, "") : t;
+                                 return <li key={i} className={className}>{highlight(content)}</li>;
                                })}</ul>
                              </div>
                            )}
