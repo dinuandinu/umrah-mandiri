@@ -293,7 +293,7 @@ body { font-family:'Tajawal',system-ui,-apple-system,'Segoe UI',Arial,sans-serif
 .check-card-modern.done { background: var(--slate-50); opacity: 0.8; }
 .check-card-modern.expanded { border-color: var(--gold-accent); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
 
-.check-item-modern { display: flex; align-items: flex-start; padding: 20px; gap: 16px; cursor: pointer; }
+.check-item-modern { display: flex; align-items: center; padding: 18px 20px; gap: 16px; cursor: pointer; flex-wrap: nowrap; }
 .checkbox-modern {
   width: 26px; height: 26px; border-radius: 8px; border: 2.5px solid var(--slate-200);
   background: white; flex-shrink: 0; margin-top: 0;
@@ -315,7 +315,7 @@ body { font-family:'Tajawal',system-ui,-apple-system,'Segoe UI',Arial,sans-serif
 
 .expand-arrow-modern { color: var(--gold-accent); transition: transform 0.3s; font-size: 1.2rem; }
 .expand-arrow-modern.open { transform: rotate(180deg); }
-.tips-panel { border-top:1px dashed var(--border-dashed); background: #FFFCEB; padding:11px 13px 13px; animation:slideDown .2s ease; }
+.tips-panel { border-top:1px dashed var(--border-dashed); background: var(--surface-tips-from); padding:11px 13px 13px; animation:slideDown .2s ease; }
 .tips-link-btn { display:inline-flex; align-items:center; gap:6px; margin-top:10px; padding:11px 16px;
   background:var(--emerald); color:#fff; border-radius:10px; font-family:'Tajawal',system-ui,sans-serif;
   font-size:.88rem; font-weight:700; text-decoration:none; border:none; cursor:pointer;
@@ -529,7 +529,7 @@ body { font-family:'Tajawal',system-ui,-apple-system,'Segoe UI',Arial,sans-serif
 .faq-q-text { flex:1; font-size:.97rem; font-weight:700; color:var(--ink); line-height:1.4; }
 .faq-arrow { color:var(--gold); font-size:.85rem; flex-shrink:0; transition:transform .2s; margin-top:3px; }
 .faq-arrow.open { transform:rotate(180deg); }
-.faq-a { padding:0 14px 13px 46px; font-size:.92rem; color:var(--ink-soft); line-height:1.75; border-top:1px dashed var(--border-dashed); padding-top:11px; background: #FFFCEB; animation:slideDown .18s ease; }
+.faq-a { padding:0 14px 13px 46px; font-size:.92rem; color:var(--ink-soft); line-height:1.75; border-top:1px dashed var(--border-dashed); padding-top:11px; background: var(--surface-tips-from); animation:slideDown .18s ease; }
 .faq-a strong { color:var(--emerald-text); }
 .faq-a .faq-note { display:flex; gap:7px; align-items:flex-start; margin-top:8px; padding:8px 10px; background:var(--surface-info); border-radius:8px; border-left:3px solid var(--info-box-border); font-size:.85rem; color:var(--info-box-text); line-height:1.6; }
 .tips-panel-title {
@@ -550,3 +550,8 @@ body.dark .check-card-modern.done .checkbox-modern { background: #34D399; border
 body.dark .badge-modern.penting { background: #4c0519; color: #fda4af; border-color: #881337; box-shadow: 0 0 15px rgba(244, 63, 94, 0.15); }
 body.dark .badge-modern.rekomendasi { background: #064e3b; color: #6ee7b7; border-color: #065f46; box-shadow: 0 0 15px rgba(16, 185, 129, 0.15); }
 body.dark .badge-modern.opsional { background: #1e3a8a; color: #93c5fd; border-color: #1e40af; }
+
+body.dark .tips-panel { background: #1a1a15 !important; border-top-color: rgba(201,168,76,0.1); }
+body.dark .tips-panel-title { color: var(--gold-light); }
+body.dark .tip-list li { color: #d1d5db; }
+body.dark .tip-list li::before { color: var(--gold-light); }
