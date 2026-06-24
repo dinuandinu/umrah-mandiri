@@ -556,29 +556,71 @@ body.dark .tips-panel-title { color: var(--gold-light); }
 body.dark .tip-list li { color: #d1d5db; }
 body.dark .tip-list li::before { color: var(--gold-light); }
 
-.tip-list { list-style:none; padding-left: 0; }
-.tip-list li { 
-  font-size:.92rem; 
-  color:var(--ink); 
-  padding:4px 0; 
-  line-height:1.6; 
+/* ── BULLET SYSTEM 2.0 ── */
+.tip-list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0;
+}
+
+.tip-list li {
+  font-size: 0.94rem;
+  color: var(--ink);
+  padding: 8px 0;
+  line-height: 1.65;
   display: flex;
   align-items: flex-start;
-  gap: 8px;
+  gap: 14px;
+  position: relative;
 }
-/* Default bullet for all items */
-.tip-list li::before { 
-  content: "◆"; 
-  color: var(--gold); 
-  font-size: 0.5rem; 
-  margin-top: 6px; 
+
+/* Poin Utama: Garis Vertikal Emas */
+.tip-list li:not(.no-bullet):not(.sub-item):not(.header-item)::before {
+  content: "";
+  display: inline-block;
+  width: 2.5px;
+  height: 15px;
+  background: var(--gold);
+  margin-top: 6px;
   flex-shrink: 0;
-  width: 12px;
+  border-radius: 1px;
+}
+
+/* Sub-Poin: Bullet Bundar Transparan */
+.tip-list li.sub-item {
+  padding-left: 28px;
+  font-size: 0.91rem;
+  color: var(--ink-soft);
+}
+
+.tip-list li.sub-item::before {
+  content: "•";
+  color: var(--gold);
+  font-size: 1.1rem;
+  opacity: 0.4;
+  margin-top: -1px;
+  line-height: 1;
+  width: 16px;
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .tip-list li.no-bullet::before {
   content: none;
 }
-.tip-list li.no-bullet {
-  padding-left: 4px; /* Slight offset to align with items that have bullets */
+
+.tip-list li.header-item {
+  font-weight: 700;
+  color: var(--emerald-text);
+  margin-top: 14px;
+  margin-bottom: 4px;
+  font-size: 0.9rem;
+  padding-left: 0;
 }
+
+/* Dark Mode Refinements */
+body.dark .tip-list li { color: #d1d5db; }
+body.dark .tip-list li.sub-item { color: #a1a1aa; }
+body.dark .tip-list li:not(.no-bullet):not(.sub-item):not(.header-item)::before { background: var(--gold-light); }
+body.dark .tip-list li.sub-item::before { color: var(--gold-light); opacity: 0.6; }

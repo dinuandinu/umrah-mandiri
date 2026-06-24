@@ -18,45 +18,7 @@ export default function UmrohApp() {
   const [subTabs, setSubTabs]       = useState<Record<number, string>>(() => JSON.parse(localStorage.getItem("umrah-subtabs") || "{}"));
   const [detailOpen, setDetailOpen] = useState<Record<string, boolean>>({});
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [theme, setTheme]           = useState(() => localStorage.getItem("umrah-theme") || "light");
-  const [fontSize, setFontSize]     = useState(() => localStorage.getItem("umrah-fontsize") || "normal");
-  const [showTop, setShowTop]       = useState(false);
-  const [query, setQuery]           = useState("");
-  const [showAbout, setShowAbout]   = useState(false);
-  const [showFAQ, setShowFAQ]       = useState(false);
-  const [showOnboarding, setShowOnboarding] = useState(() => !localStorage.getItem("umrah-onboarded"));
-  const [isOffline, setIsOffline] = useState(() => typeof navigator !== "undefined" && !navigator.onLine);
-  const [offlineDismissed, setOfflineDismissed] = useState(false);
-
-  // --- 2. LOGIKA TEMA & DARK MODE ---
-  const prefersDark = typeof window !== "undefined" && window.matchMedia("(prefers-color-scheme:dark)").matches;
-  const isDark = theme === "dark" || (theme === "auto" && prefersDark);
-
-  useEffect(() => {
-    if (isDark) document.body.classList.add("dark");
-    else document.body.classList.remove("dark");
-  }, [isDark]);
-
-  useEffect(() => {
-    localStorage.setItem("umrah-checked", JSON.stringify(checked));
-    localStorage.setItem("umrah-theme", theme);
-    localStorage.setItem("umrah-fontsize", fontSize);
-    localStorage.setItem("umrah-tab", tab);
-    localStorage.setItem("umrah-subtabs", JSON.stringify(subTabs));
-  }, [checked, theme, fontSize, tab, subTabs]);
-
-  useEffect(() => {
-    const onScroll = () => setShowTop(window.scrollY > 320);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  // --- 3. HANDLER ---
-  const handleOnboardingDone = () => {
-    localStorage.setItem("umrah-onboarded", "1");
-    setShowOnboarding(false);
-  };
-
+  const [theme, setTheme]
   const toggleCheck = (e: React.MouseEvent, id: number) => { e.stopPropagation(); setChecked(p => ({ ...p, [id]: !p[id] })); };
   const togglePrep = (id: number) => setOpenPrep(p => p === id ? null : id);
   const toggleStep = (i: number) => setOpenStep(p => p === i ? null : i);
@@ -181,19 +143,21 @@ export default function UmrohApp() {
                                  <span>💡</span>
                                  <span>TIPS & CARA MENDAPATKAN</span>
                                </div>
-                               <ul className="tip-list">{item.tips.map((t, i) => {
-                                 const trimmed = t.trim();
-                                 const isSub = t.startsWith("  -") || t.startsWith("- ");
-                                 const isHeader = trimmed.startsWith("[") || trimmed.startsWith("📌") || trimmed.startsWith("⏰") || trimmed.startsWith("💸") || trimmed.startsWith("🟢") || trimmed.startsWith("🔴") || trimmed.startsWith("════");
-                                 
-                                 let className = "";
-                                 if (isSub) className = "sub-item";
-                                 else if (isHeader) className = "no-bullet header-item";
-                                 
-                                 // Remove the dash prefix for sub-items display
-                                 const content = isSub ? t.replace(/^\s*-\s*/, "") : t;
-                                 return <li key={i} className={className}>{highlight(content)}</li>;
-                               })}</ul>
+                               <ul className="tip-list">
+                                 {item.tips.map((t, i) => {
+                                   const trimmed = t.trim();
+                                   const isSub = t.startsWith("  -") || t.startsWith("- ");
+                                   const isHeader = trimmed.startsWith("[") || trimmed.startsWith("📌") ||
+                                                    trimmed.startsWith("⏰") || trimmed.startsWith("💸");
+
+                                   let className = "";
+                                   if (isSub) className = "sub-item";
+                                   else if (isHeader) className = "no-bullet header-item";
+
+                                   const content = isSub ? t.replace(/^\s*-\s*/, "") : t;
+                                   return <li key={i} className={className}>{highlight(content)}</li>;
+                                 })}
+                               </ul>
                              </div>
                            )}
                          </div>
