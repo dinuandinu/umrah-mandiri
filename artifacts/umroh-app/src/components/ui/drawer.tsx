@@ -1,116 +1,88 @@
-import * as React from "react"
-import { Drawer as DrawerPrimitive } from "vaul"
+import React, { useState } from 'react';
 
-import { cn } from "@/lib/utils"
+// ─── Drawer Component ─────────────────────────────────────────────────────────
+export const Drawer = ({open,onClose,theme,setTheme,fontSize,setFontSize,onResetProgress,onOpenAbout}:{
+  open:boolean;onClose:()=>void;theme:string;setTheme:(t:string)=>void;
+  fontSize:string;setFontSize:(s:string)=>void;onResetProgress:()=>void;onOpenAbout:()=>void;
+}) => {
+  const [confirmReset, setConfirmReset] = useState(false);
 
-const Drawer = ({
-  shouldScaleBackground = true,
-  ...props
-}: React.ComponentProps<typeof DrawerPrimitive.Root>) => (
-  <DrawerPrimitive.Root
-    shouldScaleBackground={shouldScaleBackground}
-    {...props}
-  />
-)
-Drawer.displayName = "Drawer"
+  const handleReset = () => {
+    if (!confirmReset) { setConfirmReset(true); return; }
+    onResetProgress();
+    setConfirmReset(false);
+    onClose();
+  };
 
-const DrawerTrigger = DrawerPrimitive.Trigger
+  return (
+    <>
+      <div className={`drawer-overlay ${open?"open":""}`} onClick={onClose}/>
+      <div className={`drawer ${open?"open":""}`}>
+        <div className="drawer-head">
+          <div className="drawer-head-arabic">بِسْمِ اللَّهِ</div>
+          <div className="drawer-head-title">Umroh Mandiri</div>
+          <div className="drawer-head-sub">Pengaturan & Referensi</div>
+        </div>
 
-const DrawerPortal = DrawerPrimitive.Portal
+        <div className="drawer-body">
+          <div className="drawer-section-label">🎨 Tampilan</div>
 
-const DrawerClose = DrawerPrimitive.Close
+          <div style={{paddingLeft:16,paddingRight:16,marginBottom:4}}>
+            <div style={{fontSize:".74rem",fontWeight:600,color:"var(--muted)",marginBottom:5}}>Mode Tema</div>
+            <div className="seg-ctrl">
+              {([["auto","🖥️ Auto"],["light","☀️ Terang"],["dark","🌙 Gelap"]] as [string,string][]).map(([v,l])=>(
+                <button key={v} className={`seg-btn ${theme===v?"active":""}`} onClick={()=>setTheme(v)}>{l}</button>
+              ))}
+            </div>
+          </div>
 
-const DrawerOverlay = React.forwardRef<
-  React.ElementRef<typeof DrawerPrimitive.Overlay>,
-  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Overlay>
->(({ className, ...props }, ref) => (
-  <DrawerPrimitive.Overlay
-    ref={ref}
-    className={cn("fixed inset-0 z-50 bg-black/80", className)}
-    {...props}
-  />
-))
-DrawerOverlay.displayName = DrawerPrimitive.Overlay.displayName
+          <div style={{paddingLeft:16,paddingRight:16,marginBottom:4}}>
+            <div style={{fontSize:".74rem",fontWeight:600,color:"var(--muted)",marginBottom:5,marginTop:10}}>Ukuran Teks</div>
+            <div className="seg-ctrl">
+              {([["normal","🔤 Normal"],["large","🔡 Besar"]] as [string,string][]).map(([v,l])=>(
+                <button key={v} className={`seg-btn ${fontSize===v?"active":""}`} onClick={()=>setFontSize(v)}>{l}</button>
+              ))}
+            </div>
+          </div>
 
-const DrawerContent = React.forwardRef<
-  React.ElementRef<typeof DrawerPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Content>
->(({ className, children, ...props }, ref) => (
-  <DrawerPortal>
-    <DrawerOverlay />
-    <DrawerPrimitive.Content
-      ref={ref}
-      className={cn(
-        "fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto flex-col rounded-t-[10px] border bg-background",
-        className
-      )}
-      {...props}
-    >
-      <div className="mx-auto mt-4 h-2 w-[100px] rounded-full bg-muted" />
-      {children}
-    </DrawerPrimitive.Content>
-  </DrawerPortal>
-))
-DrawerContent.displayName = "DrawerContent"
+          <div className="drawer-section-label">⚙️ Alat</div>
 
-const DrawerHeader = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
-  <div
-    className={cn("grid gap-1.5 p-4 text-center sm:text-left", className)}
-    {...props}
-  />
-)
-DrawerHeader.displayName = "DrawerHeader"
+          <button className="drawer-item" onClick={handleReset}>
+            <div className="drawer-item-icon warn">🔄</div>
+            <div className="drawer-item-text">
+              <div className="drawer-item-label">Reset Progress Persiapan</div>
+              <div className="drawer-item-desc">Hapus semua centang checklist</div>
+            </div>
+          </button>
+          {confirmReset && (
+            <div className="reset-confirm">
+              <div className="reset-confirm-text">⚠️ Semua centang checklist akan dihapus. Yakin?</div>
+              <div className="reset-confirm-btns">
+                <button className="reset-btn-yes" onClick={handleReset}>Ya, Reset</button>
+                <button className="reset-btn-no" onClick={()=>setConfirmReset(false)}>Batal</button>
+              </div>
+            </div>
+          )}
 
-const DrawerFooter = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
-  <div
-    className={cn("mt-auto flex flex-col gap-2 p-4", className)}
-    {...props}
-  />
-)
-DrawerFooter.displayName = "DrawerFooter"
+          <div className="drawer-section-label">ℹ️ Informasi</div>
 
-const DrawerTitle = React.forwardRef<
-  React.ElementRef<typeof DrawerPrimitive.Title>,
-  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Title>
->(({ className, ...props }, ref) => (
-  <DrawerPrimitive.Title
-    ref={ref}
-    className={cn(
-      "text-lg font-semibold leading-none tracking-tight",
-      className
-    )}
-    {...props}
-  />
-))
-DrawerTitle.displayName = DrawerPrimitive.Title.displayName
+          <button className="drawer-item" onClick={()=>{onClose();setTimeout(onOpenAbout,200);}}>
+            <div className="drawer-item-icon purple">🕌</div>
+            <div className="drawer-item-text">
+              <div className="drawer-item-label">Tentang Aplikasi</div>
+              <div className="drawer-item-desc">Profil author & info aplikasi</div>
+            </div>
+            <span className="drawer-item-chev">›</span>
+          </button>
 
-const DrawerDescription = React.forwardRef<
-  React.ElementRef<typeof DrawerPrimitive.Description>,
-  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Description>
->(({ className, ...props }, ref) => (
-  <DrawerPrimitive.Description
-    ref={ref}
-    className={cn("text-sm text-muted-foreground", className)}
-    {...props}
-  />
-))
-DrawerDescription.displayName = DrawerPrimitive.Description.displayName
-
-export {
-  Drawer,
-  DrawerPortal,
-  DrawerOverlay,
-  DrawerTrigger,
-  DrawerClose,
-  DrawerContent,
-  DrawerHeader,
-  DrawerFooter,
-  DrawerTitle,
-  DrawerDescription,
-}
+          <div style={{padding:"10px 20px 4px"}}>
+            <span className="pwa-badge">
+              <span className="pwa-dot"/>
+              Tersedia Offline
+            </span>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
