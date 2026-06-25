@@ -491,7 +491,7 @@ export const prepData: PrepSection[] = [
   {
     section: "Langkah 4: Eksekusi Visa & Legalitas (H-30 s/d H-14)",
     items: [
-      { id: 9, title: "Pengajuan Visa Umrah (via Provider)", badge: "Wajib", tips: [
+      { id: 9, title: "Apply Visa via Provider", badge: "Wajib", tips: [
         "📌 Kirimkan dokumen lengkap ke Provider Visa: E-ticket, Voucher Hotel (HCN), dan bukti booking 3 rute transportasi.",
         "Provider akan memproses semuanya di sistem resmi Nusuk Masar, termasuk meminta approval ke pihak hotel. Proses ini di luar kendali jamaah — tugas Anda hanya memastikan dokumen yang dikirim sudah lengkap & benar.",
         "⏰ Estimasi waktu proses: 3-7 hari kerja setelah hotel approve. Jika hotel lambat merespons, proses bisa lebih lama — tanyakan progress ke provider secara berkala.",
@@ -499,14 +499,24 @@ export const prepData: PrepSection[] = [
         "Biaya pengajuan visa sudah mencakup asuransi kesehatan dasar untuk biaya medis di rumah sakit umum pemerintah Arab Saudi.",
         "⏰ Visa umrah berlaku 90 hari sejak diterbitkan — pastikan tanggal keberangkatan & kepulangan masih dalam rentang ini."
       ] },
-      { id: 10, title: "Registrasi Siskopatuh & ID Card", badge: "Wajib", tips: [
+      { id: 10, title: "Registrasi Siskopatuh Kemenag", badge: "Wajib", tips: [
         "Provider akan mendaftarkan data keberangkatan Anda ke sistem Siskopatuh Kemenag RI.",
-        "Wajib meminta ID Card Siskopatuh fisik/digital untuk ditunjukkan ke petugas di bandara."
+        "⏰ Timing bisa berbeda tergantung provider — ada yang proses visa & Siskopatuh BERSAMAAN, ada yang sequential. Tanyakan langsung ke provider Anda: \"Siskopatuh diproses bersamaan dengan visa, atau menyusul setelahnya?\"",
+        "Wajib meminta ID Card Siskopatuh (fisik/digital) untuk ditunjukkan ke petugas check-in maskapai atau imigrasi — sifatnya random check, tapi WAJIB tetap dibawa.",
+        "🔍 Cara verifikasi keaslian ID Card: scan QR code, pastikan link mengarah ke siskopatuh.kemenag.go.id/web/npu/?id=xxxxxx — 6 digit terakhir URL harus sama dengan nomor porsi umrah di kartu.",
+        "💡 Manfaat tambahan: kartu memuat nama hotel — berguna jika ada anggota keluarga/grup terpisah, bisa minta diantar ke hotel yang tertulis di kartu.",
+        "⚠️ Risiko jika tidak dibawa: berpotensi diperiksa lanjutan, diarahkan ke gate manual (bukan autogate) — berisiko delay bahkan ketinggalan pesawat."
       ] },
       { id: 11, title: "Booking Slot Raudhah (Aplikasi Nusuk)", badge: "Wajib", tips: [
-        "Registrasi akun Nusuk sebagai International Visitor menggunakan nomor paspor dan nomor visa.",
-        "Pilih jadwal Rawdah Permit dan simpan bukti QR Code di galeri HP.",
-        "⏰ Aturan Saudi: booking Raudhah hanya diperbolehkan satu kali dalam setiap 30 hari."
+        "Registrasi akun Nusuk sebagai International Visitor menggunakan No. Paspor dan No. Visa.",
+        "[JADWAL RAWDAH PERMIT SESUAI GENDER]",
+        "- Pria: Pintu 37, sekitar pukul 02.00 dini hari–Subuh dan 11.30–Isya",
+        "- Wanita: Pintu 25, sekitar setelah Subuh–11.00 dan setelah Isya–02.00 dini hari",
+        "⚠️ Jadwal & pintu bisa berubah sewaktu-waktu — selalu cek jadwal terbaru langsung di aplikasi Nusuk sebelum booking.",
+        "Simpan bukti QR Code di galeri HP sebelum tiba di Madinah.",
+        "Anak di bawah usia 5 tahun tidak bisa dibooking masuk Raudhah.",
+        "Jika gagal dapat slot dari Indonesia, masih ada kesempatan booking dadakan (\"war tiket\") saat sudah berada di sekitar Masjid Nabawi — jadi jangan khawatir kalau booking awal belum berhasil.",
+        "💡 Tips: cek aplikasi secara rutin, karena slot baru sering muncul dari jamaah lain yang membatalkan booking-nya."
       ] },
     ]
   },
@@ -514,22 +524,34 @@ export const prepData: PrepSection[] = [
     section: "Langkah 5: Keuangan & Koneksi (H-14 s/d H-7)",
     items: [
       { id: 12, title: "Persiapan Keuangan & Kartu ATM/Kredit", badge: "Wajib", tips: [
-        "Wajib membawa kartu ATM/Debit berlogo Visa atau Mastercard (GPN tidak bisa digunakan).",
-        "Aktifkan fitur Transaksi Luar Negeri dan Debit Online di m-banking sebelum berangkat.",
+        "Wajib membawa kartu ATM/Debit berlogo Visa atau Mastercard (GPN tidak bisa digunakan di luar negeri).",
+        "Aktifkan fitur Transaksi Luar Negeri dan Debit Online di m-banking SEBELUM berangkat — tanpa ini kartu akan ditolak.",
         "Tukar Rupiah ke Riyal (SAR) secukupnya di Indonesia (SAR 200-500) untuk darurat saat mendarat.",
-        "Gunakan bank digital (Jago/Jenius) untuk mendapatkan kurs kompetitif."
+        "💳 Manfaatkan fitur contactless (tap) untuk transportasi dalam kota: Makkah Bus & Madinah Bus mengharuskan tap kartu langsung (tanpa PIN), juga berlaku di minimarket dan resto. Untuk Kereta Cepat HHR, beli tiket online dulu via web/app (bukan tap di tempat) — pastikan Debit Online aktif & siap terima OTP via SMS.",
+        "Bawa 2 kartu dari bank berbeda (misal 1 Mandiri + 1 BCA) untuk antisipasi jika salah satu kartu rusak/tertelan mesin ATM.",
+        "💰 Biaya admin tarik tunai luar negeri: Rp20rb-25rb per transaksi. Tarik sekaligus jumlah besar (1.000-2.000 SAR), JANGAN tarik sedikit-sedikit agar biaya admin tidak boros.",
+        "🏦 Cari ATM Al-Rajhi Bank (biru putih) atau SNB (Saudi National Bank) — ATM Al-Rajhi biasanya ada opsi Bahasa Indonesia.",
+        "[STRATEGI BAYAR PER LOKASI]",
+        "- Mall/Hotel/Bin Dawood → pakai kartu (tap contactless, kurs kompetitif)",
+        "- Pasar tradisional/kaki lima → WAJIB tunai (jarang ada EDC, dan tunai lebih mudah untuk nego harga)"
       ] },
       { id: 13, title: "Koneksi Internet di Saudi", badge: "Wajib", tips: [
-        "E-SIM: paling praktis, beli via Airalo/Holafly dari Indonesia.",
-        "Kartu SIM Lokal: beli kartu STC, Zain, atau Mobily di bandara Saudi (SAR 80-120).",
-        "Roaming: aktifkan paket Umrah dari provider Indonesia jika ingin tetap menggunakan nomor lama.",
-        "WiFi Masjid: gunakan WiFi Haram-Guest sebagai cadangan (butuh nomor Saudi)."
+        "🥇 eSIM (PALING DISARANKAN): beli via Airalo/Holafly dari Indonesia. Tidak hanya praktis — bisa diaktifkan sebelum terbang (scan QR code), TIDAK perlu antre/registrasi sidik jari/paspor di bandara (berbeda dari SIM fisik). Kualitas sinyal setara kartu lokal (terhubung ke jaringan STC/Mobily), BUKAN kualitas roaming biasa.",
+        "Kartu SIM Lokal: beli STC, Zain, atau Mobily di bandara Saudi (SAR 80-120 untuk paket ~10GB/4 minggu). Catatan: prosesnya perlu antre + registrasi paspor & sidik jari, bisa makan waktu kalau bandara ramai.",
+        "- STC: sinyal paling stabil terutama di basement Masjidil Haram & hotel besar, tapi harga lebih mahal & kuota lebih kecil",
+        "- Zain/Mobily: harga lebih murah, kuota lebih besar, tapi sinyal sedikit kurang stabil di area sangat padat",
+        "⚠️ Roaming: aktifkan paket Umrah dari provider Indonesia jika ingin tetap pakai nomor lama. Catatan: kualitas roaming TIDAK terjamin sama di semua area — di dalam Masjidil Haram yang sangat padat, sinyal roaming bisa tidak stabil meski sinyal lokal (STC/Mobily) tetap baik.",
+        "💡 Tips tambahan: gunakan WiFi hotel sebagai cadangan khusus untuk backup foto/video berukuran besar, agar kuota utama tetap awet untuk kebutuhan navigasi & komunikasi harian."
       ] },
       { id: 29, title: "Asuransi Perjalanan Tambahan", badge: "Opsional", tips: [
-        "Perlindungan Transit: menanggung risiko saat berada di negara transit.",
+        "⚠️ Kenapa perlu, meski asuransi dasar sudah include di visa: asuransi dasar cakupannya SEMPIT — biasanya hanya rumah sakit pemerintah tertentu, dan plafon cepat habis untuk penyakit kritis. Biaya rawat ICU di Saudi untuk warga asing bisa puluhan juta rupiah per malam.",
+        "Perlindungan Transit: menanggung risiko saat berada di negara transit (relevan jika pakai rute transit yang sudah dibahas di item Tiket Pesawat).",
         "Pembatalan Perjalanan: ganti rugi jika batal berangkat karena sakit serius.",
-        "Kehilangan Bagasi & Paspor: memberikan penggantian jika koper hilang di hotel.",
-        "Sangat direkomendasikan untuk menutup celah proteksi asuransi standar."
+        "Kehilangan Bagasi & Paspor: penggantian jika koper/dokumen hilang di hotel.",
+        "💰 Estimasi biaya: Rp300rb-700rb/orang untuk durasi 9-12 hari (diskon hingga 15% untuk grup/keluarga). Lansia 65+ tahun biasanya kena biaya tambahan (loading) karena risiko kesehatan lebih tinggi.",
+        "🕌 Pertimbangkan opsi syariah: pakai akad Tabarru' (tolong-menolong), bebas riba/gharar/maysir — relevan untuk konteks ibadah.",
+        "⚠️ Pengecualian umum yang perlu disadari: penyakit yang sudah ada sebelumnya (pre-existing condition) biasanya TIDAK ditanggung kecuali ada rider khusus.",
+        "🔍 Cek cakupan asuransi dasar (dari visa) di situs resmi CCHI (Council of Cooperative Health Insurance) Arab Saudi, untuk tahu rumah sakit rekanan mana yang menerima klaim."
       ] },
     ]
   },
@@ -537,26 +559,57 @@ export const prepData: PrepSection[] = [
     section: "Langkah 6: Perlengkapan Pribadi (H-7 s/d H-3)",
     items: [
       { id: 14, title: "Perlengkapan Pakaian Pribadi", badge: "Wajib", tips: [
-        "Wanita: 4-5 set gamis bahan ringan (katun/rayon) yang menyerap keringat.",
-        "Pria: 3-4 set baju koko/kurta dan celana kain nyaman.",
-        "Bawa celana dalaman tipis (legging) untuk kenyamanan berjalan jauh."
+        "[JUMLAH DISESUAIKAN DURASI PERJALANAN]",
+        "📏 Asumsi ada fasilitas laundry hotel untuk durasi panjang:",
+        "- Wanita: 4-5 set gamis untuk 9-12 hari, tambah +1 set per 3-4 hari tambahan",
+        "- Pria: 3-4 set baju koko/kurta untuk 9-12 hari, tambah +1 set per 3-4 hari tambahan",
+        "- Pakaian dalam: lebih baik dilebihkan sedikit dari jumlah hari (cuci tidak selalu sempat tiap hari)",
+        "Bawa celana dalaman tipis (legging) untuk kenyamanan berjalan jauh.",
+        "Kaos kaki secukupnya, terutama untuk penggunaan di luar ibadah ihram (wanita perlu lebih banyak untuk variasi outfit harian).",
+        "Jaket atau cardigan tipis — WAJIB untuk perjalanan pesawat (AC kabin dingin) dan ruangan ber-AC di hotel/mall.",
+        "Pakaian tidur yang nyaman.",
+        "Kantong pakaian kotor/laundry bag agar koper tetap rapi & tidak campur baju bersih.",
+        "🧳 KOPER BAGASI: sebagian besar pakaian harian — gulung (bukan lipat) untuk hemat ruang & kurangi kusut, pisahkan per-hari pakai pouch/ziplock (\"Day 1, Day 2, dst\").",
+        "🎒 TAS KABIN: sisakan 1 set pakaian ganti LENGKAP (termasuk dalaman) + jaket — antisipasi koper bagasi tertahan/delay transit.",
+        "💡 Tips: pilih warna netral, bahan cepat kering & tidak mudah kusut (kurangi kebutuhan setrika). Sisakan ruang 25-30% di koper bagasi untuk oleh-oleh saat pulang."
       ] },
       { id: 15, title: "Perlengkapan Khusus Ibadah Umroh", badge: "Wajib", tips: [
-        "Pria: minimal 2 set kain ihram dan sabuk ihram tanpa jahitan.",
-        "Wanita: mukena atasan/gober yang praktis dan kaos kaki tawaf anti-slip.",
-        "Footwear: sandal jepit atau sepatu sandal empuk (tidak menutup mata kaki saat ihram).",
-        "Sediakan tas serut kecil untuk membawa sandal masuk ke dalam masjid."
+        "Pria: Minimal 2 set kain ihram berkualitas yang tidak mudah melorot. Sabuk/belt ihram untuk simpan uang, kartu, ponsel.",
+        "Wanita: Mukena praktis atau mukena atasan (gober) yang ringan.",
+        "Sajadah lipat ukuran kecil.",
+        "Sandal jepit/sandal empuk mudah dilepas-pasang + sandal CADANGAN (antisipasi tertukar/hilang — area masjid sangat ramai).",
+        "Kaos kaki anti-slip (khusus untuk aktivitas di hotel/area tertentu).",
+        "Peniti/klip mukena secukupnya.",
+        "[POSISI KAIN IHRAM TERGANTUNG RUTE KEDATANGAN]",
+        "- Direct Jeddah → kain ihram WAJIB di TAS KABIN (niat ihram di atas pesawat)",
+        "- Direct Madinah dulu → boleh di KOPER BAGASI (masih santai dulu, ambil miqat nanti dari Madinah)",
+        "🎒 TAS KABIN: mukena/sajadah tipis untuk sholat selama penerbangan & transit.",
+        "👜 TAS SELEMPANG: Tas Serut Kecil untuk bawa sandal masuk masjid.",
+        "💡 Tips: beri tanda nama/pita pada sandal & tas serut agar mudah dikenali di area Masjidil Haram/Masjid Nabawi yang ramai."
       ] },
       { id: 30, title: "Perlengkapan Selama di Arab Saudi", badge: "Opsional", tips: [
-        "Logistik Makan: lauk kering (rendang/abon) dan magic com mini (max 200W).",
-        "Kebersihan: deterjen sachet dan gantungan baju (hanger) kawat.",
-        "Sesuaikan dengan budget: memasak sendiri bisa menghemat budget makan hingga 70%.",
-        "Sesuaikan dengan hotel: pastikan daya listrik hotel mencukupi."
+        "Lauk kering: abon, rendang, serundeng, sambal kemasan — bawa secukupnya (makanan halal tersedia luas di sekitar masjid).",
+        "Gelas lipat/wadah makan ringan, sendok-garpu lipat.",
+        "Deterjen sachet untuk cuci ringan, hanger lipat/portabel.",
+        "Kantong ziplock untuk makanan/barang basah.",
+        "Payung lipat atau topi untuk perlindungan dari panas.",
+        "Botol minum isi ulang yang ringan.",
+        "Tas belanja lipat untuk oleh-oleh/barang tambahan.",
+        "🧳 KOPER BAGASI: semua barang di item ini (tidak dibutuhkan selama penerbangan).",
+        "💡 Tips: alat memasak listrik (magic com, dll) TIDAK disarankan kecuali benar-benar perlu — pastikan dulu diizinkan oleh hotel & maskapai. Sebagian besar paket umroh sudah sediakan konsumsi, jadi bawalah yang praktis & ringan saja."
       ] },
       { id: 16, title: "Gadget & Kebutuhan Medis", badge: "Wajib", tips: [
-        "Teknis: colokan kaki tiga (Tipe G), powerbank (max 20.000mAh), dan botol spray wudhu.",
-        "Kesehatan: obat rutin/maag/diare, plester luka, dan masker N95.",
-        "Skincare: sunscreen SPF 50+, lip balm, dan pelembap kulit."
+        "Ponsel + charger, kabel charger cadangan, headset/earphone.",
+        "Power bank maksimal 20.000 mAh — WAJIB di tas kabin (sesuai ketentuan maskapai), tidak boleh di bagasi.",
+        "⚡ Adaptor/travel adapter Tipe G (3 lubang persegi panjang) — ini yang DOMINAN dipakai di Saudi & BEDA TOTAL dari colokan Indonesia (Tipe C/F). Saudi juga sebagian pakai Tipe A (2 lempeng pipih, kebetulan SAMA dengan salah satu standar Indonesia) — tapi tetap utamakan bawa adaptor Tipe G untuk aman.",
+        "Obat rutin sesuai resep dokter. Obat maag, diare, flu, batuk, pereda nyeri, obat mabuk perjalanan sesuai kebutuhan.",
+        "Plester luka, perban kecil, antiseptik praktis.",
+        "Masker medis/N95, hand sanitizer, tisu basah.",
+        "Sunscreen SPF 50+, pelembap wajah & tubuh, lip balm (udara Saudi sangat kering).",
+        "Kacamata hitam bagi yang sensitif sinar matahari.",
+        "🎒 TAS KABIN: SEMUA barang elektronik berbaterai (powerbank, charger, adaptor) WAJIB di sini — dilarang masuk koper bagasi. Obat-obatan yang perlu diakses cepat juga di sini.",
+        "👜 TAS SELEMPANG/EDC (selalu menempel badan): paspor, visa, ID Siskopatuh, kartu ATM/kredit, uang tunai SAR, HP — \"tas penyelamat\" jika koper/tas kabin tertinggal.",
+        "💡 Tips: beli adaptor universal Tipe G dari Indonesia (lebih terjamin kualitas) — kalau lupa, toko sekitar masjid jual \"fisha\" (sebutan lokal) sekitar 10-20 Riyal."
       ] },
     ]
   },
@@ -564,14 +617,19 @@ export const prepData: PrepSection[] = [
     section: "Langkah 7: Final Check (H-3 s/d Keberangkatan)",
     items: [
       { id: 17, title: "Pemeriksaan Akhir & Keberangkatan", badge: "Wajib", tips: [
-        "📁 Cetak Fisik: bawa hardcopy paspor asli, visa, tiket, voucher hotel, dan buku kuning (ICV).",
-        "📁 Kesiapan Digital: pastikan aplikasi Nusuk dan SatuSehat sudah aktif.",
-        "⏰ Bandara: hadir 4-5 jam sebelum terbang. Terminal 2F Soetta. Kalungkan ID Card Siskopatuh."
+        "📁 Cetak Fisik: bawa hardcopy paspor asli, visa, tiket, voucher hotel, dan buku kuning (ICV) — meski semua sudah ada versi digital, hardcopy tetap wajib sebagai cadangan.",
+        "📁 Kesiapan Digital: pastikan aplikasi Nusuk dan SatuSehat sudah aktif & bisa diakses offline (screenshot QR penting sebagai cadangan jika sinyal lemah).",
+        "⏰ Timing kehadiran: hadir 4-5 jam sebelum keberangkatan — JANGAN kurang dari 3 jam, karena proses verifikasi dokumen penerbangan internasional memakan waktu lebih lama dari penerbangan domestik biasa.",
+        "⚠️ PENTING — Terminal keberangkatan TIDAK SELALU sama: Soekarno-Hatta punya Terminal 2F (khusus haji/umrah resmi) DAN sebagian maskapai/travel pakai Terminal 3 Ultimate. SELALU cek terminal di tiket/boarding pass Anda sendiri, jangan berasumsi otomatis 2F — bandara sendiri mengimbau untuk selalu verifikasi sebelum berangkat ke sana.",
+        "Kalungkan ID Card Siskopatuh sejak dari rumah/sebelum masuk bandara — memudahkan jika ditanya petugas tanpa harus bongkar tas.",
+        "Meski sudah web check-in, tetap WAJIB ke konter check-in maskapai untuk verifikasi dokumen & penyerahan bagasi tercatat.",
+        "🧴 Cek aturan cairan (LAGs) di tas kabin — sunscreen, hand sanitizer, dan obat cair harus dalam kemasan sesuai batas yang diizinkan, simpan di tempat mudah diakses untuk pemeriksaan.",
+        "Sebelum masuk screening: siapkan diri keluarkan barang logam dari saku (jam tangan, ikat pinggang, koin, kunci) serta keluarkan laptop/tablet dari tas — mempercepat antrean.",
+        "Hadir di gate sebelum waktu boarding di boarding pass, ikuti instruksi petugas soal urutan naik pesawat (zona/grup/nomor kursi)."
       ] },
     ]
-  }
+  },
 ];
-
 export const tutorialData: TutItem[] = [
   {emoji:"🕌",title:"Miqat & Ihram",subtitle:"Titik awal & tata cara berihram",gold:false,defaultSubTab:"miqat",
     content:({D,T,subTab,setSubTab})=>(
