@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { FAQ_DATA } from '../../data/faqData';
 
 // ─── FAQ Page ─────────────────────────────────────────────────────────────────
+type FAQItem = { q: string; a: string; note?: string };
+type FAQCategory = { cat: string; items: FAQItem[] };
+
 function highlight(text: string, query: string) {
   if (!query) return <>{text}</>;
   const idx = text.toLowerCase().indexOf(query.toLowerCase());
@@ -9,7 +11,7 @@ function highlight(text: string, query: string) {
   return <>{text.slice(0, idx)}<mark>{text.slice(idx, idx + query.length)}</mark>{text.slice(idx + query.length)}</>;
 }
 
-export const FAQPage = ({onClose}:{onClose:()=>void}) => {
+export const FAQPage = ({onClose, data}:{onClose:()=>void; data: FAQCategory[]}) => {
   const [openIdx, setOpenIdx] = useState<string|null>(null);
   const [searchQ, setSearchQ] = useState('');
 
@@ -17,17 +19,17 @@ export const FAQPage = ({onClose}:{onClose:()=>void}) => {
 
   const trimmed = searchQ.trim();
   const filtered = trimmed
-    ? FAQ_DATA.map(cat => ({
+    ? data.map(cat => ({
         ...cat,
         items: cat.items.filter(item =>
           item.q.toLowerCase().includes(trimmed.toLowerCase()) ||
           item.a.toLowerCase().includes(trimmed.toLowerCase())
         )
       })).filter(cat => cat.items.length > 0)
-    : FAQ_DATA;
+    : data;
 
   const totalFiltered = filtered.reduce((s, c) => s + c.items.length, 0);
-  const totalAll = FAQ_DATA.reduce((s, c) => s + c.items.length, 0);
+  const totalAll = data.reduce((s, c) => s + c.items.length, 0);
 
   let globalNum = 0;
 

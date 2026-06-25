@@ -1,3 +1,5 @@
+// src/data/mapData.ts
+
 export const MAP_DATA: Record<string, {title:string;hint:string;pins:{id:string;x:number;y:number;lat:number;lng:number;emoji:string;name:string;desc:string}[]}> = {
   haram: {
     title:"🕋 Masjidil Haram", hint:"Ketuk penanda untuk detail lokasi.",
@@ -35,7 +37,7 @@ export const MAP_DATA: Record<string, {title:string;hint:string;pins:{id:string;
       {id:"mina",   x:255,y:220,lat:21.41330,lng:39.89334,emoji:"🏕️",name:"Mina",               desc:"Area lempar jumrah saat haji. ±7km timur Haram."},
       {id:"muzdal", x:295,y:245,lat:21.39193,lng:39.93674,emoji:"🌙",name:"Muzdalifah",         desc:"Mabit & kumpul batu jumrah saat haji. ±12km timur Haram."},
       {id:"arafah", x:325,y:285,lat:21.35492,lng:39.98422,emoji:"🌅",name:"Padang Arafah",      desc:"Puncak ibadah haji — wukuf 9 Dzulhijjah. ±22km dari Haram."},
-      {id:"hhr-makkah", x:310,y:318,lat:21.38131,lng:39.88357,emoji:"🚄",name:"Stasiun HHR Makkah", desc:"Haramain High Speed Railway — ±4km tenggara Haram. Kereta ke Madinah ±2 jam, SAR 65–150. Beli tiket via Haramain Train app."},
+      {id:"hhr-makkah", x:310,y:318,lat:21.38131,lng:39.88357,emoji:"🚄",name:"Stasiun HHR Makkah", desc:"Haramain High Speed Railway — stasiun Makkah. ±4km tenggara Haram via taksi/Uber ±10 menit. Tiket kereta cepat ke Madinah (±2 jam, SAR 65–150) beli via aplikasi Haramain Train atau loket."},
     ]
   },
   madinah: {
@@ -47,7 +49,7 @@ export const MAP_DATA: Record<string, {title:string;hint:string;pins:{id:string;
       {id:"qiblatayn",x:62, y:197,lat:24.47440,lng:39.59510,emoji:"🕌",name:"Masjid Qiblatayn",desc:"Tempat kiblat berpindah saat Shalat Dzuhur. ±5km barat."},
       {id:"uhud",     x:168,y:95, lat:24.50682,lng:39.61942,emoji:"⛰️",name:"Jabal Uhud",      desc:"Perang Uhud & makam 70 syuhada termasuk Hamzah RA. ±5km utara."},
       {id:"ghamamah", x:147,y:232,lat:24.46551,lng:39.60978,emoji:"🕌",name:"Masjid Ghamamah", desc:"Tempat Rasulullah ﷺ shalat Ied. ±300m selatan Nabawi."},
-      {id:"hhr-madinah", x:32,y:312,lat:24.46165,lng:39.49568,emoji:"🚄",name:"Stasiun HHR Madinah", desc:"Haramain High Speed Railway — ±14km barat daya Nabawi. Gunakan taksi/Uber ±20 menit. Kereta ke Makkah ±2 jam (SAR 65–150)."},
+      {id:"hhr-madinah", x:32,y:312,lat:24.46165,lng:39.49568,emoji:"🚄",name:"Stasiun HHR Madinah", desc:"Haramain High Speed Railway — stasiun Madinah. ±14km barat daya Masjid Nabawi. Gunakan taksi/Uber ±20 menit dari pusat kota. Kereta ke Makkah ±2 jam (SAR 65–150). Booking tiket via aplikasi Haramain Train atau di loket stasiun."},
     ]
   },
 };
