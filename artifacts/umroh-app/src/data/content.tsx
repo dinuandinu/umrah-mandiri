@@ -349,31 +349,26 @@ export const prepData: PrepSection[] = [
     section: "Langkah 1: Dokumen & Paspor (H-90 s/d H-60)",
     items: [
       { id: 1, title: "Identitas dan Back Up Digital", badge: "Wajib", tips: [
-        "Scan KTP, KK, Akta Lahir/Buku Nikah menggunakan fitur Scan di Google Drive agar menjadi PDF rapi.",
-        "Buat satu folder khusus bernama DOKUMEN UMROH - [NAMA ANDA].",
-        "Setel folder ke mode Available Offline agar dokumen tetap bisa diakses di Saudi meski tanpa sinyal.",
-        "Siapkan foto digital 4x6 latar belakang putih (fokus wajah 80%) untuk pengajuan Visa."
+        "📁 Scan KTP, KK, Akta Lahir/Buku Nikah menggunakan fitur Scan di Google Drive agar menjadi PDF rapi.",
+        "📁 Buat satu folder khusus bernama \"DOKUMEN UMROH — [NAMA ANDA]\".",
+        "📁 Setel folder ke mode Available Offline agar dokumen tetap bisa diakses di Saudi meski tanpa sinyal.",
+        "📁 Siapkan foto digital 4x6 latar belakang putih (fokus wajah 80%) untuk pengajuan visa."
       ] },
       { id: 2, title: "Paspor Elektronik (E-Passport)", badge: "Wajib", tips: [
-        "📌 Sebelum mulai: riset dulu syarat & ketersediaan kuota kantor imigrasi tujuan (beda kantor bisa beda kuota/jadwal)",
-        "[SUDAH PUNYA PASPOR — PERPANJANGAN]",
-        "Cek kondisi fisik paspor lama: tidak ada coretan, sobek, atau halaman rusak/tidak terbaca. Paspor dengan kondisi ini bisa dianggap rusak dan permohonan perpanjangan DITOLAK.",
-        "Cek sisa masa berlaku min. 8 bulan dari tanggal keberangkatan, nama min. 2 kata -> kalau kurang, lanjut proses perpanjangan",
-        "[BELUM PUNYA / BUAT BARU]",
-        "Siapkan dokumen pendukung:",
-        "  - e-KTP + KK (versi terbaru, ber-barcode)",
-        "  - Salah satu: Akta Kelahiran / Buku Nikah / Ijazah",
-        "  - Pastikan nama, tempat & tanggal lahir identik di semua dokumen",
-        "Daftar via aplikasi M-Paspor -> pilih Paspor Biasa Elektronik -> Pilih kantor imigrasi (bebas) -> Pilih jadwal kedatangan sesuai kuota tersedia.",
-        "⏰ KODE BILLING KEDALUWARSA: Bayar via kode billing (Bank/ATM/Marketplace/Pos) maks. 2 jam setelah pendaftaran. Lewat 2 jam -> kode kedaluwarsa, harus daftar ulang dari awal.",
-        "Datang ke kantor imigrasi sesuai jadwal: foto, sidik jari, wawancara -> Jawab jujur & konsisten dengan dokumen yang diupload.",
-        "💸 BIAYA PNBP TIDAK DAPAT DIKEMBALIKAN jika DITOLAK saat verifikasi/wawancara karena:",
-        "  - a) Paspor lama rusak/coretan",
-        "  - b) Info tidak jujur/tidak konsisten saat wawancara",
-        "  - c) Indikasi pemalsuan dokumen / masalah keamanan-hukum",
-        "🟢 Catatan: kalau ditolak karena dokumen KURANG LENGKAP saja, masih bisa dilengkapi/reschedule, biaya TETAP BERLAKU untuk proses ulang (tidak perlu bayar lagi).",
-        "Biaya (PP 45/2024): Rp650.000 (5 thn) atau Rp950.000 (10 thn) + Rp1.000.000 jika pilih layanan percepatan (selesai hari yang sama).",
-        "Estimasi proses: 3-5 hari kerja setelah foto & wawancara.",
+        "📌 Riset dulu syarat & ketersediaan kuota kantor imigrasi tujuan (beda kantor bisa beda kuota/jadwal).",
+        "⏰ Sebelum terbang: pastikan sisa masa berlaku paspor minimal 8 bulan dan nama minimal 2 kata.",
+        "📌 Cek kondisi fisik paspor lama: tidak ada coretan, sobek, atau halaman rusak. Paspor dengan kondisi ini bisa dianggap rusak dan permohonan perpanjangan DITOLAK.",
+        "📌 Cek nama, tempat & tanggal lahir identik di semua dokumen.",
+        "📌 Daftar via aplikasi M-Paspor: pilih Paspor Biasa Elektronik → pilih kantor imigrasi → pilih jadwal kedatangan.",
+        "⏰ Kode billing kedaluwarsa: bayar maksimal 2 jam setelah pendaftaran. Lewat 2 jam = daftar ulang dari awal.",
+        "Datang ke kantor imigrasi sesuai jadwal: foto, sidik jari, wawancara. Jawab jujur & konsisten dengan dokumen.",
+        "💸 Biaya PNBP tidak dapat dikembalikan jika ditolak saat verifikasi/wawancara karena:",
+        "  - Paspor lama rusak/coretan",
+        "  - Info tidak jujur atau tidak konsisten saat wawancara",
+        "  - Indikasi pemalsuan dokumen atau masalah keamanan-hukum",
+        "🟢 Catatan: jika ditolak karena dokumen kurang lengkap, masih bisa dilengkapi/reschedule. Biaya tetap berlaku untuk proses ulang (tidak perlu bayar lagi).",
+        "💸 Biaya (PP 45/2024): Rp650.000 (5 tahun) atau Rp950.000 (10 tahun). Tambahan Rp1.000.000 untuk layanan percepatan (selesai hari yang sama).",
+        "⏰ Estimasi proses: 3-5 hari kerja setelah foto & wawancara.",
         "Setelah jadi: gunakan Autogate di bandara untuk imigrasi lebih cepat (cek syarat usia minimal)."
       ] },
     ]
@@ -382,27 +377,27 @@ export const prepData: PrepSection[] = [
     section: "Langkah 2: Persyaratan Kesehatan (H-60 s/d H-45)",
     items: [
       { id: 3, title: "Vaksin Meningitis", badge: "Wajib", tips: [
-        "Cek riwayat vaksin meningitis sebelumnya (kalau pernah vaksin):",
+        "📌 Cek riwayat vaksin meningitis sebelumnya:",
         "  - Jenis Konjugat: berlaku 5 tahun",
         "  - Jenis Polisakarida: berlaku 2-3 tahun",
         "  - Jika sudah lewat, wajib vaksin ulang",
         "Daftar via aplikasi SatuSehat (menu Vaksin Luar Negeri) atau langsung ke KKP terdekat. Alternatif: SINKARKES (sinkarkes.kemkes.go.id).",
-        "Lakukan vaksinasi minimal 14 hari sebelum terbang agar antibodi terbentuk sempurna.",
-        "Estimasi biaya: KKP/Puskesmas Rp 200rb-350rb, RS swasta Rp 400rb-700rb (umumnya sudah termasuk biaya ICV).",
+        "⏰ Lakukan vaksinasi minimal 14 hari sebelum terbang agar antibodi terbentuk sempurna.",
+        "💸 Estimasi biaya: KKP/Puskesmas Rp200.000-350.000, RS swasta Rp400.000-700.000 (umumnya sudah termasuk biaya ICV).",
         "Pastikan mendapat Buku Kuning (ICV) fisik atau digital yang terverifikasi di SatuSehat.",
         "[KONDISIONAL — Jika membawa anak]",
         "  - Anak usia 2 tahun ke atas wajib vaksin meningitis sama seperti dewasa.",
         "  - Untuk bayi di bawah 2 tahun, ada ketentuan khusus — konsultasikan langsung ke dokter anak atau KKP.",
         "  - ICV anak diterbitkan terpisah (atas nama masing-masing anak, bukan digabung dengan ICV orang tua)."
       ] },
-      { id: 4, title: "VAKSIN POLIO (IPV)", badge: "Wajib", tips: [
+      { id: 4, title: "Vaksin Polio (IPV)", badge: "Wajib", tips: [
         "Wajib bagi WNI mulai 2025. Mintalah dosis IPV di Puskesmas, KKP, atau RS Pemerintah.",
-        "Lakukan vaksinasi 2-4 minggu sebelum keberangkatan (jangan disuntik di hari yang sama dengan Meningitis jika terlalu mepet).",
+        "⏰ Lakukan vaksinasi 2-4 minggu sebelum keberangkatan (jangan disuntik di hari yang sama dengan Meningitis jika terlalu mepet).",
         "Sertakan bukti vaksinasi dalam catatan kesehatan internasional Anda (ICV/e-ICV).",
         "[KONDISIONAL — Jika membawa anak]",
         "Cek dulu riwayat imunisasi polio rutin anak (biasanya usia 2, 3, 4 bulan + booster 18 bulan):",
-        "  - Jika SUDAH LENGKAP: konsultasi ke dokter/KKP, kemungkinan tidak perlu dosis tambahan",
-        "  - Jika BELUM lengkap: wajib lengkapi dulu sesuai jadwal IDAI",
+        "  - Jika sudah lengkap: konsultasi ke dokter/KKP, kemungkinan tidak perlu dosis tambahan",
+        "  - Jika belum lengkap: wajib lengkapi dulu sesuai jadwal IDAI",
         "⚠️ Catatan: tidak ada angka usia minimal spesifik yang seragam untuk anak, selalu konsultasi langsung ke KKP/dokter anak."
       ] },
       { id: 5, title: "Vaksin Influenza & Pneumonia", badge: "Rekomendasi", tips: [
@@ -411,35 +406,35 @@ export const prepData: PrepSection[] = [
         "[INFLUENZA — untuk semua usia]",
         "  - Berikan minimal 2 minggu sebelum keberangkatan",
         "  - Perlu diulang tiap tahun (virus bermutasi setiap musim)",
-        "  - Estimasi biaya: Rp 280rb - 600rb",
+        "  - Estimasi biaya: Rp280.000 - 600.000",
         "[PNEUMONIA (PNEUMOKOKUS) — kondisional]",
-        "⚠️ Hanya direkomendasikan untuk: Usia 50 tahun ke atas, ATAU Punya komorbid.",
+        "⚠️ Hanya direkomendasikan untuk: usia 50 tahun ke atas, atau punya komorbid.",
         "  - Berikan minimal 2 minggu sebelum keberangkatan",
         "  - Tidak perlu diulang tiap tahun (masa lindung lebih panjang)",
-        "  - Estimasi biaya: Rp 800rb - 1,5jt"
+        "  - Estimasi biaya: Rp800.000 - 1.500.000"
       ] },
       { id: 28, title: "Jaga Kesehatan Pribadi", badge: "Rekomendasi", tips: [
-        "Lakukan Medical Check-Up dasar (tensi, gula darah, jantung) terutama bagi penderita penyakit rutin.",
-        "Mulai rutin jalan kaki 30-45 menit setiap pagi. Total jalan kaki harian bisa mencapai 10-15 KM/hari.",
-        "Konsumsi Vitamin C/D dan cukupi hidrasi (minum 2-3L air/hari) untuk imunitas pra-keberangkatan.",
+        "Lakukan medical check-up dasar (tensi, gula darah, jantung) terutama bagi penderita penyakit rutin.",
+        "Mulai rutin jalan kaki 30-45 menit setiap pagi. Total jalan kaki harian bisa mencapai 10-15 km per hari.",
+        "Konsumsi Vitamin C/D dan cukupi hidrasi (minum 2-3 liter air/hari) untuk imunitas pra-keberangkatan.",
         "[KONDISIONAL — Jika membawa anak]",
         "  - Medical check-up khusus anak ke dokter anak, pastikan imunisasi dasar lengkap.",
         "  - Usia ideal untuk anak: 5-7 tahun lebih mudah diajak komunikasi.",
         "  - Latih anak jalan kaki lebih sering dari rumah untuk membangun daya tahan tubuh.",
         "  - Siapkan stroller ringan/baby carrier untuk balita (sangat membantu mobilitas di masjid).",
-        "  - 🆕 Manfaatkan gelang pelacak anak GRATIS yang disediakan Otoritas Masjidil Haram.",
+        "  - Manfaatkan gelang pelacak anak GRATIS yang disediakan Otoritas Masjidil Haram.",
         "  - Pertimbangkan waktu keberangkatan: hindari musim panas ekstrem (Juni-Agustus)."
       ] },
       { id: 33, title: "Kesehatan Wanita", badge: "Rekomendasi", tips: [
-        "Khusus jamaah wanita yang belum menopause:",
+        "📌 Khusus jamaah wanita yang belum menopause:",
         "  - Hitung perkiraan tanggal haid berikutnya berdasarkan siklus bulanan Anda.",
-        "  - Konsultasikan ke dokter (idealnya dokter kandungan) MINIMAL 1 BULAN sebelum berangkat.",
-        "  - Obat penunda haid umum: Primolut N atau lanjut pil KB kombinasi aktif (Obat Resep).",
-        "  - Obat mulai diminum 3-7 hari SEBELUM tanggal haid biasanya datang.",
+        "  - Konsultasikan ke dokter (idealnya dokter kandungan) minimal 1 bulan sebelum berangkat.",
+        "  - Obat penunda haid umum: Primolut N atau lanjut pil KB kombinasi aktif (obat resep).",
+        "  - Obat mulai diminum 3-7 hari sebelum tanggal haid biasanya datang.",
         "  - Maksimal pemakaian: tidak lebih dari 14 hari berturut-turut tanpa pengawasan dokter.",
-        "  - 📦 Bawa obat dalam jumlah cukup untuk seluruh durasi umroh + buffer.",
+        "  - Bawa obat dalam jumlah cukup untuk seluruh durasi umroh + buffer.",
         "  - Kenali efek samping: mual, sakit kepala, nyeri payudara, perubahan mood.",
-        "📌 Catatan: menunda haid adalah pilihan personal, bukan kewajiban. Ritual Tawaf/Sa\u0027i bisa disesuaikan jadwalnya."
+        "📌 Catatan: menunda haid adalah pilihan personal, bukan kewajiban. Ritual Tawaf/Sa'i bisa disesuaikan jadwalnya."
       ] },
     ]
   },
@@ -447,45 +442,44 @@ export const prepData: PrepSection[] = [
     section: "Langkah 3: Logistik Mandiri (H-45 s/d H-30)",
     items: [
       { id: 6, title: "Tiket Pesawat PP (Confirmed)", badge: "Wajib", tips: [
-        "Cari dan pesan tiket pesawat secara mandiri (via Web Maskapai/OTA).",
+        "Cari dan pesan tiket pesawat secara mandiri (via web maskapai atau OTA).",
         "⏰ Timing: idealnya beli 3-6 bulan sebelum keberangkatan untuk harga terbaik.",
         "Wajib berstatus Confirmed (Pulang-Pergi). Simpan E-ticket dalam format PDF.",
-        "Pastikan nama di tiket sesuai dengan Paspor (minimal 2 kata).",
+        "Pastikan nama di tiket sesuai dengan paspor (minimal 2 kata).",
         "Tentukan bandara kedatangan: Jeddah (King Abdul Aziz) atau Madinah (Mohammad Bin Abdulaziz).",
         "Cek kebijakan bagasi: pastikan sudah termasuk bagasi untuk bawa barang/air zamzam.",
         "✈️ STRATEGI HEMAT: PENERBANGAN TRANSIT",
         "  - Mengapa murah? Rute via KL/Singapura sering jauh lebih murah karena kompetisi ketat.",
-        "  - Rute populer: Via KL (AirAsia), Doha (Qatar), Dubai (Emirates), Istanbul (Turkish).",
+        "  - Rute populer: via KL (AirAsia), Doha (Qatar), Dubai (Emirates), Istanbul (Turkish).",
         "  - ⚠️ Connecting Flight (1 booking): direkomendasikan, bagasi otomatis transfer, proteksi delay.",
         "  - ⚠️ Beli Tiket Terpisah (2 booking): berisiko, harus keluar imigrasi/ambil bagasi saat transit.",
-        "  - 📌 Tips: Cari MCT minimal 2 jam, cek bagasi through-checked.",
+        "  - 📌 Tips: cari MCT minimal 2 jam, cek bagasi through-checked.",
         "💡 Pertimbangan fisik: transit bisa 12-18 jam vs direct 9-10 jam (pikirkan lansia/anak)."
       ] },
       { id: 7, title: "Booking Hotel Madinah & Makkah", badge: "Wajib", tips: [
         "Pesan hotel via OTA (Agoda/Trip.com/Booking.com).",
         "⏰ Timing: booking minimal 4 minggu sebelum keberangkatan.",
         "Pilih tipe kamar prepaid/non-refundable (approval lebih cepat untuk kamar lunas).",
-        "Pastikan tanggal check-in/out SINKRON dengan tiket pesawat.",
-        "═══════════════════════════════════════════════",
-        "OPSI A — HOTEL SUDAH TERDAFTAR NUSUK MASAR (Simpel)",
-        "  - Kelebihan: Hotel sudah biasa proses approval, lebih responsif, risiko ditolak kecil.",
-        "  - Cara cek: mt.gov.sa -> Special Accommodation Facilities -> License Number.",
-        "═══════════════════════════════════════════════",
-        "OPSI B — HOTEL BELUM TERDAFTAR NUSUK MASAR (Effort Ekstra)",
-        "  - Kelebihan: Pilihan jauh lebih banyak dan variatif, harga bisa lebih murah.",
-        "  - ⚠️ Proses Tambahan: Harus menghubungi hotel sendiri (WA/Email) untuk minta approval Agreement.",
+        "Pastikan tanggal check-in/out sinkron dengan tiket pesawat.",
+        "📌 Simpan bukti reservasi (HCN/Voucher) — harus lanjut sampai hotel approve Agreement.",
+        "═══════════════════════════════════════",
+        "[OPSI A — Hotel sudah terdaftar Nusuk Masar (Simpel)]",
+        "  - Kelebihan: hotel sudah biasa proses approval, lebih responsif, risiko ditolak kecil.",
+        "  - Cara cek: mt.gov.sa → Special Accommodation Facilities → License Number.",
+        "═══════════════════════════════════════",
+        "[OPSI B — Hotel belum terdaftar Nusuk Masar (Effort Ekstra)]",
+        "  - Kelebihan: pilihan jauh lebih banyak dan variatif, harga bisa lebih murah.",
+        "  - ⚠️ Proses tambahan: harus menghubungi hotel sendiri (WA/Email) untuk minta approval Agreement.",
         "  - ⚠️ Hubungi jam kerja Saudi: 13:00-21:00 WIB (hindari hari Jumat).",
-        "  - 🔴 Risiko: Jika hotel tidak respons/menolak, visa tidak bisa terbit meski sudah bayar lunas.",
-        "═══════════════════════════════════════════════",
-        "Simpan bukti reservasi (HCN/Voucher) -> harus lanjut sampai hotel approve Agreement."
+        "  - 🔴 Risiko: jika hotel tidak respons/menolak, visa tidak bisa terbit meski sudah bayar lunas."
       ] },
       { id: 8, title: "Transportasi Lengkap (Closed Loop)", badge: "Wajib", tips: [
-        "Siapkan bukti booking untuk 3 RUTE WAJIB:",
-        "  - Rute 1: Bandara (JED/MED) -> Hotel (kedatangan)",
-        "  - Rute 2: Hotel Makkah <-> Hotel Madinah (antar kota)",
-        "  - Rute 3: Hotel -> Bandara (kepulangan)",
-        "Pilihan moda: Kereta Cepat HHR, Taxi Service, atau Bus (Khusus Rute 2 & 3).",
-        "⚠️ WAJIB: provider transport HARUS terdaftar di Nusuk Masar (Uber/Grab tidak diterima).",
+        "📌 Siapkan bukti booking untuk 3 rute wajib:",
+        "  - Rute 1: Bandara (JED/MED) → Hotel (kedatangan)",
+        "  - Rute 2: Hotel Makkah ↔ Hotel Madinah (antar kota)",
+        "  - Rute 3: Hotel → Bandara (kepulangan)",
+        "Pilihan moda: Kereta Cepat HHR, Taxi Service, atau Bus (khusus Rute 2 & 3).",
+        "⚠️ Wajib: provider transport harus terdaftar di Nusuk Masar (Uber/Grab tidak diterima).",
         "📋 BRN Transport — solusi darurat (kode booking tanpa approval lengkap):",
         "  - Digunakan jika approval normal macet / itinerary multi-kota tidak match.",
         "  - Biaya tambahan: SAR 9-18/hari atau fixed SAR 60-80/orang.",
@@ -498,19 +492,21 @@ export const prepData: PrepSection[] = [
     section: "Langkah 4: Eksekusi Visa & Legalitas (H-30 s/d H-14)",
     items: [
       { id: 9, title: "Pengajuan Visa Umrah (via Provider)", badge: "Wajib", tips: [
-        "Kirimkan E-ticket, Voucher Hotel, dan Rencana Transportasi ke Provider Visa.",
-        "Provider akan melakukan proses Inject data ke sistem Nusuk Masar untuk menerbitkan BRN/MOFA.",
-        "Biaya pengajuan sudah mencakup asuransi kesehatan darurat Saudi (Limit SAR 100.000).",
-        "Catatan: Wajib masuk ke Saudi maksimal 30 hari setelah Visa terbit."
+        "📌 Kirimkan dokumen lengkap ke Provider Visa: E-ticket, Voucher Hotel (HCN), dan bukti booking 3 rute transportasi.",
+        "Provider akan memproses semuanya di sistem resmi Nusuk Masar, termasuk meminta approval ke pihak hotel. Proses ini di luar kendali jamaah — tugas Anda hanya memastikan dokumen yang dikirim sudah lengkap & benar.",
+        "⏰ Estimasi waktu proses: 3-7 hari kerja setelah hotel approve. Jika hotel lambat merespons, proses bisa lebih lama — tanyakan progress ke provider secara berkala.",
+        "📋 Jika proses macet/lambat mendekati keberangkatan, provider mungkin menawarkan BRN sebagai solusi jalan pintas (ada biaya tambahan). Tanyakan ke provider jika situasi ini terjadi.",
+        "Biaya pengajuan visa sudah mencakup asuransi kesehatan dasar untuk biaya medis di rumah sakit umum pemerintah Arab Saudi.",
+        "⏰ Visa umrah berlaku 90 hari sejak diterbitkan — pastikan tanggal keberangkatan & kepulangan masih dalam rentang ini."
       ] },
       { id: 10, title: "Registrasi Siskopatuh & ID Card", badge: "Wajib", tips: [
         "Provider akan mendaftarkan data keberangkatan Anda ke sistem Siskopatuh Kemenag RI.",
         "Wajib meminta ID Card Siskopatuh fisik/digital untuk ditunjukkan ke petugas di bandara."
       ] },
       { id: 11, title: "Booking Slot Raudhah (Aplikasi Nusuk)", badge: "Wajib", tips: [
-        "Registrasi akun Nusuk sebagai International Visitor menggunakan No. Paspor and No. Visa.",
+        "Registrasi akun Nusuk sebagai International Visitor menggunakan nomor paspor dan nomor visa.",
         "Pilih jadwal Rawdah Permit dan simpan bukti QR Code di galeri HP.",
-        "Aturan Saudi: Booking Raudhah hanya diperbolehkan satu kali dalam setiap 30 hari."
+        "⏰ Aturan Saudi: booking Raudhah hanya diperbolehkan satu kali dalam setiap 30 hari."
       ] },
     ]
   },
@@ -519,20 +515,20 @@ export const prepData: PrepSection[] = [
     items: [
       { id: 12, title: "Persiapan Keuangan & Kartu ATM/Kredit", badge: "Wajib", tips: [
         "Wajib membawa kartu ATM/Debit berlogo Visa atau Mastercard (GPN tidak bisa digunakan).",
-        "Aktifkan fitur Transaksi Luar Negeri and Debit Online di m-banking sebelum berangkat.",
+        "Aktifkan fitur Transaksi Luar Negeri dan Debit Online di m-banking sebelum berangkat.",
         "Tukar Rupiah ke Riyal (SAR) secukupnya di Indonesia (SAR 200-500) untuk darurat saat mendarat.",
         "Gunakan bank digital (Jago/Jenius) untuk mendapatkan kurs kompetitif."
       ] },
       { id: 13, title: "Koneksi Internet di Saudi", badge: "Wajib", tips: [
-        "E-SIM: Paling praktis, beli via Airalo/Holafly dari Indonesia.",
-        "Kartu SIM Lokal: Beli kartu STC, Zain, atau Mobily di bandara Saudi (SAR 80-120).",
-        "Roaming: Aktifkan paket Umrah dari provider Indonesia jika ingin tetap menggunakan nomor lama.",
-        "WiFi Masjid: Gunakan WiFi Haram-Guest sebagai cadangan (butuh nomor Saudi)."
+        "E-SIM: paling praktis, beli via Airalo/Holafly dari Indonesia.",
+        "Kartu SIM Lokal: beli kartu STC, Zain, atau Mobily di bandara Saudi (SAR 80-120).",
+        "Roaming: aktifkan paket Umrah dari provider Indonesia jika ingin tetap menggunakan nomor lama.",
+        "WiFi Masjid: gunakan WiFi Haram-Guest sebagai cadangan (butuh nomor Saudi)."
       ] },
       { id: 29, title: "Asuransi Perjalanan Tambahan", badge: "Opsional", tips: [
-        "Perlindungan Transit: Menanggung risiko saat berada di negara transit.",
-        "Pembatalan Perjalanan: Ganti rugi jika batal berangkat karena sakit serius.",
-        "Kehilangan Bagasi & Paspor: Memberikan penggantian jika koper hilang di hotel.",
+        "Perlindungan Transit: menanggung risiko saat berada di negara transit.",
+        "Pembatalan Perjalanan: ganti rugi jika batal berangkat karena sakit serius.",
+        "Kehilangan Bagasi & Paspor: memberikan penggantian jika koper hilang di hotel.",
         "Sangat direkomendasikan untuk menutup celah proteksi asuransi standar."
       ] },
     ]
@@ -546,21 +542,21 @@ export const prepData: PrepSection[] = [
         "Bawa celana dalaman tipis (legging) untuk kenyamanan berjalan jauh."
       ] },
       { id: 15, title: "Perlengkapan Khusus Ibadah Umroh", badge: "Wajib", tips: [
-        "Pria: Minimal 2 set kain ihram dan sabuk ihram tanpa jahitan.",
-        "Wanita: Mukena atasan/gober yang praktis dan kaos kaki tawaf anti-slip.",
-        "Footwear: Sandal jepit atau sepatu sandal empuk (tidak menutup mata kaki saat ihram).",
-        "Sediakan Tas Serut Kecil untuk membawa sandal masuk ke dalam masjid."
+        "Pria: minimal 2 set kain ihram dan sabuk ihram tanpa jahitan.",
+        "Wanita: mukena atasan/gober yang praktis dan kaos kaki tawaf anti-slip.",
+        "Footwear: sandal jepit atau sepatu sandal empuk (tidak menutup mata kaki saat ihram).",
+        "Sediakan tas serut kecil untuk membawa sandal masuk ke dalam masjid."
       ] },
       { id: 30, title: "Perlengkapan Selama di Arab Saudi", badge: "Opsional", tips: [
-        "Logistik Makan: Lauk kering (rendang/abon) dan Magic Com Mini (max 200W).",
-        "Kebersihan: Deterjen sachet dan gantungan baju (hanger) kawat.",
-        "Sesuaikan dengan Budget: Memasak sendiri bisa menghemat budget makan hingga 70%.",
-        "Sesuaikan dengan Hotel: Pastikan daya listrik hotel mencukupi."
+        "Logistik Makan: lauk kering (rendang/abon) dan magic com mini (max 200W).",
+        "Kebersihan: deterjen sachet dan gantungan baju (hanger) kawat.",
+        "Sesuaikan dengan budget: memasak sendiri bisa menghemat budget makan hingga 70%.",
+        "Sesuaikan dengan hotel: pastikan daya listrik hotel mencukupi."
       ] },
       { id: 16, title: "Gadget & Kebutuhan Medis", badge: "Wajib", tips: [
-        "Teknis: Colokan Kaki Tiga (Tipe G), Powerbank (max 20.000mAh), dan Botol Spray wudhu.",
-        "Kesehatan: Obat rutin/maag/diare, plester luka, dan masker N95.",
-        "Skincare: Sunscreen SPF 50+, lip balm, dan pelembap kulit."
+        "Teknis: colokan kaki tiga (Tipe G), powerbank (max 20.000mAh), dan botol spray wudhu.",
+        "Kesehatan: obat rutin/maag/diare, plester luka, dan masker N95.",
+        "Skincare: sunscreen SPF 50+, lip balm, dan pelembap kulit."
       ] },
     ]
   },
@@ -568,9 +564,9 @@ export const prepData: PrepSection[] = [
     section: "Langkah 7: Final Check (H-3 s/d Keberangkatan)",
     items: [
       { id: 17, title: "Pemeriksaan Akhir & Keberangkatan", badge: "Wajib", tips: [
-        "Cetak Fisik: Bawa hardcopy Paspor Asli, Visa, Tiket, Voucher Hotel, dan Buku Kuning (ICV).",
-        "Kesiapan Digital: Pastikan aplikasi Nusuk and SatuSehat sudah aktif.",
-        "Bandara: Hadir 4-5 jam sebelum terbang. Terminal 2F Soetta. Kalungkan ID Card Siskopatuh."
+        "📁 Cetak Fisik: bawa hardcopy paspor asli, visa, tiket, voucher hotel, dan buku kuning (ICV).",
+        "📁 Kesiapan Digital: pastikan aplikasi Nusuk dan SatuSehat sudah aktif.",
+        "⏰ Bandara: hadir 4-5 jam sebelum terbang. Terminal 2F Soetta. Kalungkan ID Card Siskopatuh."
       ] },
     ]
   }

@@ -556,71 +556,69 @@ body.dark .tips-panel-title { color: var(--gold-light); }
 body.dark .tip-list li { color: #d1d5db; }
 body.dark .tip-list li::before { color: var(--gold-light); }
 
-/* ── BULLET SYSTEM 2.0 ── */
-.tip-list {
-  list-style: none;
-  padding: 0;
-  margin: 12px 0;
-}
-
+.tip-list { list-style:none; padding-left: 0; }
 .tip-list li {
-  font-size: 0.94rem;
-  color: var(--ink);
-  padding: 8px 0;
-  line-height: 1.65;
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
   position: relative;
+  font-size: .95rem;
+  color: var(--ink);
+  padding: 5px 0;
+  line-height: 1.7;
+  padding-left: 1.35em;
+  margin-bottom: 2px;
 }
-
-/* Poin Utama: Garis Vertikal Emas */
-.tip-list li:not(.no-bullet):not(.sub-item):not(.header-item)::before {
-  content: "";
-  display: inline-block;
-  width: 2.5px;
-  height: 15px;
-  background: var(--gold);
-  margin-top: 6px;
-  flex-shrink: 0;
-  border-radius: 1px;
-}
-
-/* Sub-Poin: Bullet Bundar Transparan */
-.tip-list li.sub-item {
-  padding-left: 28px;
-  font-size: 0.91rem;
-  color: var(--ink-soft);
-}
-
-.tip-list li.sub-item::before {
+/* Main poin: sharp gold dot */
+.tip-list li::before {
   content: "•";
   color: var(--gold);
-  font-size: 1.1rem;
-  opacity: 0.4;
-  margin-top: -1px;
-  line-height: 1;
-  width: 16px;
-  display: flex;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.tip-list li.no-bullet::before {
-  content: none;
-}
-
-.tip-list li.header-item {
+  position: absolute;
+  left: 6px;
+  top: 0.35em;
+  font-size: 1rem;
   font-weight: 700;
-  color: var(--emerald-text);
-  margin-top: 14px;
-  margin-bottom: 4px;
-  font-size: 0.9rem;
-  padding-left: 0;
+  line-height: 1;
 }
-
-/* Dark Mode Refinements */
-body.dark .tip-list li { color: #d1d5db; }
-body.dark .tip-list li.sub-item { color: #a1a1aa; }
-body.dark .tip-list li:not(.no-bullet):not(.sub-item):not(.header-item)::before { background: var(--gold-light); }
+/* Sub-poin: vertical bar + round dot */
+.tip-list li.sub-item {
+  padding-left: 2.8em;
+  position: relative;
+}
+.tip-list li.sub-item::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--gold);
+  opacity: 0.55;
+  border-radius: 2px;
+}
+.tip-list li.sub-item::before {
+  content: "◦";
+  color: var(--gold);
+  position: absolute;
+  left: 2.2em;
+  top: 0.45em;
+  font-size: 0.85rem;
+  opacity: 0.75;
+  font-weight: 400;
+  line-height: 1;
+}
+/* Header / section label items (no bullet, emas bold) */
+.tip-list li.no-bullet {
+  padding-left: 1.35em;
+}
+.tip-list li.no-bullet::before,
+.tip-list li.no-bullet::after {
+  display: none;
+}
+.tip-list li.no-bullet .label-inner {
+  font-weight: 700;
+  color: var(--gold);
+}
+/* Dark mode */
+body.dark .tip-list li::before { color: var(--gold-light); }
+body.dark .tip-list li.sub-item::after { background: var(--gold-light); opacity: 0.45; }
 body.dark .tip-list li.sub-item::before { color: var(--gold-light); opacity: 0.6; }
+body.dark .tip-list li { color: #d1d5db; }
+body.dark .tip-list li.no-bullet .label-inner { color: var(--gold-light); }
