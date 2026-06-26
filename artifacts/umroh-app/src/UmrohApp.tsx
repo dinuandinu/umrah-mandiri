@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./UmrohApp.css";
 
 // Impor Komponen UI Dasar
-import { DS, SubTabs, KaabaSVG } from "./components/ui/Common";
+import { DS, SubTabs } from "./components/ui/Common";
 import { MiniMap } from "./components/ui/Maps";
 import { Drawer, Onboarding, FAQPage, AboutPage } from "./components/Layout/Components";
 
@@ -18,14 +18,16 @@ export default function UmrohApp() {
   const [subTabs, setSubTabs]       = useState<Record<number, string>>(() => JSON.parse(localStorage.getItem("umrah-subtabs") || "{}"));
   const [detailOpen, setDetailOpen] = useState<Record<string, boolean>>({});
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [theme, setTheme]           = useState(() => localStorage.getItem("umrah-theme") || "light");
-  const [fontSize, setFontSize]     = useState(() => localStorage.getItem("umrah-fontsize") || "normal");
+  const [theme, setTheme]           = useState(() => { try { return localStorage.getItem("umrah-theme") || "auto"; } catch { return "auto"; } });
+  const [fontSize, setFontSize]     = useState(() => { try { return localStorage.getItem("umrah-fontsize") || "normal"; } catch { return "normal"; } });
   const [showTop, setShowTop]       = useState(false);
   const [query, setQuery]           = useState("");
   const [showAbout, setShowAbout]   = useState(false);
   const [showFAQ, setShowFAQ]       = useState(false);
-  const [showOnboarding, setShowOnboarding] = useState(() => !localStorage.getItem("umrah-onboarded"));
-  const [isOffline, setIsOffline] = useState(() => typeof navigator !== "undefined" && !navigator.onLine);
+  const [showOnboarding, setShowOnboarding] = useState(() => {
+    try { return !localStorage.getItem("umrah-onboarded"); } catch { return false; }
+  });
+  const [isOffline, setIsOffline]   = useState(() => typeof navigator !== "undefined" && !navigator.onLine);
   const [offlineDismissed, setOfflineDismissed] = useState(false);
 
   // --- 2. LOGIKA TEMA & DARK MODE ---
@@ -38,11 +40,13 @@ export default function UmrohApp() {
   }, [isDark]);
 
   useEffect(() => {
-    localStorage.setItem("umrah-checked", JSON.stringify(checked));
-    localStorage.setItem("umrah-theme", theme);
-    localStorage.setItem("umrah-fontsize", fontSize);
-    localStorage.setItem("umrah-tab", tab);
-    localStorage.setItem("umrah-subtabs", JSON.stringify(subTabs));
+    try {
+      localStorage.setItem("umrah-checked", JSON.stringify(checked));
+      localStorage.setItem("umrah-theme", theme);
+      localStorage.setItem("umrah-fontsize", fontSize);
+      localStorage.setItem("umrah-tab", tab);
+      localStorage.setItem("umrah-subtabs", JSON.stringify(subTabs));
+    } catch (e) { console.error("Storage save failed", e); }
   }, [checked, theme, fontSize, tab, subTabs]);
 
   useEffect(() => {
@@ -51,9 +55,17 @@ export default function UmrohApp() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const goOffline = () => { setIsOffline(true); setOfflineDismissed(false); };
+    const goOnline  = () => setIsOffline(false);
+    window.addEventListener("offline", goOffline);
+    window.addEventListener("online",  goOnline);
+    return () => { window.removeEventListener("offline", goOffline); window.removeEventListener("online", goOnline); };
+  }, []);
+
   // --- 3. HANDLER ---
   const handleOnboardingDone = () => {
-    localStorage.setItem("umrah-onboarded", "1");
+    try { localStorage.setItem("umrah-onboarded", "1"); } catch {}
     setShowOnboarding(false);
   };
 
@@ -110,7 +122,7 @@ export default function UmrohApp() {
             </div>
             <div className="kaaba-container">
               <div className="kaaba-glow" />
-              <KaabaSVG />
+              <img src="/assets/kaaba-logo.png" className="kaaba-icon" alt="Logo Ka'bah" />
             </div>
             <h1>Umroh Mandiri</h1>
             <div className="subtitle">
@@ -130,7 +142,14 @@ export default function UmrohApp() {
 
             <div className="main">
               <div className="search-bar-modern">
-                <div className="search-icon-modern">🔍</div><input type="search" className="search-input-modern" placeholder="Cari topik, doa, dokumen..." value={query} onChange={e => setQuery(e.target.value)} />
+                <div className="search-icon-modern">🔍</div>
+                <input
+                  type="search"
+                  className="search-input-modern"
+                  placeholder="Cari topik, doa, dokumen..."
+                  value={query}
+                  onChange={e => setQuery(e.target.value)}
+                />
               </div>
 
               {tab === "persiapan" ? (
@@ -181,19 +200,23 @@ export default function UmrohApp() {
                                  <span>💡</span>
                                  <span>TIPS & CARA MENDAPATKAN</span>
                                </div>
-                               <ul className="tip-list">{item.tips.map((t, i) => {
-                                 const trimmed = t.trim();
-                                 const isSub = t.startsWith("  -") || t.startsWith("- ");
-                                 const isHeader = trimmed.startsWith("[") || trimmed.startsWith("════");
+                               <ul className="tip-list">
+                                 {item.tips.map((t, i) => {
+                                   const trimmed = t.trim();
+                                   const isSub = t.startsWith("  -") || t.startsWith("- ");
+                                   const isHeader = trimmed.startsWith("[") || trimmed.startsWith("📌") ||
+                                                    trimmed.startsWith("⏰") || trimmed.startsWith("💸") ||
+                                                    trimmed.startsWith("🟢") || trimmed.startsWith("🔴") ||
+                                                    trimmed.startsWith("════");
 
-                                 let className = "";
-                                 if (isSub) className = "sub-item";
-                                 else if (isHeader) className = "no-bullet";
+                                   let className = "";
+                                   if (isSub) className = "sub-item";
+                                   else if (isHeader) className = "no-bullet header-item";
 
-                                 // Remove the dash prefix for sub-items display
-                                 const content = isSub ? t.replace(/^\s*-\s*/, "") : t;
-                                 return <li key={i} className={className}>{highlight(content)}</li>;
-                               })}</ul>
+                                   const content = isSub ? t.replace(/^\s*-\s*/, "") : t;
+                                   return <li key={i} className={className}>{highlight(content)}</li>;
+                                 })}
+                               </ul>
                              </div>
                            )}
                          </div>
