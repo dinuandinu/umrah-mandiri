@@ -124,7 +124,6 @@ export default function UmrohApp() {
               <button className="faq-btn" onClick={() => setShowFAQ(true)}>FAQ</button>
             </div>
             <div className="kaaba-container">
-              <div className="kaaba-glow" />
               <img src={kaabaLogo} className="kaaba-icon" alt="Logo Ka'bah" />
             </div>
             <h1>Umroh Mandiri</h1>
