@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import "./UmrohApp.css";
 
+// Import Logo Gambar
+import kaabaLogo from "./assets/kaaba-logo.png";
+
 // Impor Komponen UI Dasar
 import { DS, SubTabs } from "./components/ui/Common";
 import { MiniMap } from "./components/ui/Maps";
@@ -122,7 +125,7 @@ export default function UmrohApp() {
             </div>
             <div className="kaaba-container">
               <div className="kaaba-glow" />
-              <img src="/assets/kaaba-logo.png" className="kaaba-icon" alt="Logo Ka'bah" />
+              <img src={kaabaLogo} className="kaaba-icon" alt="Logo Ka'bah" />
             </div>
             <h1>Umroh Mandiri</h1>
             <div className="subtitle">
