@@ -330,18 +330,42 @@ body { font-family:'Tajawal',system-ui,-apple-system,'Segoe UI',Arial,sans-serif
 .tips-link-btn-outline { background:transparent; color:var(--emerald-text); border:1.5px solid var(--emerald-light); }
 .tips-header { font-size:.74rem; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:var(--gold); margin-bottom:8px; }
 
-.fs-large .tip-list li { font-size:.97rem; }
-.fs-large .larangan-list li { font-size:.95rem; }
-.fs-large .check-title { font-size:1.02rem; }
-.fs-large .detail-header { font-size:.98rem; }
-.fs-large .step-title { font-size:1.06rem; }
-.fs-large .step-subtitle { font-size:.93rem; }
-.fs-large .step-body p { font-size:.95rem; }
-.fs-large .doa-latin, .fs-large .doa-arti { font-size:.91rem; }
-.fs-large .info-box p, .fs-large .warn-box p { font-size:.92rem; }
-.fs-large .sub-tab-btn { font-size:.9rem; }
-.fs-large .detail-body p { font-size:.93rem; }
-
+/* ── FONT SIZE LARGE (BOOSTER UNTUK LANSIA) ── */
+.fs-large .check-title-modern {
+  font-size: 1.15rem !important;
+}
+.fs-large .step-title-modern {
+  font-size: 1.25rem !important;
+}
+.fs-large .step-subtitle-modern {
+  font-size: 1.05rem !important;
+}
+.fs-large .tip-list li {
+  font-size: 1.1rem !important;
+}
+.fs-large .doa-arabic {
+  font-size: 1.6rem !important;
+  line-height: 2.2 !important;
+}
+.fs-large .doa-latin,
+.fs-large .doa-arti {
+  font-size: 1.05rem !important;
+}
+.fs-large .info-banner-modern strong {
+  font-size: 1.2rem !important;
+}
+.fs-large .info-banner-modern span {
+  font-size: 1.05rem !important;
+}
+.fs-large .section-label-modern {
+  font-size: 0.85rem !important;
+}
+.fs-large .detail-header {
+  font-size: 1.1rem !important;
+}
+.fs-large .detail-body p {
+  font-size: 1.05rem !important;
+}
 .step-card-modern {
   background: var(--surface); border-radius: 1.25rem; margin-bottom: 16px;
   overflow: hidden; box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px 0 rgba(0,0,0,0.06);
