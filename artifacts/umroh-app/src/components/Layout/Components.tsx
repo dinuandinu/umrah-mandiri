@@ -1,13 +1,14 @@
 // src/components/Layout/Components.tsx
 import React, { useState } from "react";
 
-// ─── Drawer Component ───
-export const Drawer = ({ open, onClose, theme, setTheme, fontSize, setFontSize, onResetProgress, onOpenAbout }: {
+// ─── 1. DRAWER COMPONENT ───
+export const Drawer = ({ open, onClose, theme, setTheme, fontSize, setFontSize, onResetProgress }: {
   open: boolean; onClose: () => void; theme: string; setTheme: (t: string) => void;
-  fontSize: string; setFontSize: (s: string) => void; onResetProgress: () => void; onOpenAbout: () => void;
+  fontSize: string; setFontSize: (s: string) => void; onResetProgress: () => void; onOpenAbout?: () => void;
 }) => {
   const [confirmReset, setConfirmReset] = useState(false);
   const [showAuthor, setShowAuthor] = useState(false);
+  const [showAbout, setShowAbout] = useState(false);
 
   const handleReset = () => {
     if (!confirmReset) { setConfirmReset(true); return; }
@@ -27,6 +28,7 @@ export const Drawer = ({ open, onClose, theme, setTheme, fontSize, setFontSize, 
         </div>
 
         <div className="drawer-body">
+          {/* 🎨 SECTION TAMPILAN */}
           <div className="drawer-section-label">🎨 Tampilan</div>
           <div style={{ padding: "0 16px 12px" }}>
             <div style={{ fontSize: ".74rem", fontWeight: 600, color: "var(--muted)", marginBottom: 5 }}>Mode Tema</div>
@@ -43,66 +45,114 @@ export const Drawer = ({ open, onClose, theme, setTheme, fontSize, setFontSize, 
             </div>
           </div>
 
-          <div className="drawer-section-label">👤 Author</div>
-
-          <div className="drawer-card" onClick={() => setShowAuthor(!showAuthor)}>
-            <div className="drawer-card-row">
-              <div className="drawer-item-icon em">👨‍💻</div>
-              <div className="drawer-item-text">
-                <div className="drawer-item-label">Tentang Pembuat</div>
-                <div className="drawer-item-desc">Profil & kontak author</div>
+          {/* ☕ SECTION APRESIASI */}
+          <div className="drawer-section-label">☕ Apresiasi</div>
+          <div style={{ padding: "0 16px 12px" }}>
+            <div className="drawer-card" style={{ background: "var(--surface-tips-from)", border: "1.5px dashed var(--gold)" }}>
+              <div style={{ padding: "14px", textAlign: "center" }}>
+                <div style={{ fontSize: "1.2rem", marginBottom: "4px" }}>🤲</div>
+                <div style={{ fontWeight: 700, fontSize: ".82rem", color: "var(--ink)" }}>Dukung Project Ini?</div>
+                <p style={{ fontSize: ".7rem", color: "var(--muted)", marginBottom: "10px" }}>Aplikasi ini gratis selamanya. Cukup berikan doa terbaik Anda bagi keberlangsungan project ini.</p>
+                <button disabled className="seg-btn" style={{ background: "var(--border-progress)", width: "100%", borderRadius: "8px", color: "var(--muted)", cursor: "default" }}>
+                  Apresiasi Kopi (Coming Soon)
+                </button>
               </div>
-              <span className="drawer-item-chev" style={{ transform: showAuthor ? "rotate(90deg)" : "none", transition: "transform .2s" }}>›</span>
             </div>
-            {showAuthor && (
-              <div className="drawer-expand-body">
-                <div className="author-avatar">🕌</div>
-                <div className="author-name">Hamba Allah</div>
-                <div className="author-bio">
-                  Aplikasi ini dibuat sebagai amal jariyah — semoga bermanfaat bagi saudara-saudara Muslim yang hendak melaksanakan ibadah umroh mandiri.
-                </div>
-                <div className="author-links">
-                  <a className="author-link-btn" href="mailto:andinu@duck.com?subject=Umroh%20Mandiri%20App" onClick={e=>e.stopPropagation()}>
-                    <span style={{fontWeight:700}}>✉️ Email</span>
-                  </a>
-                </div>
-                <div className="author-doa" style={{marginTop:8}}>
-                  <span style={{fontFamily:"Amiri,serif",fontSize:"1rem",color:"var(--gold)"}}>جَزَاكَ اللَّهُ خَيْرًا</span><br/>
-                  <span style={{fontSize:".75rem",color:"var(--muted)"}}>Semoga Allah membalas dengan kebaikan</span>
-                </div>
-              </div>
-            )}
           </div>
 
+          {/* ⚙️ SECTION ALAT & INFO */}
           <div className="drawer-section-label">⚙️ Alat & Info</div>
 
+          {/* Profil Pembuat */}
+          <button className="drawer-item" onClick={() => setShowAuthor(!showAuthor)}>
+            <div className="drawer-item-icon gold">👤</div>
+            <div className="drawer-item-text">
+              <div className="drawer-item-label">Profil Pembuat</div>
+              <div className="drawer-item-desc">Mengenal pengembang aplikasi</div>
+            </div>
+            <span className="drawer-item-chev" style={{ transform: showAuthor ? "rotate(90deg)" : "none", transition: "transform .2s" }}>›</span>
+          </button>
+          {showAuthor && (
+            <div className="drawer-expand-body">
+              <div className="author-avatar">👨‍💻</div>
+              <div className="author-name">andinu</div>
+              <div className="author-bio">
+                Aplikasi ini dikembangkan sebagai bentuk dedikasi untuk memudahkan saudara-saudara Muslim melaksanakan ibadah Umroh secara mandiri.
+              </div>
+              <div className="author-links">
+                <a className="author-link-btn" href="mailto:andinu@duck.com?subject=Umroh%20Mandiri%20App" onClick={e=>e.stopPropagation()}>
+                  <span style={{fontWeight:700}}>✉️ andinu@duck.com</span>
+                </a>
+              </div>
+            </div>
+          )}
+
+          {/* Tentang Aplikasi (Internal Expand) */}
+          <button className="drawer-item" onClick={() => setShowAbout(!showAbout)}>
+            <div className="drawer-item-icon em">ℹ️</div>
+            <div className="drawer-item-text">
+              <div className="drawer-item-label">Tentang Aplikasi</div>
+              <div className="drawer-item-desc">Versi & informasi detail</div>
+            </div>
+            <span className="drawer-item-chev" style={{ transform: showAbout ? "rotate(90deg)" : "none", transition: "transform .2s" }}>›</span>
+          </button>
+          {showAbout && (
+            <div className="drawer-expand-body" style={{
+              fontSize: '.82rem',
+              color: 'var(--muted)',
+              lineHeight: '1.7',
+              paddingTop: '14px',
+              paddingBottom: '18px'
+            }}>
+              <p style={{ marginBottom: '12px' }}>
+                <strong>Umroh Mandiri</strong> adalah panduan digital komprehensif yang mencakup checklist persiapan, tutorial ibadah, dan peta interaktif.
+              </p>
+
+              <div style={{ textAlign: 'center', margin: '14px 0' }}>
+                <span style={{
+                  fontSize: '.7rem',
+                  fontWeight: 700,
+                  color: 'var(--gold)',
+                  background: 'var(--surface-sub)',
+                  padding: '4px 12px',
+                  borderRadius: '12px',
+                  border: '1px solid var(--border-card)'
+                }}>
+                  VERSI {import.meta.env.VITE_APP_VERSION || "1.2.1"}
+                </span>
+              </div>
+
+              <div className="author-doa" style={{
+                padding: '14px',
+                background: 'var(--surface-raised)',
+                borderRadius: '12px',
+                border: '1px solid var(--border-card)'
+              }}>
+                <span style={{ fontFamily: "Amiri,serif", fontSize: "1rem", color: "var(--gold)" }}>جَزَاكَ اللَّهُ خَيْرًا</span><br/>
+                <span style={{ fontSize: ".72rem", marginTop: '4px', display: 'inline-block' }}>Semoga Allah membalas dengan kebaikan</span>
+              </div>
+            </div>
+          )}
+
+          {/* Reset Progress */}
           <button className="drawer-item" onClick={handleReset}>
             <div className="drawer-item-icon warn">🔄</div>
             <div className="drawer-item-text">
-              <div className="drawer-item-label">Reset Progress Persiapan</div>
-              <div className="drawer-item-desc">Hapus semua centang checklist</div>
+              <div className="drawer-item-label">Reset Progress</div>
+              <div className="drawer-item-desc">Hapus centang persiapan</div>
             </div>
           </button>
           {confirmReset && (
             <div className="reset-confirm">
-              <div className="reset-confirm-text">⚠️ Semua centang checklist akan dihapus. Yakin?</div>
+              <div className="reset-confirm-text">⚠️ Hapus semua progress?</div>
               <div className="reset-confirm-btns">
-                <button className="reset-btn-yes" onClick={handleReset}>Ya, Reset</button>
+                <button className="reset-btn-yes" onClick={handleReset}>Ya</button>
                 <button className="reset-btn-no" onClick={() => setConfirmReset(false)}>Batal</button>
               </div>
             </div>
           )}
 
-          <button className="drawer-item" onClick={() => { onClose(); setTimeout(onOpenAbout, 200); }}>
-            <div className="drawer-item-icon em">ℹ️</div>
-            <div className="drawer-item-text">
-              <div className="drawer-item-label">Tentang Aplikasi</div>
-              <div className="drawer-item-desc">Versi & informasi aplikasi</div>
-            </div>
-            <span className="drawer-item-chev">›</span>
-          </button>
-
-          <div style={{ padding: "10px 20px 4px" }}>
+          <div style={{ padding: "10px 20px 20px" }}>
             <span className="pwa-badge">
               <span className="pwa-dot" />
               Tersedia Offline
@@ -114,7 +164,7 @@ export const Drawer = ({ open, onClose, theme, setTheme, fontSize, setFontSize, 
   );
 };
 
-// ─── Onboarding Component ───
+// ─── 2. ONBOARDING COMPONENT ───
 export const Onboarding = ({ onDone, slides }: { onDone: () => void; slides: any[] }) => {
   const [slide, setSlide] = useState(0);
   const total = slides.length;
@@ -159,7 +209,7 @@ export const Onboarding = ({ onDone, slides }: { onDone: () => void; slides: any
   );
 };
 
-// ─── About Page Component ───
+// ─── 3. ABOUT PAGE COMPONENT (Lama - Masih ada sebagai fallback) ───
 export const AboutPage = ({ onClose }: { onClose: () => void }) => (
   <div className="about-overlay">
     <div className="about-header">
@@ -171,25 +221,13 @@ export const AboutPage = ({ onClose }: { onClose: () => void }) => (
       <div className="about-card">
         <div className="author-avatar">🕌</div>
         <div className="author-name">Umroh Mandiri</div>
-        <div className="author-bio">
-          Aplikasi panduan umroh mandiri untuk jamaah Indonesia.
-          Mencakup checklist persiapan, tutorial ibadah lengkap, doa-doa, dan peta interaktif.
-        </div>
-        <div style={{ textAlign: 'center', marginBottom: 12 }}>
-          <span style={{ fontSize: '.72rem', fontWeight: 700, color: 'var(--gold)', background: 'var(--surface-sub)', padding: '4px 10px', borderRadius: '12px' }}>
-            VERSI {import.meta.env.VITE_APP_VERSION}
-          </span>
-        </div>
-        <div className="author-doa">
-          <span style={{ fontFamily: "Amiri,serif", fontSize: "1.1rem", color: "var(--gold)" }}>جَزَاكَ اللَّهُ خَيْرًا</span><br />
-          <span style={{ fontSize: ".78rem", color: "var(--muted)" }}>Semoga Allah membalas dengan kebaikan</span>
-        </div>
+        <div className="author-bio">Panduan umroh mandiri untuk jamaah Indonesia.</div>
       </div>
     </div>
   </div>
 );
 
-// ─── FAQ Page Component ───
+// ─── 4. FAQ PAGE COMPONENT ───
 export const FAQPage = ({ onClose, data }: { onClose: () => void; data: any[] }) => {
   const [openIdx, setOpenIdx] = useState<string | null>(null);
   const [searchQ, setSearchQ] = useState('');
