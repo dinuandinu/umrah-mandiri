@@ -7,7 +7,7 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       background: #f9f7f2;
       color: #2d2d2d;
       line-height: 1.75;
@@ -15,81 +15,97 @@
     header {
       background: linear-gradient(135deg, #1a5c44, #2d7a5e);
       color: white;
-      padding: 48px 24px 40px;
+      padding: 56px 24px 48px;
       text-align: center;
     }
     header .badge {
-      font-size: 2.5rem;
-      margin-bottom: 12px;
+      font-size: 3rem;
+      margin-bottom: 16px;
     }
     header h1 {
-      font-size: 1.6rem;
-      font-weight: 700;
-      margin-bottom: 6px;
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
     }
     header p {
-      font-size: 0.85rem;
-      opacity: 0.7;
-      letter-spacing: 1px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
+      font-weight: 500;
     }
     .gold-line {
-      height: 4px;
+      height: 5px;
       background: #c9a84c;
     }
     main {
-      max-width: 720px;
+      max-width: 760px;
       margin: 0 auto;
       padding: 40px 24px 80px;
     }
     .last-updated {
-      font-size: 0.8rem;
-      color: #888;
+      font-size: 0.85rem;
+      color: #7a6a4a;
       margin-bottom: 32px;
-      padding: 10px 14px;
+      padding: 12px 16px;
       background: #fff;
-      border-radius: 8px;
-      border-left: 3px solid #c9a84c;
+      border-radius: 10px;
+      border-left: 4px solid #c9a84c;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
     }
     h2 {
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       font-weight: 700;
       color: #1a5c44;
-      margin: 32px 0 10px;
+      margin: 36px 0 12px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
-    p { margin-bottom: 14px; font-size: 0.95rem; }
+    p { margin-bottom: 16px; font-size: 0.97rem; color: #444; }
     ul {
-      margin: 8px 0 16px 20px;
-      font-size: 0.95rem;
+      margin: 12px 0 20px 24px;
+      font-size: 0.97rem;
+      color: #444;
     }
-    ul li { margin-bottom: 6px; }
+    ul li { margin-bottom: 8px; }
     .card {
       background: white;
-      border-radius: 12px;
-      padding: 20px 24px;
-      margin-bottom: 16px;
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin-bottom: 20px;
       border: 1px solid #e8e0d0;
-      box-shadow: 0 2px 8px rgba(0,0,0,.04);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
     }
     .contact-box {
       background: linear-gradient(135deg, #1a5c44, #2d7a5e);
       color: white;
-      border-radius: 12px;
-      padding: 24px;
-      margin-top: 40px;
+      border-radius: 16px;
+      padding: 32px 24px;
+      margin-top: 48px;
       text-align: center;
+      box-shadow: 0 8px 24px rgba(26, 92, 68, 0.15);
     }
-    .contact-box a { color: #f0d080; }
+    .contact-box a {
+      color: #fce7be;
+      text-decoration: none;
+      font-weight: 700;
+      border-bottom: 1.5px solid rgba(252, 231, 190, 0.3);
+      padding-bottom: 2px;
+      transition: all 0.2s;
+    }
+    .contact-box a:hover {
+      border-bottom-color: #fce7be;
+    }
     footer {
       text-align: center;
-      padding: 24px;
-      font-size: 0.8rem;
+      padding: 32px;
+      font-size: 0.85rem;
       color: #aaa;
       border-top: 1px solid #e8e0d0;
     }
+    strong { color: #1a5c44; }
   </style>
 </head>
 <body>
@@ -97,102 +113,79 @@
 <header>
   <div class="badge">🕋</div>
   <h1>Kebijakan Privasi</h1>
-  <p>Umroh Mandiri — Aplikasi Panduan Ibadah</p>
+  <p>Umroh Mandiri</p>
 </header>
 <div class="gold-line"></div>
 
 <main>
   <div class="last-updated">
-    📅 Terakhir diperbarui: 27 Mei 2026
+    📅 Terakhir diperbarui: 3 Juni 2026
   </div>
 
   <div class="card">
-    <h2>📋 Tentang Aplikasi Ini</h2>
+    <h2>📋 Tentang Aplikasi</h2>
     <p>
-      Umroh Mandiri adalah aplikasi panduan ibadah umroh untuk jamaah mandiri.
-      Aplikasi ini dikembangkan secara pribadi dan tidak berafiliasi dengan
-      pemerintah, biro perjalanan, atau lembaga keagamaan mana pun.
+      <strong>Umroh Mandiri</strong> adalah aplikasi panduan digital independen yang dirancang untuk membantu jamaah merencanakan dan melaksanakan ibadah umroh secara mandiri. Kami berkomitmen untuk menjaga privasi dan keamanan data pengguna kami.
     </p>
   </div>
 
   <div class="card">
-    <h2>🔒 Data yang Kami Kumpulkan</h2>
-    <p><strong>Aplikasi Umroh Mandiri tidak mengumpulkan data pribadi pengguna.</strong></p>
-    <p>Secara spesifik, aplikasi ini:</p>
+    <h2>🔒 Pengumpulan Data</h2>
+    <p><strong>Aplikasi Umroh Mandiri tidak mengumpulkan, mengirim, atau membagikan data pribadi pengguna.</strong></p>
+    <p>Kami tidak melakukan hal-hal berikut:</p>
     <ul>
-      <li>Tidak meminta nama, email, atau nomor telepon</li>
-      <li>Tidak memerlukan akun atau registrasi</li>
-      <li>Tidak mengakses kamera, mikrofon, atau galeri foto</li>
-      <li>Tidak mengakses lokasi perangkat</li>
-      <li>Tidak mengirimkan data apapun ke server eksternal</li>
-      <li>Tidak menggunakan layanan analitik atau pelacakan</li>
+      <li>Tidak meminta identitas seperti Nama, Email, atau No. Telepon.</li>
+      <li>Tidak memerlukan pendaftaran akun atau integrasi media sosial.</li>
+      <li>Tidak mengakses Kamera, Mikrofon, Galeri, atau Lokasi perangkat Anda.</li>
+      <li>Tidak menggunakan layanan analitik pihak ketiga atau pelacak iklan.</li>
     </ul>
   </div>
 
   <div class="card">
-    <h2>💾 Penyimpanan Lokal</h2>
+    <h2>💾 Penyimpanan Lokal (Local Storage)</h2>
     <p>
-      Satu-satunya data yang disimpan adalah <strong>progres checklist persiapan</strong>
-      yang tersimpan secara lokal di perangkat Anda (menggunakan localStorage browser).
-      Data ini:
+      Untuk memberikan fungsionalitas terbaik, aplikasi ini menyimpan data preferensi tertentu secara <strong>lokal</strong> di browser perangkat Anda menggunakan teknologi <em>localStorage</em>.
     </p>
+    <p>Data yang disimpan secara lokal meliputi:</p>
     <ul>
-      <li>Hanya tersimpan di perangkat Anda sendiri</li>
-      <li>Tidak pernah dikirim ke server manapun</li>
-      <li>Dapat dihapus kapan saja melalui pengaturan aplikasi</li>
+      <li>Status checklist persiapan (item mana yang sudah Anda centang).</li>
+      <li>Pilihan tema tampilan (Terang/Gelap).</li>
+      <li>Pilihan ukuran teks (Normal/Besar).</li>
     </ul>
+    <p>Data ini <strong>tetap berada di perangkat Anda</strong>, tidak pernah dikirim ke server kami, dan dapat Anda hapus sepenuhnya kapan saja melalui menu "Reset Progress" di dalam aplikasi.</p>
   </div>
 
   <div class="card">
-    <h2>🌐 Koneksi Internet</h2>
+    <h2>🌐 Penggunaan Offline</h2>
     <p>
-      Aplikasi ini dapat digunakan sepenuhnya secara offline.
-      Koneksi internet hanya dibutuhkan saat pertama kali memuat aplikasi.
-      Tidak ada komunikasi data ke server pihak ketiga.
-    </p>
-  </div>
-
-  <div class="card">
-    <h2>👶 Privasi Anak-Anak</h2>
-    <p>
-      Aplikasi ini tidak ditujukan untuk anak-anak di bawah usia 13 tahun
-      dan tidak mengumpulkan informasi dari anak-anak.
+      Aplikasi ini dirancang untuk bekerja sepenuhnya secara offline setelah pemuatan pertama. Kami tidak berkomunikasi dengan server pihak ketiga selama penggunaan rutin, guna memastikan privasi penuh dan penghematan paket data Anda saat berada di luar negeri.
     </p>
   </div>
 
   <div class="card">
     <h2>🔄 Perubahan Kebijakan</h2>
     <p>
-      Kebijakan privasi ini dapat diperbarui sewaktu-waktu. Perubahan akan
-      ditandai dengan memperbarui tanggal "Terakhir diperbarui" di bagian atas
-      halaman ini. Penggunaan berkelanjutan atas aplikasi berarti Anda menyetujui
-      kebijakan yang berlaku.
-    </p>
-  </div>
-
-  <div class="card">
-    <h2>⚖️ Hukum yang Berlaku</h2>
-    <p>
-      Kebijakan privasi ini tunduk pada hukum yang berlaku di
-      Republik Indonesia.
+      Kami dapat memperbarui kebijakan privasi ini secara berkala seiring dengan penambahan fitur baru. Setiap perubahan akan diinformasikan dengan memperbarui tanggal "Terakhir diperbarui" di bagian atas halaman ini.
     </p>
   </div>
 
   <div class="contact-box">
-    <div style="font-size:1.5rem;margin-bottom:8px;">✉️</div>
-    <strong>Ada pertanyaan?</strong>
-    <p style="margin-top:8px;font-size:.9rem;opacity:.85;">
-      Hubungi kami melalui GitHub:<br/>
-      <a href="https://github.com/dinuandinu/umrah-mandiri" target="_blank">
-        github.com/dinuandinu/umrah-mandiri
-      </a>
+    <div style="font-size:2rem;margin-bottom:12px;">✉️</div>
+    <h3 style="margin-bottom:8px; font-size: 1.2rem;">Pertanyaan & Masukan</h3>
+    <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem; margin-bottom: 20px;">
+      Jika Anda memiliki pertanyaan mengenai kebijakan privasi atau aplikasi ini, silakan hubungi pengembang melalui:
     </p>
+    <div style="background: rgba(255,255,255,0.1); padding: 16px; border-radius: 12px; display: inline-block;">
+      Email: <a href="mailto:andinu@duck.com">andinu@duck.com</a><br/>
+      GitHub: <a href="https://github.com/dinuandinu/umrah-mandiri" target="_blank">dinuandinu/umrah-mandiri</a>
+    </div>
   </div>
 
 </main>
 
 <footer>
-  © 2026 Umroh Mandiri · Dibuat dengan 🤍 untuk jamaah Indonesia
+  © 2026 Umroh Mandiri · Dikembangkan oleh <strong>andinu</strong><br/>
+  Dibuat dengan ikhlas untuk kemudahan umat Muslim.
 </footer>
 
 </body>
