@@ -21,7 +21,7 @@ export type TutItem = {
   title: string;
   subtitle: string;
   gold: boolean;
-  defaultSubTab: string | null;
+  defaultSubTab?: string | null; // Tanda ? membuat ini jadi opsional (Error Fix)
   content: (props: {
     D: Record<string, boolean>;
     T: (k: string) => void;

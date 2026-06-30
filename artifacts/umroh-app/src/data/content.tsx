@@ -927,49 +927,265 @@ export const tutorialData: TutItem[] = [
             ⛰️ Bukit Shafa & Marwah <span style={{ flex: 1, height: '1px', background: 'var(--border-detail)' }}></span>
           </div>
 
-          <p style={{ fontSize: '.94rem', lineHeight: '1.6', marginBottom: '12px' }}>Sa'i adalah berjalan bolak-balik sebanyak <strong>7 kali</strong>, dimulai dari bukit Shafa dan berakhir di bukit Marwah.</p>
+          <p style={{ fontSize: '.94rem', lineHeight: '1.6', marginBottom: '12px' }}>Sa'i adalah berjalan bolak-balik sebanyak <strong>7 kali</strong> antara Shafa & Marwah (±405 meter sekali jalan), dimulai dari bukit Shafa dan berakhir di bukit Marwah.</p>
 
           <DS id="si3" title="📖 Cara Pelaksanaan" open={D["si3"]} onToggle={T}>
             <ul className="tip-list">
-              <li><span className="step-badge">1</span>Naiki bukit Shafa, menghadap Ka'bah, dan berdoa.</li>
+              <li><span className="step-badge">1</span>Naiki bukit Shafa, menghadap Ka'bah (jika terlihat), ucapkan takbir 3x: <em>"Allahu Akbar, Allahu Akbar, Allahu Akbar"</em>.</li>
               <li><span className="step-badge">2</span>Berjalan menuju Marwah. <strong>Pria:</strong> lari-lari kecil di area lampu hijau (Harwalah).</li>
               <li><span className="step-badge">3</span>Tiba di Marwah, menghadap Ka'bah dan berdoa kembali.</li>
-              <li><span className="step-badge">4</span>Ulangi hingga 7 kali (Shafa ke Marwah dihitung 1, Marwah ke Shafa dihitung 1).</li>
+              <li><span className="step-badge">4</span>Ulangi hingga 7 kali (Shafa ke Marwah dihitung 1, Marwah ke Shafa dihitung 1) — putaran terakhir/ke-7 berakhir di Marwah.</li>
             </ul>
-            <div className="info-box"><p>📌 Wanita haid diperbolehkan melakukan Sa'i karena tidak mensyaratkan keadaan suci/wudhu.</p></div>
+            <div className="info-box"><p>📌 Wanita haid diperbolehkan melakukan Sa'i karena tidak mensyaratkan keadaan suci/wudhu — berbeda dari Tawaf.</p></div>
           </DS>
 
-          <div className="doa-box">
-            <div className="doa-label">Doa di Shafa & Marwah</div>
-            <div className="doa-arabic">إِنَّ الصَّفَا وَالْمَرْوَةَ مِنْ شَعَائِرِ اللَّهِ</div>
-            <div className="doa-latin">Innaṣ-ṣafā wal-marwata min sya'ā'irillāh</div>
-            <div className="doa-arti">"Sesungguhnya Shafa dan Marwah adalah sebagian dari syi'ar Allah." (QS. 2:158)</div>
+          <DS id="si4" title="📿 Doa di Setiap Putaran" open={D["si4"]} onToggle={T}>
+            <p style={{fontSize:".88rem",marginBottom:8}}>Tidak ada doa/dzikir wajib khusus saat berjalan — boleh berdoa bebas sesuai hajat. Doa berikut sering dibaca jamaah berdasarkan riwayat sahabat:</p>
+            <div className="doa-box">
+              <div className="doa-label">Saat Naik ke Bukit (Shafa/Marwah)</div>
+              <div className="doa-arabic">إِنَّ الصَّفَا وَالْمَرْوَةَ مِنْ شَعَائِرِ اللَّهِ</div>
+              <div className="doa-latin">Innaṣ-ṣafā wal-marwata min sya'ā'irillāh</div>
+              <div className="doa-arti">"Sesungguhnya Shafa dan Marwah adalah sebagian dari syi'ar Allah." (QS. 2:158)</div>
+            </div>
+            <div className="doa-box">
+              <div className="doa-label">Doa Sepanjang Perjalanan (Riwayat Ibnu Mas'ud & Ibnu Umar)</div>
+              <div className="doa-arabic">رَبِّ اغْفِرْ وَارْحَمْ إِنَّكَ أَنْتَ الْأَعَزُّ الْأَكْرَمُ</div>
+              <div className="doa-latin">Allahummaghfirlī warham wa antal a'azzul akram</div>
+              <div className="doa-arti">"Ya Rabbku, ampuni dan rahmatilah aku. Sesungguhnya Engkaulah Yang Maha Perkasa dan Maha Pemurah."</div>
+            </div>
+            <p style={{fontSize:".85rem",color:"var(--muted)"}}>💡 Boleh juga berdzikir bebas, membaca Al-Qur'an, atau berdoa dengan bahasa sendiri — yang terpenting hati tetap fokus mengingat Allah selama berjalan.</p>
+          </DS>
+
+          <div className="warn-box" style={{marginTop:10}}>
+            <p>⚠️ Area Sa'i sekarang ber-AC dan terdiri dari beberapa lantai — jika padat, gunakan lantai 1/2/atap untuk lebih leluasa. Bawa air minum karena durasi total bisa 30-60 menit tergantung kepadatan.</p>
           </div>
         </div>
       )
     },
     {emoji:"✂️",title:"Tahallul — Menggunting Rambut",subtitle:"Penanda selesainya ibadah umroh",gold:true,
-      content:()=>(
+      content:({D,T})=>(
         <div style={{ padding: '4px 0' }}>
           <div style={{ fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1.2px', color: 'var(--gold)', margin: '15px 0 10px', display: 'flex', alignItems: 'center', gap: '8px' }}>
             ✂️ Penutup Ihram <span style={{ flex: 1, height: '1px', background: 'var(--border-detail)' }}></span>
           </div>
 
-          <ul className="tip-list">
-            <li><strong>Pria:</strong> Sangat utama mencukur gundul (Halq), atau minimal memotong pendek secara merata.</li>
-            <li><strong>Wanita:</strong> Cukup memotong ujung rambut sepanjang satu ruas jari.</li>
-          </ul>
+          <p style={{ fontSize: '.94rem', lineHeight: '1.6', marginBottom: '12px' }}>Tahallul dilakukan SETELAH Sa'i selesai (di area Marwah) — ini RUKUN terakhir umroh. Jika belum dilakukan, Anda masih terikat larangan ihram & umroh dianggap belum selesai.</p>
 
-          <div className="doa-box">
-            <div className="doa-label">Doa Tahallul</div>
-            <div className="doa-arabic">اللَّهُمَّ اغْفِرْ لِلْمُحَلِّقِينَ</div>
-            <div className="doa-latin">Allāhummagh-fir lil-muḥalliqīn</div>
-            <div className="doa-arti">"Ya Allah, ampunilah orang-orang yang mencukur rambut mereka."</div>
+          <DS id="th1" title="👨 Tata Cara untuk Pria" open={D["th1"]} onToggle={T}>
+            <ul className="tip-list">
+              <li><span className="step-badge">1</span><strong>Mencukur gundul (Halq)</strong> — lebih utama/afdhal, Nabi ﷺ mendoakan 3x bagi yang gundul, hanya 1x bagi yang memotong sebagian</li>
+              <li><span className="step-badge">2</span>Atau <strong>memotong pendek merata (Taqshir)</strong> — minimal 3 helai rambut dari seluruh bagian kepala</li>
+              <li><span className="step-badge">3</span>Mulai dari sisi <strong>kanan kepala</strong> terlebih dahulu, baru sisi kiri (sesuai sunnah)</li>
+              <li><span className="step-badge">4</span>Jika ingin gundul total, sebaiknya dilakukan di luar Masjidil Haram (banyak tukang cukur di sekitar area Marwah/hotel)</li>
+              <li><span className="step-badge">5</span>Jika kepala botak/tidak ada rambut: cukup isyarat — gerakan seperti menggunting 3x di kepala</li>
+            </ul>
+          </DS>
+
+          <DS id="th2" title="👩 Tata Cara untuk Wanita" open={D["th2"]} onToggle={T}>
+            <ul className="tip-list">
+              <li><span className="step-badge">1</span>Cukup memotong ujung rambut, minimal <strong>3 helai</strong>, sepanjang satu ruas jari</li>
+              <li><span className="step-badge">2</span>Dipotong oleh <strong>mahram</strong> (suami/ayah/saudara laki-laki) atau wanita lain yang sudah selesai tahallul — JANGAN oleh tukang cukur pria yang bukan mahram</li>
+              <li><span className="step-badge">3</span>Jaga aurat — lakukan di tempat tertutup/privat, bukan terbuka di area Marwah yang ramai</li>
+            </ul>
+          </DS>
+
+          <DS id="th3" title="📿 Doa Saat & Setelah Tahallul" open={D["th3"]} onToggle={T}>
+            <div className="doa-box">
+              <div className="doa-label">Saat Mulai Mencukur/Memotong</div>
+              <div className="doa-arabic">اللَّهُمَّ اجْعَلْ لِكُلِّ شَعْرَةٍ نُورًا يَوْمَ الْقِيَامَةِ</div>
+              <div className="doa-latin">Allāhummaj'al likulli sya'ratin nūran yaumal qiyāmah</div>
+              <div className="doa-arti">"Ya Allah, jadikanlah cahaya untukku dari setiap helai rambut yang dipotong ini pada hari kiamat."</div>
+            </div>
+            <div className="doa-box">
+              <div className="doa-label">Setelah Selesai Tahallul (Penutup Manasik)</div>
+              <div className="doa-arabic">اَلْحَمْدُ للهِ الَّذِى قَضَى عَنَّا مَنَاسِكَنَا، اَللَّهُمَّ زِدْنَا إِيمَانًا وَيَقِينًا وَعَوْنًا وَاغْفِرْ لَنَا وَلِوَالِدَيْنَا وَلِسَائِرِ الْمُسْلِمِينَ وَالْمُسْلِمَاتِ</div>
+              <div className="doa-latin">Alhamdulillāhil ladzī qaḍā 'annā manāsikanā. Allāhumma zidnā īmānan wa yaqīnan wa 'aunan, waghfir lanā wa liwālidainā wa lisā'iril muslimīna wal muslimāt</div>
+              <div className="doa-arti">"Segala puji bagi Allah yang telah menyelesaikan manasik kami. Ya Allah, tambahkanlah kepada kami iman, keyakinan, dan pertolongan. Ampunilah kami, kedua orang tua kami, dan seluruh kaum muslimin dan muslimat."</div>
+            </div>
+            <p style={{fontSize:".85rem",color:"var(--muted)"}}>💡 Tidak wajib membaca doa tertentu — tahallul tetap sah meski tanpa doa. Tapi membaca doa ini menyempurnakan pahala & momen spiritualnya.</p>
+          </DS>
+
+          <div className="info-box" style={{marginTop:10}}>
+            <p>✅ <strong>Setelah Tahallul selesai</strong>, seluruh larangan ihram otomatis halal kembali — boleh memakai wewangian, memotong kuku, mengenakan pakaian biasa. Umroh Anda telah SELESAI & SAH.</p>
+          </div>
+
+          <div className="warn-box" style={{marginTop:10}}>
+            <p>⚠️ Bagi yang berniat <strong>Umroh Sunnah/Badal tambahan</strong> setelah ini (lihat section Umroh Badal), boleh langsung lanjut ihram lagi dari Tan'im — tidak perlu jeda waktu khusus.</p>
           </div>
         </div>
       )
     },
-    {emoji:"🕋",title:"Eksplorasi Makkah",subtitle:"Keutamaan & tempat bersejarah di Makkah",gold:false,
+
+    {emoji:"🤲", title:"Umroh Badal",
+    subtitle:"Mengumrohkan orang yang sudah wafat atau tidak mampu",
+    gold:false,
+    content:({D,T})=>(
+      <div style={{ padding: '4px 0' }}>
+
+        {/* PENGERTIAN */}
+        <div style={{ fontSize: '0.72rem', fontWeight: 800,
+          textTransform: 'uppercase', letterSpacing: '1.2px',
+          color: 'var(--gold)', margin: '15px 0 10px',
+          display: 'flex', alignItems: 'center', gap: '8px' }}>
+          📖 Pengertian & Hukum
+          <span style={{ flex: 1, height: '1px',
+            background: 'var(--border-detail)' }}></span>
+        </div>
+
+        <p style={{ fontSize: '.94rem', lineHeight: '1.6', marginBottom: '12px' }}>
+          <strong>Badal Umroh</strong> adalah melaksanakan ibadah umroh
+          atas nama orang lain yang tidak mampu hadir sendiri.
+          Hukumnya <strong>mubah (diperbolehkan)</strong> berdasarkan
+          qiyas dari hadis Nabi ﷺ tentang badal haji — dan bisa menjadi
+          <strong> wajib</strong> jika almarhum/almarhumah pernah bernazar
+          untuk umroh semasa hidupnya.
+        </p>
+
+        <div className="info-box">
+          <p>💛 Bagi seorang anak, membadalkan umroh orang tua yang telah
+          wafat adalah salah satu bentuk <strong>birrul walidain</strong>
+          (berbakti kepada orang tua) tertinggi yang bisa dilakukan setelah
+          mereka tiada — pahala terus mengalir sebagai amal jariyah.</p>
+        </div>
+
+        {/* SIAPA YANG BISA DIBADALKAN */}
+        <div style={{ fontSize: '0.72rem', fontWeight: 800,
+          textTransform: 'uppercase', letterSpacing: '1.2px',
+          color: 'var(--gold)', margin: '30px 0 10px',
+          display: 'flex', alignItems: 'center', gap: '8px' }}>
+          👤 Siapa yang Bisa Dibadalkan?
+          <span style={{ flex: 1, height: '1px',
+            background: 'var(--border-detail)' }}></span>
+        </div>
+
+        <ul className="tip-list">
+          <li>Orang yang sudah <strong>wafat</strong> — terutama yang
+            semasa hidupnya punya niat/keinginan untuk umroh tapi belum
+            sempat terlaksana</li>
+          <li>Orang yang masih hidup tapi <strong>tidak mampu secara
+            fisik</strong> — sakit parah, usia sangat lanjut, atau kondisi
+            yang mustahil untuk melakukan perjalanan jauh</li>
+          <li><strong>TIDAK boleh</strong> dibadalkan jika orang tersebut
+            masih sehat dan mampu secara fisik & finansial — ia wajib
+            berangkat sendiri</li>
+          <li><strong>TIDAK boleh</strong> dibadalkan karena alasan tidak
+            mampu secara finansial saja (umroh memang tidak wajib jika
+            tidak mampu harta)</li>
+        </ul>
+
+        {/* SYARAT PELAKSANA */}
+        <div style={{ fontSize: '0.72rem', fontWeight: 800,
+          textTransform: 'uppercase', letterSpacing: '1.2px',
+          color: 'var(--gold)', margin: '30px 0 10px',
+          display: 'flex', alignItems: 'center', gap: '8px' }}>
+          ✅ Syarat Orang yang Membadalkan
+          <span style={{ flex: 1, height: '1px',
+            background: 'var(--border-detail)' }}></span>
+        </div>
+
+        <ul className="tip-list">
+          <li><span className="step-badge">1</span>
+            <strong>Sudah pernah umroh/haji untuk dirinya sendiri</strong>
+            — ini syarat paling utama & mutlak. Jika belum, umroh badal
+            yang diniatkan otomatis jatuh sebagai umroh pribadi pelaksana
+            (bukan untuk yang dibadalkan)</li>
+          <li><span className="step-badge">2</span>
+            <strong>Beragama Islam, baligh, sehat fisik & mental</strong></li>
+          <li><span className="step-badge">3</span>
+            <strong>Memahami tata cara umroh dengan baik</strong> — wajib
+            mampu melaksanakan seluruh rukun (Ihram, Tawaf, Sa'i, Tahallul)
+            dengan sempurna</li>
+          <li><span className="step-badge">4</span>
+            <strong>Niat tulus & ikhlas</strong> karena Allah, bukan
+            karena motif lain</li>
+          <li><span className="step-badge">5</span>
+            <strong>Pria boleh membadalkan untuk wanita, dan sebaliknya
+            </strong> — tidak ada batasan gender</li>
+          <li><span className="step-badge">6</span>
+            <strong>Satu kali umroh hanya untuk SATU orang</strong> —
+            tidak boleh niatkan badal untuk dua orang sekaligus dalam satu
+            rangkaian Ihram-Tawaf-Sa'i-Tahallul</li>
+        </ul>
+
+        <div className="warn-box">
+          <p>⚠️ <strong>Waspada penipuan jasa badal:</strong> banyak
+          biro yang menawarkan "badal umroh sekaligus untuk 5-10 orang"
+          dalam satu perjalanan — ini <strong>tidak sah</strong> secara
+          syariat. Pastikan jasa badal yang dipilih melaksanakan 1 umroh
+          penuh (Ihram → Tawaf → Sa'i → Tahallul) khusus untuk 1 nama
+          saja.</p>
+        </div>
+
+        {/* NIAT */}
+        <div style={{ fontSize: '0.72rem', fontWeight: 800,
+          textTransform: 'uppercase', letterSpacing: '1.2px',
+          color: 'var(--gold)', margin: '30px 0 10px',
+          display: 'flex', alignItems: 'center', gap: '8px' }}>
+          🤍 Niat Ihram Badal Umroh
+          <span style={{ flex: 1, height: '1px',
+            background: 'var(--border-detail)' }}></span>
+        </div>
+
+        <p style={{ fontSize: '.9rem', lineHeight: '1.6', marginBottom: '10px' }}>
+          Perbedaan badal umroh dengan umroh biasa <strong>hanya terletak
+          pada niat</strong>. Seluruh rukun (Tawaf, Sa'i, Tahallul)
+          dilaksanakan sama persis seperti umroh biasa.
+        </p>
+
+        <div className="doa-box">
+          <div className="doa-label">Niat Ihram Badal Umroh</div>
+          <div className="doa-arabic">نَوَيْتُ الْعُمْرَةَ وَأَحْرَمْتُ بِهَا لِلَّهِ تَعَالَى عَنْ فُلَانٍ</div>
+          <div className="doa-latin">Nawaytul 'umrata wa ahramtu bihā lillāhi ta'ālā 'an [sebut nama]</div>
+          <div className="doa-arti">"Aku menyengaja ibadah umroh dan aku ihram umroh karena Allah Ta'ala untuk si [sebut nama orang yang dibadalkan]."</div>
+        </div>
+
+        <div className="info-box" style={{marginTop:10}}>
+          <p>📌 <strong>Tentang miqat untuk badal umroh:</strong><br/>
+          Jika kamu sudah selesai umroh untuk dirimu sendiri dan ingin
+          langsung badal dari Makkah, miqatnya dari <strong>Tan'im
+          (Masjid Aisyah)</strong> — ±7,5 km dari Masjidil Haram, bisa
+          naik taksi/Uber. Tidak perlu kembali ke miqat jauh (Yalamlam/
+          Qarnul Manazil). Ini berdasarkan hadis Aisyah ra. yang
+          diperintahkan Nabi ﷺ berihram dari Tan'im untuk umroh
+          tambahannya.</p>
+        </div>
+
+        {/* TATA CARA */}
+        <DS id="bd1" title="📋 Tata Cara Lengkap Badal Umroh"
+          open={D["bd1"]} onToggle={T}>
+          <ul className="tip-list">
+            <li><span className="step-badge">1</span>
+              Pastikan sudah menyelesaikan umroh untuk diri sendiri terlebih
+              dahulu</li>
+            <li><span className="step-badge">2</span>
+              Minta izin/persetujuan dari ahli waris (jika yang dibadalkan
+              sudah wafat) atau dari orangnya langsung (jika masih hidup
+              tapi tidak mampu fisik)</li>
+            <li><span className="step-badge">3</span>
+              Pergi ke miqat (Tan'im/Masjid Aisyah jika sudah di Makkah),
+              mandi sunnah, kenakan ihram</li>
+            <li><span className="step-badge">4</span>
+              Ucapkan niat badal umroh dengan menyebut nama orang yang
+              dibadalkan</li>
+            <li><span className="step-badge">5</span>
+              Laksanakan seluruh rukun umroh dengan sempurna:
+              Tawaf (7 putaran) → Sa'i (7 kali) → Tahallul (gunting
+              rambut) — atas nama orang yang dibadalkan</li>
+            <li><span className="step-badge">6</span>
+              Setelah selesai, sampaikan laporan kepada keluarga/ahli waris
+              bahwa badal umroh telah dilaksanakan</li>
+          </ul>
+          <div className="info-box" style={{marginTop:10}}>
+            <p>💡 Tidak ada ritual khusus setelah badal umroh selesai —
+            cukup berdoa memohon kepada Allah agar ibadah ini diterima dan
+            pahalanya sampai kepada yang dibadalkan.</p>
+          </div>
+        </DS>
+
+      </div>
+    )},
+
+    {emoji:"🕋",title:"Ziarah Makkah",subtitle:"Keutamaan ibadah & tempat bersejarah di Makkah",gold:false,
       content:({D,T})=>(
         <div style={{ padding: '4px 0' }}>
           <div style={{ fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1.2px', color: 'var(--gold)', margin: '15px 0 10px', display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -983,12 +1199,34 @@ export const tutorialData: TutItem[] = [
           </ul>
 
           <div style={{ fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1.2px', color: 'var(--gold)', margin: '30px 0 10px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            ⛰️ Tempat Bersejarah <span style={{ flex: 1, height: '1px', background: 'var(--border-detail)' }}></span>
+            ⛰️ Tempat Bersejarah (Wisata Religi — Opsional) <span style={{ flex: 1, height: '1px', background: 'var(--border-detail)' }}></span>
+          </div>
+
+          <div className="info-box">
+            <p>📌 <strong>Catatan penting:</strong> Semua tempat di bawah ini
+            adalah situs sejarah untuk menambah wawasan — BUKAN bagian dari
+            rukun/wajib umroh. Umroh tidak memiliki ritual wukuf seperti
+            haji, jadi mengunjungi tempat-tempat ini murni opsional sesuai
+            waktu & kondisi fisik Anda.</p>
           </div>
 
           <DS id="mk8" title="⛰️ Jabal Nur & Jabal Tsur" open={D["mk8"]} onToggle={T}>
-            <p><strong>Gua Hira (Jabal Nur):</strong> Tempat wahyu pertama turun. Pendakian ±45-60 menit.</p>
-            <p><strong>Jabal Tsur:</strong> Tempat Rasulullah bersembunyi saat hijrah ke Madinah.</p>
+            <p><strong>Gua Hira (Jabal Nur):</strong> Tempat wahyu pertama turun. Pendakian ±45-60 menit, jarak 7 km dari Masjidil Haram.</p>
+            <p><strong>Jabal Tsur:</strong> Tempat Rasulullah ﷺ & Abu Bakar bersembunyi saat hijrah, ±7 km arah Thaif.</p>
+            <div className="warn-box"><p>⚠️ Pendakian cukup menantang & makan waktu. Bawa air minum cukup, kenakan alas kaki nyaman, dan pertimbangkan kondisi fisik sebelum mendaki — terutama bagi lansia/anak-anak.</p></div>
+          </DS>
+
+          <DS id="mk9" title="🏔️ Jabal Rahmah & Arafah" open={D["mk9"]} onToggle={T}>
+            <p><strong>Jabal Rahmah:</strong> Bukit di Padang Arafah (±20 km dari Masjidil Haram), diyakini sebagai tempat bertemunya kembali Nabi Adam & Siti Hawa.</p>
+            <div className="info-box"><p>📌 Tidak ada ritual/doa khusus yang disyariatkan di tempat ini — boleh dikunjungi sebagai wisata sejarah & boleh berdoa umum, tapi hindari ritual khusus yang tidak ada tuntunannya (mengusap batu, dll).</p></div>
+          </DS>
+
+          <DS id="mk10" title="🕌 Masjid Tan'im (Masjid Aisyah)" open={D["mk10"]} onToggle={T}>
+            <p>Berjarak ±7,5 km dari Masjidil Haram — ini adalah miqat yang dipakai Aisyah ra. atas perintah Rasulullah ﷺ. Banyak dikunjungi jamaah yang ingin melakukan <strong>umroh tambahan/sunnah</strong> selama berada di Makkah (lihat juga section Umroh Badal jika untuk mengumrohkan orang lain).</p>
+          </DS>
+
+          <DS id="mk11" title="🪦 Pemakaman Jannatul Ma'la" open={D["mk11"]} onToggle={T}>
+            <p>Pemakaman umum ±1 km dari Masjidil Haram, tempat dimakamkannya Khadijah ra. (istri Nabi ﷺ) beserta kedua putranya. Jamaah dianjurkan berziarah dengan adab yang sama seperti ziarah kubur pada umumnya (lihat section Ziarah Madinah untuk tata cara & doa lengkap).</p>
           </DS>
 
           <div style={{ fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1.2px', color: 'var(--gold)', margin: '30px 0 10px', display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -998,7 +1236,96 @@ export const tutorialData: TutItem[] = [
         </div>
       )
     },
-    {emoji:"🕌",title:"Eksplorasi Madinah",subtitle:"Keutamaan & tempat bersejarah di Madinah",gold:false,
+    {emoji:"👋", title:"Tawaf Wada' — Perpisahan dengan Ka'bah",
+    subtitle:"Amalan penutup sebelum meninggalkan Makkah",
+    gold:false,
+    content:({D,T})=>(
+      <div style={{ padding: '4px 0' }}>
+
+        <p style={{ fontSize: '.94rem', lineHeight: '1.6', marginBottom: '12px' }}>
+          <strong>Tawaf Wada'</strong> (tawaf perpisahan) adalah tawaf
+          terakhir yang dilakukan sebelum meninggalkan Makkah — sebagai
+          penghormatan terakhir kepada Ka'bah sebelum pulang.
+        </p>
+
+        <div className="info-box">
+          <p>📌 <strong>Untuk Umroh: hukumnya SUNNAH (afdhal), bukan wajib.</strong><br/>
+          Mayoritas ulama (mazhab Syafi'i, Hanbali, Maliki) sepakat tawaf
+          wada' tidak wajib bagi jemaah umroh — berbeda dengan ibadah
+          haji yang sebagian mazhab mewajibkannya. Jika tidak sempat
+          dilakukan, umroh Anda tetap sah & tidak ada dam (denda).</p>
+        </div>
+
+        <p style={{ fontSize: '.9rem', lineHeight: '1.6' }}>
+          Meski tidak wajib, sangat dianjurkan dilakukan sebagai bentuk
+          kecintaan & penghormatan terakhir kepada Baitullah — berdasarkan
+          hadis Nabi ﷺ:
+        </p>
+
+        <div className="doa-box">
+          <div className="doa-arabic">لَا يَنْفِرَنَّ أَحَدٌ حَتَّى يَكُونَ آخِرُ عَهْدِهِ بِالْبَيْتِ</div>
+          <div className="doa-latin">Lā yanfiranna ahadun hattā yakūna ākhiru 'ahdihī bil-bayt</div>
+          <div className="doa-arti">"Janganlah seseorang di antara kalian meninggalkan Makkah kecuali akhir keberadaannya adalah di Baitullah." (HR. Muslim & Abu Dawud)</div>
+        </div>
+
+        <div style={{ fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1.2px', color: 'var(--gold)', margin: '30px 0 10px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          📖 Tata Cara <span style={{ flex: 1, height: '1px', background: 'var(--border-detail)' }}></span>
+        </div>
+
+        <ul className="tip-list">
+          <li><span className="step-badge">1</span>
+            Lakukan SEBAGAI AKTIVITAS TERAKHIR — setelah packing &
+            check-out hotel selesai, sesaat sebelum berangkat ke bandara/
+            Madinah</li>
+          <li><span className="step-badge">2</span>
+            Suci dari hadas (wudhu), sama seperti tawaf biasa</li>
+          <li><span className="step-badge">3</span>
+            Tawaf 7 putaran mengelilingi Ka'bah, mulai & berakhir di
+            Hajar Aswad — TANPA Sa'i & tanpa gunting rambut setelahnya
+            (beda dari Tawaf Umroh)</li>
+          <li><span className="step-badge">4</span>
+            Shalat sunnah 2 rakaat di belakang Maqam Ibrahim (jika
+            memungkinkan, atau di area masjid manapun jika penuh)</li>
+          <li><span className="step-badge">5</span>
+            Berdoa di Multazam dengan penuh kekhusyukan</li>
+          <li><span className="step-badge">6</span>
+            Sebagian jamaah berjalan mundur beberapa langkah sambil
+            memandang Ka'bah sebagai tanda perpisahan (sunnah adab,
+            bukan rukun)</li>
+        </ul>
+
+        <div className="warn-box">
+          <p>⚠️ <strong>Setelah Tawaf Wada', segera tinggalkan Makkah.</strong><br/>
+          Hindari aktivitas non-perjalanan setelahnya (belanja,
+          jalan-jalan, mampir ke tempat lain) — jika dilakukan, sebagian
+          ulama menyarankan tawaf wada' diulang agar benar-benar menjadi
+          "amalan terakhir" di Baitullah. Aktivitas terkait keberangkatan
+          (packing, menuju bandara) tidak masalah.</p>
+        </div>
+
+        <DS id="tww1" title="📿 Doa Setelah Tawaf Wada'" open={D["tww1"]} onToggle={T}>
+          <div className="doa-box">
+            <div className="doa-arabic">اَللّٰهُمَّ لَا تَجْعَلْ هٰذَا آخِرَ الْعَهْدِ بِبَيْتِكَ الْحَرَامِ، وَإِنْ جَعَلْتَهُ آخِرَ الْعَهْدِ فَعَوِّضْنِي الْجَنَّةَ يَا أَرْحَمَ الرَّاحِمِينَ</div>
+            <div className="doa-latin">Allāhumma lā taj'al hādzā ākhiral 'ahdi bi-baytikal harām, wa in ja'altahu ākhiral 'ahdi fa'awwidhnil jannah, yā arhamar rāhimīn</div>
+            <div className="doa-arti">"Ya Allah, janganlah Engkau jadikan ini sebagai pertemuan terakhirku dengan Baitullah ini. Jika Engkau jadikan ini pertemuan terakhirku, maka gantilah untukku dengan surga, wahai Yang Maha Penyayang di antara para penyayang."</div>
+          </div>
+          <p style={{fontSize:".85rem",color:"var(--muted)",marginTop:8}}>
+            💡 Ini adalah momen yang sangat emosional bagi banyak jamaah —
+            sampaikan harapan & doa pribadi agar Allah mengizinkan kembali
+            lagi ke Tanah Suci.
+          </p>
+        </DS>
+
+        <div className="info-box" style={{marginTop:16}}>
+          <p>👶 <strong>Pengecualian:</strong> wanita yang sedang haid/nifas
+          TIDAK wajib melakukan tawaf wada' & tidak terkena konsekuensi
+          apapun — cukup berdoa di pintu gerbang Masjidil Haram sebagai
+          penggantinya jika ingin.</p>
+        </div>
+
+      </div>
+    )},
+    {emoji:"🕌",title:"Ziarah Madinah",subtitle:"Keutamaan, adab ziarah & tempat bersejarah di Madinah",gold:false,
       content:({D,T})=>(
         <div style={{ padding: '4px 0' }}>
           <div style={{ fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1.2px', color: 'var(--gold)', margin: '15px 0 10px', display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -1011,6 +1338,120 @@ export const tutorialData: TutItem[] = [
             <li>Ziarah ke Makam Rasulullah ﷺ dan para sahabat.</li>
           </ul>
 
+          {/* === MULAI KONTEN ZIARAH === */}
+
+          <div className="info-box">
+            <p>📍 <strong>3 lokasi ziarah utama di Madinah:</strong><br/>
+            1. Makam Rasulullah ﷺ, Abu Bakar & Umar (dalam Masjid Nabawi)<br/>
+            2. Kompleks pemakaman <strong>Baqi'</strong> — para sahabat,
+               istri-istri Nabi, dan keluarga beliau<br/>
+            3. Makam para syuhada <strong>Uhud</strong> — termasuk Hamzah
+               bin Abdul Muthalib ra.</p>
+          </div>
+
+          <div style={{ fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1.2px', color: 'var(--gold)', margin: '30px 0 10px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            🤍 Niat yang Benar <span style={{ flex: 1, height: '1px', background: 'var(--border-detail)' }}></span>
+          </div>
+
+          <ul className="tip-list">
+            <li><strong>Niat pokok pergi ke Madinah</strong> adalah untuk
+              shalat di Masjid Nabawi (bukan semata ziarah makam) — ini
+              yang sesuai tuntunan</li>
+            <li>Setelah tiba & shalat di Masjid Nabawi, barulah berziarah
+              ke makam Nabi ﷺ sebagai amalan tambahan yang sunnah</li>
+            <li>Niat ziarah = <strong>mendoakan</strong> ahli kubur &
+              mengingat akhirat — bukan meminta hajat/keberkatan dari
+              penghuni makam</li>
+          </ul>
+
+          <div className="warn-box">
+            <p>⚠️ <strong>Prinsip akidah paling penting:</strong><br/>
+            Doa dan permintaan hajat hanya ditujukan kepada
+            <strong> Allah SWT</strong> — bukan kepada penghuni makam,
+            termasuk makam Nabi ﷺ sekalipun. Yang kita lakukan di makam
+            adalah <strong>mengucapkan salam</strong> kepada beliau dan
+            <strong>berdoa kepada Allah</strong> agar beliau mendapat
+            rahmat — bukan berdoa/meminta kepada beliau.</p>
+          </div>
+
+          <div style={{ fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1.2px', color: 'var(--gold)', margin: '30px 0 10px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            📖 Tata Cara Ziarah Makam Nabi ﷺ <span style={{ flex: 1, height: '1px', background: 'var(--border-detail)' }}></span>
+          </div>
+
+          <ul className="tip-list">
+            <li><span className="step-badge">1</span>
+              Masuki Masjid Nabawi dengan kaki kanan, baca doa masuk masjid,
+              perbanyak shalawat</li>
+            <li><span className="step-badge">2</span>
+              Shalat 2 rakaat di Raudhah atau masjid (utamakan ini sebagai
+              tujuan pokok)</li>
+            <li><span className="step-badge">3</span>
+              Menuju area makam (Mawajaha) — berdiri dengan tenang & penuh
+              adab, <strong>jangan berdesak-desakan atau terburu-buru</strong></li>
+            <li><span className="step-badge">4</span>
+              Ucapkan salam kepada Rasulullah ﷺ dengan suara
+              <strong> rendah/pelan</strong> (bukan keras)</li>
+            <li><span className="step-badge">5</span>
+              Geser sedikit ke kanan → ucapkan salam kepada
+              <strong> Abu Bakar ash-Shiddiq ra.</strong></li>
+            <li><span className="step-badge">6</span>
+              Geser lagi ke kanan → ucapkan salam kepada
+              <strong> Umar bin al-Khattab ra.</strong></li>
+            <li><span className="step-badge">7</span>
+              Berdoa kepada Allah — mohon ampunan, rahmat, dan syafaat
+              Nabi ﷺ di hari kiamat</li>
+          </ul>
+
+          <DS id="zr1" title="📿 Doa Salam kepada Rasulullah ﷺ" open={D["zr1"]} onToggle={T}>
+            <div className="doa-box">
+              <div className="doa-label">Salam kepada Nabi ﷺ</div>
+              <div className="doa-arabic">اَلسَّلَامُ عَلَيْكَ أَيُّهَا النَّبِيُّ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</div>
+              <div className="doa-latin">Assalāmu 'alaika ayyuhan-nabiyyu wa rahmatullāhi wa barakātuh</div>
+              <div className="doa-arti">"Semoga keselamatan, rahmat, dan berkah Allah terlimpah atasmu wahai Nabi."</div>
+            </div>
+            <div className="doa-box">
+              <div className="doa-label">Salam kepada Abu Bakar & Umar ra.</div>
+              <div className="doa-arabic">اَلسَّلَامُ عَلَيْكُمَا يَا صَاحِبَيْ رَسُولِ اللهِ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</div>
+              <div className="doa-latin">Assalāmu 'alaikumā yā shāhibay rasūlillāhi wa rahmatullāhi wa barakātuh</div>
+              <div className="doa-arti">"Semoga keselamatan, rahmat, dan berkah Allah terlimpah atas kalian berdua wahai dua sahabat Rasulullah."</div>
+            </div>
+          </DS>
+
+          <DS id="zr2" title="📿 Doa Masuk Pemakaman (Baqi'/Uhud)" open={D["zr2"]} onToggle={T}>
+            <div className="doa-box">
+              <div className="doa-label">Salam Ahli Kubur (HR. Muslim)</div>
+              <div className="doa-arabic">اَلسَّلَامُ عَلَيْكُمْ أَهْلَ الدِّيَارِ مِنَ الْمُؤْمِنِينَ وَالْمُسْلِمِينَ، وَإِنَّا إِنْ شَاءَ اللهُ بِكُمْ لَاحِقُونَ، أَسْأَلُ اللهَ لَنَا وَلَكُمُ الْعَافِيَةَ</div>
+              <div className="doa-latin">Assalāmu 'alaikum ahlad-diyāri minal mu'minīna wal muslimīn, wa innā insyā'allāhu bikum lāhiqūn, as'alullāha lanā wa lakumul 'āfiyah</div>
+              <div className="doa-arti">"Semoga keselamatan atas kalian wahai penghuni kubur dari kaum mukmin dan muslim. Kami insyaAllah akan menyusul kalian. Saya memohon keselamatan kepada Allah untuk kami dan kalian."</div>
+            </div>
+          </DS>
+
+          <div style={{ fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1.2px', color: 'var(--gold)', margin: '30px 0 10px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            🚫 Yang Perlu Dihindari <span style={{ flex: 1, height: '1px', background: 'var(--border-detail)' }}></span>
+          </div>
+
+          <ul className="larangan-list">
+            <li>Meminta hajat/kebutuhan langsung kepada penghuni makam
+              (termasuk Nabi ﷺ) — doa hanya kepada Allah</li>
+            <li>Mengeraskan suara di area makam — <strong>suara pelan
+              adalah adab</strong> di sisi Rasulullah ﷺ (QS. Al-Hujurat: 2)</li>
+            <li>Thawaf mengelilingi makam — thawaf hanya untuk Ka'bah</li>
+            <li>Mengusap-usap dinding/kisi-kisi makam untuk mengambil
+              berkah</li>
+            <li>Duduk atau menginjak di atas makam</li>
+            <li>Berdesak-desakan, mendorong jamaah lain, atau bersikap
+              tidak tenang</li>
+          </ul>
+
+          <div className="info-box" style={{marginTop:16}}>
+            <p>💡 <strong>Tips praktis:</strong> Datanglah ke area makam
+            di luar waktu-waktu puncak kepadatan (hindari setelah shalat
+            fardhu berjamaah). Pagi hari setelah Subuh atau menjelang Dzuhur
+            biasanya lebih tenang dan kondusif untuk berdoa dengan khusyuk.</p>
+          </div>
+
+          {/* === SELESAI KONTEN ZIARAH === */}
+
           <div style={{ fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1.2px', color: 'var(--gold)', margin: '30px 0 10px', display: 'flex', alignItems: 'center', gap: '8px' }}>
             📍 Peta Lokasi <span style={{ flex: 1, height: '1px', background: 'var(--border-detail)' }}></span>
           </div>
@@ -1018,24 +1459,175 @@ export const tutorialData: TutItem[] = [
         </div>
       )
     },
-    {emoji:"💡",title:"Tips Penting Umroh Mandiri",subtitle:"Hal-hal yang wajib diperhatikan",gold:false,
-      content:()=>(
-        <div style={{ padding: '4px 0' }}>
-          <ul className="tip-list">
-            <li><strong>Aplikasi Wajib:</strong> Nusuk, Google Maps (Offline), Uber/Careem.</li>
-            <li><strong>Cuaca:</strong> 35–45°C. Minum air zamzam minimal 3 liter per hari.</li>
-            <li><strong>Keamanan:</strong> Simpan paspor asli di safe deposit box hotel.</li>
-          </ul>
+    {emoji:"💡", title:"Tips Penting Umroh Mandiri",
+    subtitle:"Hal-hal yang wajib diperhatikan", gold:false,
+    content:()=>(
+      <div style={{ padding: '4px 0' }}>
 
-          <div style={{marginTop:20, background:"var(--surface-doa-from)", borderRadius:14, padding:"16px", border:"1px solid var(--gold)"}}>
-            <div style={{fontSize:".75rem", fontWeight:800, textTransform:"uppercase", letterSpacing:"1.5px", color:"var(--gold)", marginBottom:10}}>🚺 Khusus Wanita — Panduan Haid</div>
-            <ul className="tip-list" style={{marginTop:0}}>
-              <li>Jika haid sebelum Tawaf: <strong>Tunda Tawaf</strong> hingga suci sempurna.</li>
-              <li>Ibadah lain tetap sah: Sa'i, doa, ziarah, dan membaca Al-Qur'an.</li>
-            </ul>
-          </div>
+        {/* NAVIGASI & ANTI-TERSESAT */}
+        <div style={{ fontSize: '0.72rem', fontWeight: 800,
+          textTransform: 'uppercase', letterSpacing: '1.2px',
+          color: 'var(--gold)', margin: '15px 0 10px',
+          display: 'flex', alignItems: 'center', gap: '8px' }}>
+          🗺️ Navigasi & Anti Tersesat
+          <span style={{ flex: 1, height: '1px',
+            background: 'var(--border-detail)' }}></span>
         </div>
-      )
-    },
+
+        <ul className="tip-list">
+          <li>
+            <strong>Ambil kartu nama hotel di hari pertama tiba</strong> —
+            simpan di saku/sabuk ihram. Jika tersesat tanpa ponsel,
+            serahkan ke Askar (petugas berseragam). Mereka sangat
+            terlatih membantu jemaah menggunakan radio komunikasi.
+          </li>
+          <li>
+            <strong>Buat ID Card mandiri</strong> — karena jemaah mandiri
+            tidak dapat lanyard dari travel, buat sendiri: cantumkan nama,
+            nomor paspor, nomor WhatsApp aktif, dan nama hotel. Kalungkan
+            di leher, terutama saat memasuki masjid. Sangat penting jika
+            membawa anak atau lansia.
+          </li>
+          <li>
+            <strong>Sepakati titik kumpul darurat</strong> sebelum masuk
+            masjid — contoh: "Jika terpisah setelah tawaf, kumpul di bawah
+            lampu hijau lurus dari Gate King Abdul Aziz, maksimal 30 menit."
+            Jangan andalkan sinyal HP — di dalam masjid saat padat, sinyal
+            internet sangat tidak stabil.
+          </li>
+          <li>
+            <strong>Patokan navigasi di dalam Masjidil Haram:</strong>
+            <ul style={{marginTop:6, paddingLeft:16}}>
+              <li>Lampu hijau neon di dinding masjid = sejajar Hajar Aswad
+                (garis start/finish tawaf)</li>
+              <li>Maqam Ibrahim & Hijr Ismail = penanda posisi dalam putaran</li>
+              <li>Puluhan pintu masjid terlihat identik — catat nomor Gate
+                masuk sejak awal, jangan andalkan ingatan</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Aktifkan Share Live Location</strong> (WhatsApp/Google
+            Maps) dengan semua anggota rombongan sejak keluar hotel — bukan
+            hanya saat sudah tersesat.
+          </li>
+        </ul>
+
+        <div className="warn-box">
+          <p>🆘 Jika tersesat: <strong>BERHENTI, jangan panik, jangan
+          terus berjalan.</strong><br/>
+          Ucapkan ke Askar: <strong>"Ana dho-i'"</strong> (pria) /
+          <strong>"Ana dho-i'ah"</strong> (wanita) = "Saya tersesat"<br/>
+          Tunjukkan kartu nama hotel.<br/>
+          Jika tanpa HP sama sekali: pinjam HP warga lokal untuk hubungi
+          KJRI Jeddah.</p>
+        </div>
+
+        {/* KONTAK DARURAT */}
+        <div style={{ fontSize: '0.72rem', fontWeight: 800,
+          textTransform: 'uppercase', letterSpacing: '1.2px',
+          color: 'var(--gold)', margin: '30px 0 10px',
+          display: 'flex', alignItems: 'center', gap: '8px' }}>
+          📞 Kontak Darurat — Simpan Sebelum Berangkat
+          <span style={{ flex: 1, height: '1px',
+            background: 'var(--border-detail)' }}></span>
+        </div>
+
+        <ul className="tip-list">
+          <li>🇮🇩 <strong>KJRI Jeddah</strong> (paling relevan untuk
+            jemaah umroh): +966-12-671-1271</li>
+          <li>🇮🇩 <strong>KBRI Riyadh</strong>: +966-11-488-2800</li>
+          <li>🕌 <strong>Hotline Kemenhaj RI</strong>: 021-3811642
+            (dari Indonesia) / WhatsApp resmi Kemenag</li>
+          <li>🚑 <strong>Nomor darurat Saudi</strong>:
+            911 (Polisi/Ambulans/Pemadam)</li>
+          <li>📋 Simpan di 2 tempat: di HP DAN di kertas di dompet —
+            antisipasi HP hilang/baterai habis</li>
+        </ul>
+
+        {/* BAHASA ARAB DARURAT */}
+        <div style={{ fontSize: '0.72rem', fontWeight: 800,
+          textTransform: 'uppercase', letterSpacing: '1.2px',
+          color: 'var(--gold)', margin: '30px 0 10px',
+          display: 'flex', alignItems: 'center', gap: '8px' }}>
+          🗣️ Frasa Arab Darurat — Hafal Sebelum Berangkat
+          <span style={{ flex: 1, height: '1px',
+            background: 'var(--border-detail)' }}></span>
+        </div>
+
+        <ul className="tip-list">
+          <li><strong>"Ana dho-i'"</strong> (pria) /
+            <strong>"Ana dho-i'ah"</strong> (wanita)
+            = Saya tersesat</li>
+          <li><strong>"Ayna funduq [nama hotel]?"</strong>
+            = Di mana hotel [nama hotel]?</li>
+          <li><strong>"Ayna Al-Masjid Al-Haram?"</strong>
+            = Di mana Masjidil Haram?</li>
+          <li><strong>"Funduqi fi..."</strong>
+            = Hotel saya di...</li>
+          <li><strong>"Hal yumkinuka musa'adati?"</strong>
+            = Bisa tolong saya?</li>
+          <li><strong>"Kam?"</strong> = Berapa harganya?</li>
+          <li><strong>"Shukran"</strong> = Terima kasih</li>
+          <li><strong>"La, syukran"</strong> = Tidak, terima kasih
+            (menolak tawaran pedagang)</li>
+        </ul>
+
+        {/* TIPS KHUSUS MANDIRI */}
+        <div style={{ fontSize: '0.72rem', fontWeight: 800,
+          textTransform: 'uppercase', letterSpacing: '1.2px',
+          color: 'var(--gold)', margin: '30px 0 10px',
+          display: 'flex', alignItems: 'center', gap: '8px' }}>
+          ✅ Tips Khusus Jemaah Mandiri
+          <span style={{ flex: 1, height: '1px',
+            background: 'var(--border-detail)' }}></span>
+        </div>
+
+        <ul className="tip-list">
+          <li>
+            <strong>Timbangan koper portabel</strong> — bawa dari
+            Indonesia. Euforia belanja oleh-oleh sering bikin koper
+            overweight tanpa sadar. Denda kelebihan bagasi di bandara
+            Saudi sangat mahal. Jika sudah kelebihan, ada jasa kargo
+            pengiriman ke Indonesia di sekitar hotel Makkah.
+          </li>
+          <li>
+            <strong>Air Zamzam — aturan bawaan pulang:</strong>
+            maksimal 5 liter per orang di bagasi (sudah dikemas resmi
+            oleh otoritas Saudi). DILARANG bawa di kabin atau dikemas
+            sendiri di koper — petugas bandara Saudi aktif memeriksa
+            ini dan akan disita tanpa ganti rugi.
+          </li>
+          <li>
+            <strong>Download peta offline</strong> area Makkah & Madinah
+            di Google Maps sebelum berangkat dari Indonesia — koneksi
+            internet tidak terjamin stabil di area sangat padat. GPS
+            tetap bekerja meski tanpa sinyal internet.
+          </li>
+          <li>
+            <strong>Pecahan kecil Riyal</strong> — tukar sebagian uang
+            ke pecahan 1, 5, 10 Riyal untuk sedekah, jasa dorong kursi
+            roda, dan pedagang kaki lima yang sering tidak punya kembalian
+            untuk uang besar.
+          </li>
+          <li>
+            <strong>Kenali area hotel di hari pertama</strong> — jalan
+            kaki keliling blok hotel sebelum pergi ke masjid. Catat
+            landmark mencolok (nama toko, warna gedung, nomor jalan)
+            sebagai patokan pulang — jauh lebih reliable dari GPS saat
+            sinyal lemah.
+          </li>
+        </ul>
+
+        {/* CROSS-REFERENCE */}
+        <div className="info-box" style={{marginTop:20}}>
+          <p>📋 <strong>Catatan:</strong> Tips teknis lainnya
+          (persiapan dokumen, vaksin, visa, booking Raudhah, koneksi
+          internet, keuangan) sudah tersedia lengkap di tab
+          <strong> Persiapan</strong> — pastikan semua checklist
+          di sana sudah selesai sebelum berangkat.</p>
+        </div>
+
+      </div>
+    )}
   ];
 
