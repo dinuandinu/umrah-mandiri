@@ -77,7 +77,7 @@ export const Drawer = ({ open, onClose, theme, setTheme, fontSize, setFontSize, 
               <div className="author-avatar">👨‍💻</div>
               <div className="author-name">andinu</div>
               <div className="author-bio">
-                Aplikasi ini dikembangkan sebagai bentuk dedikasi untuk memudahkan saudara-saudara Muslim melaksanakan ibadah Umroh secara mandiri.
+                Aplikasi ini dikembangkan untuk memudahkan saudara-saudara Muslim melaksanakan ibadah Umroh secara mandiri.
               </div>
               <div className="author-links">
                 <a className="author-link-btn" href="mailto:andinu@duck.com?subject=Umroh%20Mandiri%20App" onClick={e=>e.stopPropagation()}>
@@ -118,7 +118,7 @@ export const Drawer = ({ open, onClose, theme, setTheme, fontSize, setFontSize, 
                   borderRadius: '12px',
                   border: '1px solid var(--border-card)'
                 }}>
-                  VERSI {import.meta.env.VITE_APP_VERSION || "1.2.1"}
+                  VERSI {import.meta.env.VITE_APP_VERSION}
                 </span>
               </div>
 
