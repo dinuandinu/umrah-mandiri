@@ -1,6 +1,6 @@
 // src/components/Layout/Components.tsx
 import React, { useState } from "react";
-import { useBilling } from "../../hooks/useBilling";
+import { useBilling, COFFEE_TIERS, CoffeeTier } from "../../hooks/useBilling";
 
 // ─── 1. DRAWER COMPONENT ───
 export const Drawer = ({ open, onClose, theme, setTheme, fontSize, setFontSize, onResetProgress }: {
@@ -10,13 +10,19 @@ export const Drawer = ({ open, onClose, theme, setTheme, fontSize, setFontSize, 
   const [confirmReset, setConfirmReset] = useState(false);
   const [showAuthor, setShowAuthor] = useState(false);
   const [showAbout, setShowAbout] = useState(false);
-  const { purchaseCoffee, loading } = useBilling();
+  const [showCoffeeMenu, setShowCoffeeMenu] = useState(false);
+  const { purchaseTier, loading } = useBilling();
 
   const handleReset = () => {
     if (!confirmReset) { setConfirmReset(true); return; }
     onResetProgress();
     setConfirmReset(false);
     onClose();
+  };
+
+  const handleCoffeeClick = async (tier: CoffeeTier) => {
+    const success = await purchaseTier(tier);
+    if (success) setShowCoffeeMenu(false);
   };
 
   return (
@@ -50,28 +56,45 @@ export const Drawer = ({ open, onClose, theme, setTheme, fontSize, setFontSize, 
           {/* ☕ SECTION APRESIASI */}
           <div className="drawer-section-label">☕ Apresiasi</div>
           <div style={{ padding: "0 16px 12px" }}>
-            <div className="drawer-card" style={{ background: "var(--surface-tips-from)", border: "1.5px dashed var(--gold)" }}>
-              <div style={{ padding: "14px", textAlign: "center" }}>
-                <div style={{ fontSize: "1.2rem", marginBottom: "4px" }}>🤲</div>
-                <div style={{ fontWeight: 700, fontSize: ".82rem", color: "var(--ink)" }}>Dukung Project Ini?</div>
-                <p style={{ fontSize: ".7rem", color: "var(--muted)", marginBottom: "10px" }}>Aplikasi ini gratis selamanya. Dukungan Anda sangat berarti bagi pengembangan lebih lanjut.</p>
-                <button
-                  disabled={loading}
-                  className="seg-btn active"
-                  style={{
-                    background: loading ? "var(--border-progress)" : "var(--gold)",
-                    width: "100%",
-                    borderRadius: "8px",
-                    color: loading ? "var(--muted)" : "#fff",
-                    cursor: loading ? "default" : "pointer",
-                    boxShadow: loading ? "none" : "0 2px 8px rgba(201, 168, 76, 0.3)"
-                  }}
-                  onClick={purchaseCoffee}
-                >
-                  {loading ? "Memproses..." : "☕ Beli Kopi (Rp15rb)"}
-                </button>
+            {!showCoffeeMenu ? (
+              <div className="drawer-card" style={{ background: "var(--surface-tips-from)", border: "1.5px dashed var(--gold)" }}>
+                <div style={{ padding: "14px", textAlign: "center" }}>
+                  <div style={{ fontSize: "1.2rem", marginBottom: "4px" }}>🤲</div>
+                  <div style={{ fontWeight: 700, fontSize: ".82rem", color: "var(--ink)" }}>Dukung Project Ini?</div>
+                  <p style={{ fontSize: ".7rem", color: "var(--muted)", marginBottom: "10px" }}>Dukungan Anda membantu aplikasi ini tetap gratis dan terus diperbarui.</p>
+                  <button
+                    className="seg-btn active"
+                    style={{ background: "var(--gold)", width: "100%", borderRadius: "8px", color: "#fff" }}
+                    onClick={() => setShowCoffeeMenu(true)}
+                  >
+                    ☕ Berikan Apresiasi
+                  </button>
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className="drawer-card" style={{ background: "var(--surface)", border: "1px solid var(--gold)", padding: "8px" }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '4px 8px 8px' }}>
+                   <span style={{ fontSize: '.75rem', fontWeight: 700, color: 'var(--gold)' }}>PILIH PAKET</span>
+                   <button onClick={() => setShowCoffeeMenu(false)} style={{ background: 'none', border: 'none', color: 'var(--muted)', fontSize: '1rem' }}>✕</button>
+                </div>
+                {COFFEE_TIERS.map((tier) => (
+                  <button
+                    key={tier.id}
+                    disabled={loading}
+                    className="drawer-item"
+                    style={{ padding: '8px 12px', minHeight: '44px', borderBottom: '1px solid var(--border-detail)' }}
+                    onClick={() => handleCoffeeClick(tier)}
+                  >
+                    <span style={{ fontSize: '1.2rem', marginRight: '10px' }}>{tier.icon}</span>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ fontSize: '.85rem', fontWeight: 600 }}>{tier.label}</div>
+                      <div style={{ fontSize: '.7rem', color: 'var(--gold)' }}>{tier.price}</div>
+                    </div>
+                    {loading ? <span style={{ fontSize: '.7rem' }}>...</span> : <span style={{ color: 'var(--gold)' }}>›</span>}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* ⚙️ SECTION ALAT & INFO */}
@@ -82,7 +105,7 @@ export const Drawer = ({ open, onClose, theme, setTheme, fontSize, setFontSize, 
             <div className="drawer-item-icon gold">👤</div>
             <div className="drawer-item-text">
               <div className="drawer-item-label">Profil Pembuat</div>
-              <div className="drawer-item-desc">Mengenal pengembang aplikasi</div>
+              <div className="drawer-item-desc">andinu · andinu@duck.com</div>
             </div>
             <span className="drawer-item-chev" style={{ transform: showAuthor ? "rotate(90deg)" : "none", transition: "transform .2s" }}>›</span>
           </button>
@@ -93,15 +116,10 @@ export const Drawer = ({ open, onClose, theme, setTheme, fontSize, setFontSize, 
               <div className="author-bio">
                 Aplikasi ini dikembangkan untuk memudahkan saudara-saudara Muslim melaksanakan ibadah Umroh secara mandiri.
               </div>
-              <div className="author-links">
-                <a className="author-link-btn" href="mailto:andinu@duck.com?subject=Umroh%20Mandiri%20App" onClick={e=>e.stopPropagation()}>
-                  <span style={{fontWeight:700}}>✉️ andinu@duck.com</span>
-                </a>
-              </div>
             </div>
           )}
 
-          {/* Tentang Aplikasi (Internal Expand) */}
+          {/* Tentang Aplikasi */}
           <button className="drawer-item" onClick={() => setShowAbout(!showAbout)}>
             <div className="drawer-item-icon em">ℹ️</div>
             <div className="drawer-item-text">
@@ -121,29 +139,10 @@ export const Drawer = ({ open, onClose, theme, setTheme, fontSize, setFontSize, 
               <p style={{ marginBottom: '12px' }}>
                 <strong>Umroh Mandiri</strong> adalah panduan digital komprehensif yang mencakup checklist persiapan, tutorial ibadah, dan peta interaktif.
               </p>
-
               <div style={{ textAlign: 'center', margin: '14px 0' }}>
-                <span style={{
-                  fontSize: '.7rem',
-                  fontWeight: 700,
-                  color: 'var(--gold)',
-                  background: 'var(--surface-sub)',
-                  padding: '4px 12px',
-                  borderRadius: '12px',
-                  border: '1px solid var(--border-card)'
-                }}>
+                <span style={{ fontSize: '.7rem', fontWeight: 700, color: 'var(--gold)', background: 'var(--surface-sub)', padding: '4px 12px', borderRadius: '12px', border: '1px solid var(--border-card)' }}>
                   VERSI {import.meta.env.VITE_APP_VERSION}
                 </span>
-              </div>
-
-              <div className="author-doa" style={{
-                padding: '14px',
-                background: 'var(--surface-raised)',
-                borderRadius: '12px',
-                border: '1px solid var(--border-card)'
-              }}>
-                <span style={{ fontFamily: "Amiri,serif", fontSize: "1rem", color: "var(--gold)" }}>جَزَاكَ اللَّهُ خَيْرًا</span><br/>
-                <span style={{ fontSize: ".72rem", marginTop: '4px', display: 'inline-block' }}>Semoga Allah membalas dengan kebaikan</span>
               </div>
             </div>
           )}
@@ -223,7 +222,7 @@ export const Onboarding = ({ onDone, slides }: { onDone: () => void; slides: any
   );
 };
 
-// ─── 3. ABOUT PAGE COMPONENT (Lama - Masih ada sebagai fallback) ───
+// ─── 3. ABOUT PAGE COMPONENT (Fallback) ───
 export const AboutPage = ({ onClose }: { onClose: () => void }) => (
   <div className="about-overlay">
     <div className="about-header">
