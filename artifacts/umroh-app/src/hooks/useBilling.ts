@@ -99,7 +99,7 @@ export const useBilling = () => {
         quantity: 1
       });
 
-      if (result && result.transactionId) {
+      if (result) {
         // 3. MANDATORY CONSUME (Penting agar bisa beli lagi)
         if (Capacitor.getPlatform() === 'android' && result.purchaseToken) {
           await NativePurchases.consumePurchase({
