@@ -1,56 +1,48 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { NativePurchases } from '@capgo/native-purchases';
 
-const PRODUCT_ID = 'coffee_small'; // Pastikan ini sama dengan di Google Play Console
+export type CoffeeTier = {
+  id: string;
+  label: string;
+  price: string;
+  icon: string;
+};
+
+export const COFFEE_TIERS: CoffeeTier[] = [
+  { id: 'donut_5k',    label: 'Donat',    price: 'Rp 5.000',  icon: '🍩' },
+  { id: 'coffee_12k',   label: 'Kopi',     price: 'Rp 12.000', icon: '☕' },
+  { id: 'martabak_25k', label: 'Martabak', price: 'Rp 25.000', icon: '🍰' },
+  { id: 'pizza_50k',    label: 'Pizza',    price: 'Rp 50.000', icon: '🍕' },
+];
 
 export const useBilling = () => {
   const [loading, setLoading] = useState(false);
-  const [isAvailable, setIsAvailable] = useState(false);
 
-  useEffect(() => {
-    const initBilling = async () => {
-      try {
-        // Cek apakah billing tersedia di perangkat ini
-        // Plugin ini biasanya otomatis terinisialisasi
-        setIsAvailable(true);
-      } catch (e) {
-        console.error('Billing initialization failed', e);
-      }
-    };
-    initBilling();
-  }, []);
-
-  const purchaseCoffee = async () => {
+  const purchaseTier = async (tier: CoffeeTier) => {
     if (window.location.hostname === 'localhost') {
-      alert('Mockup: Pembelian Berhasil! (Hanya tampil di Localhost)');
+      alert(`Mockup: Berhasil memberikan ${tier.label}! (Simulasi Localhost)`);
       return true;
     }
 
     setLoading(true);
     try {
-      // 1. Lakukan pembelian
+      // 1. Lakukan pembelian berdasarkan ID tier
       const result = await NativePurchases.purchase({
-        productId: PRODUCT_ID,
-        // productType: 'SUBSCRIPTION' // Kosongkan untuk Consumable/One-time
+        productId: tier.id,
       });
 
       if (result) {
-        // 2. Konsumsi produk agar bisa dibeli lagi (SANGAT PENTING)
-        // Catatan: @capgo/native-purchases menangani konsumsi secara berbeda
-        // tergantung versi. Pastikan cek dokumentasi terbaru.
-        // Biasanya untuk consumable di Google Play, kita perlu memanggil consume.
-
-        alert('Terima kasih atas dukungannya! Semoga berkah.');
+        alert(`Terima kasih atas ${tier.label}-nya! Semoga berkah dan menjadi amal jariyah.`);
         return true;
       }
     } catch (e) {
       console.error('Purchase failed', e);
-      alert('Pembelian dibatalkan atau terjadi kesalahan.');
+      alert('Terjadi kesalahan atau pembelian dibatalkan.');
     } finally {
       setLoading(false);
     }
     return false;
   };
 
-  return { purchaseCoffee, loading, isAvailable };
+  return { purchaseTier, loading };
 };
