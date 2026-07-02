@@ -1,5 +1,6 @@
 // src/components/Layout/Components.tsx
 import React, { useState } from "react";
+import { useBilling } from "../../hooks/useBilling";
 
 // ─── 1. DRAWER COMPONENT ───
 export const Drawer = ({ open, onClose, theme, setTheme, fontSize, setFontSize, onResetProgress }: {
@@ -9,6 +10,7 @@ export const Drawer = ({ open, onClose, theme, setTheme, fontSize, setFontSize, 
   const [confirmReset, setConfirmReset] = useState(false);
   const [showAuthor, setShowAuthor] = useState(false);
   const [showAbout, setShowAbout] = useState(false);
+  const { purchaseCoffee, loading } = useBilling();
 
   const handleReset = () => {
     if (!confirmReset) { setConfirmReset(true); return; }
@@ -52,9 +54,21 @@ export const Drawer = ({ open, onClose, theme, setTheme, fontSize, setFontSize, 
               <div style={{ padding: "14px", textAlign: "center" }}>
                 <div style={{ fontSize: "1.2rem", marginBottom: "4px" }}>🤲</div>
                 <div style={{ fontWeight: 700, fontSize: ".82rem", color: "var(--ink)" }}>Dukung Project Ini?</div>
-                <p style={{ fontSize: ".7rem", color: "var(--muted)", marginBottom: "10px" }}>Aplikasi ini gratis selamanya. Cukup berikan doa terbaik Anda bagi keberlangsungan project ini.</p>
-                <button disabled className="seg-btn" style={{ background: "var(--border-progress)", width: "100%", borderRadius: "8px", color: "var(--muted)", cursor: "default" }}>
-                  Apresiasi Kopi (Coming Soon)
+                <p style={{ fontSize: ".7rem", color: "var(--muted)", marginBottom: "10px" }}>Aplikasi ini gratis selamanya. Dukungan Anda sangat berarti bagi pengembangan lebih lanjut.</p>
+                <button
+                  disabled={loading}
+                  className="seg-btn active"
+                  style={{
+                    background: loading ? "var(--border-progress)" : "var(--gold)",
+                    width: "100%",
+                    borderRadius: "8px",
+                    color: loading ? "var(--muted)" : "#fff",
+                    cursor: loading ? "default" : "pointer",
+                    boxShadow: loading ? "none" : "0 2px 8px rgba(201, 168, 76, 0.3)"
+                  }}
+                  onClick={purchaseCoffee}
+                >
+                  {loading ? "Memproses..." : "☕ Beli Kopi (Rp15rb)"}
                 </button>
               </div>
             </div>
