@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { NativePurchases } from '@capgo/native-purchases';
+import { Capacitor } from '@capacitor/core';
 
 export type CoffeeTier = {
   id: string;
@@ -19,14 +20,16 @@ export const useBilling = () => {
   const [loading, setLoading] = useState(false);
 
   const purchaseTier = async (tier: CoffeeTier) => {
-    if (window.location.hostname === 'localhost') {
-      alert(`Mockup: Berhasil memberikan ${tier.label}! (Simulasi Localhost)`);
+    // 1. CEK PLATFORM (Cara Paling Akurat)
+    // Jika BUKAN Native (artinya di Browser/Localhost), tampilkan Mockup
+    if (!Capacitor.isNativePlatform()) {
+      alert(`Mockup: Berhasil memberikan ${tier.label}! (Simulasi Browser)`);
       return true;
     }
 
+    // 2. JIKA DI HP (ANDROID/IOS), JALANKAN PAYMENT ASLI
     setLoading(true);
     try {
-      // 1. Lakukan pembelian berdasarkan ID tier
       const result = await NativePurchases.purchase({
         productId: tier.id,
       });
