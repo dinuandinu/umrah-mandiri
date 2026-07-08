@@ -79,6 +79,20 @@ export default function UmrohApp() {
   const setSubTab = (i: number, t: string) => setSubTabs(p => ({ ...p, [i]: t }));
   const resetProgress = () => { setChecked({}); localStorage.removeItem("umrah-checked"); };
 
+  const handleQuickMenu = (type: "prep" | "tut", id: number) => {
+    setQuery("");
+    if (type === "prep") {
+      setTab("persiapan");
+      setOpenPrep(id);
+      setOpenStep(null);
+    } else {
+      setTab("tutorial");
+      setOpenStep(id);
+      setOpenPrep(null);
+    }
+    window.scrollTo({ top: 350, behavior: "smooth" });
+  };
+
   // --- 4. SEARCH & PROGRESS LOGIC ---
   const q = query.trim().toLowerCase();
   const allItems = prepData.flatMap(s => s.items);
@@ -95,6 +109,22 @@ export default function UmrohApp() {
   const prepResults = q ? prepData.flatMap(sec => sec.items.filter(item => item.title.toLowerCase().includes(q) || (item.tips || []).some((t: string) => t.toLowerCase().includes(q))).map(item => ({ ...item, _section: sec.section }))) : [];
   const tutResults = q ? tutorialData.filter(item => item.title.toLowerCase().includes(q) || (item.subtitle || "").toLowerCase().includes(q)) : [];
   const totalResults = prepResults.length + tutResults.length;
+
+  // Prepare data untuk ditampilkan berdasarkan query
+  const displayPrepData = q
+    ? prepResults.reduce((acc, item) => {
+        const section = item._section;
+        const existing = acc.find(s => s.section === section);
+        if (existing) {
+          existing.items.push(item);
+        } else {
+          acc.push({ section, items: [item] });
+        }
+        return acc;
+      }, [] as { section: string; items: any[] }[])
+    : prepData;
+
+  const displayTutData = q ? tutResults : tutorialData;
 
   // --- 5. RENDER UTAMA ---
   return (
@@ -142,6 +172,32 @@ export default function UmrohApp() {
               <button className={`tab-btn-modern ${tab === "tutorial" ? "active" : ""}`} onClick={() => setTab("tutorial")}>🕋 Tutorial</button>
             </div>
 
+            <div className="quick-menu-container">
+              <div className="quick-menu-label">MENU CEPAT</div>
+              <div className="quick-menu-items">
+                <button className="quick-menu-btn" onClick={() => handleQuickMenu("prep", 2)}>
+                  <span className="icon">🛂</span>
+                  <span className="label">Paspor</span>
+                </button>
+                <button className="quick-menu-btn" onClick={() => handleQuickMenu("prep", 9)}>
+                  <span className="icon">🎫</span>
+                  <span className="label">Visa</span>
+                </button>
+                <button className="quick-menu-btn" onClick={() => handleQuickMenu("tut", 0)}>
+                  <span className="icon">🕌</span>
+                  <span className="label">Miqat</span>
+                </button>
+                <button className="quick-menu-btn" onClick={() => handleQuickMenu("tut", 2)}>
+                  <span className="icon">🔄</span>
+                  <span className="label">Thowaf</span>
+                </button>
+                <button className="quick-menu-btn" onClick={() => handleQuickMenu("tut", 3)}>
+                  <span className="icon">🏃</span>
+                  <span className="label">Sa'i</span>
+                </button>
+              </div>
+            </div>
+
             <div className="main">
               <div className="search-bar-modern">
                 <div className="search-icon-modern">🔍</div>
@@ -152,34 +208,63 @@ export default function UmrohApp() {
                   value={query}
                   onChange={e => setQuery(e.target.value)}
                 />
+                {query && (
+                  <button className="search-clear-btn" onClick={() => setQuery("")} aria-label="Hapus pencarian">
+                    ✕
+                  </button>
+                )}
               </div>
+              {query && totalResults > 0 && (
+                <div className="search-results-info">
+                  <span className="search-results-count">
+                    Ditemukan {totalResults} hasil untuk "{query}"
+                  </span>
+                </div>
+              )}
 
               {tab === "persiapan" ? (
                 <div className="view-persiapan">
-                   <div className="info-banner-modern">
-                     <div className="icon">📝</div>
-                     <div className="text">
-                       <strong>Daftar Persiapan Umroh</strong>
-                       <span>Lengkapi dokumen dan persiapan fisik Anda sebelum keberangkatan. Ketuk item untuk melihat tips dan panduan detail.</span>
+                   {!query && (
+                     <>
+                       <div className="info-banner-modern">
+                         <div className="icon">📝</div>
+                         <div className="text">
+                           <strong>Daftar Persiapan Umroh</strong>
+                           <span>Lengkapi dokumen dan persiapan fisik Anda sebelum keberangkatan. Ketuk item untuk melihat tips dan panduan detail.</span>
+                         </div>
+                       </div>
+                       <div className="progress-card-modern">
+                         <div className="progress-header-modern">
+                           <span className="progress-title-modern">PROGRESS PERSIAPAN</span>
+                           <span className="progress-pct-modern">{pct}%</span>
+                         </div>
+                         <div className="progress-track-modern">
+                            <div className="progress-fill-modern" style={{ width: `${pct}%` }} />
+                         </div>
+                         <div className="progress-info-modern">
+                           <span>{doneCount} dari {allItems.length} item selesai</span>
+                           <span className="progress-status-modern">
+                             <span style={{ marginRight: 6 }}>✓</span>
+                             Tersimpan otomatis
+                           </span>
+                         </div>
+                       </div>
+                     </>
+                   )}
+                   {displayPrepData.length === 0 && query ? (
+                     <div className="empty-state">
+                       <div className="empty-icon">🔍</div>
+                       <div className="empty-title">Tidak ada hasil ditemukan di tab Persiapan</div>
+                       {tutResults.length > 0 && (
+                         <div className="empty-hint">
+                           Ditemukan {tutResults.length} hasil di tab <strong>Tutorial</strong>.
+                           <button className="switch-tab-link" onClick={() => setTab("tutorial")}>Lihat Hasil Tutorial →</button>
+                         </div>
+                       )}
+                       <div className="empty-desc">Coba gunakan kata kunci lain atau periksa ejaan Anda</div>
                      </div>
-                   </div>
-                   <div className="progress-card-modern">
-                     <div className="progress-header-modern">
-                       <span className="progress-title-modern">PROGRESS PERSIAPAN</span>
-                       <span className="progress-pct-modern">{pct}%</span>
-                     </div>
-                     <div className="progress-track-modern">
-                        <div className="progress-fill-modern" style={{ width: `${pct}%` }} />
-                     </div>
-                     <div className="progress-info-modern">
-                       <span>{doneCount} dari {allItems.length} item selesai</span>
-                       <span className="progress-status-modern">
-                         <span style={{ marginRight: 6 }}>✓</span>
-                         Tersimpan otomatis
-                       </span>
-                     </div>
-                   </div>
-                   {prepData.map((sec, si) => (
+                   ) : (
+                     displayPrepData.map((sec, si) => (
                      <div key={si} className="section">
                        <div className="section-label-modern">{sec.section}</div>
                        {sec.items.map(item => (
@@ -224,18 +309,34 @@ export default function UmrohApp() {
                          </div>
                        ))}
                      </div>
-                   ))}
+                   ))
+                 )}
                 </div>
               ) : (
                 <div className="view-tutorial">
-                   <div className="info-banner-modern">
-                     <div className="icon">🕌</div>
-                     <div className="text">
-                       <strong>Urutan Ibadah Umroh</strong>
-                       <span>Ikuti langkah-langkah berikut secara berurutan. Ketuk kartu untuk detail, doa, dan panduan lengkap.</span>
+                   {!query && (
+                     <div className="info-banner-modern">
+                       <div className="icon">🕌</div>
+                       <div className="text">
+                         <strong>Urutan Ibadah Umroh</strong>
+                         <span>Ikuti langkah-langkah berikut secara berurutan. Ketuk kartu untuk detail, doa, dan panduan lengkap.</span>
+                       </div>
                      </div>
-                   </div>
-                   {tutorialData.map((item, idx) => (
+                   )}
+                   {displayTutData.length === 0 && query ? (
+                     <div className="empty-state">
+                       <div className="empty-icon">🔍</div>
+                       <div className="empty-title">Tidak ada hasil ditemukan di tab Tutorial</div>
+                       {prepResults.length > 0 && (
+                         <div className="empty-hint">
+                           Ditemukan {prepResults.length} hasil di tab <strong>Persiapan</strong>.
+                           <button className="switch-tab-link" onClick={() => setTab("persiapan")}>Lihat Hasil Persiapan →</button>
+                         </div>
+                       )}
+                       <div className="empty-desc">Coba gunakan kata kunci lain atau periksa ejaan Anda</div>
+                     </div>
+                   ) : (
+                     displayTutData.map((item, idx) => (
                      <div key={idx} className="step-card-modern">
                        <div className="step-header-modern" onClick={() => toggleStep(idx)}>
                          <div className="step-icon-modern">{item.emoji}</div>
@@ -249,9 +350,10 @@ export default function UmrohApp() {
                          <div className="step-body">
                            {item.content({ D: detailOpen, T: toggleDetail, subTab: subTabs[idx] || item.defaultSubTab || "default", setSubTab: t => setSubTab(idx, t) })}
                          </div>
-                       )}
-                     </div>
-                   ))}
+                        )}
+                      </div>
+                    ))
+                  )}
                 </div>
               )}
             </div>
