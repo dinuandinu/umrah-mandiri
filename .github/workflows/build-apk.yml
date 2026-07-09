@@ -56,12 +56,12 @@ jobs:
           mkdir -p /tmp/capenv
           cd /tmp/capenv
           npm init -y
-          npm install --ignore-scripts @capacitor/android@8.3.4 @capacitor/core@8.3.4 @capacitor/cli@8.3.4 @capgo/native-purchases@8.5.0 typescript
+          npm install --ignore-scripts @capacitor/android@8.4.1 @capacitor/core@8.4.1 @capacitor/cli@8.4.1 @capgo/native-purchases@latest typescript
 
       - name: Sync Capacitor
         working-directory: /tmp/capenv
         run: |
-          cp $GITHUB_WORKSPACE/artifacts/umroh-app/capacitor.config.ts .
+          cp $GITHUB_WORKSPACE/artifacts/umroh-app/capacitor.config.json .
           mkdir -p dist/public
           cp -r $GITHUB_WORKSPACE/artifacts/umroh-app/dist/public/. dist/public/
           cp -r $GITHUB_WORKSPACE/artifacts/umroh-app/android .

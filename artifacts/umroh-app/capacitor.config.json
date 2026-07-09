@@ -1,0 +1,8 @@
+{
+  "appId": "com.dinuandinu.umrahmandiri",
+  "appName": "Umroh Mandiri",
+  "webDir": "dist/public",
+  "server": {
+    "androidScheme": "https"
+  }
+}
