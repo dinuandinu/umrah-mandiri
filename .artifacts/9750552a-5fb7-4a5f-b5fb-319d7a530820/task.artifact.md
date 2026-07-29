@@ -17,6 +17,12 @@
 - [x] Naikkan `versionCode` (2) dan `versionName` (1.3.13) di `build.gradle`
 - [x] Commit dan Push ke GitHub
 
+## Modernisasi UI Onboarding
+- [ ] Update styling `.ob-tip` agar selaras dengan `info-banner-modern` di `UmrohApp.css`
+- [ ] Tambahkan dukungan Safe Area pada `.ob-topbar` dan `.ob-footer`
+- [ ] Refine tipografi dan transisi slide onboarding
+- [ ] Verifikasi perubahan tampilan
+
 ## Fix GitHub Actions Build
 - [x] Update `build-apk.yml` dengan plugin baru dan perbaikan perintah `cp`
 - [x] Push perbaikan workflow ke GitHub
