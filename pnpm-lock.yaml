@@ -154,9 +154,6 @@ importers:
 
   .:
     dependencies:
-      '@capacitor/android':
-        specifier: ^8.4.1
-        version: 8.4.1(@capacitor/core@8.4.1)
       '@capacitor/cli':
         specifier: ^8.4.1
         version: 8.4.1
@@ -408,9 +405,18 @@ importers:
 
   artifacts/umroh-app:
     dependencies:
+      '@capacitor/android':
+        specifier: ^8.4.1
+        version: 8.4.2(@capacitor/core@8.4.1)
+      '@capacitor/status-bar':
+        specifier: ^8.0.3
+        version: 8.0.3(@capacitor/core@8.4.1)
+      '@capawesome/capacitor-navigation-bar':
+        specifier: ^8.0.1
+        version: 8.0.1(@capacitor/core@8.4.1)
       '@capgo/native-purchases':
         specifier: latest
-        version: 8.5.0(@capacitor/core@8.4.1)
+        version: 8.6.4(@capacitor/core@8.4.1)
       '@hookform/resolvers':
         specifier: ^3.10.0
         version: 3.10.0(react-hook-form@7.71.2(react@19.1.0))
@@ -739,8 +745,8 @@ packages:
     resolution: {integrity: sha512-LwdZHpScM4Qz8Xw2iKSzS+cfglZzJGvofQICy7W7v4caru4EaAmyUuO6BGrbyQ2mYV11W0U8j5mBhd14dd3B0A==}
     engines: {node: '>=6.9.0'}
 
-  '@capacitor/android@8.4.1':
-    resolution: {integrity: sha512-igtDCJ7QQn0P2qHFD9p4KXaa6V1b2PRNt+MxjVwtjTm/BJvqmiazOJq6rPjwFSZnfHm6iFoZk8TfzHd44pyBGw==}
+  '@capacitor/android@8.4.2':
+    resolution: {integrity: sha512-bzf8XZ9C+ePgOQ+e+T0fnhHGH4aCNY494vvSQIF5w4AY07RwEmkFqZs1678DDSMH0hLSQpxEwXGFNUVcXO6bBA==}
     peerDependencies:
       '@capacitor/core': ^8.4.0
 
@@ -752,8 +758,18 @@ packages:
   '@capacitor/core@8.4.1':
     resolution: {integrity: sha512-xqhOGLbTAYeOWK+IDUNSjQJAPapQjRHrIcgk9PYp52or9zFTaaMko31uNi16N6W+CRJ8VrRram6fOYILkBG2Hg==}
 
-  '@capgo/native-purchases@8.5.0':
-    resolution: {integrity: sha512-/zXFPqeTmozrwqpcovHoTtdmEbDvnXRfuxOvSMOsCj/lxHUAFgXMJf9FwguDw9czEm0LqIQYYbX2uE6fv0MUvQ==}
+  '@capacitor/status-bar@8.0.3':
+    resolution: {integrity: sha512-csSpfNeN49Hx9JaQBSJEIiEbOLtXg3kcc2IpScq2fu5L520h3AWEvsxoH8Srk1jxfRKepaJ4S4sqSC3foI4AgA==}
+    peerDependencies:
+      '@capacitor/core': '>=8.0.0'
+
+  '@capawesome/capacitor-navigation-bar@8.0.1':
+    resolution: {integrity: sha512-N9Y1RjWKawFhSe5sp+dGJFU1BUf3wIG+B/La2vfh5YGIx+BS/mJer3MN6cg0QuZno7NyVM+5BgsOhhLVlFbLkA==}
+    peerDependencies:
+      '@capacitor/core': '>=8.0.0'
+
+  '@capgo/native-purchases@8.6.4':
+    resolution: {integrity: sha512-7kGNvK7EiPiSbn+LVzc2GzR2Zcx2uxV4N457s84tsIV42ZccJmmsJpIvit6AOCFoUky8mLbcDsMhQvHCDivWhQ==}
     peerDependencies:
       '@capacitor/core': '>=8.0.0'
 
@@ -3578,7 +3594,7 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.28.5
 
-  '@capacitor/android@8.4.1(@capacitor/core@8.4.1)':
+  '@capacitor/android@8.4.2(@capacitor/core@8.4.1)':
     dependencies:
       '@capacitor/core': 8.4.1
 
@@ -3608,7 +3624,15 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@capgo/native-purchases@8.5.0(@capacitor/core@8.4.1)':
+  '@capacitor/status-bar@8.0.3(@capacitor/core@8.4.1)':
+    dependencies:
+      '@capacitor/core': 8.4.1
+
+  '@capawesome/capacitor-navigation-bar@8.0.1(@capacitor/core@8.4.1)':
+    dependencies:
+      '@capacitor/core': 8.4.1
+
+  '@capgo/native-purchases@8.6.4(@capacitor/core@8.4.1)':
     dependencies:
       '@capacitor/core': 8.4.1
 

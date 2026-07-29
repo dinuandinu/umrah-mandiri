@@ -1,6 +1,7 @@
 import React from "react";
 import { DS, SubTabs } from "../components/ui/TutorialUI";
 import { MiniMap } from "../components/ui/MapComponents";
+import { PrayerAudioPlayer } from "../components/ui/PrayerAudioPlayer";
 import { PrepSection, TutItem } from "../types/umroh";
 
 export const OB_SLIDES = [
@@ -675,6 +676,8 @@ export const tutorialData: TutItem[] = [
             <DS id="mq5" title="💡 Khawatir Haid Datang Setelah Niat? — Niat Bersyarat" open={D["mq5"]} onToggle={T}>
               <p>Jika sudah suci saat di miqat, tapi khawatir haid datang sebelum sempat Tawaf (misal: durasi trip pendek, sudah mendekati siklus), boleh mengambil <strong>niat ihram bersyarat</strong>:</p>
               <div className="doa-box">
+                <div className="doa-label">Niat Ihram Bersyarat</div>
+                <PrayerAudioPlayer src="/assets/audio/niat-bersyarat.mp3" id="niat-bersyarat" />
                 <div className="doa-arabic">نَوَيْتُ الْعُمْرَةَ وَأَحْرَمْتُ بِهَا لِلَّهِ تَعَالَى، فَإِنْ حَاضَتْ فَأَنَا حَلٌّ</div>
                 <div className="doa-latin">Nawaitul 'umrata wa ahramtu bihaa lillahi ta'ala, fa-in haadhat fa ana hill</div>
                 <div className="doa-arti">"Aku niat umroh dan berihram karena Allah, jika aku didatangi haid maka aku menjadi halal (bebas dari ihram)."</div>
@@ -690,16 +693,30 @@ export const tutorialData: TutItem[] = [
             <div className="warn-box"><p>⚠️ Hindari ganti pakaian saat turbulensi.</p></div>
           </DS>
 
+          <DS id="mq-shalat" title="✨ Shalat Sunnah Ihram" open={D["mq-shalat"]} onToggle={T}>
+            <p>Sebelum berniat ihram, disunnahkan shalat dua rakaat (jika bukan waktu terlarang shalat).</p>
+            <div className="doa-box">
+              <div className="doa-label">Niat Shalat Sunnah Ihram</div>
+              <PrayerAudioPlayer src="/assets/audio/niat-shalat-ihram.mp3" id="niat-shalat-ihram" />
+              <div className="doa-arabic">أُصَلِّي سُنَّةَ اْلإِحْرَامِ رَكْعَتَيْنِ لِلّٰهِ تَعَالَى</div>
+              <div className="doa-latin">Ushalli sunnatal ihraami rak’ataini lillaahi ta’aala</div>
+              <div className="doa-arti">"Aku niat shalat sunnah ihram dua rakaat karena Allah Ta'ala."</div>
+            </div>
+            <p style={{fontSize:".85rem",color:"var(--muted)"}}>💡 Rakaat pertama disunnahkan membaca Al-Kafirun, rakaat kedua Al-Ikhlas.</p>
+          </DS>
+
           <DS id="mq3" title="3. Niat Ihram & Talbiyah" open={D["mq3"]} onToggle={T}>
             <div className="doa-box">
               <div className="doa-label">Niat Ihram Umroh</div>
+              <PrayerAudioPlayer src="/assets/audio/niat-umroh.mp3" id="niat-umroh" />
               <div className="doa-arabic">لَبَّيْكَ اللَّهُمَّ عُمْرَةً</div>
               <div className="doa-latin">Labbaik Allāhumma 'umratan</div>
               <div className="doa-arti">"Ya Allah, aku memenuhi panggilan-Mu untuk mengerjakan umroh."</div>
             </div>
             <div className="doa-box">
               <div className="doa-label">Talbiyah</div>
-              <div className="doa-arabic">لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّIْكَ لاَ شَرِICَ لَكَ لَبَّIْكَ، إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَALْمُلْكَ، لاَ شَرِيكَ لَكَ</div>
+              <PrayerAudioPlayer src="/assets/audio/talbiyah.mp3" id="talbiyah" />
+              <div className="doa-arabic">لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لاَ شَرِيكَ لَكَ لَبَّيْكَ، إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَالْمُلْكَ، لاَ شَرِيكَ لَكَ</div>
               <div className="doa-latin">Labbaik Allāhumma labbaik, labbaik lā syarīka laka labbaik, innal-ḥamda wan-ni'mata laka wal-mulk, lā syarīka lak</div>
               <div className="doa-arti">Artinya: "Aku penuhi panggilan-Mu ya Allah, aku penuhi panggilan-Mu. Aku penuhi panggilan-Mu, tiada sekutu bagi-Mu, aku penuhi panggilan-Mu. Sesungguhnya segala puji, nikmat, dan seluruh kekuasaan hanya milik-Mu, tiada sekutu bagi-Mu."</div>
               <div style={{fontSize:".8rem",color:"var(--muted)",marginTop:6,lineHeight:1.6}}>💡 Baca talbiyah terus-menerus sejak niat ihram hingga memulai tawaf — dengan suara keras bagi pria, pelan untuk wanita. Talbiyah adalah tanda jamaah benar-benar "hadir" memenuhi panggilan Allah.</div>
@@ -809,10 +826,22 @@ export const tutorialData: TutItem[] = [
 
           <div className="doa-box">
             <div className="doa-label">Doa Masuk Masjid</div>
+            <PrayerAudioPlayer src="/assets/audio/doa-masuk-masjid.mp3" id="doa-masuk-masjid" />
             <div className="doa-arabic">اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ</div>
             <div className="doa-latin">Allāhummaftaḥ lī abwāba raḥmatik</div>
             <div className="doa-arti">"Ya Allah, bukakanlah untukku pintu-pintu rahmat-Mu."</div>
           </div>
+
+          <DS id="sh-view" title="🕋 Doa Melihat Ka'bah" open={D["sh-view"]} onToggle={T}>
+            <p>Saat pertama kali mata memandang Ka'bah, angkat tangan dan baca doa ini (waktu mustajab):</p>
+            <div className="doa-box">
+              <div className="doa-label">Doa Melihat Ka'bah</div>
+              <PrayerAudioPlayer src="/assets/audio/doa-melihat-kaabah.mp3" id="doa-melihat-kaabah" />
+              <div className="doa-arabic">اللَّهُمَّ زِدْ هَذَا الْبَيْتَ تَشْرِيفًا وَتَعْظِيمًا وَتَكْرِيمًا وَمَهَابَةً وَزِدْ مَنْ شَرَّفَهُ وَكَرَّمَهُ مِمَّنْ حَجَّهُ أَوِ اعْتَمَرَهُ تَشْرِيفًا وَتَكْرِيمًا وَتَعْظِيمًا وَبِرًّا</div>
+              <div className="doa-latin">Allāhumma zid hādzal baita tasyrīfan wa ta'dzīman wa takrīman wa mahābatan, wa zid man syarrafahū wa karramahū mimman ḥajjahū awi'tamarahū tasyrīfan wa takrīman wa ta'dzīman wa birran</div>
+              <div className="doa-arti">"Ya Allah, tambahkanlah kemuliaan, keagungan, kehormatan, dan kewibawaan pada Baitullah ini. Dan tambahkanlah pula kemuliaan, kehormatan, keagungan, dan kebaikan bagi orang yang memuliakan dan menghormatinya dari kalangan mereka yang berhaji atau berumroh."</div>
+            </div>
+          </DS>
 
           <ul className="tip-list">
             <li>Saat pertama kali melihat Ka'bah, berdiri sejenak dan panjatkan doa — waktu mustajab.</li>
@@ -913,10 +942,34 @@ export const tutorialData: TutItem[] = [
 
           <div className="doa-box">
             <div className="doa-label">Doa antara Rukun Yamani & Hajar Aswad</div>
+            <PrayerAudioPlayer src="/assets/audio/doa-sapu-jagad.mp3" id="doa-sapu-jagad" />
             <div className="doa-arabic">رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ</div>
             <div className="doa-latin">Rabbanā ātinā fid-dunyā ḥasanah, wa fil-ākhirati ḥasanah, wa qinā 'adzāban-nār</div>
             <div className="doa-arti">"Ya Tuhan kami, berikanlah kami kebaikan di dunia dan akhirat, dan peliharalah kami dari azab neraka."</div>
           </div>
+
+          <DS id="tw-shalat" title="✨ Shalat Sunnah Tawaf" open={D["tw-shalat"]} onToggle={T}>
+            <p>Setelah selesai 7 putaran, disunnahkan shalat dua rakaat di belakang Maqam Ibrahim (atau di mana saja di dalam masjid jika penuh).</p>
+            <div className="doa-box">
+              <div className="doa-label">Niat Shalat Sunnah Tawaf</div>
+              <PrayerAudioPlayer src="/assets/audio/niat-shalat-tawaf.mp3" id="niat-shalat-tawaf" />
+              <div className="doa-arabic">أُصَلِّي سُنَّةَ الطَّوَافِ رَكْعَتَيْنِ لِلّٰهِ تَعَالَى</div>
+              <div className="doa-latin">Ushalli sunnatat-thawaafi rak’ataini lillaahi ta’aala</div>
+              <div className="doa-arti">"Aku niat shalat sunnah tawaf dua rakaat karena Allah Ta'ala."</div>
+            </div>
+            <p style={{fontSize:".85rem",color:"var(--muted)"}}>💡 Dianjurkan membaca surat Al-Kafirun pada rakaat pertama dan Al-Ikhlas pada rakaat kedua.</p>
+          </DS>
+
+          <DS id="tw-zamzam" title="🥤 Minum Air Zamzam" open={D["tw-zamzam"]} onToggle={T}>
+            <p>Disunnahkan minum air zamzam sepuasnya sambil menghadap Ka'bah dan berdoa:</p>
+            <div className="doa-box">
+              <div className="doa-label">Doa Minum Air Zamzam</div>
+              <PrayerAudioPlayer src="/assets/audio/doa-minum-zamzam.mp3" id="doa-minum-zamzam" />
+              <div className="doa-arabic">اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا وَرِزْقًا وَاسِعًا وَشِفَاءً مِنْ كُلِّ دَاءٍ</div>
+              <div className="doa-latin">Allāhumma innī as’aluka ‘ilman nāfi’an wa rizqan wāsi’an wa syifā’an min kulli dā’in</div>
+              <div className="doa-arti">"Ya Allah, sesungguhnya aku memohon kepada-Mu ilmu yang bermanfaat, rezeki yang luas, dan kesembuhan dari segala penyakit."</div>
+            </div>
+          </DS>
         </div>
       )
     },
@@ -939,21 +992,22 @@ export const tutorialData: TutItem[] = [
             <div className="info-box"><p>📌 Wanita haid diperbolehkan melakukan Sa'i karena tidak mensyaratkan keadaan suci/wudhu — berbeda dari Tawaf.</p></div>
           </DS>
 
-          <DS id="si4" title="📿 Doa di Setiap Putaran" open={D["si4"]} onToggle={T}>
-            <p style={{fontSize:".88rem",marginBottom:8}}>Tidak ada doa/dzikir wajib khusus saat berjalan — boleh berdoa bebas sesuai hajat. Doa berikut sering dibaca jamaah berdasarkan riwayat sahabat:</p>
+          <DS id="si4" title="📿 Doa di Atas Bukit & Putaran" open={D["si4"]} onToggle={T}>
+            <p style={{fontSize:".88rem",marginBottom:8}}>Saat tiba di atas bukit Shafa atau Marwah, menghadaplah ke Ka'bah dan baca doa yang dipraktikkan Rasulullah ﷺ:</p>
             <div className="doa-box">
-              <div className="doa-label">Saat Naik ke Bukit (Shafa/Marwah)</div>
-              <div className="doa-arabic">إِنَّ الصَّفَا وَالْمَرْوَةَ مِنْ شَعَائِرِ اللَّهِ</div>
-              <div className="doa-latin">Innaṣ-ṣafā wal-marwata min sya'ā'irillāh</div>
-              <div className="doa-arti">"Sesungguhnya Shafa dan Marwah adalah sebagian dari syi'ar Allah." (QS. 2:158)</div>
+              <div className="doa-label">Doa di Atas Bukit (Shafa/Marwah)</div>
+              <PrayerAudioPlayer src="/assets/audio/doa-shafa-marwah.mp3" id="doa-shafa-marwah" />
+              <div className="doa-arabic">اللهُ أَكْبَرُ، اللهُ أَكْبَرُ، اللهُ أَكْبَرُ، لَا إِلَهَ إِلَّا اللهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ</div>
+              <div className="doa-latin">Allāhu Akbar (3x), Lā ilāha illallāhu waḥdahū lā syarīka lah, lahul mulku wa lahul ḥamdu wa huwa ‘alā kulli syai’in qadīr</div>
+              <div className="doa-arti">"Allah Maha Besar (3x). Tiada Tuhan selain Allah Yang Maha Esa, tiada sekutu bagi-Nya. Bagi-Nya segala kerajaan dan segala puji, dan Dia Maha Kuasa atas segala sesuatu."</div>
             </div>
             <div className="doa-box">
-              <div className="doa-label">Doa Sepanjang Perjalanan (Riwayat Ibnu Mas'ud & Ibnu Umar)</div>
+              <div className="doa-label">Doa Sepanjang Perjalanan (Riwayat Ibnu Mas'ud)</div>
+              <PrayerAudioPlayer src="/assets/audio/doa-sai.mp3" id="doa-sai" />
               <div className="doa-arabic">رَبِّ اغْفِرْ وَارْحَمْ إِنَّكَ أَنْتَ الْأَعَزُّ الْأَكْرَمُ</div>
               <div className="doa-latin">Allahummaghfirlī warham wa antal a'azzul akram</div>
               <div className="doa-arti">"Ya Rabbku, ampuni dan rahmatilah aku. Sesungguhnya Engkaulah Yang Maha Perkasa dan Maha Pemurah."</div>
             </div>
-            <p style={{fontSize:".85rem",color:"var(--muted)"}}>💡 Boleh juga berdzikir bebas, membaca Al-Qur'an, atau berdoa dengan bahasa sendiri — yang terpenting hati tetap fokus mengingat Allah selama berjalan.</p>
           </DS>
 
           <div className="warn-box" style={{marginTop:10}}>
@@ -992,12 +1046,14 @@ export const tutorialData: TutItem[] = [
           <DS id="th3" title="📿 Doa Saat & Setelah Tahallul" open={D["th3"]} onToggle={T}>
             <div className="doa-box">
               <div className="doa-label">Saat Mulai Mencukur/Memotong</div>
+              <PrayerAudioPlayer src="/assets/audio/doa-tahallul.mp3" id="doa-tahallul" />
               <div className="doa-arabic">اللَّهُمَّ اجْعَلْ لِكُلِّ شَعْرَةٍ نُورًا يَوْمَ الْقِيَامَةِ</div>
               <div className="doa-latin">Allāhummaj'al likulli sya'ratin nūran yaumal qiyāmah</div>
               <div className="doa-arti">"Ya Allah, jadikanlah cahaya untukku dari setiap helai rambut yang dipotong ini pada hari kiamat."</div>
             </div>
             <div className="doa-box">
               <div className="doa-label">Setelah Selesai Tahallul (Penutup Manasik)</div>
+              <PrayerAudioPlayer src="/assets/audio/doa-selesai-umroh.mp3" id="doa-selesai-umroh" />
               <div className="doa-arabic">اَلْحَمْدُ للهِ الَّذِى قَضَى عَنَّا مَنَاسِكَنَا، اَللَّهُمَّ زِدْنَا إِيمَانًا وَيَقِينًا وَعَوْنًا وَاغْفِرْ لَنَا وَلِوَالِدَيْنَا وَلِسَائِرِ الْمُسْلِمِينَ وَالْمُسْلِمَاتِ</div>
               <div className="doa-latin">Alhamdulillāhil ladzī qaḍā 'annā manāsikanā. Allāhumma zidnā īmānan wa yaqīnan wa 'aunan, waghfir lanā wa liwālidainā wa lisā'iril muslimīna wal muslimāt</div>
               <div className="doa-arti">"Segala puji bagi Allah yang telah menyelesaikan manasik kami. Ya Allah, tambahkanlah kepada kami iman, keyakinan, dan pertolongan. Ampunilah kami, kedua orang tua kami, dan seluruh kaum muslimin dan muslimat."</div>
@@ -1134,6 +1190,7 @@ export const tutorialData: TutItem[] = [
 
         <div className="doa-box">
           <div className="doa-label">Niat Ihram Badal Umroh</div>
+          <PrayerAudioPlayer src="/assets/audio/niat-badal.mp3" id="niat-badal" />
           <div className="doa-arabic">نَوَيْتُ الْعُمْرَةَ وَأَحْرَمْتُ بِهَا لِلَّهِ تَعَالَى عَنْ فُلَانٍ</div>
           <div className="doa-latin">Nawaytul 'umrata wa ahramtu bihā lillāhi ta'ālā 'an [sebut nama]</div>
           <div className="doa-arti">"Aku menyengaja ibadah umroh dan aku ihram umroh karena Allah Ta'ala untuk si [sebut nama orang yang dibadalkan]."</div>
@@ -1305,6 +1362,8 @@ export const tutorialData: TutItem[] = [
 
         <DS id="tww1" title="📿 Doa Setelah Tawaf Wada'" open={D["tww1"]} onToggle={T}>
           <div className="doa-box">
+            <div className="doa-label">Doa Setelah Tawaf Wada'</div>
+            <PrayerAudioPlayer src="/assets/audio/doa-wada.mp3" id="doa-wada" />
             <div className="doa-arabic">اَللّٰهُمَّ لَا تَجْعَلْ هٰذَا آخِرَ الْعَهْدِ بِبَيْتِكَ الْحَرَامِ، وَإِنْ جَعَلْتَهُ آخِرَ الْعَهْدِ فَعَوِّضْنِي الْجَنَّةَ يَا أَرْحَمَ الرَّاحِمِينَ</div>
             <div className="doa-latin">Allāhumma lā taj'al hādzā ākhiral 'ahdi bi-baytikal harām, wa in ja'altahu ākhiral 'ahdi fa'awwidhnil jannah, yā arhamar rāhimīn</div>
             <div className="doa-arti">"Ya Allah, janganlah Engkau jadikan ini sebagai pertemuan terakhirku dengan Baitullah ini. Jika Engkau jadikan ini pertemuan terakhirku, maka gantilah untukku dengan surga, wahai Yang Maha Penyayang di antara para penyayang."</div>
@@ -1405,12 +1464,14 @@ export const tutorialData: TutItem[] = [
           <DS id="zr1" title="📿 Doa Salam kepada Rasulullah ﷺ" open={D["zr1"]} onToggle={T}>
             <div className="doa-box">
               <div className="doa-label">Salam kepada Nabi ﷺ</div>
+              <PrayerAudioPlayer src="/assets/audio/salam-nabi.mp3" id="salam-nabi" />
               <div className="doa-arabic">اَلسَّلَامُ عَلَيْكَ أَيُّهَا النَّبِيُّ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</div>
               <div className="doa-latin">Assalāmu 'alaika ayyuhan-nabiyyu wa rahmatullāhi wa barakātuh</div>
               <div className="doa-arti">"Semoga keselamatan, rahmat, dan berkah Allah terlimpah atasmu wahai Nabi."</div>
             </div>
             <div className="doa-box">
               <div className="doa-label">Salam kepada Abu Bakar & Umar ra.</div>
+              <PrayerAudioPlayer src="/assets/audio/salam-sahabat.mp3" id="salam-sahabat" />
               <div className="doa-arabic">اَلسَّلَامُ عَلَيْكُمَا يَا صَاحِبَيْ رَسُولِ اللهِ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</div>
               <div className="doa-latin">Assalāmu 'alaikumā yā shāhibay rasūlillāhi wa rahmatullāhi wa barakātuh</div>
               <div className="doa-arti">"Semoga keselamatan, rahmat, dan berkah Allah terlimpah atas kalian berdua wahai dua sahabat Rasulullah."</div>
@@ -1419,7 +1480,8 @@ export const tutorialData: TutItem[] = [
 
           <DS id="zr2" title="📿 Doa Masuk Pemakaman (Baqi'/Uhud)" open={D["zr2"]} onToggle={T}>
             <div className="doa-box">
-              <div className="doa-label">Salam Ahli Kubur (HR. Muslim)</div>
+              <div className="doa-label">Salam Ahli Kubur</div>
+              <PrayerAudioPlayer src="/assets/audio/salam-kubur.mp3" id="salam-kubur" />
               <div className="doa-arabic">اَلسَّلَامُ عَلَيْكُمْ أَهْلَ الدِّيَارِ مِنَ الْمُؤْمِنِينَ وَالْمُسْلِمِينَ، وَإِنَّا إِنْ شَاءَ اللهُ بِكُمْ لَاحِقُونَ، أَسْأَلُ اللهَ لَنَا وَلَكُمُ الْعَافِيَةَ</div>
               <div className="doa-latin">Assalāmu 'alaikum ahlad-diyāri minal mu'minīna wal muslimīn, wa innā insyā'allāhu bikum lāhiqūn, as'alullāha lanā wa lakumul 'āfiyah</div>
               <div className="doa-arti">"Semoga keselamatan atas kalian wahai penghuni kubur dari kaum mukmin dan muslim. Kami insyaAllah akan menyusul kalian. Saya memohon keselamatan kepada Allah untuk kami dan kalian."</div>

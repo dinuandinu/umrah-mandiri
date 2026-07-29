@@ -2,6 +2,21 @@
 
 Catatan kronologis aktivitas yang dilakukan oleh Agent.
 
+## [2026-07-28] - Tutorial Enhancement & Version Sync
+- **Aktivitas**: Sinkronisasi versi build dan penambahan konten tutorial.
+- **Detail**: 
+    - Sinkronisasi `versionName` di `build.gradle` (Android) ke 1.3.12 agar sesuai dengan `package.json`.
+    - Membersihkan teks Arab yang tercampur karakter Latin di `content.tsx`.
+    - Menyiapkan infrastruktur audio player untuk doa-doa.
+- **Status**: In Progress.
+
+## [2026-07-09] - Git Push Failure (Resolved)
+- **Aktivitas**: Gagal melakukan push ke GitHub.
+- **Detail**: 
+    - Token PAT tidak memiliki scope `workflow`. 
+    - **Update**: Masalah diatasi dengan penyesuaian manual oleh user/agent baru.
+- **Status**: Selesai.
+
 ## [2026-07-09] - Bump Version & Push
 - **Aktivitas**: Melakukan bump versi, commit, dan push ke GitHub.
 - **Detail**: 

@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import "./UmrohApp.css";
+import { StatusBar, Style } from '@capacitor/status-bar';
+import { NavigationBar } from '@capawesome/capacitor-navigation-bar';
+import { Capacitor } from '@capacitor/core';
 
 // Import Logo Gambar
 import kaabaLogo from "./assets/kaaba-logo.png";
@@ -65,6 +68,34 @@ export default function UmrohApp() {
     window.addEventListener("online",  goOnline);
     return () => { window.removeEventListener("offline", goOffline); window.removeEventListener("online", goOnline); };
   }, []);
+
+  // --- 2.5 SYSTEM UI SYNC (STATUS BAR & NAV BAR) ---
+  useEffect(() => {
+    if (!Capacitor.isNativePlatform()) return;
+
+    const syncSystemUI = async () => {
+      try {
+        // Status Bar: Samakan dengan Header (Emerald)
+        // #1A4A3A adalah warna --emerald
+        await StatusBar.setBackgroundColor({ color: '#1A4A3A' });
+        await StatusBar.setStyle({ style: Style.Dark }); // Ikon Putih
+
+        // Navigation Bar: Transparan
+        await NavigationBar.setTransparency({ isTransparent: true });
+
+        // Memastikan tombol navigasi tetap terlihat (Light/Dark style)
+        // Di Android, "Dark" berarti ikon terang di background gelap
+        await NavigationBar.setStyle({ style: isDark ? 'DARK' : 'DARK' });
+        // Karena header kita selalu hijau/gelap, kita gunakan DARK (ikon putih)
+        // Tapi jika konten bawah kita putih di light mode, mungkin butuh penyesuaian.
+        // Namun user minta transparan, jadi biasanya mengikuti background konten.
+      } catch (e) {
+        console.error('System UI sync failed', e);
+      }
+    };
+
+    syncSystemUI();
+  }, [isDark]);
 
   // --- 3. HANDLER ---
   const handleOnboardingDone = () => {
@@ -288,7 +319,7 @@ export default function UmrohApp() {
                                  <span>TIPS & CARA MENDAPATKAN</span>
                                </div>
                                <ul className="tip-list">
-                                 {item.tips.map((t, i) => {
+                                 {item.tips.map((t: string, i: number) => {
                                    const trimmed = t.trim();
                                    const isSub = t.startsWith("  -") || t.startsWith("- ");
                                    const isHeader = trimmed.startsWith("[") || trimmed.startsWith("📌") ||
