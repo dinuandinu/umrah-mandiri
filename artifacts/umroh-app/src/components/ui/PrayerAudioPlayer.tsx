@@ -37,6 +37,11 @@ export const PrayerAudioPlayer: React.FC<PrayerAudioPlayerProps> = ({ src, id })
     audio.addEventListener('ended', handleEnded);
     audio.addEventListener('error', handleError);
 
+    // Initial check
+    fetch(src, { method: 'HEAD' }).catch(() => {
+      setError(true);
+    });
+
     return () => {
       audio.removeEventListener('canplaythrough', handleCanPlay);
       audio.removeEventListener('ended', handleEnded);
@@ -73,18 +78,19 @@ export const PrayerAudioPlayer: React.FC<PrayerAudioPlayerProps> = ({ src, id })
     }
   };
 
-  if (error) return null;
-
   return (
     <div className="audio-player-mini">
       <button
         onClick={togglePlay}
-        className={`audio-btn ${isPlaying ? 'playing' : ''}`}
-        aria-label={isPlaying ? "Pause" : "Play"}
-        title={isPlaying ? "Pause" : "Putar Audio"}
+        className={`audio-btn ${isPlaying ? 'playing' : ''} ${error ? 'disabled' : ''}`}
+        aria-label={isPlaying ? "Pause" : (error ? "Audio tidak tersedia" : "Putar Audio")}
+        title={isPlaying ? "Pause" : (error ? "File audio belum tersedia" : "Putar Audio")}
+        disabled={error}
       >
         {isPlaying ? <Pause size={14} /> : <Volume2 size={14} />}
-        <span className="audio-label">{isPlaying ? "PAUSE" : "PUTAR AUDIO"}</span>
+        <span className="audio-label">
+          {isPlaying ? "PAUSE" : (error ? "COMING SOON" : "PUTAR AUDIO")}
+        </span>
       </button>
     </div>
   );

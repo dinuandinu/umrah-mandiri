@@ -1,37 +1,30 @@
-# Rencana Update Versi dan Push ke GitHub
+# Rencana Perbaikan Build APK (GitHub Actions)
 
-Rencana ini bertujuan untuk memperbarui versi aplikasi (baik versi web maupun native Android) dan mengunggah seluruh perubahan terbaru ke repositori GitHub.
+Rencana ini bertujuan untuk memperbaiki error pada alur kerja GitHub Actions (`build-apk.yml`) yang muncul setelah penambahan plugin baru. Error terjadi karena konflik saat menyalin folder `node_modules` dan hilangnya dependensi plugin baru di lingkungan build sementara.
+
+## Analisis Masalah
+
+1.  **Missing Plugins:** Langkah "Setup Capacitor di folder bersih" belum menyertakan `@capacitor/status-bar` dan `@capawesome/capacitor-navigation-bar`.
+2.  **Symlink Conflict:** Perintah `cp` gagal karena mencoba menimpa symlink (hasil dari `pnpm install`) dengan direktori fisik secara paksa.
 
 ## Perubahan yang Diusulkan
 
-### 1. Update Versi Aplikasi
-*   **Web (`package.json`)**: Menaikkan versi dari `1.3.12` ke `1.3.13`.
-*   **Android (`build.gradle`)**:
-    *   Menaikkan `versionName` menjadi `1.3.13`.
-    *   Menaikkan `versionCode` dari `1` menjadi `2` (wajib untuk update di Play Store).
+### 1. Update Dependensi di Workflow
+Menambahkan plugin baru ke perintah `npm install` di lingkungan build sementara agar Capacitor bisa menemukannya saat proses `sync`.
 
-### 2. Version Control (Git)
-*   Melakukan `git add` untuk semua perubahan (termasuk fitur System UI dan Google Cloud yang baru saja dikerjakan).
-*   Melakukan `git commit` dengan pesan yang deskriptif.
-*   Melakukan `git push` ke branch `main`.
+### 2. Robust File Copying
+Memastikan folder tujuan dihapus terlebih dahulu sebelum dilakukan penyalinan (`rm -rf` diikuti `cp -r`) untuk menghindari konflik "non-directory" pada symlink pnpm.
 
 ## Langkah-langkah Teknis
 
-### [Component] Version Management
+### [Component] GitHub Workflow
 
-#### [MODIFY] [package.json](file:///Users/andinu/StudioProjects/umrah-mandiri/artifacts/umroh-app/package.json)
-Update field `"version": "1.3.13"`.
-
-#### [MODIFY] [build.gradle](file:///Users/andinu/StudioProjects/umrah-mandiri/artifacts/umroh-app/android/app/build.gradle)
-Update `versionCode 2` dan `versionName "1.3.13"`.
-
-### [Component] GitHub Deployment
-
-#### [EXECUTE] Git Commands
-1. `git add .`
-2. `git commit -m "chore: bump version to 1.3.13 and sync system UI features"`
-3. `git push origin main`
+#### [MODIFY] [.github/workflows/build-apk.yml](file:///Users/andinu/StudioProjects/umrah-mandiri/.github/workflows/build-apk.yml)
+*   Update langkah `Setup Capacitor di folder bersih` untuk menyertakan:
+    *   `@capacitor/status-bar`
+    *   `@capawesome/capacitor-navigation-bar`
+*   Update langkah `Sync Capacitor` untuk menambahkan perintah `rm -rf` sebelum melakukan `cp` pada folder `node_modules/@capacitor/*`.
 
 ## Rencana Verifikasi
-1. Memastikan `git status` bersih setelah push.
-2. Memastikan versi di `package.json` dan `build.gradle` sudah sinkron.
+1. Karena perbaikan ini ada di GitHub Actions, verifikasi dilakukan dengan memicu build di GitHub (melalui push atau workflow dispatch).
+2. Memastikan langkah `Sync Capacitor` tidak lagi mengeluarkan error 404 atau konflik `cp`.
