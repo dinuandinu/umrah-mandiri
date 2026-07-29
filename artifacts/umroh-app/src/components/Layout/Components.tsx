@@ -30,13 +30,16 @@ export const Drawer = ({ open, onClose, theme, setTheme, fontSize, setFontSize, 
       <div className={`drawer-overlay ${open ? "open" : ""}`} onClick={onClose} />
       <div className={`drawer ${open ? "open" : ""}`}>
         <div className="drawer-head">
+          <div className="header-geo" />
           <div className="drawer-head-arabic">بِسْمِ اللَّهِ</div>
           <div className="drawer-head-title">Umroh Mandiri</div>
           <div className="drawer-head-sub">Pengaturan & Referensi</div>
         </div>
 
-        <div className="drawer-body">
-          {/* 🎨 SECTION TAMPILAN */}
+        <div className="drawer-body" style={{ position: 'relative' }}>
+          <div className="body-pattern" />
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            {/* 🎨 SECTION TAMPILAN */}
           <div className="drawer-section-label">🎨 Tampilan</div>
           <div style={{ padding: "0 16px 12px" }}>
             <div style={{ fontSize: ".74rem", fontWeight: 600, color: "var(--muted)", marginBottom: 5 }}>Mode Tema</div>
@@ -189,12 +192,14 @@ export const Onboarding = ({ onDone, slides }: { onDone: () => void; slides: any
   return (
     <div className="ob-overlay">
       <div className="ob-topbar">
+        <div className="header-geo" />
         <div className="ob-topbar-arabic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
         <div className="ob-topbar-sub">Selamat datang di Umroh Mandiri</div>
         <button className="ob-skip" onClick={onDone}>Lewati</button>
       </div>
       <div className="ob-body">
-        <div className="ob-slides" style={{ transform: `translateX(-${slide * 100}%)` }}>
+        <div className="body-pattern" />
+        <div className="ob-slides" style={{ transform: `translateX(-${slide * 100}%)`, position: 'relative', zIndex: 1 }}>
           {slides.map((sl, i) => (
             <div className="ob-slide" key={i}>
               <div className="ob-illus">{sl.emoji}</div>
@@ -226,15 +231,19 @@ export const Onboarding = ({ onDone, slides }: { onDone: () => void; slides: any
 export const AboutPage = ({ onClose }: { onClose: () => void }) => (
   <div className="about-overlay">
     <div className="about-header">
+      <div className="header-geo" />
       <button className="about-back-btn" onClick={onClose} aria-label="Kembali">‹</button>
       <div className="about-header-arabic">تَقَبَّلَ اللَّهُ مِنَّا وَمِنْكُمْ</div>
       <div className="about-header-title">Tentang Aplikasi</div>
     </div>
-    <div className="about-body">
-      <div className="about-card">
-        <div className="author-avatar">🕌</div>
-        <div className="author-name">Umroh Mandiri</div>
-        <div className="author-bio">Panduan umroh mandiri untuk jamaah Indonesia.</div>
+    <div className="overlay-body-container">
+      <div className="body-pattern" />
+      <div className="about-body">
+        <div className="about-card">
+          <div className="author-avatar">🕌</div>
+          <div className="author-name">Umroh Mandiri</div>
+          <div className="author-bio">Panduan umroh mandiri untuk jamaah Indonesia.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -270,40 +279,43 @@ export const FAQPage = ({ onClose, data }: { onClose: () => void; data: any[] })
         <div className="faq-header-badge">❓</div>
         <div className="faq-header-title">Pertanyaan Umum</div>
       </div>
-      <div className="faq-search-wrap">
-        <div className="faq-search-box">
-          <input
-            className="faq-search-input"
-            placeholder="Cari pertanyaan..."
-            value={searchQ}
-            onChange={e => setSearchQ(e.target.value)}
-          />
-        </div>
-      </div>
-      <div className="faq-body">
-        {filtered.map((cat, ci) => (
-          <div key={ci}>
-            <div className="faq-cat-label">{cat.cat}</div>
-            {cat.items.map((item: any, ii: number) => {
-              const key = `${ci}-${ii}`;
-              return (
-                <div className="faq-item" key={key}>
-                  <div className="faq-q" onClick={() => toggleItem(key)}>
-                    <div className="faq-q-num">{ii + 1}</div>
-                    <div className="faq-q-text">{highlightText(item.q, trimmed)}</div>
-                    <span className={`faq-arrow ${openIdx === key ? "open" : ""}`}>▾</span>
-                  </div>
-                  {openIdx === key && (
-                    <div className="faq-a">
-                      <span dangerouslySetInnerHTML={{ __html: item.a }} />
-                      {item.note && <div className="faq-note">📌 {item.note}</div>}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
+      <div className="overlay-body-container">
+        <div className="body-pattern" />
+        <div className="faq-search-wrap">
+          <div className="faq-search-box">
+            <input
+              className="faq-search-input"
+              placeholder="Cari pertanyaan..."
+              value={searchQ}
+              onChange={e => setSearchQ(e.target.value)}
+            />
           </div>
-        ))}
+        </div>
+        <div className="faq-body">
+          {filtered.map((cat, ci) => (
+            <div key={ci}>
+              <div className="faq-cat-label">{cat.cat}</div>
+              {cat.items.map((item: any, ii: number) => {
+                const key = `${ci}-${ii}`;
+                return (
+                  <div className="faq-item" key={key}>
+                    <div className="faq-q" onClick={() => toggleItem(key)}>
+                      <div className="faq-q-num">{ii + 1}</div>
+                      <div className="faq-q-text">{highlightText(item.q, trimmed)}</div>
+                      <span className={`faq-arrow ${openIdx === key ? "open" : ""}`}>▾</span>
+                    </div>
+                    {openIdx === key && (
+                      <div className="faq-a">
+                        <span dangerouslySetInnerHTML={{ __html: item.a }} />
+                        {item.note && <div className="faq-note">📌 {item.note}</div>}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

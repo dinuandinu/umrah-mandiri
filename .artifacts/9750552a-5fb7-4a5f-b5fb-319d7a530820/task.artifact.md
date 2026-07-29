@@ -21,8 +21,9 @@
 - [x] Update `build-apk.yml` dengan plugin baru dan perbaikan perintah `cp`
 - [x] Push perbaikan workflow ke GitHub
 
-## Modernisasi Halaman FAQ
-- [x] Tambahkan `.header-geo` ke FAQ Header di `Components.tsx`
-- [/] Update styling `.faq-header`, judul, dan badge di `UmrohApp.css`
-- [/] Update styling `.faq-cat-label` dan `.faq-item` di `UmrohApp.css`
+## Penyelarasan Layout Edge-to-Edge & Pola
+- [ ] Update `UmrohApp.css`: Definisikan `.overlay-body-container` & `.overlay-body-inner`
+- [ ] Update `UmrohApp.css`: Hapus `::after` lama di FAQ, About, dan Onboarding
+- [ ] Update `Components.tsx`: Terapkan struktur tumpuk (overlap) pada FAQ, About, dan Onboarding
+- [ ] Update `Components.tsx`: Tambahkan `.body-pattern` ke semua area konten putih di overlay
 - [ ] Push perubahan ke GitHub

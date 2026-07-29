@@ -1,39 +1,42 @@
-# Rencana Modernisasi Halaman FAQ
+# Rencana Penyelarasan Layout "Edge-to-Edge" & Pola Latar Belakang
 
-Rencana ini bertujuan untuk menyelaraskan desain halaman FAQ agar konsisten dengan gaya visual "Modern" di halaman utama, dengan fokus pada keterbacaan dan kontras yang lebih baik.
+Rencana ini bertujuan untuk menyamakan gaya transisi antara header (hijau) dan area konten (putih/parchment) di seluruh halaman overlay (FAQ, About, Onboarding, dan Drawer) agar identik dengan halaman utama, lengkap dengan pola diagonal dan chessboard.
 
 ## Perubahan yang Diusulkan
 
-### 1. Header FAQ
-*   **Warna & Gradien**: Menyelaraskan gradien latar belakang dengan Header utama agar identik.
-*   **Judul**: Mengubah warna teks "Pertanyaan Umum" menjadi putih (`#FFFFFF`) untuk kontras yang lebih tajam.
-*   **Pola Geometris**: Menambahkan `.header-geo` agar memiliki pola berlian yang sama dengan halaman depan.
-*   **Modernisasi Ikon**: Mengubah badge ❓ menjadi container putih membulat yang elegan (mengikuti gaya logo Ka'bah).
+### 1. Transformasi Header & Konten (The "Cut")
+Kita akan mengubah transisi lurus/lengkungan sederhana saat ini menjadi gaya "Rounded Card" yang tumpang tindih dengan header:
+*   **Hapus Header Curve Lama**: Menghapus `::after` pada `.faq-header`, `.about-header`, dan `.ob-topbar`.
+*   **Body Container Modern**: Membungkus isi halaman overlay dengan kontainer yang memiliki:
+    *   `border-top-left-radius: 2rem`
+    *   `border-top-right-radius: 2rem`
+    *   `position: relative` dengan `top: -32px` untuk efek overlap yang cantik.
+    *   Latar belakang sesuai variabel `--bg`.
 
-### 2. Konten FAQ (Bawah)
-*   **Label Kategori**: Memperbarui `.faq-cat-label` agar lebih selaras dengan `.section-label-modern` (font-weight lebih tebal, warna slate-400, dan garis pemisah).
-*   **Kartu Pertanyaan**: Menyesuaikan `.faq-item` agar lebih mendekati gaya `.check-card-modern` (radius lebih besar, bayangan lebih halus, dan feedback sentuhan yang lebih baik).
-*   **Warna Teks Jawaban**: Memastikan kontras teks jawaban tetap nyaman dibaca di mode terang maupun gelap.
+### 2. Sinkronisasi Pola Dekoratif
+*   **Pola Diagonal (Header)**: Memastikan `.header-geo` (berlian tipis) ada di semua header overlay.
+*   **Pola Chessboard (Body)**: Menambahkan elemen `.body-pattern` di dalam semua kontainer konten baru agar pola grid miring terlihat konsisten.
+
+### 3. Penyesuaian Drawer (Menu Samping)
+*   Mengubah bagian atas area scroll Drawer agar memiliki sudut membulat yang sama, sehingga saat di-scroll, konten tidak langsung "menabrak" header hijau melainkan masuk ke bawah lengkungan.
 
 ## Langkah-langkah Teknis
 
-### [Component] FAQ UI Refinement
+### [Component] Overlay UI Refinement
 
 #### [MODIFY] [Components.tsx](file:///Users/andinu/StudioProjects/umrah-mandiri/artifacts/umroh-app/src/components/Layout/Components.tsx)
-*   Menambahkan `<div className="header-geo" />` di dalam container `faq-header`.
+*   Update `FAQPage`, `AboutPage`, dan `Onboarding`: Gunakan struktur kontainer baru (`overlay-body-container`) yang menyertakan `.body-pattern`.
 
 #### [MODIFY] [UmrohApp.css](file:///Users/andinu/StudioProjects/umrah-mandiri/artifacts/umroh-app/src/UmrohApp.css)
-*   Update `.faq-header`: Tambahkan `position: relative`, `overflow: hidden`, dan sesuaikan gradien.
-*   Update `.faq-header-title`: Ubah `color` menjadi `#FFFFFF`.
-*   Update `.faq-header-badge`: Ubah menjadi kotak putih membulat (`border-radius: 1rem`) dengan bayangan.
-*   Update `.faq-cat-label`: Sesuaikan gaya dengan label section di halaman utama.
-*   Update `.faq-item`: Tingkatkan `border-radius` dan sesuaikan `box-shadow`.
+*   Definisikan `.overlay-body-container` dan `.overlay-body-inner`.
+*   Hapus gaya `::after` (clip-path lama) pada header-header terkait.
+*   Pastikan `.body-pattern` memiliki posisi yang benar agar tidak menutupi teks.
 
 ## Rencana Verifikasi
-1.  Buka halaman FAQ.
-2.  Pastikan header terlihat identik secara visual (pola dan warna) dengan halaman depan.
-3.  Pastikan teks judul putih terbaca sangat jelas.
-4.  Pastikan kartu pertanyaan di bawahnya terlihat lebih modern dan bersih.
+1.  Buka **FAQ**: Pastikan batas antara hijau dan putih melengkung besar (`2rem`) dan menutupi sedikit bagian bawah header hijau, persis seperti gambar referensi.
+2.  Pastikan pola grid kotak-kotak (chessboard) terlihat di area putih FAQ.
+3.  Pastikan pola berlian (diagonal) terlihat di area hijau FAQ.
+4.  Ulangi pengecekan untuk **Tentang Aplikasi** dan **Onboarding**.
 
 > [!IMPORTANT]
-> Saya **tidak akan** mengubah nomor versi aplikasi dalam tugas ini sesuai dengan instruksi Anda.
+> Saya akan sangat berhati-hati dengan **opasitas pola** agar tetap sangat tipis (opacity 0.03 - 0.05) sehingga kontras teks putih di atas hijau tetap tajam dan nyaman dibaca.
