@@ -30,6 +30,7 @@ export const Drawer = ({ open, onClose, theme, setTheme, fontSize, setFontSize, 
       <div className={`drawer-overlay ${open ? "open" : ""}`} onClick={onClose} />
       <div className={`drawer ${open ? "open" : ""}`}>
         <div className="drawer-head">
+          <div className="header-geo" />
           <div className="drawer-head-arabic">بِسْمِ اللَّهِ</div>
           <div className="drawer-head-title">Umroh Mandiri</div>
           <div className="drawer-head-sub">Pengaturan & Referensi</div>
@@ -226,6 +227,7 @@ export const Onboarding = ({ onDone, slides }: { onDone: () => void; slides: any
 export const AboutPage = ({ onClose }: { onClose: () => void }) => (
   <div className="about-overlay">
     <div className="about-header">
+      <div className="header-geo" />
       <button className="about-back-btn" onClick={onClose} aria-label="Kembali">‹</button>
       <div className="about-header-arabic">تَقَبَّلَ اللَّهُ مِنَّا وَمِنْكُمْ</div>
       <div className="about-header-title">Tentang Aplikasi</div>
@@ -265,6 +267,7 @@ export const FAQPage = ({ onClose, data }: { onClose: () => void; data: any[] })
   return (
     <div className="faq-overlay">
       <div className="faq-header">
+        <div className="header-geo" />
         <button className="faq-back-btn" onClick={onClose}>‹</button>
         <div className="faq-header-badge">❓</div>
         <div className="faq-header-title">Pertanyaan Umum</div>

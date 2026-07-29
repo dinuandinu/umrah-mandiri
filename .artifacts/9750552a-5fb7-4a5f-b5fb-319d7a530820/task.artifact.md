@@ -18,10 +18,15 @@
 - [x] Commit dan Push ke GitHub
 
 ## Modernisasi UI Onboarding
-- [ ] Update styling `.ob-tip` agar selaras dengan `info-banner-modern` di `UmrohApp.css`
-- [ ] Tambahkan dukungan Safe Area pada `.ob-topbar` dan `.ob-footer`
-- [ ] Refine tipografi dan transisi slide onboarding
-- [ ] Verifikasi perubahan tampilan
+- [x] Update styling `.ob-tip` agar selaras dengan `info-banner-modern` di `UmrohApp.css`
+- [x] Tambahkan dukungan Safe Area pada `.ob-topbar` dan `.ob-footer`
+- [x] Refine tipografi dan transisi slide onboarding
+
+## Penyelarasan Header (Drawer & FAQ)
+- [ ] Tambahkan `.header-geo` ke Drawer, FAQ, dan About di `Components.tsx`
+- [ ] Refine styling header overlay agar konsisten dengan banner utama
+- [ ] Modernisasi badge/icon pada header FAQ
+- [ ] Naikkan versi dan push ke GitHub
 
 ## Fix GitHub Actions Build
 - [x] Update `build-apk.yml` dengan plugin baru dan perbaikan perintah `cp`
