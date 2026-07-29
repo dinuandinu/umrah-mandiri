@@ -265,6 +265,7 @@ export const FAQPage = ({ onClose, data }: { onClose: () => void; data: any[] })
   return (
     <div className="faq-overlay">
       <div className="faq-header">
+        <div className="header-geo" />
         <button className="faq-back-btn" onClick={onClose}>‹</button>
         <div className="faq-header-badge">❓</div>
         <div className="faq-header-title">Pertanyaan Umum</div>

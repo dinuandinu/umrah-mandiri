@@ -1,30 +1,39 @@
-# Rencana Perbaikan Build APK (GitHub Actions)
+# Rencana Modernisasi Halaman FAQ
 
-Rencana ini bertujuan untuk memperbaiki error pada alur kerja GitHub Actions (`build-apk.yml`) yang muncul setelah penambahan plugin baru. Error terjadi karena konflik saat menyalin folder `node_modules` dan hilangnya dependensi plugin baru di lingkungan build sementara.
-
-## Analisis Masalah
-
-1.  **Missing Plugins:** Langkah "Setup Capacitor di folder bersih" belum menyertakan `@capacitor/status-bar` dan `@capawesome/capacitor-navigation-bar`.
-2.  **Symlink Conflict:** Perintah `cp` gagal karena mencoba menimpa symlink (hasil dari `pnpm install`) dengan direktori fisik secara paksa.
+Rencana ini bertujuan untuk menyelaraskan desain halaman FAQ agar konsisten dengan gaya visual "Modern" di halaman utama, dengan fokus pada keterbacaan dan kontras yang lebih baik.
 
 ## Perubahan yang Diusulkan
 
-### 1. Update Dependensi di Workflow
-Menambahkan plugin baru ke perintah `npm install` di lingkungan build sementara agar Capacitor bisa menemukannya saat proses `sync`.
+### 1. Header FAQ
+*   **Warna & Gradien**: Menyelaraskan gradien latar belakang dengan Header utama agar identik.
+*   **Judul**: Mengubah warna teks "Pertanyaan Umum" menjadi putih (`#FFFFFF`) untuk kontras yang lebih tajam.
+*   **Pola Geometris**: Menambahkan `.header-geo` agar memiliki pola berlian yang sama dengan halaman depan.
+*   **Modernisasi Ikon**: Mengubah badge ❓ menjadi container putih membulat yang elegan (mengikuti gaya logo Ka'bah).
 
-### 2. Robust File Copying
-Memastikan folder tujuan dihapus terlebih dahulu sebelum dilakukan penyalinan (`rm -rf` diikuti `cp -r`) untuk menghindari konflik "non-directory" pada symlink pnpm.
+### 2. Konten FAQ (Bawah)
+*   **Label Kategori**: Memperbarui `.faq-cat-label` agar lebih selaras dengan `.section-label-modern` (font-weight lebih tebal, warna slate-400, dan garis pemisah).
+*   **Kartu Pertanyaan**: Menyesuaikan `.faq-item` agar lebih mendekati gaya `.check-card-modern` (radius lebih besar, bayangan lebih halus, dan feedback sentuhan yang lebih baik).
+*   **Warna Teks Jawaban**: Memastikan kontras teks jawaban tetap nyaman dibaca di mode terang maupun gelap.
 
 ## Langkah-langkah Teknis
 
-### [Component] GitHub Workflow
+### [Component] FAQ UI Refinement
 
-#### [MODIFY] [.github/workflows/build-apk.yml](file:///Users/andinu/StudioProjects/umrah-mandiri/.github/workflows/build-apk.yml)
-*   Update langkah `Setup Capacitor di folder bersih` untuk menyertakan:
-    *   `@capacitor/status-bar`
-    *   `@capawesome/capacitor-navigation-bar`
-*   Update langkah `Sync Capacitor` untuk menambahkan perintah `rm -rf` sebelum melakukan `cp` pada folder `node_modules/@capacitor/*`.
+#### [MODIFY] [Components.tsx](file:///Users/andinu/StudioProjects/umrah-mandiri/artifacts/umroh-app/src/components/Layout/Components.tsx)
+*   Menambahkan `<div className="header-geo" />` di dalam container `faq-header`.
+
+#### [MODIFY] [UmrohApp.css](file:///Users/andinu/StudioProjects/umrah-mandiri/artifacts/umroh-app/src/UmrohApp.css)
+*   Update `.faq-header`: Tambahkan `position: relative`, `overflow: hidden`, dan sesuaikan gradien.
+*   Update `.faq-header-title`: Ubah `color` menjadi `#FFFFFF`.
+*   Update `.faq-header-badge`: Ubah menjadi kotak putih membulat (`border-radius: 1rem`) dengan bayangan.
+*   Update `.faq-cat-label`: Sesuaikan gaya dengan label section di halaman utama.
+*   Update `.faq-item`: Tingkatkan `border-radius` dan sesuaikan `box-shadow`.
 
 ## Rencana Verifikasi
-1. Karena perbaikan ini ada di GitHub Actions, verifikasi dilakukan dengan memicu build di GitHub (melalui push atau workflow dispatch).
-2. Memastikan langkah `Sync Capacitor` tidak lagi mengeluarkan error 404 atau konflik `cp`.
+1.  Buka halaman FAQ.
+2.  Pastikan header terlihat identik secara visual (pola dan warna) dengan halaman depan.
+3.  Pastikan teks judul putih terbaca sangat jelas.
+4.  Pastikan kartu pertanyaan di bawahnya terlihat lebih modern dan bersih.
+
+> [!IMPORTANT]
+> Saya **tidak akan** mengubah nomor versi aplikasi dalam tugas ini sesuai dengan instruksi Anda.

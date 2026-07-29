@@ -20,3 +20,9 @@
 ## Fix GitHub Actions Build
 - [x] Update `build-apk.yml` dengan plugin baru dan perbaikan perintah `cp`
 - [x] Push perbaikan workflow ke GitHub
+
+## Modernisasi Halaman FAQ
+- [x] Tambahkan `.header-geo` ke FAQ Header di `Components.tsx`
+- [/] Update styling `.faq-header`, judul, dan badge di `UmrohApp.css`
+- [/] Update styling `.faq-cat-label` dan `.faq-item` di `UmrohApp.css`
+- [ ] Push perubahan ke GitHub
