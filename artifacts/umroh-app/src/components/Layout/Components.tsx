@@ -174,6 +174,7 @@ export const Drawer = ({ open, onClose, theme, setTheme, fontSize, setFontSize, 
               Tersedia Offline
             </span>
           </div>
+          </div>
         </div>
       </div>
     </>
