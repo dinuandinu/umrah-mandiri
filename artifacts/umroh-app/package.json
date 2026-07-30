@@ -1,6 +1,6 @@
 {
   "name": "@workspace/umroh-app",
-  "version": "1.3.14",
+  "version": "1.3.17",
   "private": true,
   "type": "module",
   "scripts": {
