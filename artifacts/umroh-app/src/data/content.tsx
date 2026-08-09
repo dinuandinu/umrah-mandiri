@@ -649,6 +649,7 @@ export const tutorialData: TutItem[] = [
               <li><strong>Bir Ali (Dzulhulaifah)</strong> — jamaah dari arah Madinah. ±450 km dari Mekkah</li>
               <li><strong>Juhfah (Rabigh)</strong> — jamaah dari arah barat (Mesir, Suriah, Yordania) & transit Istanbul</li>
               <li><strong>Dzatu 'Irq</strong> — jamaah dari arah Irak</li>
+              <li><strong>Masjid Tan'im (Masjid Aisyah)/Masjid Ji'ranah</strong> — Khusus jama'ah yang sudah ada di dalam kota Makkah , ingin melakukan Umroh kedua dan Umroh Badal</li>
             </ul>
             <div className="info-box"><p>🗺️ Direct Jakarta → Jeddah: niat ihram wajib diucapkan sesaat sebelum pesawat melewati titik miqat <strong>Yalamlam</strong>. Maskapai biasanya mengumumkan 15–30 menit sebelumnya.</p></div>
             <div className="warn-box"><p>✈️ <strong>Khusus penerbangan transit:</strong><br/>
@@ -822,7 +823,7 @@ export const tutorialData: TutItem[] = [
             🕋 Memasuki Masjid <span style={{ flex: 1, height: '1px', background: 'var(--border-detail)' }}></span>
           </div>
 
-          <p style={{ fontSize: '.94rem', lineHeight: '1.6', marginBottom: '12px' }}>Masuk melalui pintu <strong>Bab As-Salam</strong> atau pintu terdekat dengan kaki kanan terlebih dahulu.</p>
+          <p style={{ fontSize: '.94rem', lineHeight: '1.6', marginBottom: '12px' }}>Masuk melalui pintu terdekat sesuaikan denga arah kedatangan Hotel. Selalu tanya petugas terutama Askar (Spesial Force Hajj And Umroh) tentang pintu masuk khusus umroh. Ini karena pintu masuk khusus Umroh dibedakan dengan Jamaah biasa yang hanya ingin melaksanankan Sholat wajib. Jama'ah Umroh diprioritaskan agar bisa mendekat ke Area Ka'bah di lantai dasar . Dibedakan berdasarkan pakaian karena jama"ah Umroh mengenakan pakaian Ihrom. Untuk keluar usahakan gunakan pintu yang sama dengan pintu masuk untuk mengurasi kebingungan. Gunakan patokasn misal nomor gate saat masuk, jangan sungkan tanya petugas.</p>
 
           <div className="doa-box">
             <div className="doa-label">Doa Masuk Masjid</div>
@@ -833,7 +834,6 @@ export const tutorialData: TutItem[] = [
           </div>
 
           <DS id="sh-view" title="🕋 Doa Melihat Ka'bah" open={D["sh-view"]} onToggle={T}>
-            <p>Saat pertama kali mata memandang Ka'bah, angkat tangan dan baca doa ini (waktu mustajab):</p>
             <div className="doa-box">
               <div className="doa-label">Doa Melihat Ka'bah</div>
               <PrayerAudioPlayer src="/assets/audio/doa-melihat-kaabah.mp3" id="doa-melihat-kaabah" />
@@ -860,6 +860,7 @@ export const tutorialData: TutItem[] = [
               <li>Utamakan sholat fardhu berjamaah di dalam masjid, bukan di hotel.</li>
               <li>Hadir <strong>20–30 menit sebelum iqamah</strong> karena kepadatan jemaah.</li>
               <li>Sholat sunnah qabliyah/ba'diyah sangat dianjurkan.</li>
+              <li>Sholat Wajib di Nasjidil Haram Hampir selalu diikuti dengan Sholat Jenazah</li>
             </ul>
           </DS>
 
