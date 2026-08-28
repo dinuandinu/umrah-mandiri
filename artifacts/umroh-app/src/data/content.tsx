@@ -498,7 +498,10 @@ export const prepData: PrepSection[] = [
         "⏰ Estimasi waktu proses: 3-7 hari kerja setelah hotel approve. Jika hotel lambat merespons, proses bisa lebih lama — tanyakan progress ke provider secara berkala.",
         "📋 Jika proses macet/lambat mendekati keberangkatan, provider mungkin menawarkan BRN sebagai solusi jalan pintas (ada biaya tambahan). Tanyakan ke provider jika situasi ini terjadi.",
         "Biaya pengajuan visa sudah mencakup asuransi kesehatan dasar untuk biaya medis di rumah sakit umum pemerintah Arab Saudi.",
-        "⏰ Visa umrah berlaku 90 hari sejak diterbitkan — pastikan tanggal keberangkatan & kepulangan masih dalam rentang ini."
+        "🆕 Per Juli 2026, Arab Saudi memperkenalkan Visa Umrah Multiple Entry — berlaku 365 hari sejak diterbitkan, dengan total masa tinggal maksimal 90 hari (dihitung kumulatif dari semua kunjungan).",
+        "🔄 Cara kerjanya: setiap kali Anda meninggalkan Arab Saudi, visa otomatis ditangguhkan dan aktif kembali saat kunjungan berikutnya — sisa jatah hari tinggal tersimpan otomatis.",
+        "⚠️ Visa multiple entry tidak dapat digunakan selama musim haji, meski masih aktif.",
+        "📱 Setiap kunjungan tetap wajib memesan paket via provider terakreditasi di Nusuk, dan mengurus Umrah Permit melalui aplikasi Nusuk sebelum tiba di Arab Saudi.",
       ] },
       { id: 10, title: "Registrasi Siskopatuh Kemenag", badge: "Wajib", tips: [
         "Provider akan mendaftarkan data keberangkatan Anda ke sistem Siskopatuh Kemenag RI.",
